@@ -3,22 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <title>dhewm3 - DooM³ Source Port</title>
-  <meta property="og:title" content="dhewm3 - DooM³ Source Port">
+
+  <title>dhewm3 - Doom3 Source Port</title>
+
+  <meta property="og:title" content="dhewm3 - Doom3 Source Port">
   <meta property="og:type" content="website">
-  <meta property="og:description" content="Project Page of the dhewm3 Source Port of DooM³">
-  
-  <meta name="twitter:creator" content="@Doomed_Daniel" />
-  <!-- TODO !!! -->
-  <!-- meta property="og:image" content="http://www.dhewm3.org/logo-160.png" / -->
-  
+  <meta property="og:description" content="Project Page of the dhewm3 Source Port of Doom3">
+
+  <meta property="og:image" content="http://dhewm3.org/og_image.jpg" />
+
   <link rel="stylesheet" href="./fonts/stylesheet.css" />
   <link rel="stylesheet" href="./css/main.css" media="all" />
   
-  <link rel="icon" href="./favicon.ico?v=6">
-  <!--link rel="shortcut icon" href="./doom3_3.svg"-->
+  <link rel="icon" href="./favicon.ico">
 
 </head>
 

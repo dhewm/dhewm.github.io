@@ -8,7 +8,7 @@ but it should work (or be easily portable to) on any system that supports OpenGL
 [ARB shaders](https://en.wikipedia.org/wiki/ARB_assembly_language),
 [SDL](http://libsdl.org) and [OpenAL](http://openal.org).  
 Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on
-all operating systems and hardware (via [OpenAL-softs](http://TODO_URL!!) EFX support), has better
+all operating systems and hardware (via [OpenAL Softs](http://openal-soft.org/) EFX support), has better
 support for widescreen resolutions and it has 64bit support.  
 However, it currently does not support old Mods that require their own game DLL or the integrated
 (Windows-only) editors.  
