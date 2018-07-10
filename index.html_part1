@@ -14,11 +14,8 @@
   <!-- TODO !!! -->
   <!-- meta property="og:image" content="http://www.dhewm3.org/logo-160.png" / -->
   
-  
+  <link rel="stylesheet" href="./fonts/stylesheet.css" />
   <link rel="stylesheet" href="./css/main.css" media="all" />
-  <!--
-  <link rel="stylesheet" href="./css/fonts.css" />
-  -->
   
   <link rel="icon" href="./favicon.ico?v=6">
   <!--link rel="shortcut icon" href="./doom3_3.svg"-->

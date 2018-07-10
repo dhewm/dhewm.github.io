@@ -1,3 +1,11 @@
+:root {
+  /* if the system has DejaVu, that looks better, but I provide vera bitstream
+   * instead as fallback because it's smaller
+   * ideally I'd like to just use 'sans' and 'serif', but the defaults on windows look bad */
+  --my-serif-font: 'DejaVu Serif', 'vera-serif';
+  --my-sans-font:  'DejaVu Sans', 'vera-sans';
+}
+
 html,
 body {
   margin: 0;
@@ -9,7 +17,7 @@ body {
 }
 
 body {
-  /*font-family: 'Merriweather', serif;*/
+  font-family: var(--my-serif-font), serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -18,7 +26,7 @@ body {
 
 h1 {
   /* revolutionary idea: h1 and h2 shouldn't look the same */
-  font-size: 1.666em;
+  font-size: 1.8em;
 }
 
 h1,
@@ -27,12 +35,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: /* 'Lato',*/ sans-serif;
+  font-family: var(--my-sans-font), sans-serif;
   color: #666;
 }
 
-h1, h2 {
-text-align: center;
+h1 /*, h2, h3 */ {
+  text-align: center;
 }
 
 
@@ -52,14 +60,21 @@ a {
   /* border-bottom: 1px solid #eaeaea; */
 }
 
+code {
+  hyphens: none; /* breaking inline-code sections with hyphens looks bad */
+  /*background: #f8f8f8;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+ 
+  /*font-size: 100%;*/
+}
+
 .nav {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 15px;
-  /*font-family: 'Lato', sans-serif;*/
-  /*text-align: right;*/
+  font-family: var(--my-sans-font), sans-serif;
   text-align: center;
-  font-family: sans-serif;
 }
 
 .nav-links {
@@ -68,14 +83,11 @@ a {
   font-size: 18px;
   list-style-type: disc;
   list-style-position: outside;
-  
 }
 
 .nav-links li {
-  //display: inline-block;
   display: inline-block;
   margin: 0 0 0 15px;
-  
 }
 
 .nav-links li:first-child {
@@ -84,7 +96,6 @@ a {
 
 .nav-links a {
   text-decoration: none;
-  
 }
 
 .nav-links a:hover {
@@ -94,11 +105,8 @@ a {
 
 .content {
   max-width: 800px;
-  //margin: 20px auto 80px;
-  padding: 0 15px;
   font-size: 16px;
-  /*font-size: 100%;*/
-  line-height: 1.5;
+  line-height: 1.7;
   color: #999;
   margin-left:auto;
   margin-right:auto;
@@ -106,7 +114,7 @@ a {
 }
 
 .screenshots {
-  max-width: 1300px;
+  max-width: 1200px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -119,7 +127,7 @@ a {
 .content .headinglink:hover,
 .content .headinglink:focus {
   
-  color: #e0e0e0;
+  color: #777;
   text-decoration: underline;
 }
 
