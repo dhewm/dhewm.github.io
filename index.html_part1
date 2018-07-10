@@ -54,13 +54,13 @@
 </header>
 
 <div class="screenshots">
-  <a href="./screenshot1.jpeg" title="dhewm3 on Linux"><img src="screenshot1.jpeg" height=240></a>
-  <a href="./screenshot1.jpeg" title="dhewm3 on Windows TODO!!!"><img src="screenshot1.jpeg" height=240></a>
-  <a href="./dhewm3-osx.jpg" title="dhewm3 on macOS/OSX"><img src="dhewm3-osx.jpg" height=240></a>
-  <a href="./dhewm3-aros.jpg" title="dhewm3 on AROS (AmigaOS clone)"><img src="dhewm3-aros.jpg" height=240></a>
-  <a href="./dhewm3-switch-linux.jpg" title="dhewm3 on a jailbroken Switch running Linux"><img src="dhewm3-switch-linux.jpg" height=240></a>
-  <a href="./screenshot1.jpeg" title="TODO gamplay"><img src="screenshot1.jpeg" height=240></a>
-  <a href="./screenshot1.jpeg" title="TODO gameplay"><img src="screenshot1.jpeg" height=240></a>
+  <a href="./dhewm3-linux.jpg" title="dhewm3 on Linux"><img src="small-dhewm3-linux.jpg" height=200></a>
+  <a href="./dhewm3-win.jpg" title="dhewm3 on Windows"><img src="small-dhewm3-win.jpg" height=200></a>
+  <a href="./dhewm3-osx.jpg" title="dhewm3 on macOS/OSX"><img src="small-dhewm3-osx.jpg" height=200></a>
+  <a href="./dhewm3-aros.jpg" title="dhewm3 on AROS (AmigaOS clone)"><img src="small-dhewm3-aros.jpg" height=200></a>
+  <a href="./dhewm3-switch-linux.jpg" title="dhewm3 on a jailbroken Switch running Linux"><img src="small-dhewm3-switch-linux.jpg" height=200></a>
+  <a href="./dhewm3-1.jpg" title="Gameplay of the Doom3"><img src="small-dhewm3-1.jpg" height=200></a>
+  <a href="./dhewm3-d3xp1.jpg" title="Gameplay of the Ressurection of Evil Addon"><img src="small-dhewm3-d3xp1.jpg" height=200></a>
 </div>
 
 <main class="content" role="main">
