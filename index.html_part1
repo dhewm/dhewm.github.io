@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <title>dhewm3 - DooM³ Source Port</title>
+  <meta property="og:title" content="dhewm3 - DooM³ Source Port">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Project Page of the dhewm3 Source Port of DooM³">
+  
+  <meta name="twitter:creator" content="@Doomed_Daniel" />
+  <!-- TODO !!! -->
+  <!-- meta property="og:image" content="http://www.dhewm3.org/logo-160.png" / -->
+  
+  
+  <link rel="stylesheet" href="./css/main.css" media="all" />
+  <!--
+  <link rel="stylesheet" href="./css/fonts.css" />
+  -->
+  
+  <link rel="icon" href="./favicon.ico?v=6">
+  <!--link rel="shortcut icon" href="./doom3_3.svg"-->
+
+</head>
+
+<body>
+<header class="header">
+  <img src="logo2.svg" width=640 style="margin-left:auto;margin-right:auto;display:block">
+  <br>
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="https://github.com/dhewm/dhewm3/releases/latest"><b>Download</b></a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/wiki/FAQ">FAQ</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/issues">Report Issues</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/blob/master/README.md">View Readme</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3">Github Project <img src="github-mark-64.png" height=16></a></li>
+    </ul>
+  </nav>
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li>|</li>
+      <li><a href="#news">News</a></li>
+      <li>|</li>
+      <li><a href="#how-to-install">How to Install</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="screenshots">
+  <a href="./screenshot1.jpeg" title="dhewm3 on Linux"><img src="screenshot1.jpeg" height=240></a>
+  <a href="./screenshot1.jpeg" title="dhewm3 on Windows TODO!!!"><img src="screenshot1.jpeg" height=240></a>
+  <a href="./dhewm3-osx.jpg" title="dhewm3 on macOS/OSX"><img src="dhewm3-osx.jpg" height=240></a>
+  <a href="./dhewm3-aros.jpg" title="dhewm3 on AROS (AmigaOS clone)"><img src="dhewm3-aros.jpg" height=240></a>
+  <a href="./dhewm3-switch-linux.jpg" title="dhewm3 on a jailbroken Switch running Linux"><img src="dhewm3-switch-linux.jpg" height=240></a>
+  <a href="./screenshot1.jpeg" title="TODO gamplay"><img src="screenshot1.jpeg" height=240></a>
+  <a href="./screenshot1.jpeg" title="TODO gameplay"><img src="screenshot1.jpeg" height=240></a>
+</div>
+
+<main class="content" role="main">
+<!-- part2 is generated from index.md after that index.html_part3 closes it all -->

@@ -1,0 +1,22 @@
+</main>
+
+  <script>
+  for(h=1; h<=6; ++h) 
+  {
+    var hs = document.getElementsByTagName('h'+h);
+    for(i=0; i<hs.length; ++i)
+    {
+      
+      if(hs[i].id)
+      {
+        var l = document.createElement("a");
+        l.href = "#" + hs[i].id;
+        l.innerHTML = "# ";
+        l.className = "headinglink";
+        hs[i].insertBefore(l, hs[i].firstChild);
+      }
+    }
+  }
+  </script>
+</body>
+</html>

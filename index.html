@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <title>dhewm3 - DooM³ Source Port</title>
+  <meta property="og:title" content="dhewm3 - DooM³ Source Port">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Project Page of the dhewm3 Source Port of DooM³">
+  
+  <meta name="twitter:creator" content="@Doomed_Daniel" />
+  <!-- TODO !!! -->
+  <!-- meta property="og:image" content="http://www.dhewm3.org/logo-160.png" / -->
+  
+  
+  <link rel="stylesheet" href="./css/main.css" media="all" />
+  <!--
+  <link rel="stylesheet" href="./css/fonts.css" />
+  -->
+  
+  <link rel="icon" href="./favicon.ico?v=6">
+  <!--link rel="shortcut icon" href="./doom3_3.svg"-->
+
+</head>
+
+<body>
+<header class="header">
+  <img src="logo2.svg" width=640 style="margin-left:auto;margin-right:auto;display:block">
+  <br>
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="https://github.com/dhewm/dhewm3/releases/latest"><b>Download</b></a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/wiki/FAQ">FAQ</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/issues">Report Issues</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/blob/master/README.md">View Readme</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3">Github Project <img src="github-mark-64.png" height=16></a></li>
+    </ul>
+  </nav>
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li>|</li>
+      <li><a href="#news">News</a></li>
+      <li>|</li>
+      <li><a href="#how-to-install">How to Install</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="screenshots">
+  <a href="./screenshot1.jpeg" title="dhewm3 on Linux"><img src="screenshot1.jpeg" height=240></a>
+  <a href="./screenshot1.jpeg" title="dhewm3 on Windows TODO!!!"><img src="screenshot1.jpeg" height=240></a>
+  <a href="./dhewm3-osx.jpg" title="dhewm3 on macOS/OSX"><img src="dhewm3-osx.jpg" height=240></a>
+  <a href="./dhewm3-aros.jpg" title="dhewm3 on AROS (AmigaOS clone)"><img src="dhewm3-aros.jpg" height=240></a>
+  <a href="./dhewm3-switch-linux.jpg" title="dhewm3 on a jailbroken Switch running Linux"><img src="dhewm3-switch-linux.jpg" height=240></a>
+  <a href="./screenshot1.jpeg" title="TODO gamplay"><img src="screenshot1.jpeg" height=240></a>
+  <a href="./screenshot1.jpeg" title="TODO gameplay"><img src="screenshot1.jpeg" height=240></a>
+</div>
+
+<main class="content" role="main">
+<!-- part2 is generated from index.md after that index.html_part3 closes it all -->
+<h1 id="about">About</h1>
+<p><strong>dhewm3</strong> is a source port of the original Doom3 (<strong>not</strong> <em>Doom3 BFG</em>, for that you may want to try <a href="https://github.com/RobertBeckebans/RBDOOM-3-BFG/">RBDoom3BFG</a>). It's known to work on Windows, Linux, macOS, <a href="https://freebsd.org">FreeBSD</a>, <a href="https://openbsd.org">OpenBSD</a> and <a href="http://www.aros.org/">AROS</a>, but it should work (or be easily portable to) on any system that supports OpenGL 1.4 with <a href="https://en.wikipedia.org/wiki/ARB_assembly_language">ARB shaders</a>, <a href="http://libsdl.org">SDL</a> and <a href="http://openal.org">OpenAL</a>.<br />
+Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on all operating systems and hardware (via <a href="http://TODO_URL!!">OpenAL-softs</a> EFX support), has better support for widescreen resolutions and it has 64bit support.<br />
+However, it currently does not support old Mods that require their own game DLL or the integrated (Windows-only) editors.<br />
+Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
+<h1 id="news">News</h1>
+<h3 id="dhewm3.org-launched">2018-07-??: <em>dhewm3.org launched</em></h3>
+<p>dhewm3 now has an official homepage!</p>
+<p>We'll continue to use Github, but this is the page most people should go to first.<br />
+This way we can more easily migrate to another git repo and issue tracker hoster in case Github/Microsoft screws up.</p>
+<h3 id="dhewm3-1.4.1-released">2016-06-18: <em>dhewm3 1.4.1 released</em></h3>
+<p>Fixes/improvements since 1.4.0:</p>
+<ul>
+<li>Fixed some (kinda rare) crashes due to assertion errors, especially observed in the last boss fights of both doom3 and the Resurrection of Evil Addon.</li>
+<li>Improved compatibility with AZERTY keyboards (the row of keys with 1...9, 0 is now usable)</li>
+<li>Fixed a crash (at least on FreeBSD) when loading Resurrection of Evil's last level</li>
+<li>Compatibility with Microsoft Visual Studio 2015</li>
+<li>Video resolutions in menu now sorted, added 2880x1800</li>
+<li>Support for up to 8 mouse buttons (on Linux this needs SDL2 2.0.4)</li>
+</ul>
+<h1 id="how-to-install">How to Install</h1>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+</main>
+
+  <script>
+  for(h=1; h<=6; ++h) 
+  {
+    var hs = document.getElementsByTagName('h'+h);
+    for(i=0; i<hs.length; ++i)
+    {
+      
+      if(hs[i].id)
+      {
+        var l = document.createElement("a");
+        l.href = "#" + hs[i].id;
+        l.innerHTML = "# ";
+        l.className = "headinglink";
+        hs[i].insertBefore(l, hs[i].firstChild);
+      }
+    }
+  }
+  </script>
+</body>
+</html>
