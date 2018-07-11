@@ -48,12 +48,13 @@
 </header>
 
 <div class="screenshots">
+  <br>
   <a href="./dhewm3-linux.jpg" title="dhewm3 on Linux"><img src="small-dhewm3-linux.jpg" height=200></a>
   <a href="./dhewm3-win.jpg" title="dhewm3 on Windows"><img src="small-dhewm3-win.jpg" height=200></a>
   <a href="./dhewm3-osx.jpg" title="dhewm3 on macOS/OSX"><img src="small-dhewm3-osx.jpg" height=200></a>
   <a href="./dhewm3-aros.jpg" title="dhewm3 on AROS (AmigaOS clone)"><img src="small-dhewm3-aros.jpg" height=200></a>
   <a href="./dhewm3-switch-linux.jpg" title="dhewm3 on a jailbroken Switch running Linux"><img src="small-dhewm3-switch-linux.jpg" height=200></a>
-  <a href="./dhewm3-1.jpg" title="Gameplay of the Doom3"><img src="small-dhewm3-1.jpg" height=200></a>
+  <a href="./dhewm3-1.jpg" title="Gameplay of Doom3"><img src="small-dhewm3-1.jpg" height=200></a>
   <a href="./dhewm3-d3xp1.jpg" title="Gameplay of the Ressurection of Evil Addon"><img src="small-dhewm3-d3xp1.jpg" height=200></a>
 </div>
 
@@ -81,7 +82,7 @@ We'll continue to use Github for hosting the code and issues (and indeed this pa
 <li>Support for up to 8 mouse buttons (on Linux this needs SDL2 2.0.4 or newer to work)</li>
 </ul>
 <h1 id="how-to-install">How to Install</h1>
-<h2 id="getting-the-game-data">Getting the Game Data</h2>
+<h2 id="getting-the-doom3-game-data">Getting the Doom3 Game Data</h2>
 <p>You'll need the game data from a Doom3 installation patched to 1.3.1. Specifically, you'll need the following .pk4 files for the main game:</p>
 <table style="width:86%;">
 <colgroup>
@@ -104,7 +105,7 @@ We'll continue to use Github for hosting the code and issues (and indeed this pa
 </tr>
 </tbody>
 </table>
-<p>... and (optionally) these .pk4 files for <em>Resurrection of Evil</em> addon:</p>
+<p>... and (optionally) these .pk4 files for the <em>Resurrection of Evil</em> addon:</p>
 <table style="width:86%;">
 <colgroup>
 <col width="25%" />
@@ -135,10 +136,10 @@ We'll continue to use Github for hosting the code and issues (and indeed this pa
 <p>First you need to buy <a href="http://store.steampowered.com/app/9050/">Doom3</a> of course (and the <a href="https://store.steampowered.com/app/9070/">Resurrection of Evil Addon</a>, if you want that too; Note that the Addon is not available in Germany).</p>
 <p>Thankfully the game from Steam is already fully patched to 1.3.1.</p>
 <p>On <strong>Windows</strong>, <em>just install</em> it and copy the game data from there (see above for what files are needed).</p>
-<p>On <strong>Linux/OSX</strong> unfortunately you can't just install the game, it's Windows-only on Steam (unless you run Windows Steam in Wine).<br />
+<p>On <strong>Linux/OSX</strong> unfortunately you can't just install the game (unless you run Windows Steam in Wine), because it's Windows-only on Steam.<br />
 However, you can still download it with <strong><a href="https://developer.valvesoftware.com/wiki/SteamCMD">SteamCMD</a></strong>.<br />
 See <a href="https://developer.valvesoftware.com/wiki/SteamCMD#Linux">this description for Linux</a> or <a href="https://developer.valvesoftware.com/wiki/SteamCMD#OS_X">here for OS X</a> on how to install SteamCMD on your system. You won't have to create a new user.</p>
-<p>Then you can download doom3 with</p>
+<p>Then you can download Doom3 with</p>
 <p><code>./steamcmd.sh +@sSteamCmdForcePlatformType windows +login &lt;YOUR_STEAM_LOGIN_NAME&gt; +force_install_dir ./doom3/ +app_update 9050 validate +quit</code></p>
 <p>(replace <code>&lt;YOUR_STEAM_LOGIN_NAME&gt;</code> with your steam login name)<br />
 When it's done you should have the normal windows installation of doom3 in <code>./doom3/</code> and the needed files in <code>./doom3/base/</code><br />
@@ -146,14 +147,14 @@ It should be possible to get the <em>Resurection of Evil</em> data in the same w
 <p>By the way, that number is the &quot;AppID&quot; of Doom3/RoE; if you wanna use this to get the data of other games you own, you can look up the AppID at <a href="https://steamdb.info/">SteamDB</a>.</p>
 <h2 id="getting-dhewm3-executables">Getting dhewm3 executables</h2>
 <p>On <strong>Windows</strong> you can just download the Win32 binaries from the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download page</a>.<br />
-You can either extract them into your Doom3 installation directory, or into a fresh directory and copy the needed game data (<a href="#getting-the-game-data">see above</a>) in there.</p>
+You can either extract them into your Doom3 installation directory, or into a fresh directory and copy the needed game data (<a href="#getting-the-doom3-game-data">see above</a>) in there.</p>
 <p>On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that you can install; please refer to that packages documentation on where to put the game data.<br />
 You could also try telling dhewm3 where to find the game data with:</p>
 <pre><code>  dhewm3 +set fs_basepath /home/HansWerner/Games/doom3</code></pre>
 <p>(adjust the path to your needs)</p>
 <p>If your package manager does not provide dhewm3 (or you're on macOS/OSX and there is none), or you want to use the very latest code, you'll have to compile it yourself. It's not super hard, see <a href="https://github.com/dhewm/dhewm3/blob/master/README.md#compiling">the README</a> for details on compiling and <a href="https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files">the FAQ</a> on where to put the game data.</p>
 </main>
-
+  <br><br>
   <script>
   // add clickable anchor-link to headings
   for(h=1; h<=6; ++h) 

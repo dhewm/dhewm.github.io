@@ -47,7 +47,7 @@ Fixes/improvements since 1.4.0:
 
 # How to Install
 
-## Getting the Game Data
+## Getting the Doom3 Game Data
 
 You'll need the game data from a Doom3 installation patched to 1.3.1.
 Specifically, you'll need the following .pk4 files for the main game:
@@ -66,7 +66,7 @@ Specifically, you'll need the following .pk4 files for the main game:
  base/pak008.pk4    12KB  28750b7841de9453eb335bad6841a2a5
 --------------------------------------------------------------
 
-... and (optionally) these .pk4 files for *Resurrection of Evil* addon:
+... and (optionally) these .pk4 files for the *Resurrection of Evil* addon:
 
 --------------------------------------------------------------
   Filename          Size  MD5-sum                          
@@ -100,13 +100,14 @@ Thankfully the game from Steam is already fully patched to 1.3.1.
 
 On **Windows**, *just install* it and copy the game data from there (see above for what files are needed).
 
-On **Linux/OSX** unfortunately you can't just install the game, it's Windows-only on Steam (unless you run Windows Steam in Wine).  
+On **Linux/OSX** unfortunately you can't just install the game (unless you run Windows Steam in Wine),
+because it's Windows-only on Steam.  
 However, you can still download it with **[SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)**.  
 See [this description for Linux](https://developer.valvesoftware.com/wiki/SteamCMD#Linux)
 or [here for OS X](https://developer.valvesoftware.com/wiki/SteamCMD#OS_X)
 on how to install SteamCMD on your system. You won't have to create a new user.
 
-Then you can download doom3 with
+Then you can download Doom3 with
 
 `./steamcmd.sh +@sSteamCmdForcePlatformType windows +login <YOUR_STEAM_LOGIN_NAME> +force_install_dir ./doom3/ +app_update 9050 validate +quit`
 
@@ -124,7 +125,7 @@ get the data of other games you own, you can look up the AppID at [SteamDB](http
 
 On **Windows** you can just download the Win32 binaries from the [Download page](https://github.com/dhewm/dhewm3/releases/latest).  
 You can either extract them into your Doom3 installation directory, or into a fresh
-directory and copy the needed game data ([see above](#getting-the-game-data)) in there.
+directory and copy the needed game data ([see above](#getting-the-doom3-game-data)) in there.
 
 On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that
 you can install; please refer to that packages documentation on where to put the game data.  

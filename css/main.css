@@ -27,6 +27,7 @@ body {
 h1 {
   /* revolutionary idea: h1 and h2 shouldn't look the same */
   font-size: 1.8em;
+  padding-top: 40px;
 }
 
 h1,

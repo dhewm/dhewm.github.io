@@ -1,5 +1,5 @@
 </main>
-
+  <br><br>
   <script>
   // add clickable anchor-link to headings
   for(h=1; h<=6; ++h) 
