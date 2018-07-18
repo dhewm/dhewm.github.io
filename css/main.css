@@ -132,7 +132,7 @@ code {
   text-decoration: underline;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 850px) {
 
   /* if there's some margin on the left, move the heading link
    * to the left so the heading itself is roughly where it would be

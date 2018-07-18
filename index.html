@@ -11,6 +11,7 @@
   <meta property="og:description" content="Project Page of the dhewm3 Source Port of Doom3">
 
   <meta property="og:image" content="http://dhewm3.org/og_image.jpg" />
+  <meta property="twitter:image" content="http://dhewm3.org/twitter_image.jpg" />
 
   <link rel="stylesheet" href="./fonts/stylesheet.css" />
   <link rel="stylesheet" href="./css/main.css" media="all" />
@@ -140,7 +141,9 @@ We'll continue to use Github for hosting the code and issues (and indeed this pa
 However, you can still download it with <strong><a href="https://developer.valvesoftware.com/wiki/SteamCMD">SteamCMD</a></strong>.<br />
 See <a href="https://developer.valvesoftware.com/wiki/SteamCMD#Linux">this description for Linux</a> or <a href="https://developer.valvesoftware.com/wiki/SteamCMD#OS_X">here for OS X</a> on how to install SteamCMD on your system. You won't have to create a new user.</p>
 <p>Then you can download Doom3 with</p>
+<blockquote>
 <p><code>./steamcmd.sh +@sSteamCmdForcePlatformType windows +login &lt;YOUR_STEAM_LOGIN_NAME&gt; +force_install_dir ./doom3/ +app_update 9050 validate +quit</code></p>
+</blockquote>
 <p>(replace <code>&lt;YOUR_STEAM_LOGIN_NAME&gt;</code> with your steam login name)<br />
 When it's done you should have the normal windows installation of doom3 in <code>./doom3/</code> and the needed files in <code>./doom3/base/</code><br />
 It should be possible to get the <em>Resurection of Evil</em> data in the same way, by replacing <code>9050</code> with <code>9070</code>; the files should be in <code>./doom3/d3xp/</code> then.</p>
