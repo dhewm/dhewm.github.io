@@ -83,9 +83,8 @@ can be copied from the disks, the other files are from the patch.
 On **Linux** (and probably other **Unix-like** systems and maybe even Windows with a mingw shell) you can
 extract the needed files from [the official 1.3.1 patch for Linux](https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/doom3-linux-1.3.1.1304.x86.run)
 with:
-```
-  sh /path/to/doom3-linux-1.3.1.1304.x86.run --tar xvf --wildcards base/pak* d3xp/pak*
-```
+
+> `sh /path/to/doom3-linux-1.3.1.1304.x86.run --tar xvf --wildcards base/pak* d3xp/pak*`
 
 On **Windows** you can just install the game and [the official 1.3.1 patch for Windows](https://archive.org/details/Doom_3_1.3.1)
 and then get the files from the installation directory (or copy dhewm3 in there).
@@ -109,7 +108,7 @@ on how to install SteamCMD on your system. You won't have to create a new user.
 
 Then you can download Doom3 with
 
-`./steamcmd.sh +@sSteamCmdForcePlatformType windows +login <YOUR_STEAM_LOGIN_NAME> +force_install_dir ./doom3/ +app_update 9050 validate +quit`
+> `./steamcmd.sh +@sSteamCmdForcePlatformType windows +login <YOUR_STEAM_LOGIN_NAME> +force_install_dir ./doom3/ +app_update 9050 validate +quit`
 
 (replace `<YOUR_STEAM_LOGIN_NAME>` with your steam login name)  
 When it's done you should have the normal windows installation of doom3 in `./doom3/`
@@ -130,9 +129,9 @@ directory and copy the needed game data ([see above](#getting-the-doom3-game-dat
 On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that
 you can install; please refer to that packages documentation on where to put the game data.  
 You could also try telling dhewm3 where to find the game data with:
-```
-  dhewm3 +set fs_basepath /home/HansWerner/Games/doom3
-```
+
+> `dhewm3 +set fs_basepath /home/HansWerner/Games/doom3`
+
 (adjust the path to your needs)
 
 If your package manager does not provide dhewm3 (or you're on macOS/OSX and there is none),

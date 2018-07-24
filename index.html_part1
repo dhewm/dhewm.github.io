@@ -11,6 +11,7 @@
   <meta property="og:description" content="Project Page of the dhewm3 Source Port of Doom3">
 
   <meta property="og:image" content="http://dhewm3.org/og_image.jpg" />
+  <meta property="twitter:image" content="http://dhewm3.org/twitter_image.jpg" />
 
   <link rel="stylesheet" href="./fonts/stylesheet.css" />
   <link rel="stylesheet" href="./css/main.css" media="all" />
@@ -21,7 +22,7 @@
 
 <body>
 <header class="header">
-  <img src="logo2.svg" width=640 style="margin-left:auto;margin-right:auto;display:block">
+  <img src="logo2.svg" width=640 style="max-width:90%;margin-left:auto;margin-right:auto;display:block">
   <br>
   <nav class="nav">
     <ul class="nav-links">

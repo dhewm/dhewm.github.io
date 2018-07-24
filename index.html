@@ -22,7 +22,7 @@
 
 <body>
 <header class="header">
-  <img src="logo2.svg" width=640 style="margin-left:auto;margin-right:auto;display:block">
+  <img src="logo2.svg" width=640 style="max-width:90%;margin-left:auto;margin-right:auto;display:block">
   <br>
   <nav class="nav">
     <ul class="nav-links">
@@ -131,7 +131,9 @@ We'll continue to use Github for hosting the code and issues (and indeed this pa
 <h3 id="from-cddvd-patch">... from CD/DVD + Patch</h3>
 <p>If you bought the game on CDs/DVD, base/pak000.pk4 - pak004.pk4 and d3xp/pak000.pk4 can be copied from the disks, the other files are from the patch.</p>
 <p>On <strong>Linux</strong> (and probably other <strong>Unix-like</strong> systems and maybe even Windows with a mingw shell) you can extract the needed files from <a href="https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/doom3-linux-1.3.1.1304.x86.run">the official 1.3.1 patch for Linux</a> with:</p>
-<pre><code>  sh /path/to/doom3-linux-1.3.1.1304.x86.run --tar xvf --wildcards base/pak* d3xp/pak*</code></pre>
+<blockquote>
+<p><code>sh /path/to/doom3-linux-1.3.1.1304.x86.run --tar xvf --wildcards base/pak* d3xp/pak*</code></p>
+</blockquote>
 <p>On <strong>Windows</strong> you can just install the game and <a href="https://archive.org/details/Doom_3_1.3.1">the official 1.3.1 patch for Windows</a> and then get the files from the installation directory (or copy dhewm3 in there).</p>
 <h3 id="from-steam">... from Steam</h3>
 <p>First you need to buy <a href="http://store.steampowered.com/app/9050/">Doom3</a> of course (and the <a href="https://store.steampowered.com/app/9070/">Resurrection of Evil Addon</a>, if you want that too; Note that the Addon is not available in Germany).</p>
@@ -153,7 +155,9 @@ It should be possible to get the <em>Resurection of Evil</em> data in the same w
 You can either extract them into your Doom3 installation directory, or into a fresh directory and copy the needed game data (<a href="#getting-the-doom3-game-data">see above</a>) in there.</p>
 <p>On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that you can install; please refer to that packages documentation on where to put the game data.<br />
 You could also try telling dhewm3 where to find the game data with:</p>
-<pre><code>  dhewm3 +set fs_basepath /home/HansWerner/Games/doom3</code></pre>
+<blockquote>
+<p><code>dhewm3 +set fs_basepath /home/HansWerner/Games/doom3</code></p>
+</blockquote>
 <p>(adjust the path to your needs)</p>
 <p>If your package manager does not provide dhewm3 (or you're on macOS/OSX and there is none), or you want to use the very latest code, you'll have to compile it yourself. It's not super hard, see <a href="https://github.com/dhewm/dhewm3/blob/master/README.md#compiling">the README</a> for details on compiling and <a href="https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files">the FAQ</a> on where to put the game data.</p>
 </main>

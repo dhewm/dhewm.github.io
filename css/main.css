@@ -105,8 +105,9 @@ code {
 }
 
 .content {
-  max-width: 800px;
-  font-size: 16px;
+  width: 800px;
+  max-width: 92%;
+  font-size: 18px;
   line-height: 1.7;
   color: #999;
   margin-left:auto;
@@ -115,9 +116,21 @@ code {
 }
 
 .screenshots {
-  max-width: 1200px;
+  width: 1200px;
+  max-width: 90%;
   margin-left:auto;
   margin-right:auto;
+}
+
+.content table {
+  /* make sure the tables don't change page width on smartphones
+   * by making them scrollable */
+  margin: auto;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .content .headinglink {
@@ -132,7 +145,7 @@ code {
   text-decoration: underline;
 }
 
-@media (min-width: 850px) {
+@media (min-width: 880px) {
 
   /* if there's some margin on the left, move the heading link
    * to the left so the heading itself is roughly where it would be
