@@ -157,5 +157,15 @@ code {
   .header {
     padding: 15px 0;
   }
+}
 
+@media (max-width: 520px) {
+  .screenshots img {
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    font-size: 16px;
+  }
 }
