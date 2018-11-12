@@ -10,13 +10,34 @@ but it should work (or be easily portable to) on any system that supports OpenGL
 Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on
 all operating systems and hardware (via [OpenAL Softs](http://openal-soft.org/) EFX support), has better
 support for widescreen resolutions and it has 64bit support.  
-However, it currently does not support old Mods that require their own game DLL or the integrated
-(Windows-only) editors.  
+It only supports **old Mods** if they *either* don't require their own game DLL *or* have been ported to
+dhewm3 - see the [dhewm3 SDK](https://github.com/dhewm/dhewm3-sdk) for more information.  
+dhewm3 currently does not support the integrated (Windows-only) editors.  
 Note that while the Doom3 source code has been released under GPL, you still need to legally own the
 game and provide dhewm3 the game data to play. See the [How to Install](#how-to-install) section for
 more information.
 
 # News
+
+#### 2018-11-12: _dhewm3 1.5.0 Release Candidate 1_
+
+The first release candidate of the upcoming 1.5.0 release is now available!  
+You can download it (including a Windows build) [at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.0_RC1)
+
+Changes since 1.4.1:
+
+* Support for some Mods via [custom SDK](https://github.com/dhewm/dhewm3-sdk): Classic Doom3, HardQore2, Denton's Enhanced Doom3 and soon Rivensin (formerly known as Ruiner).
+    - [dhewm3-mods_1.5.0_RC1_win32.zip](https://github.com/dhewm/dhewm3/releases/download/1.5.0_RC1/dhewm3_1.5.0_RC1_win32.zip) contains
+      prebuild Windows game DLLs for those Mods (except Rivensin) and a README that tells you where to get the game data
+    - See [the dhewm3 SDK Github page](https://github.com/dhewm/dhewm3-sdk) for more information.
+    - This has also broken backwards compatibility with 1.4.x game DLLs, that's why this version will be 1.5.0 and not 1.4.2.
+* Supports High DPI displays on Windows now
+* Scale menus, fullscreen videos and the PDA to 4:3 (with black bars left/right) on widescreen displays so they don't look stretched/distorted. Can be disabled with `r_scaleMenusTo43 0`.  
+  No, this unfortunately can't be done for the HUD, because the HUD also handles fullscreen effects (for example when receiving damage), and those would look bad with black/empty bars on left/right.
+* Commandline option to display some help on supported commandline arguments: `-h` or `-help` or `/?`
+* Updated some libraries bundled in the Win32 build: [SDL2 2.0.9](https://libsdl.org), [OpenAL-soft 1.19.1](http://kcat.strangesoft.net/openal.html) and [curl 7.62.0](https://curl.haxx.se)
+* Support for the AROS and OpenBSD operating systems
+* Several bugfixes
 
 #### 2018-07-11: _dhewm3.org launched_
 
