@@ -19,6 +19,15 @@ more information.
 
 # News
 
+#### 2018-11-20: _dhewm3 1.5.0 Release Candidate 2_
+
+The second release candidate of the upcoming 1.5.0 release is now available!  
+You can download it (including a Windows build) [at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.0_RC2)
+
+It fixes performance issues introduced in 1.5.0 RC1 (due to a bug in SDL 2.0.9).  
+Furthermore, the Mod DLLs now contain a DLL for [Rivensin (formerly Ruiner)](https://www.moddb.com/mods/ruiner),
+because a big update for that Mod has been released in the meantime!
+
 #### 2018-11-12: _dhewm3 1.5.0 Release Candidate 1_
 
 The first release candidate of the upcoming 1.5.0 release is now available!  
