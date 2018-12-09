@@ -40,7 +40,7 @@ A big THANK YOU to "Clone JC Denton" for releasing his mod under GPL!
       it doesn't on Linux, FreeBSD and possibly OSX!)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/dentonmod)
 * A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  *dhewm3-mods_\*_win32.zip* on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game dentonmod`
@@ -58,7 +58,7 @@ Pack what you must. Pray you won't need it."*
 * You can get the game data at [https://teddydief.itch.io/fitz](https://teddydief.itch.io/fitz)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/fitz)
 * A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  *dhewm3-mods_\*_win32.zip* on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game fitz`
@@ -80,7 +80,7 @@ the source under GPL, so I could port it to dhewm3! :-)
   (yes, you need both!)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/hardqore2)
 * A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  *dhewm3-mods_\*_win32.zip* on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and hardqore2.dll/hardqore2.so/hardqore2.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game hardqore2`
@@ -100,7 +100,7 @@ Thanks a lot to Revility (and the rest of the Rivensin/Ruiner team) for releasin
     - Just extract the dhewm3/rivensin subfolder of the .zip to your Doom3/dhewm3 installation.
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/rivensin)
 * A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  *dhewm3-mods_\*_win32.zip* on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - Alternatively, the Rivensin downloads contain Windows binaries for dhewm3 and the Mod itself
     - for other platforms you'll have to compile it yourself
 * Once the game data and rivensin.dll/rivensin.so/rivensin.dylib are in place, you can start the mod with: 

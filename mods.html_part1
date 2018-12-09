@@ -22,13 +22,13 @@
 
 <body>
 <header class="header">
-  <a href="./index.html"><img src="logo2.svg" width=640 style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a>
+  <a href="./"><img src="logo2.svg" width=640 style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a>
   <br>
   <nav class="nav">
     <ul class="nav-links">
       <li><a href="https://github.com/dhewm/dhewm3/releases/latest"><b>Download</b></a></li>
       <li>|</li>
-      <li><a href="./index.html">Home</a></li>
+      <li><a href="./">Home</a></li>
       <li>|</li>
       <li><a href="https://github.com/dhewm/dhewm3/wiki/FAQ">FAQ</a></li>
       <li>|</li>
