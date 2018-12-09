@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>dhewm3 - Doom3 Source Port</title>
+
+  <meta property="og:title" content="dhewm3 - Doom3 Source Port">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="List of Mods for the dhewm3 Source Port of Doom3">
+
+  <meta property="og:image" content="http://dhewm3.org/og_image.jpg" />
+  <meta property="twitter:image" content="http://dhewm3.org/twitter_image.jpg" />
+
+  <link rel="stylesheet" href="./fonts/stylesheet.css" />
+  <link rel="stylesheet" href="./css/main.css" media="all" />
+  
+  <link rel="icon" href="./favicon.ico">
+
+</head>
+
+<body>
+<header class="header">
+  <a href="./index.html"><img src="logo2.svg" width=640 style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a>
+  <br>
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="https://github.com/dhewm/dhewm3/releases/latest"><b>Download</b></a></li>
+      <li>|</li>
+      <li><a href="./index.html">Home</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/wiki/FAQ">FAQ</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/issues">Report Issues</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3/blob/master/README.md">View dhewm3 Readme</a></li>
+    </ul>
+  </nav>
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="#list-of-supported-mods">List of Mods</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3-sdk">dhewm3 SDK on Github <img src="github-mark-64.png" height=16></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="content" role="main">
+<!-- part2 is generated from mods.md after that index.html_part3 closes it all -->
+<h1 id="modifications-for-dhewm3">Modifications for <strong>dhewm3</strong></h1>
+<p>Unfortunately dhewm3 can't support all old Doom3 modifications, as it's incompatible with old Game DLLs. This means that old Mods are only supported if they <em>either</em> have been ported to dhewm3 <em>or</em> don't require their own Game DLL (but are using the one from the main game).<br />
+The essential requirement for porting Mods to dhewm3 is that the original Mod authors must release the source code <strong>under the GPLv3 license</strong> (that id Software chose when open sourcing Doom3). The <a href="https://github.com/dhewm/dhewm3-sdk#how-to-port-a-mod-to-dhewm3">dhewm3 SDK project page</a> has more information.</p>
+<h1 id="list-of-supported-mods">List of supported Mods</h1>
+<h2 id="classic-doom-3">Classic Doom 3</h2>
+<p><a href="mods/cdoom1.jpg" title="Screenshot 1 of Classic Doom3"><img src="mods/small-cdoom1.jpg" height=200></a> <a href="mods/cdoom2.jpg" title="Screenshot 2 of Classic Doom3"><img src="mods/small-cdoom2.jpg" height=200></a></p>
+<p><em>Classic Doom 3</em> is a remake of the first episode of the original Doom in Doom3.</p>
+<p>A big THANK YOU to &quot;SnoopJeDi&quot; (and the rest of the Classic Doom 3 Team) for releasing this mod under GPL!</p>
+<ul>
+<li>You can get the game data at <a href="https://www.moddb.com/downloads/classic-doom-3-131">ModDB</a>
+<ul>
+<li>Just extract that zip to your Doom3/dhewm3 installation.</li>
+</ul></li>
+<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/cdoom">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable is part of <code>dhewm3-mods_*_win32.zip</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<ul>
+<li>for other platforms you'll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and cdoom.dll/cdoom.so/cdoom.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game cdoom</code></li>
+</ul>
+<h2 id="dentons-enhanced-doom3">Denton's Enhanced Doom3</h2>
+<p>This mod enhances the looks and sound of Doom3 and provides several new features for custom maps.</p>
+<p>A big THANK YOU to &quot;Clone JC Denton&quot; for releasing his mod under GPL!</p>
+<ul>
+<li>You can get the game data at <a href="https://www.moddb.com/mods/dentons-enhanced-doom3-v202/downloads/dentons-enhanced-doom3-v2021">ModDB</a>
+<ul>
+<li>Open that zip and extract the contained <code>Extract this to your doom3 folder.zip</code> to your Doom3/dhewm3 installation.</li>
+<li>Especially if you're not on Windows, make sure to rename the contained <code>Dentonmod/</code> directory to <code>dentonmod/</code>, as doom3 doesn't like uppercase characters in paths (while it works on Windows, it doesn't on Linux, FreeBSD and possibly OSX!)</li>
+</ul></li>
+<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/dentonmod">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable is part of *dhewm3-mods_*_win32.zip* on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<ul>
+<li>for other platforms you'll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game dentonmod</code></li>
+</ul>
+<h2 id="fitz-packerton">Fitz Packerton</h2>
+<p><a href="mods/fitz1.jpg" title="Screenshot 1 of Fitz Packerton"><img src="mods/small-fitz1.jpg" height=200></a> <a href="mods/fitz2.jpg" title="Screenshot 2 of Fitz Packerton"><img src="mods/small-fitz2.jpg" height=200></a></p>
+<p>Actually a small standalone game based on Doom3 GPL, so you don't even need the Doom3 game data to run this!</p>
+<p>Fitz Packerton is <em>&quot;A theatrical game about a man and the things he carries. Pack what you must. Pray you won't need it.&quot;</em></p>
+<ul>
+<li>You can get the game data at <a href="https://teddydief.itch.io/fitz" class="uri">https://teddydief.itch.io/fitz</a></li>
+<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/fitz">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable is part of *dhewm3-mods_*_win32.zip* on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<ul>
+<li>for other platforms you'll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game fitz</code></li>
+</ul>
+<h2 id="hardqore2">HardQore2</h2>
+<p><a href="mods/hq1.jpg" title="Screenshot 1 of HardQore2"><img src="mods/small-hq1.jpg" height=200></a> <a href="mods/hq2.jpg" title="Screenshot 2 of HardQore2"><img src="mods/small-hq2.jpg" height=200></a></p>
+<p>The <em>DOOM 3: HardQore</em> modification brings classic, fast paced, thumb blistering <strong>side scrolling action</strong> to Hell.<br />
+If you're a fan of classic action games such as Contra &amp; Metal Slug; then HardQore is what you have been waiting for.</p>
+<p>Thanks a lot to Revility (and the rest of the HardQore2 team) for releasing the source under GPL, so I could port it to dhewm3! :-)</p>
+<ul>
+<li>You can get the game data at:<br />
+<a href="https://www.moddb.com/mods/hardqore/downloads/hardqore-2-demo" class="uri">https://www.moddb.com/mods/hardqore/downloads/hardqore-2-demo</a><br />
+and <a href="https://www.moddb.com/mods/hardqore/downloads/hardqore-2-11-patch" class="uri">https://www.moddb.com/mods/hardqore/downloads/hardqore-2-11-patch</a><br />
+(yes, you need both!)</li>
+<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/hardqore2">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable is part of *dhewm3-mods_*_win32.zip* on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<ul>
+<li>for other platforms you'll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and hardqore2.dll/hardqore2.so/hardqore2.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game hardqore2</code></li>
+</ul>
+<h2 id="scarlet-rivensin-the-ruiner">Scarlet Rivensin: The Ruiner</h2>
+<p><a href="mods/ruiner1.jpg" title="Screenshot 1 of Rivensin"><img src="mods/small-ruiner1.jpg" height=200></a> <a href="mods/ruiner2.jpg" title="Screenshot 2 of Rivensin"><img src="mods/small-ruiner2.jpg" height=200></a></p>
+<p><em>Scarlet Rivensin: The Ruiner</em> (formerly known as just &quot;Ruiner&quot;) is a dark, nightmarish, third person action modification for Doom3 &amp; dhewm 3. The player assumes the role of a herald of Death &amp; fights hordes of the damned using unique weapons, abilities and spells.</p>
+<p>Thanks a lot to Revility (and the rest of the Rivensin/Ruiner team) for releasing the source under GPL!</p>
+<ul>
+<li>You can get the game data at <a href="https://www.moddb.com/mods/ruiner">ModDB</a>
+<ul>
+<li>Just extract the dhewm3/rivensin subfolder of the .zip to your Doom3/dhewm3 installation.</li>
+</ul></li>
+<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/rivensin">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable is part of *dhewm3-mods_*_win32.zip* on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<ul>
+<li>Alternatively, the Rivensin downloads contain Windows binaries for dhewm3 and the Mod itself</li>
+<li>for other platforms you'll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and rivensin.dll/rivensin.so/rivensin.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game rivensin</code></li>
+</ul>
+<!-- TODO: Quadrilateral Cowboy ??? -->
+</main>
+  <br><br>
+  <script>
+  // add clickable anchor-link to headings
+  for(h=1; h<=6; ++h) 
+  {
+    var hs = document.getElementsByTagName('h'+h);
+    for(i=0; i<hs.length; ++i)
+    {
+      if(hs[i].id)
+      {
+        var l = document.createElement("a");
+        l.href = "#" + hs[i].id;
+        l.innerHTML = "# ";
+        l.className = "headinglink";
+        hs[i].insertBefore(l, hs[i].firstChild);
+      }
+    }
+  }
+  </script>
+</body>
+</html>
