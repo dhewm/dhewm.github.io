@@ -5,7 +5,9 @@ This means that old Mods are only supported if they *either* have been ported to
 *or* don't require their own Game DLL (but are using the one from the main game).  
 The essential requirement for porting Mods to dhewm3 is that the original Mod authors must
 release the source code **under the GPLv3 license** (that id Software chose when open sourcing Doom3).
-The [dhewm3 SDK project page](https://github.com/dhewm/dhewm3-sdk#how-to-port-a-mod-to-dhewm3) has more information.
+The [dhewm3 SDK project page](https://github.com/dhewm/dhewm3-sdk#how-to-port-a-mod-to-dhewm3) has more information.  
+General information about idTech4 (Doom3, Quake4, Prey, ET:QW, ...) modding can be found at
+the **[idTech4 ModWiki](https://modwiki.dhewm3.org)**.
 
 # List of supported Mods
 
