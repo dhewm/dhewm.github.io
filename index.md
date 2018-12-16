@@ -42,7 +42,7 @@ Changes since 1.4.1:
 * (Experimental) uncapped framerate, enable by entering `com_fixedTic -1` in the console (can be set back with `com_fixedTic 0`).
 * Providing binaries for Linux amd64 (x86_64) now
     - Should work on any halfway-recent distro, needs `libSDL2-2.0.so.0`, `libopenal.so.1` and `libcurl.so.4` installed
-* Updated some libraries bundled in the Win32 build: [SDL2 2.0.9](https://libsdl.org), [OpenAL-soft 1.19.1](http://kcat.strangesoft.net/openal.html) and [curl 7.62.0](https://curl.haxx.se)
+* Updated some libraries bundled in the Win32 build: [SDL2 2.0.9](https://libsdl.org), [OpenAL-soft 1.19.1](https://openal-soft.org/) and [curl 7.62.0](https://curl.haxx.se)
 * Support for the AROS and OpenBSD operating systems
 * Several bugfixes
 
