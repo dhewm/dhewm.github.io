@@ -87,8 +87,8 @@ the source under GPL, so I could port it to dhewm3! :-)
 
 ## Scarlet Rivensin: The Ruiner
 
-<a href="mods/ruiner1.jpg" title="Screenshot 1 of Rivensin"><img src="mods/small-ruiner1.jpg" height=200></a>
-<a href="mods/ruiner2.jpg" title="Screenshot 2 of Rivensin"><img src="mods/small-ruiner2.jpg" height=200></a>
+<a href="mods/rivensin1.jpg" title="Screenshot 1 of Rivensin"><img src="mods/small-rivensin1.jpg" height=200></a>
+<a href="mods/rivensin2.jpg" title="Screenshot 2 of Rivensin"><img src="mods/small-rivensin2.jpg" height=200></a>
 
 *Scarlet Rivensin: The Ruiner* (formerly known as just "Ruiner") is a dark, nightmarish,
 third person action modification for Doom3 & dhewm 3.

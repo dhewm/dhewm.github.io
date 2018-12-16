@@ -22,19 +22,19 @@
 
 <body>
 <header class="header">
-  <img src="logo2.svg" width=640 style="max-width:90%;margin-left:auto;margin-right:auto;display:block">
+  <a href="./"><img src="logo2.svg" width=640 style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a>
   <br>
   <nav class="nav">
     <ul class="nav-links">
       <li><a href="https://github.com/dhewm/dhewm3/releases/latest"><b>Download</b></a></li>
+      <li>|</li>
+      <li><a href="./mods.html">Supported <b>Mods</b></a></li>
       <li>|</li>
       <li><a href="https://github.com/dhewm/dhewm3/wiki/FAQ">FAQ</a></li>
       <li>|</li>
       <li><a href="https://github.com/dhewm/dhewm3/issues">Report Issues</a></li>
       <li>|</li>
       <li><a href="https://github.com/dhewm/dhewm3/blob/master/README.md">View Readme</a></li>
-      <li>|</li>
-      <li><a href="https://github.com/dhewm/dhewm3">Github Project <img src="github-mark-64.png" height=16></a></li>
     </ul>
   </nav>
   <nav class="nav">
@@ -44,6 +44,8 @@
       <li><a href="#news">News</a></li>
       <li>|</li>
       <li><a href="#how-to-install">How to Install</a></li>
+      <li>|</li>
+      <li><a href="https://github.com/dhewm/dhewm3">Github Project <img src="github-mark-64.png" height=16></a></li>
     </ul>
   </nav>
 </header>
@@ -62,32 +64,33 @@
 <main class="content" role="main">
 <!-- part2 is generated from index.md after that index.html_part3 closes it all -->
 <h1 id="about">About</h1>
-<p><strong>dhewm3</strong> is a source port of the original Doom3 (<strong>not</strong> <em>Doom3 BFG</em>, for that you may want to try <a href="https://github.com/RobertBeckebans/RBDOOM-3-BFG/">RBDoom3BFG</a>). It's known to work on Windows, Linux, macOS, <a href="https://freebsd.org">FreeBSD</a>, <a href="https://openbsd.org">OpenBSD</a> and <a href="http://www.aros.org/">AROS</a>, but it should work (or be easily portable to) on any system that supports OpenGL 1.4 with <a href="https://en.wikipedia.org/wiki/ARB_assembly_language">ARB shaders</a>, <a href="http://libsdl.org">SDL</a> and <a href="http://openal.org">OpenAL</a>.<br />
-Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on all operating systems and hardware (via <a href="http://openal-soft.org/">OpenAL Softs</a> EFX support), has better support for widescreen resolutions and it has 64bit support.<br />
-It only supports <strong>old Mods</strong> if they <em>either</em> don't require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="https://github.com/dhewm/dhewm3-sdk">dhewm3 SDK</a> for more information.<br />
-dhewm3 currently does not support the integrated (Windows-only) editors.<br />
+<p><strong>dhewm3</strong> is a source port of the original Doom3 (<strong>not</strong> <em>Doom3 BFG</em>, for that you may want to try <a href="https://github.com/RobertBeckebans/RBDOOM-3-BFG/">RBDoom3BFG</a>). It's known to work on Windows, Linux, macOS, <a href="https://freebsd.org">FreeBSD</a>, <a href="https://openbsd.org">OpenBSD</a> and <a href="http://www.aros.org/">AROS</a>, but it should work on (or be easily portable to) any system that supports OpenGL 1.4 with <a href="https://en.wikipedia.org/wiki/ARB_assembly_language">ARB shaders</a>, <a href="http://libsdl.org">SDL</a> and <a href="http://openal.org">OpenAL</a>.<br />
+Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on all operating systems and hardware (via <a href="http://openal-soft.org/">OpenAL Softs</a> EFX support), has much better support for widescreen resolutions and has 64bit support.</p>
+<p>It only supports <strong>old Mods</strong> if they <em>either</em> don't require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
+<p>dhewm3 currently does not support the integrated (Windows-only) editors.<br />
 Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
-<h4 id="dhewm3-1.5.0-release-candidate-2">2018-11-20: <em>dhewm3 1.5.0 Release Candidate 2</em></h4>
-<p>The second release candidate of the upcoming 1.5.0 release is now available!<br />
-You can download it (including a Windows build) <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.0_RC2">at Github</a></p>
-<p>It fixes performance issues introduced in 1.5.0 RC1 (due to a bug in SDL 2.0.9).<br />
-Furthermore, the Mod DLLs now contain a DLL for <a href="https://www.moddb.com/mods/ruiner">Rivensin (formerly Ruiner)</a>, because a big update for that Mod has been released in the meantime!</p>
-<h4 id="dhewm3-1.5.0-release-candidate-1">2018-11-12: <em>dhewm3 1.5.0 Release Candidate 1</em></h4>
-<p>The first release candidate of the upcoming 1.5.0 release is now available!<br />
-You can download it (including a Windows build) <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.0_RC1">at Github</a></p>
+<h4 id="dhewm3-1.5.0-released">2018-12-16: <em>dhewm3 1.5.0 released</em></h4>
+<p><a href="./dhewm3-150.jpg" title="Classic Doom 3 in dhewm3 1.5.0"><img src="./medium-dhewm3-150.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>The final version of 1.5.0 release is now available!<br />
+You can download it (incl. builds for Windows and 64bit Linux) <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.0">at Github</a></p>
 <p>Changes since 1.4.1:</p>
 <ul>
-<li>Support for some Mods via <a href="https://github.com/dhewm/dhewm3-sdk">custom SDK</a>: Classic Doom3, HardQore2, Denton's Enhanced Doom3 and soon Rivensin (formerly known as Ruiner).
+<li>Support for <a href="./mods.html">some Mods</a> via <a href="https://github.com/dhewm/dhewm3-sdk">custom SDK</a>: Classic Doom3, Fitz Packerton, HardQore2, Denton's Enhanced Doom3 and Rivensin (formerly known as Ruiner).
 <ul>
-<li><a href="https://github.com/dhewm/dhewm3/releases/download/1.5.0_RC1/dhewm3_1.5.0_RC1_win32.zip">dhewm3-mods_1.5.0_RC1_win32.zip</a> contains prebuild Windows game DLLs for those Mods (except Rivensin) and a README that tells you where to get the game data</li>
-<li>See <a href="https://github.com/dhewm/dhewm3-sdk">the dhewm3 SDK Github page</a> for more information.</li>
+<li><a href="https://github.com/dhewm/dhewm3/releases/download/1.5.0/dhewm3_1.5.0_win32.zip">dhewm3-mods_1.5.0_win32.zip</a> contains prebuild Windows game DLLs for those Mods (except Rivensin) and a README that tells you where to get the game data</li>
+<li>See <a href="./mods.html">the Mods page</a> for more information.</li>
 <li>This has also broken backwards compatibility with 1.4.x game DLLs, that's why this version will be 1.5.0 and not 1.4.2.</li>
 </ul></li>
 <li>Supports High DPI displays on Windows now</li>
 <li>Scale menus, fullscreen videos and the PDA to 4:3 (with black bars left/right) on widescreen displays so they don't look stretched/distorted. Can be disabled with <code>r_scaleMenusTo43 0</code>.<br />
-No, this unfortunately can't be done for the HUD, because the HUD also handles fullscreen effects (for example when receiving damage), and those would look bad with black/empty bars on left/right.</li>
-<li>Commandline option to display some help on supported commandline arguments: <code>-h</code> or <code>-help</code> or <code>/?</code></li>
+No, this unfortunately can't be done for the HUD (except for the crosshair), because it also handles fullscreen effects (for example when receiving damage), and those would look bad with black/empty bars on left/right.</li>
+<li>Commandline option to display some help on supported commandline arguments: <code>-h</code> or <code>--help</code> or <code>-help</code> or <code>/?</code></li>
+<li>(Experimental) uncapped framerate, enable by entering <code>com_fixedTic -1</code> in the console (can be set back with <code>com_fixedTic 0</code>).</li>
+<li>Providing binaries for Linux amd64 (x86_64) now
+<ul>
+<li>Should work on any halfway-recent distro, needs <code>libSDL2-2.0.so.0</code>, <code>libopenal.so.1</code> and <code>libcurl.so.4</code> installed</li>
+</ul></li>
 <li>Updated some libraries bundled in the Win32 build: <a href="https://libsdl.org">SDL2 2.0.9</a>, <a href="http://kcat.strangesoft.net/openal.html">OpenAL-soft 1.19.1</a> and <a href="https://curl.haxx.se">curl 7.62.0</a></li>
 <li>Support for the AROS and OpenBSD operating systems</li>
 <li>Several bugfixes</li>
