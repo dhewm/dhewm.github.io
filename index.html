@@ -69,9 +69,31 @@
 <p><strong>dhewm3</strong> is a source port of the original Doom3 (<strong>not</strong> <em>Doom3 BFG</em>, for that you may want to try <a href="https://github.com/RobertBeckebans/RBDOOM-3-BFG/">RBDoom3BFG</a>). It's known to work on Windows, Linux, macOS, <a href="https://freebsd.org">FreeBSD</a>, <a href="https://openbsd.org">OpenBSD</a> and <a href="http://www.aros.org/">AROS</a>, but it should work on (or be easily portable to) any system that supports OpenGL 1.4 with <a href="https://en.wikipedia.org/wiki/ARB_assembly_language">ARB shaders</a>, <a href="http://libsdl.org">SDL</a> and <a href="http://openal.org">OpenAL</a>.<br />
 Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on all operating systems and hardware (via <a href="http://openal-soft.org/">OpenAL Softs</a> EFX support), has much better support for widescreen resolutions and has 64bit support.</p>
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don't require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
-<p>dhewm3 currently does not support the integrated (Windows-only) editors.<br />
-Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
+<p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="a-first-prerelease-of-dhewm3-1.5.1">2019-03-11: <em>A first prerelease of dhewm3 1.5.1</em></h4>
+<p>There are no immediate plans for the final 1.5.1 release, but the current status might be interesting :-)</p>
+<p><a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p><strong>Changes since 1.5.0:</strong></p>
+<ul>
+<li>The (Windows-only) integrated <strong>editing tools</strong> of Doom3 are back!
+<ul>
+<li>They can only be built with non-Express versions of Visual Studio (tested Community Editions of VS2013 and VS2017) and can be disabled via CMake</li>
+<li>The <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_PRE1">dhewm3_1.5.1pre1_win32.zip available on Github</a> has them enabled, of course
+<ul>
+<li>While prior dhewm3 releases have been built with Visual Studio 2010, this is built with Visual Studio 2013, so if it doesn't start on your system make sure you have <a href="https://www.microsoft.com/en-us/download/details.aspx?id=40784">the Visual C++ 2013 Redistributable</a> installed - but chances are good you already have it.</li>
+</ul></li>
+<li>Only tested in 32bit builds, in contrast to the rest of dhewm3's code, the tool code might not be 64bit-clean</li>
+<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to Motorsep for donating that code!</li>
+<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor doesn't break the viewport of the game any more.</li>
+</ul></li>
+<li>dhewm3 now supports the <strong>Doom3 Demo</strong> gamedata (<a href="https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo">D3Demo.exe</a> or <a href="http://files.holarse-linuxgaming.de/native/Spiele/Doom%203/Demo/doom3-linux-1.1.1286-demo.x86.run">doom3-linux-1.1.1286-demo.x86.run</a>)
+<ul>
+<li>On Windows, just run D3Demo.exe to install the demo, on Linux (and probably others) you can extract the relevant file from the .run installer with <code>sh doom3-linux-1.1.1286-demo.x86.run --tar xf demo/</code></li>
+<li>This is based on Gabriel Cuvillier's code for <a href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>, which ports dhewm3 to web browsers, thanks!</li>
+</ul></li>
+<li>(On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then</li>
+</ul>
 <h4 id="dhewm3-1.5.0-released">2018-12-16: <em>dhewm3 1.5.0 released</em></h4>
 <p><a href="./dhewm3-150.jpg" title="Classic Doom 3 in dhewm3 1.5.0"><img src="./medium-dhewm3-150.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>The final version of 1.5.0 release is now available!<br />
@@ -227,7 +249,8 @@ It should be possible to get the <em>Resurection of Evil</em> data in the same w
 <p>By the way, that number is the &quot;AppID&quot; of Doom3/RoE; if you wanna use this to get the data of other games you own, you can look up the AppID at <a href="https://steamdb.info/">SteamDB</a>.</p>
 <h2 id="getting-dhewm3-executables">Getting dhewm3 executables</h2>
 <p>On <strong>Windows</strong> you can just download the Win32 binaries from the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download page</a>.<br />
-You can either extract them into your Doom3 installation directory, or into a fresh directory and copy the needed game data (<a href="#getting-the-doom3-game-data">see above</a>) in there.</p>
+You can either extract them into your Doom3 installation directory, or into a fresh directory and copy the needed game data (<a href="#getting-the-doom3-game-data">see above</a>) in there.<br />
+Similarly, you can find x86_64 (amd64) <strong>Linux</strong> binaries there.</p>
 <p>On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that you can install; please refer to that packages documentation on where to put the game data.<br />
 You could also try telling dhewm3 where to find the game data with:</p>
 <blockquote>

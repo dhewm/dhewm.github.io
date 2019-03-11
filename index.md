@@ -14,12 +14,40 @@ better support for widescreen resolutions and has 64bit support.
 It only supports **old Mods** if they *either* don't require their own game DLL *or* have been ported to
 dhewm3 - see the [Mods page](./mods.html) for more information.  
 
-dhewm3 currently does not support the integrated (Windows-only) editors.  
 Note that while the Doom3 source code has been released under GPL, you still need to legally own the
 game and provide dhewm3 the game data to play. See the [How to Install](#how-to-install) section for
 more information.
 
 # News
+
+#### 2019-03-11: _A first prerelease of dhewm3 1.5.1_
+
+There are no immediate plans for the final 1.5.1 release, but the current status might be interesting :-)
+
+<a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a>
+
+**Changes since 1.5.0:**
+
+* The (Windows-only) integrated **editing tools** of Doom3 are back!
+    - They can only be built with non-Express versions of Visual Studio (tested Community Editions of
+      VS2013 and VS2017) and can be disabled via CMake
+    - The [dhewm3_1.5.1pre1_win32.zip available on Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_PRE1)
+      has them enabled, of course
+        - While prior dhewm3 releases have been built with Visual Studio 2010, this is built with Visual Studio 2013,
+          so if it doesn't start on your system make sure you have [the Visual C++ 2013 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=40784)
+          installed - but chances are good you already have it.
+    - Only tested in 32bit builds, in contrast to the rest of dhewm3's code, the tool code might not be 64bit-clean
+    - Based on Code from the dhewm3 branch of SteelStorm2, thanks to Motorsep for donating that code!
+    - Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor
+      doesn't break the viewport of the game any more.
+* dhewm3 now supports the **Doom3 Demo** gamedata ([D3Demo.exe](https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo)
+  or [doom3-linux-1.1.1286-demo.x86.run](http://files.holarse-linuxgaming.de/native/Spiele/Doom%203/Demo/doom3-linux-1.1.1286-demo.x86.run))
+    - On Windows, just run D3Demo.exe to install the demo, on Linux (and probably others) you can extract
+      the relevant file from the .run installer with `sh doom3-linux-1.1.1286-demo.x86.run --tar xf demo/`
+    - This is based on Gabriel Cuvillier's code for [D3Wasm](http://www.continuation-labs.com/projects/d3wasm/),
+      which ports dhewm3 to web browsers, thanks!
+* (On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in `My Documents/My Games/dhewm3/`,
+  like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then
 
 #### 2018-12-16: _dhewm3 1.5.0 released_
 
@@ -161,7 +189,8 @@ get the data of other games you own, you can look up the AppID at [SteamDB](http
 
 On **Windows** you can just download the Win32 binaries from the [Download page](https://github.com/dhewm/dhewm3/releases/latest).  
 You can either extract them into your Doom3 installation directory, or into a fresh
-directory and copy the needed game data ([see above](#getting-the-doom3-game-data)) in there.
+directory and copy the needed game data ([see above](#getting-the-doom3-game-data)) in there.  
+Similarly, you can find x86_64 (amd64) **Linux** binaries there.
 
 On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that
 you can install; please refer to that packages documentation on where to put the game data.  
