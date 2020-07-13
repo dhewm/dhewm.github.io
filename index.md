@@ -71,6 +71,7 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
   like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then
 * Registering multiplayer servers at id's master-server fixed, so they can be found in the multiplayer menu
   (by *Stradex*, [#293](https://github.com/dhewm/dhewm3/pull/293))
+* Support for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible_builds) by setting the CMake option `REPRODUCIBLE_BUILD`.
 
 #### 2019-03-11: _A first prerelease of dhewm3 1.5.1_
 

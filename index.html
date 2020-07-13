@@ -113,6 +113,7 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <li>New CVar <code>g_hitEffect</code>: If set to <code>0</code>, the player camera damage effects (like double-vision and extreme tilt) when being hit are disabled (by <em>dobosken</em>, <a href="https://github.com/dhewm/dhewm3/pull/279">#279</a>).</li>
 <li>(On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then</li>
 <li>Registering multiplayer servers at id's master-server fixed, so they can be found in the multiplayer menu (by <em>Stradex</em>, <a href="https://github.com/dhewm/dhewm3/pull/293">#293</a>)</li>
+<li>Support for <a href="https://en.wikipedia.org/wiki/Reproducible_builds">reproducible builds</a> by setting the CMake option <code>REPRODUCIBLE_BUILD</code>.</li>
 </ul>
 <h4 id="a-first-prerelease-of-dhewm3-1.5.1">2019-03-11: <em>A first prerelease of dhewm3 1.5.1</em></h4>
 <p>There are no immediate plans for the final 1.5.1 release, but the current status might be interesting :-)</p>
