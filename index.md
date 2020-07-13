@@ -20,10 +20,63 @@ more information.
 
 # News
 
+#### 2020-07-13: _dhewm3 1.5.1 Release Candidate 1_
+
+A first Release Candidate of the upcoming 1.5.1 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC1)** (incl. builds for Windows and 64bit Linux)
+
+<a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a>
+
+**Changes since 1.5.0:**
+
+* The (Windows-only) integrated **editing tools** of Doom3 are back!
+    - They can only be built with non-Express versions of Visual Studio (tested Community Editions of
+      VS2013 and VS2017) and can be disabled via CMake
+    - Official dhewm3 Windows binaries are built with tools enabled, of course.
+    - Only supports 32bit builds, because in contrast to the rest of dhewm3's code, the tool code is not 64bit compatible at all.
+    - Based on Code from the dhewm3 branch of SteelStorm2, thanks to *Motorsep* for donating that code!
+    - Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor
+      doesn't break the viewport of the game any more.
+* While prior dhewm3 releases for Windows have been built with Visual Studio 2010,
+  this is built with Visual Studio 2017, so if it doesn't start on your system make sure you
+  have [the Visual C++ 2017 Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+  installed - but chances are good you already have it.
+    - Also updated some DLLs that are bundled with the Windows release:  
+      [SDL2 2.0.12](https://libsdl.org), [OpenAL-soft 1.20.1](https://openal-soft.org/) and [curl 7.70.0](https://curl.haxx.se)
+* dhewm3 now supports the **Doom3 Demo** gamedata
+    - See [below](#using-the-doom3-demo-gamedata) for installation instructions
+    - This is based on *Gabriel Cuvillier's* code for [D3Wasm](http://www.continuation-labs.com/projects/d3wasm/),
+      which ports dhewm3 to web browsers, thanks!
+* Several sound-related bugfixes:
+    - Lags in starting to play a sound which for example caused the machinegun or plasmagun sounds
+      to stutter have been eliminated ([#141](https://github.com/dhewm/dhewm3/issues/141))
+    - Trying to reset disconnected OpenAL devices, this esp. helps with display audio on Intel GPUs
+      on Windows, when switching to fullscreen ([#209](https://github.com/dhewm/dhewm3/issues/209))
+    - Looping .wav sounds with leadin now work ([#291](https://github.com/dhewm/dhewm3/issues/291))
+    - The game still works if no sound devices are available at all ([#292](https://github.com/dhewm/dhewm3/issues/292))
+    - Make "idSoundCache: error unloading data from OpenAL hardware buffer" a Warning
+      instead of an Error so it doesn't terminate game (by *Corey O'Connor*, [#235](https://github.com/dhewm/dhewm3/pull/235))
+* Restore "Carmack's Reverse" Z-Fail stencil shadows; use `glStencilOpSeparate()` if available
+    - That bloody patent finally expired last October: [https://patents.google.com/patent/US6384822B1/en](https://patents.google.com/patent/US6384822B1/en)
+    - This neither seems to make a visual nor performance difference on any hardware I tried
+      (including Raspberry Pi 4), so this is mostly out of principle
+    - Based on Code by [*Leith Bade*](https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605)
+      and [*Pat Raynor*](https://github.com/raynorpat/Doom3/blob/2933cb554587aea546c2df1fdf086204d4ca363d/neo/renderer/draw_stencilshadow.cpp#L147-L182).
+    - The `r_useCarmacksReverse` and `r_useStencilOpSeparate` CVars allow switching both things
+      on/off for comparison
+* New CVar `g_hitEffect`: If set to `0`, the player camera damage effects (like double-vision and extreme tilt)
+  when being hit are disabled (by *dobosken*, [#279](https://github.com/dhewm/dhewm3/pull/279)).
+* (On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in `My Documents/My Games/dhewm3/`,
+  like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then
+* Registering multiplayer servers at id's master-server fixed, so they can be found in the multiplayer menu
+  (by *Stradex*, [#293](https://github.com/dhewm/dhewm3/pull/293))
+
 #### 2019-03-11: _A first prerelease of dhewm3 1.5.1_
 
 There are no immediate plans for the final 1.5.1 release, but the current status might be interesting :-)
 
+<details><summary>Click to see the rest of this (outdated) newspost</summary>
 <a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a>
 
 **Changes since 1.5.0:**
@@ -48,6 +101,7 @@ There are no immediate plans for the final 1.5.1 release, but the current status
       which ports dhewm3 to web browsers, thanks!
 * (On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in `My Documents/My Games/dhewm3/`,
   like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then
+</details>
 
 #### 2018-12-16: _dhewm3 1.5.0 released_
 
@@ -67,7 +121,7 @@ Changes since 1.4.1:
 * Scale menus, fullscreen videos and the PDA to 4:3 (with black bars left/right) on widescreen displays so they don't look stretched/distorted. Can be disabled with `r_scaleMenusTo43 0`.  
   No, this unfortunately can't be done for the HUD (except for the crosshair), because it also handles fullscreen effects (for example when receiving damage), and those would look bad with black/empty bars on left/right.
 * Commandline option to display some help on supported commandline arguments: `-h` or `--help` or `-help` or `/?`
-* (Experimental) uncapped framerate, enable by entering `com_fixedTic -1` in the console (can be set back with `com_fixedTic 0`).
+* ~~(Experimental) uncapped framerate, enable by entering `com_fixedTic -1` in the console (can be set back with `com_fixedTic 0`).~~ ([this turned out to be broken](https://github.com/dhewm/dhewm3/issues/261))
 * Providing binaries for Linux amd64 (x86_64) now
     - Should work on any halfway-recent distro, needs `libSDL2-2.0.so.0`, `libopenal.so.1` and `libcurl.so.4` installed
 * Updated some libraries bundled in the Win32 build: [SDL2 2.0.9](https://libsdl.org), [OpenAL-soft 1.19.1](https://openal-soft.org/) and [curl 7.62.0](https://curl.haxx.se)
@@ -164,11 +218,18 @@ Thankfully the game from Steam is already fully patched to 1.3.1.
 
 On **Windows**, *just install* it and copy the game data from there (see above for what files are needed).
 
-On **Linux/OSX** unfortunately you can't just install the game (unless you run Windows Steam in Wine),
-because it's Windows-only on Steam.  
+Same on **Linux**, thanks to Steam Play / Proton, though you might have to enable it:  
+In Steam in the `Steam` &#10132; `Settings` menu, under `Steam Play`, check both:
+
+> &#9745; Enable Steam Play for supported titles  
+> &#9745; Enable Steam Play for all other titles
+
+On **macOS** unfortunately you can't just install the game (unless you run Windows Steam in Wine),
+because it's Windows-only on Steam and Steam (currently?) doesn't use Proton on Mac.
+
 However, you can still download it with **[SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)**.  
-See [this description for Linux](https://developer.valvesoftware.com/wiki/SteamCMD#Linux)
-or [here for OS X](https://developer.valvesoftware.com/wiki/SteamCMD#OS_X)
+See [this description for macOS](https://developer.valvesoftware.com/wiki/SteamCMD#macOS)
+or [here for  Linux](https://developer.valvesoftware.com/wiki/SteamCMD#Linux)
 on how to install SteamCMD on your system. You won't have to create a new user.
 
 Then you can download Doom3 with
@@ -184,6 +245,31 @@ by replacing `9050` with `9070`; the files should be in `./doom3/d3xp/` then.
 By the way, that number is the "AppID" of Doom3/RoE; if you wanna use this to
 get the data of other games you own, you can look up the AppID at [SteamDB](https://steamdb.info/).
 
+### Using the Doom3 Demo gamedata
+
+First you need to download the Doom3 Demo, of course.
+
+For **Windows**, you can get  [D3Demo.exe at Fileplanet](https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo)
+and just run the installer.
+
+For **Linux** (and **other operating systems** that have a POSIX-compatible shell and `tar`)
+you can download [doom3-linux-1.1.1286-demo.x86.run from Holarse](https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/Demo/doom3-linux-1.1.1286-demo.x86.run)
+or some other page that has that file.  
+Then you can extract the relevant file from the .run installer with
+
+> `sh doom3-linux-1.1.1286-demo.x86.run --tar xf demo/`
+
+
+You'll need `demo/demo00.pk4` for playing, either in exactly that directory, or you can copy it into `base/`.  
+Note that you **don't need the patches** of the fullversion, adding their pk4s when using Demo gamedata breaks the game.
+
+`demo00.pk4` has a size of 462MB but for some reason there seem to be minimal differences between the one
+for Linux and Windows, so they have different md5sums:  
+<pre><code>Windows : md5sum bd410abbb649b9512d65b794869df9fe size 483534533 Bytes</code>
+<code>Linux   : md5sum 70c2c63ef1190158f1ebd6c255b22d8e size 483535485 Bytes</code></pre>
+
+Both work on all platforms though, I guess the differences come from the Linux demo
+having been released two months after the Demo for Windows.
 
 ## Getting dhewm3 executables
 
