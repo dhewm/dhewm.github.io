@@ -71,6 +71,25 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don't require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
 <p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.1-release-candidate-2">2020-07-21: <em>dhewm3 1.5.1 Release Candidate 2</em></h4>
+<p>The second Release Candidate of the upcoming 1.5.1 release is available!</p>
+<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<p><strong>Changes since Release Candidate 1:</strong></p>
+<ul>
+<li>Several fixes for Editor-related bugs (thanks to <em>Tommy Hanusa</em> for reporting!)
+<ul>
+<li>When switching from an editor to the game, the game shouldn't get rendered in a tiny rectangle in the lower left corner anymore (<a href="https://github.com/dhewm/dhewm3/issues/300">#300</a>)</li>
+<li>When switching from Radiant into the Engine (e.g. with <code>F2</code>), the game isn't frozen anymore</li>
+</ul></li>
+<li>Proper handling of paths with dots in directory names (<a href="https://github.com/dhewm/dhewm3/issues/299">#299</a>, <a href="https://github.com/dhewm/dhewm3/issues/301">#301</a>)
+<ul>
+<li>Some string functions that are intended to find/cut off/replace/... file extensions did cut off the whole path at dots..</li>
+<li>Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor</li>
+<li>As it's a quite invasive change this needs testing!</li>
+</ul></li>
+<li>Should build on macOS again (thanks <em>Dave Nicolson</em>, <a href="https://github.com/dhewm/dhewm3/pull/302">#302</a>)</li>
+<li><code>idFileSystemLocal::ListMods()</code> doesn't search <code>/</code> or <code>C:\</code> anymore (it did so when one of the paths, like <code>fs_cdpath</code>, was empty)</li>
+</ul>
 <h4 id="dhewm3-1.5.1-release-candidate-1">2020-07-13: <em>dhewm3 1.5.1 Release Candidate 1</em></h4>
 <p>A first Release Candidate of the upcoming 1.5.1 release is available!</p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>

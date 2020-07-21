@@ -20,6 +20,27 @@ more information.
 
 # News
 
+#### 2020-07-21: _dhewm3 1.5.1 Release Candidate 2_
+
+The second Release Candidate of the upcoming 1.5.1 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC2)** (incl. builds for Windows and 64bit Linux)
+
+**Changes since Release Candidate 1:**
+
+* Several fixes for Editor-related bugs (thanks to *Tommy Hanusa* for reporting!)
+    - When switching from an editor to the game, the game shouldn't get rendered
+      in a tiny rectangle in the lower left corner anymore ([#300](https://github.com/dhewm/dhewm3/issues/300))
+    - When switching from Radiant into the Engine (e.g. with `F2`), the game isn't frozen anymore
+* Proper handling of paths with dots in directory names ([#299](https://github.com/dhewm/dhewm3/issues/299), [#301](https://github.com/dhewm/dhewm3/issues/301))
+    - Some string functions that are intended to find/cut off/replace/... file extensions
+      did cut off the whole path at dots..
+    - Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor
+    - As it's a quite invasive change this needs testing!
+* Should build on macOS again (thanks *Dave Nicolson*, [#302](https://github.com/dhewm/dhewm3/pull/302))
+* `idFileSystemLocal::ListMods()` doesn't search `/` or `C:\` anymore
+  (it did so when one of the paths, like `fs_cdpath`, was empty)
+
 #### 2020-07-13: _dhewm3 1.5.1 Release Candidate 1_
 
 A first Release Candidate of the upcoming 1.5.1 release is available!
