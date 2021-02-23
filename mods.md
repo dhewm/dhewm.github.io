@@ -23,8 +23,9 @@ A big THANK YOU to "SnoopJeDi" (and the rest of the Classic Doom 3 Team) for rel
 * You can get the game data at [ModDB](https://www.moddb.com/downloads/classic-doom-3-131)
     - Just extract that zip to your Doom3/dhewm3 installation.
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/cdoom)
-* A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and cdoom.dll/cdoom.so/cdoom.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game cdoom`
@@ -41,8 +42,9 @@ A big THANK YOU to "Clone JC Denton" for releasing his mod under GPL!
       as doom3 doesn't like uppercase characters in paths (while it works on Windows,
       it doesn't on Linux, FreeBSD and possibly OSX!)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/dentonmod)
-* A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game dentonmod`
@@ -59,8 +61,9 @@ Pack what you must. Pray you won't need it."*
 
 * You can get the game data at [https://teddydief.itch.io/fitz](https://teddydief.itch.io/fitz)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/fitz)
-* A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game fitz`
@@ -81,11 +84,34 @@ the source under GPL, so I could port it to dhewm3! :-)
   and [https://www.moddb.com/mods/hardqore/downloads/hardqore-2-11-patch](https://www.moddb.com/mods/hardqore/downloads/hardqore-2-11-patch)  
   (yes, you need both!)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/hardqore2)
-* A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+* A **.dll** that works with the official dhewm3 **Windows** executableand a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and hardqore2.dll/hardqore2.so/hardqore2.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game hardqore2`
+
+## LibreCoop
+
+<a href="mods/librecoop1.jpg" title="Screenshot 1 of LibreCoop"><img src="mods/small-librecoop1.jpg" height=200></a>
+<a href="mods/librecoop2.jpg" title="Screenshot 2 of LibreCoop"><img src="mods/small-librecoop2.jpg" height=200></a>
+
+LibreCoop is an open source coop mod for dhewm 3 supporting both the base game and the *Resurrection of Evil* Addon.
+
+Thanks a lot to Stradex for developing this awesome mod that finally allows cooperative multiplayer in dhewm3!
+
+* You can download the needed game data at [ModDB](https://www.moddb.com/mods/librecoop-dhewm3-coop)
+* You can find the source at [the LibreCoop Github repo](https://github.com/Stradex/librecoop/)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3)
+    - for other platforms you'll have to compile it yourself
+    - there's actually official downloads for Win32 and Linux on amd64, but dhewm3 provides
+      DLLs/.so's anyway in case the official ones don't work on your system
+* Once the game data and librecoop.dll/.so/.dylib and librecoopd3xp.dll/.so/dylib are in place,
+  you can start the mod with:
+    -  `./dhewm3 +set fs_game librecoop` for the main game or
+    - `./dhewm3 +set fs_game_base d3xp +set fs_game librecoopd3xp` for *Resurrection of Evil*
 
 ## Scarlet Rivensin: The Ruiner
 
@@ -101,12 +127,32 @@ Thanks a lot to Revility (and the rest of the Rivensin/Ruiner team) for releasin
 * You can get the game data at [ModDB](https://www.moddb.com/mods/ruiner)
     - Just extract the dhewm3/rivensin subfolder of the .zip to your Doom3/dhewm3 installation.
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/rivensin)
-* A **.dll** that works with the official dhewm3 **Windows** executable is part of
-  `dhewm3-mods_*_win32.zip` on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - Alternatively, the Rivensin downloads contain Windows binaries for dhewm3 and the Mod itself
     - for other platforms you'll have to compile it yourself
 * Once the game data and rivensin.dll/rivensin.so/rivensin.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game rivensin`
 
+## The Lost Mission
 
-<!-- TODO: Quadrilateral Cowboy ??? -->
+<a href="mods/d3le1.jpg" title="Screenshot 1 of Doom3: The Lost Mission"><img src="mods/small-d3le1.jpg" height=200></a>
+<a href="mods/d3le2.jpg" title="Screenshot 2 of Doom3: The Lost Mission"><img src="mods/small-d3le2.jpg" height=200></a>
+
+An entire new episode for Doom3!
+
+Thanks a lot to Arl90 for releasing the source under GPL!
+
+* You can get the gamedata at [ModDB](https://www.moddb.com/mods/the-lost-mission)
+* You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/d3le)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3)
+    - for other platforms you'll have to compile it yourself
+
+* **Note** that THIS MOD NEEDS the official "Resurrection of Evil" Addon (d3xp/) installed!
+
+* Once the game data and d3le.dll/d3le.so/d3le.dylib are in place, you can start the mod with: 
+  `./dhewm3 +set fs_game_base d3xp +set fs_game d3le`
+
