@@ -71,6 +71,33 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don't require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
 <p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.1-release-candidate-3">2021-02-23: <em>dhewm3 1.5.1 Release Candidate 3</em></h4>
+<p>Finally, the third (and hopefully last) Release Candidate of the upcoming 1.5.1 release is available!</p>
+<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<p><strong>Changes since Release Candidate 2:</strong></p>
+<ul>
+<li>Fix lingering messages in HUD after loading savegame
+<ul>
+<li>Sometimes the &quot;Game saved...&quot; message didn't go away after loading a savegame (when having saved while it still was showing from last save)</li>
+</ul></li>
+<li>Uploaded updated builds of Mod DLLs, now also supporting <a href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a> and <a href="https://www.moddb.com/mods/the-lost-mission">The Lost Mission</a></li>
+<li>Don't use translation in Autosave filenames (see <a href="https://github.com/dhewm/dhewm3/issues/305">#305</a>)
+<ul>
+<li>In the Spanish translation all the Alpha Lab autosaves got the same name, now the autosave name is based on the mapename instead which is distinct</li>
+</ul></li>
+<li>Create the game window on the display the cursor is currently on (when using more than one display)</li>
+<li>Added <code>r_fullscreenDesktop</code> CVar to set if fullscreen mode should be &quot;classic&quot; or &quot;Desktop&quot; which means a borderless window at desktop resolution</li>
+<li>Fullscreen modes that are not at the current desktop resolution should work better now
+<ul>
+<li>including nvidia DSR / AMD VSR; for that you might have to use the supplied <code>dhewm3_notools.exe</code>, as DSR/VSR seem to be incompatible with applications that use MFC (the GUI framework used for the Doom3 tools like the D3Radiant)</li>
+</ul></li>
+<li>Fixed clipping bug in delta1 (see <a href="https://github.com/dhewm/dhewm3/issues/328">#328</a>)</li>
+<li>Improve compatibility with some custom scripts (&quot;t-&gt;c-&gt;value.argSize == func-&gt;parmTotal&quot; Assertion; see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a>)</li>
+<li>Update savegame format (see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a> and <a href="https://github.com/dhewm/dhewm3/issues/344">#344</a>)
+<ul>
+<li>old savegames still work, but new savegames can't be loaded with older versions of dhewm3</li>
+</ul></li>
+</ul>
 <h4 id="dhewm3-1.5.1-release-candidate-2">2020-07-21: <em>dhewm3 1.5.1 Release Candidate 2</em></h4>
 <p>The second Release Candidate of the upcoming 1.5.1 release is available!</p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
@@ -288,6 +315,7 @@ We'll continue to use Github for hosting the code and issues (and indeed this pa
 </tr>
 </tbody>
 </table>
+<p>(You can also use the Demo version of Doom3, <a href="#using-the-doom3-demo-gamedata">see below</a>)</p>
 <h3 id="from-cddvd-patch">... from CD/DVD + Patch</h3>
 <p>If you bought the game on CDs/DVD, base/pak000.pk4 - pak004.pk4 and d3xp/pak000.pk4 can be copied from the disks, the other files are from the patch.</p>
 <p>On <strong>Linux</strong> (and probably other <strong>Unix-like</strong> systems and maybe even Windows with a mingw shell) you can extract the needed files from <a href="https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/doom3-linux-1.3.1.1304.x86.run">the official 1.3.1 patch for Linux</a> with:</p>
@@ -325,12 +353,12 @@ Then you can extract the relevant file from the .run installer with</p>
 <p><code>sh doom3-linux-1.1.1286-demo.x86.run --tar xf demo/</code></p>
 </blockquote>
 <p>You'll need <code>demo/demo00.pk4</code> for playing, either in exactly that directory, or you can copy it into <code>base/</code>.<br />
-Note that you <strong>don't need the patches</strong> of the fullversion, adding their pk4s when using Demo gamedata breaks the game.</p>
-<code>demo00.pk4</code> has a size of 462MB but for some reason there seem to be minimal differences between the one for Linux and Windows, so they have different md5sums:<br />
+Note that you <strong>don't need the patches</strong> of the full version, adding their pk4s when using Demo gamedata breaks the game.</p>
+<code>demo00.pk4</code> has a size of 462MB but there are minimal differences between the one for Linux and Windows, so they have different md5sums:<br />
 
 <pre><code>Windows : md5sum bd410abbb649b9512d65b794869df9fe size 483534533 Bytes</code>
 <code>Linux   : md5sum 70c2c63ef1190158f1ebd6c255b22d8e size 483535485 Bytes</code></pre>
-<p>Both work on all platforms though, I guess the differences come from the Linux demo having been released two months after the Demo for Windows.</p>
+<p>Both work on all platforms though, but the Linux demo had been released two months after the Demo for Windows and contains at least one tiny bugfix: A missing string for <code>&quot; or &quot;</code> which is used when binding multiple keys to the same action - the Windows Demo shows a nonsense string instead.</p>
 <h2 id="getting-dhewm3-executables">Getting dhewm3 executables</h2>
 <p>On <strong>Windows</strong> you can just download the Win32 binaries from the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download page</a>.<br />
 You can either extract them into your Doom3 installation directory, or into a fresh directory and copy the needed game data (<a href="#getting-the-doom3-game-data">see above</a>) in there.<br />

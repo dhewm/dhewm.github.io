@@ -20,6 +20,30 @@ more information.
 
 # News
 
+#### 2021-02-23: _dhewm3 1.5.1 Release Candidate 3_
+
+Finally, the third (and hopefully last) Release Candidate of the upcoming 1.5.1 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3)** (incl. builds for Windows and 64bit Linux)
+
+**Changes since Release Candidate 2:**
+
+* Fix lingering messages in HUD after loading savegame
+    - Sometimes the "Game saved..." message didn't go away after loading a savegame (when having saved while it still was showing from last save)
+* Uploaded updated builds of Mod DLLs, now also supporting [LibreCoop](https://www.moddb.com/mods/librecoop-dhewm3-coop) and [The Lost Mission](https://www.moddb.com/mods/the-lost-mission)
+* Don't use translation in Autosave filenames (see [#305](https://github.com/dhewm/dhewm3/issues/305))
+    - In the Spanish translation all the Alpha Lab autosaves got the same name, now the autosave name is based on the mapename instead which is distinct
+* Create the game window on the display the cursor is currently on (when using more than one display)
+* Added `r_fullscreenDesktop` CVar to set if fullscreen mode should be "classic" or "Desktop" which means a borderless window at desktop resolution
+* Fullscreen modes that are not at the current desktop resolution should work better now
+    - including nvidia DSR / AMD VSR; for that you might have to use the supplied `dhewm3_notools.exe`,
+      as DSR/VSR seem to be incompatible with applications that use MFC (the GUI framework used for the Doom3 tools like the D3Radiant)
+* Fixed clipping bug in delta1 (see [#328](https://github.com/dhewm/dhewm3/issues/328))
+* Improve compatibility with some custom scripts ("t->c->value.argSize == func->parmTotal" Assertion; see [#303](https://github.com/dhewm/dhewm3/issues/303))
+* Update savegame format (see [#303](https://github.com/dhewm/dhewm3/issues/303) and [#344](https://github.com/dhewm/dhewm3/issues/344))
+    - old savegames still work, but new savegames can't be loaded with older versions of dhewm3
+
+
 #### 2020-07-21: _dhewm3 1.5.1 Release Candidate 2_
 
 The second Release Candidate of the upcoming 1.5.1 release is available!
@@ -216,6 +240,8 @@ Specifically, you'll need the following .pk4 files for the main game:
  d3xp/pak001.pk4    98KB  `06fc9be965e345587064056bf22236d2`
 --------------------------------------------------------------
 
+(You can also use the Demo version of Doom3, [see below](#using-the-doom3-demo-gamedata))
+
 ### ... from CD/DVD + Patch
 
 If you bought the game on CDs/DVD, base/pak000.pk4 - pak004.pk4 and d3xp/pak000.pk4
@@ -283,15 +309,17 @@ Then you can extract the relevant file from the .run installer with
 
 
 You'll need `demo/demo00.pk4` for playing, either in exactly that directory, or you can copy it into `base/`.  
-Note that you **don't need the patches** of the fullversion, adding their pk4s when using Demo gamedata breaks the game.
+Note that you **don't need the patches** of the full version, adding their pk4s when using Demo gamedata breaks the game.
 
-`demo00.pk4` has a size of 462MB but for some reason there seem to be minimal differences between the one
+`demo00.pk4` has a size of 462MB but there are minimal differences between the one
 for Linux and Windows, so they have different md5sums:  
 <pre><code>Windows : md5sum bd410abbb649b9512d65b794869df9fe size 483534533 Bytes</code>
 <code>Linux   : md5sum 70c2c63ef1190158f1ebd6c255b22d8e size 483535485 Bytes</code></pre>
 
-Both work on all platforms though, I guess the differences come from the Linux demo
-having been released two months after the Demo for Windows.
+Both work on all platforms though, but the Linux demo had been released two months after
+the Demo for Windows and contains at least one tiny bugfix: A missing string for `" or "`
+which is used when binding multiple keys to the same action - the Windows Demo shows
+a nonsense string instead.
 
 ## Getting dhewm3 executables
 
