@@ -144,7 +144,6 @@ See <a href="./mods.html">the Mods page</a> for more details.</li>
 <ul>
 <li>Some string functions that are intended to find/cut off/replace/... file extensions did cut off the whole path at dots..</li>
 <li>Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor</li>
-<li>As it's a quite invasive change this needs testing!</li>
 </ul></li>
 <li><code>idFileSystemLocal::ListMods()</code> doesn't search <code>/</code> or <code>C:\</code> anymore (it did so if one of the paths, like <code>fs_cdpath</code>, was empty)</li>
 <li>Don't use translation in Autosave filenames (see <a href="https://github.com/dhewm/dhewm3/issues/305">#305</a>)

@@ -103,7 +103,6 @@ You can **[download dhewm3 1.5.1 at Github](https://github.com/dhewm/dhewm3/rele
     - Some string functions that are intended to find/cut off/replace/... file extensions
       did cut off the whole path at dots..
     - Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor
-    - As it's a quite invasive change this needs testing!
 * `idFileSystemLocal::ListMods()` doesn't search `/` or `C:\` anymore
   (it did so if one of the paths, like `fs_cdpath`, was empty)
 * Don't use translation in Autosave filenames (see [#305](https://github.com/dhewm/dhewm3/issues/305))
