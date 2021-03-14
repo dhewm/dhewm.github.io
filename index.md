@@ -55,7 +55,7 @@ You can **[download dhewm3 1.5.1 at Github](https://github.com/dhewm/dhewm3/rele
   have [the Visual C++ 2017 Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
   installed - but chances are good you already have it.
     - Also updated some DLLs that are bundled with the Windows release:  
-      [SDL2 2.0.12](https://libsdl.org), [OpenAL-soft 1.20.1](https://openal-soft.org/) and [curl 7.70.0](https://curl.haxx.se)
+      [SDL2 2.0.14](https://libsdl.org), [OpenAL-soft 1.21.1](https://openal-soft.org/) and [curl 7.70.0](https://curl.haxx.se)
 * Update savegame format (see [#303](https://github.com/dhewm/dhewm3/issues/303) and [#344](https://github.com/dhewm/dhewm3/issues/344))
     - old savegames still work, but new savegames can't be loaded with older versions of dhewm3!
 * Uploaded updated builds of Mod DLLs (esp. Dentonmod should run a lot more stable now).  
