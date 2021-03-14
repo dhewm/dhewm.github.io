@@ -30,6 +30,11 @@ Apart from lots of bugfixes, the biggest changes since 1.5.0 are support for the
 and for the [Doom3 Demo gamedata](#using-the-doom3-demo-gamedata).  
 See below for a more detailed changelog.
 
+Furthermore, there now is a coop mode for dhewm3: [LibreCoop](https://www.moddb.com/mods/librecoop-dhewm3-coop),
+see the [dhewm3 mods page](./mods.html#librecoop) for more details. Thanks a lot to *Stradex* for creating it!  
+Another Mod that is now supported is [The Lost Mission](https://www.moddb.com/mods/the-lost-mission), see also
+[here](./mods.html#the-lost-mission) - thanks to *Arl90* for making this possible!
+
 You can **[download dhewm3 1.5.1 at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1)** (incl. builds for Windows and 64bit Linux)
 
 <a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a >
@@ -53,8 +58,9 @@ You can **[download dhewm3 1.5.1 at Github](https://github.com/dhewm/dhewm3/rele
       [SDL2 2.0.12](https://libsdl.org), [OpenAL-soft 1.20.1](https://openal-soft.org/) and [curl 7.70.0](https://curl.haxx.se)
 * Update savegame format (see [#303](https://github.com/dhewm/dhewm3/issues/303) and [#344](https://github.com/dhewm/dhewm3/issues/344))
     - old savegames still work, but new savegames can't be loaded with older versions of dhewm3!
-* Uploaded updated builds of Mod DLLs, now also supporting [LibreCoop](https://www.moddb.com/mods/librecoop-dhewm3-coop)  
-  and [The Lost Mission](https://www.moddb.com/mods/the-lost-mission)
+* Uploaded updated builds of Mod DLLs (esp. Dentonmod should run a lot more stable now).  
+  Added Mod DLLs of [LibreCoop](https://www.moddb.com/mods/librecoop-dhewm3-coop) and [The Lost Mission](https://www.moddb.com/mods/the-lost-mission).  
+  See [the Mods page](./mods.html) for more details.
 * dhewm3 now supports the **Doom3 Demo** gamedata
     - See [below](#using-the-doom3-demo-gamedata) for installation instructions
     - This is based on *Gabriel Cuvillier's* code for [D3Wasm](http://www.continuation-labs.com/projects/d3wasm/),
