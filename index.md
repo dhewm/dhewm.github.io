@@ -20,9 +20,94 @@ more information.
 
 # News
 
+#### 2021-03-14: _dhewm3 1.5.1_
+
+<a href="./dhewm3-1.5.1-demo.jpg" title="Doom3 Demo in dhewm3 1.5.1"><img src="./medium-dhewm3-1.5.1-demo.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
+
+dhewm3 1.5.1 is done.
+
+Apart from lots of bugfixes, the biggest changes since 1.5.0 are support for the (Windows-only) editing tools
+and for the [Doom3 Demo gamedata](#using-the-doom3-demo-gamedata).  
+See below for a more detailed changelog.
+
+You can **[download dhewm3 1.5.1 at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1)** (incl. builds for Windows and 64bit Linux)
+
+<a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a >
+
+**Changes since 1.5.0:**
+
+* The (Windows-only) integrated **editing tools** of Doom3 are back!
+    - They can only be built with non-Express versions of Visual Studio (tested Community Editions of
+      VS2013 and VS2017) and can be disabled via CMake
+    - Official dhewm3 Windows binaries are built with tools enabled, of course.
+    - Only supports 32bit builds, because in contrast to the rest of dhewm3's code, the tool code is not 64bit compatible at all.
+    - Based on Code from the dhewm3 branch of SteelStorm2, thanks to *Motorsep* for donating that code!
+    - Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor
+      doesn't break the viewport of the game any more.
+    - Thanks to *Tommy Hanusa* for testing and reporting some issues (that were subsequently fixed)!
+* While prior dhewm3 releases for Windows have been built with Visual Studio 2010,
+  this is built with Visual Studio 2017, so if it doesn't start on your system make sure you
+  have [the Visual C++ 2017 Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+  installed - but chances are good you already have it.
+    - Also updated some DLLs that are bundled with the Windows release:  
+      [SDL2 2.0.12](https://libsdl.org), [OpenAL-soft 1.20.1](https://openal-soft.org/) and [curl 7.70.0](https://curl.haxx.se)
+* Update savegame format (see [#303](https://github.com/dhewm/dhewm3/issues/303) and [#344](https://github.com/dhewm/dhewm3/issues/344))
+    - old savegames still work, but new savegames can't be loaded with older versions of dhewm3!
+* Uploaded updated builds of Mod DLLs, now also supporting [LibreCoop](https://www.moddb.com/mods/librecoop-dhewm3-coop)  
+  and [The Lost Mission](https://www.moddb.com/mods/the-lost-mission)
+* dhewm3 now supports the **Doom3 Demo** gamedata
+    - See [below](#using-the-doom3-demo-gamedata) for installation instructions
+    - This is based on *Gabriel Cuvillier's* code for [D3Wasm](http://www.continuation-labs.com/projects/d3wasm/),
+      which ports dhewm3 to web browsers, thanks!
+* Create the game window on the display the cursor is currently on (when using more than one display)
+* Added `r_fullscreenDesktop` CVar to set if fullscreen mode should be "classic" or "Desktop" which means a borderless window at desktop resolution
+* Fullscreen modes that are not at the current desktop resolution should work better now
+    - including nvidia DSR / AMD VSR; for that you might have to use the supplied `dhewm3_notools.exe`,
+      as DSR/VSR seem to be incompatible with applications that use MFC (the GUI framework used for the Doom3 tools like the D3Radiant)
+* Several sound-related bugfixes:
+    - Lags in starting to play a sound which for example caused the machinegun or plasmagun sounds
+      to stutter have been eliminated ([#141](https://github.com/dhewm/dhewm3/issues/141))
+    - Trying to reset disconnected OpenAL devices, this esp. helps with display audio on Intel GPUs
+      on Windows, when switching to fullscreen ([#209](https://github.com/dhewm/dhewm3/issues/209))
+    - Looping .wav sounds with leadin now work ([#291](https://github.com/dhewm/dhewm3/issues/291))
+    - The game still works if no sound devices are available at all ([#292](https://github.com/dhewm/dhewm3/issues/292))
+    - Make "idSoundCache: error unloading data from OpenAL hardware buffer" a Warning
+      instead of an Error so it doesn't terminate game (by *Corey O'Connor*, [#235](https://github.com/dhewm/dhewm3/pull/235))
+* Restore "Carmack's Reverse" Z-Fail stencil shadows; use `glStencilOpSeparate()` if available
+    - That bloody patent finally expired last October: [https://patents.google.com/patent/US6384822B1/en](https://patents.google.com/patent/US6384822B1/en)
+    - This neither seems to make a visual nor performance difference on any hardware I tried
+      (including Raspberry Pi 4), so this is mostly out of principle
+    - Based on Code by [*Leith Bade*](https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605)
+      and [*Pat Raynor*](https://github.com/raynorpat/Doom3/blob/2933cb554587aea546c2df1fdf086204d4ca363d/neo/renderer/draw_stencilshadow.cpp#L147-L182).
+    - The `r_useCarmacksReverse` and `r_useStencilOpSeparate` CVars allow switching both things
+      on/off for comparison
+* New CVar `g_hitEffect`: If set to `0`, the player camera damage effects (like double-vision and extreme tilt)
+  when being hit are disabled (by *dobosken*, [#279](https://github.com/dhewm/dhewm3/pull/279)).
+* (On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in `My Documents/My Games/dhewm3/`,
+  like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then
+* Fix lingering messages in HUD after loading savegame
+    - Sometimes the "Game saved..." message didn't go away after loading a savegame (when having saved while it still was showing from last save)
+* Fixed clipping bug in delta1 which sometimes occured and made climbing some ladders impossible (see [#328](https://github.com/dhewm/dhewm3/issues/328))
+* Improve compatibility with some custom scripts ("t->c->value.argSize == func->parmTotal" Assertion; see [#303](https://github.com/dhewm/dhewm3/issues/303))
+* Registering multiplayer servers at id's master-server fixed, so they can be found in the multiplayer menu
+  (by *Stradex*, [#293](https://github.com/dhewm/dhewm3/pull/293))
+* Support for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible_builds) by setting the CMake option `REPRODUCIBLE_BUILD`.
+* Should build on recent versions of macOS, also on Apple Silicon (thanks *Dave Nicolson* and *Petter Uvesten*).
+* Proper handling of paths with dots in directory names ([#299](https://github.com/dhewm/dhewm3/issues/299), [#301](https://github.com/dhewm/dhewm3/issues/301))
+    - Some string functions that are intended to find/cut off/replace/... file extensions
+      did cut off the whole path at dots..
+    - Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor
+    - As it's a quite invasive change this needs testing!
+* `idFileSystemLocal::ListMods()` doesn't search `/` or `C:\` anymore
+  (it did so if one of the paths, like `fs_cdpath`, was empty)
+* Don't use translation in Autosave filenames (see [#305](https://github.com/dhewm/dhewm3/issues/305))
+    - In the Spanish translation all the Alpha Lab autosaves got the same name, now the autosave name is based on the mapename instead which is distinct
+
 #### 2021-02-23: _dhewm3 1.5.1 Release Candidate 3_
 
 Finally, the third (and hopefully last) Release Candidate of the upcoming 1.5.1 release is available!
+
+<details><summary>Click to see the rest of this (outdated) newspost</summary>
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3)** (incl. builds for Windows and 64bit Linux)
 
@@ -43,10 +128,13 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 * Update savegame format (see [#303](https://github.com/dhewm/dhewm3/issues/303) and [#344](https://github.com/dhewm/dhewm3/issues/344))
     - old savegames still work, but new savegames can't be loaded with older versions of dhewm3
 
+</details>
 
 #### 2020-07-21: _dhewm3 1.5.1 Release Candidate 2_
 
 The second Release Candidate of the upcoming 1.5.1 release is available!
+
+<details><summary>Click to see the rest of this (outdated) newspost</summary>
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC2)** (incl. builds for Windows and 64bit Linux)
 
@@ -65,9 +153,13 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 * `idFileSystemLocal::ListMods()` doesn't search `/` or `C:\` anymore
   (it did so when one of the paths, like `fs_cdpath`, was empty)
 
+</details>
+
 #### 2020-07-13: _dhewm3 1.5.1 Release Candidate 1_
 
 A first Release Candidate of the upcoming 1.5.1 release is available!
+
+<details><summary>Click to see the rest of this (outdated) newspost</summary>
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC1)** (incl. builds for Windows and 64bit Linux)
 
@@ -117,6 +209,8 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 * Registering multiplayer servers at id's master-server fixed, so they can be found in the multiplayer menu
   (by *Stradex*, [#293](https://github.com/dhewm/dhewm3/pull/293))
 * Support for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible_builds) by setting the CMake option `REPRODUCIBLE_BUILD`.
+
+</details>
 
 #### 2019-03-11: _A first prerelease of dhewm3 1.5.1_
 

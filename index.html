@@ -71,8 +71,87 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don't require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
 <p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.1">2021-03-14: <em>dhewm3 1.5.1</em></h4>
+<p><a href="./dhewm3-1.5.1-demo.jpg" title="Doom3 Demo in dhewm3 1.5.1"><img src="./medium-dhewm3-1.5.1-demo.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>dhewm3 1.5.1 is done.</p>
+<p>Apart from lots of bugfixes, the biggest changes since 1.5.0 are support for the (Windows-only) editing tools and for the <a href="#using-the-doom3-demo-gamedata">Doom3 Demo gamedata</a>.<br />
+See below for a more detailed changelog.</p>
+<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1">download dhewm3 1.5.1 at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<p><a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a ></p>
+<p><strong>Changes since 1.5.0:</strong></p>
+<ul>
+<li>The (Windows-only) integrated <strong>editing tools</strong> of Doom3 are back!
+<ul>
+<li>They can only be built with non-Express versions of Visual Studio (tested Community Editions of VS2013 and VS2017) and can be disabled via CMake</li>
+<li>Official dhewm3 Windows binaries are built with tools enabled, of course.</li>
+<li>Only supports 32bit builds, because in contrast to the rest of dhewm3's code, the tool code is not 64bit compatible at all.</li>
+<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to <em>Motorsep</em> for donating that code!</li>
+<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor doesn't break the viewport of the game any more.</li>
+<li>Thanks to <em>Tommy Hanusa</em> for testing and reporting some issues (that were subsequently fixed)!</li>
+</ul></li>
+<li>While prior dhewm3 releases for Windows have been built with Visual Studio 2010, this is built with Visual Studio 2017, so if it doesn't start on your system make sure you have <a href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">the Visual C++ 2017 Redistributable</a> installed - but chances are good you already have it.
+<ul>
+<li>Also updated some DLLs that are bundled with the Windows release:<br />
+<a href="https://libsdl.org">SDL2 2.0.12</a>, <a href="https://openal-soft.org/">OpenAL-soft 1.20.1</a> and <a href="https://curl.haxx.se">curl 7.70.0</a></li>
+</ul></li>
+<li>Update savegame format (see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a> and <a href="https://github.com/dhewm/dhewm3/issues/344">#344</a>)
+<ul>
+<li>old savegames still work, but new savegames can't be loaded with older versions of dhewm3!</li>
+</ul></li>
+<li>Uploaded updated builds of Mod DLLs, now also supporting <a href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a><br />
+and <a href="https://www.moddb.com/mods/the-lost-mission">The Lost Mission</a></li>
+<li>dhewm3 now supports the <strong>Doom3 Demo</strong> gamedata
+<ul>
+<li>See <a href="#using-the-doom3-demo-gamedata">below</a> for installation instructions</li>
+<li>This is based on <em>Gabriel Cuvillier's</em> code for <a href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>, which ports dhewm3 to web browsers, thanks!</li>
+</ul></li>
+<li>Create the game window on the display the cursor is currently on (when using more than one display)</li>
+<li>Added <code>r_fullscreenDesktop</code> CVar to set if fullscreen mode should be &quot;classic&quot; or &quot;Desktop&quot; which means a borderless window at desktop resolution</li>
+<li>Fullscreen modes that are not at the current desktop resolution should work better now
+<ul>
+<li>including nvidia DSR / AMD VSR; for that you might have to use the supplied <code>dhewm3_notools.exe</code>, as DSR/VSR seem to be incompatible with applications that use MFC (the GUI framework used for the Doom3 tools like the D3Radiant)</li>
+</ul></li>
+<li>Several sound-related bugfixes:
+<ul>
+<li>Lags in starting to play a sound which for example caused the machinegun or plasmagun sounds to stutter have been eliminated (<a href="https://github.com/dhewm/dhewm3/issues/141">#141</a>)</li>
+<li>Trying to reset disconnected OpenAL devices, this esp. helps with display audio on Intel GPUs on Windows, when switching to fullscreen (<a href="https://github.com/dhewm/dhewm3/issues/209">#209</a>)</li>
+<li>Looping .wav sounds with leadin now work (<a href="https://github.com/dhewm/dhewm3/issues/291">#291</a>)</li>
+<li>The game still works if no sound devices are available at all (<a href="https://github.com/dhewm/dhewm3/issues/292">#292</a>)</li>
+<li>Make &quot;idSoundCache: error unloading data from OpenAL hardware buffer&quot; a Warning instead of an Error so it doesn't terminate game (by <em>Corey O'Connor</em>, <a href="https://github.com/dhewm/dhewm3/pull/235">#235</a>)</li>
+</ul></li>
+<li>Restore &quot;Carmack's Reverse&quot; Z-Fail stencil shadows; use <code>glStencilOpSeparate()</code> if available
+<ul>
+<li>That bloody patent finally expired last October: <a href="https://patents.google.com/patent/US6384822B1/en" class="uri">https://patents.google.com/patent/US6384822B1/en</a></li>
+<li>This neither seems to make a visual nor performance difference on any hardware I tried (including Raspberry Pi 4), so this is mostly out of principle</li>
+<li>Based on Code by <a href="https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605"><em>Leith Bade</em></a> and <a href="https://github.com/raynorpat/Doom3/blob/2933cb554587aea546c2df1fdf086204d4ca363d/neo/renderer/draw_stencilshadow.cpp#L147-L182"><em>Pat Raynor</em></a>.</li>
+<li>The <code>r_useCarmacksReverse</code> and <code>r_useStencilOpSeparate</code> CVars allow switching both things on/off for comparison</li>
+</ul></li>
+<li>New CVar <code>g_hitEffect</code>: If set to <code>0</code>, the player camera damage effects (like double-vision and extreme tilt) when being hit are disabled (by <em>dobosken</em>, <a href="https://github.com/dhewm/dhewm3/pull/279">#279</a>).</li>
+<li>(On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like save games, because the binary dir might not be writable and dhewm3 wouldn't start properly then</li>
+<li>Fix lingering messages in HUD after loading savegame
+<ul>
+<li>Sometimes the &quot;Game saved...&quot; message didn't go away after loading a savegame (when having saved while it still was showing from last save)</li>
+</ul></li>
+<li>Fixed clipping bug in delta1 which sometimes occured and made climbing some ladders impossible (see <a href="https://github.com/dhewm/dhewm3/issues/328">#328</a>)</li>
+<li>Improve compatibility with some custom scripts (&quot;t-&gt;c-&gt;value.argSize == func-&gt;parmTotal&quot; Assertion; see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a>)</li>
+<li>Registering multiplayer servers at id's master-server fixed, so they can be found in the multiplayer menu (by <em>Stradex</em>, <a href="https://github.com/dhewm/dhewm3/pull/293">#293</a>)</li>
+<li>Support for <a href="https://en.wikipedia.org/wiki/Reproducible_builds">reproducible builds</a> by setting the CMake option <code>REPRODUCIBLE_BUILD</code>.</li>
+<li>Should build on recent versions of macOS, also on Apple Silicon (thanks <em>Dave Nicolson</em> and <em>Petter Uvesten</em>).</li>
+<li>Proper handling of paths with dots in directory names (<a href="https://github.com/dhewm/dhewm3/issues/299">#299</a>, <a href="https://github.com/dhewm/dhewm3/issues/301">#301</a>)
+<ul>
+<li>Some string functions that are intended to find/cut off/replace/... file extensions did cut off the whole path at dots..</li>
+<li>Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor</li>
+<li>As it's a quite invasive change this needs testing!</li>
+</ul></li>
+<li><code>idFileSystemLocal::ListMods()</code> doesn't search <code>/</code> or <code>C:\</code> anymore (it did so if one of the paths, like <code>fs_cdpath</code>, was empty)</li>
+<li>Don't use translation in Autosave filenames (see <a href="https://github.com/dhewm/dhewm3/issues/305">#305</a>)
+<ul>
+<li>In the Spanish translation all the Alpha Lab autosaves got the same name, now the autosave name is based on the mapename instead which is distinct</li>
+</ul></li>
+</ul>
 <h4 id="dhewm3-1.5.1-release-candidate-3">2021-02-23: <em>dhewm3 1.5.1 Release Candidate 3</em></h4>
 <p>Finally, the third (and hopefully last) Release Candidate of the upcoming 1.5.1 release is available!</p>
+<p><details><summary>Click to see the rest of this (outdated) newspost</summary></p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><strong>Changes since Release Candidate 2:</strong></p>
 <ul>
@@ -98,8 +177,10 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <li>old savegames still work, but new savegames can't be loaded with older versions of dhewm3</li>
 </ul></li>
 </ul>
+<p></details></p>
 <h4 id="dhewm3-1.5.1-release-candidate-2">2020-07-21: <em>dhewm3 1.5.1 Release Candidate 2</em></h4>
 <p>The second Release Candidate of the upcoming 1.5.1 release is available!</p>
+<p><details><summary>Click to see the rest of this (outdated) newspost</summary></p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><strong>Changes since Release Candidate 1:</strong></p>
 <ul>
@@ -117,8 +198,10 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <li>Should build on macOS again (thanks <em>Dave Nicolson</em>, <a href="https://github.com/dhewm/dhewm3/pull/302">#302</a>)</li>
 <li><code>idFileSystemLocal::ListMods()</code> doesn't search <code>/</code> or <code>C:\</code> anymore (it did so when one of the paths, like <code>fs_cdpath</code>, was empty)</li>
 </ul>
+<p></details></p>
 <h4 id="dhewm3-1.5.1-release-candidate-1">2020-07-13: <em>dhewm3 1.5.1 Release Candidate 1</em></h4>
 <p>A first Release Candidate of the upcoming 1.5.1 release is available!</p>
+<p><details><summary>Click to see the rest of this (outdated) newspost</summary></p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p><strong>Changes since 1.5.0:</strong></p>
@@ -161,6 +244,7 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <li>Registering multiplayer servers at id's master-server fixed, so they can be found in the multiplayer menu (by <em>Stradex</em>, <a href="https://github.com/dhewm/dhewm3/pull/293">#293</a>)</li>
 <li>Support for <a href="https://en.wikipedia.org/wiki/Reproducible_builds">reproducible builds</a> by setting the CMake option <code>REPRODUCIBLE_BUILD</code>.</li>
 </ul>
+<p></details></p>
 <h4 id="a-first-prerelease-of-dhewm3-1.5.1">2019-03-11: <em>A first prerelease of dhewm3 1.5.1</em></h4>
 <p>There are no immediate plans for the final 1.5.1 release, but the current status might be interesting :-)</p>
 <p><details><summary>Click to see the rest of this (outdated) newspost</summary> <a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>

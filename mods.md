@@ -104,7 +104,7 @@ Thanks a lot to Stradex for developing this awesome mod that finally allows coop
 * You can find the source at [the LibreCoop Github repo](https://github.com/Stradex/librecoop/)
 * A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
   (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
-  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3)
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
     - there's actually official downloads for Win32 and Linux on amd64, but dhewm3 provides
       DLLs/.so's anyway in case the official ones don't work on your system
@@ -148,7 +148,7 @@ Thanks a lot to Arl90 for releasing the source under GPL!
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/d3le)
 * A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
   (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
-  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3)
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 
 * **Note** that THIS MOD NEEDS the official "Resurrection of Evil" Addon (d3xp/) installed!
