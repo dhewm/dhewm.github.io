@@ -427,7 +427,11 @@ You can either extract them into your Doom3 installation directory, or into a fr
 directory and copy the needed game data ([see above](#getting-the-doom3-game-data)) in there.  
 Similarly, you can find x86_64 (amd64) **Linux** binaries there.
 
-On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that
+If you're using **macOS**, [MacSourcePorts.com](https://macsourceports.com)
+provides signed and notarized [dhewm3 binaries](https://macsourceports.com/game/doom3)
+for 64bit Intel and Apple Silicon.
+
+On Linux and \*BSD it might be that your package manager provides a dhewm3 package/port that
 you can install; please refer to that packages documentation on where to put the game data.  
 You could also try telling dhewm3 where to find the game data with:
 
@@ -435,9 +439,9 @@ You could also try telling dhewm3 where to find the game data with:
 
 (adjust the path to your needs)
 
-If your package manager does not provide dhewm3 (or you're on macOS/OSX and there is none),
-or you want to use the very latest code, you'll have to compile it yourself.
-It's not super hard, see [the README](https://github.com/dhewm/dhewm3/blob/master/README.md#compiling)
+If your package manager does not provide dhewm3, or you want to use the very latest code,
+you'll have to compile it yourself. It's not super hard, see
+[the README](https://github.com/dhewm/dhewm3/blob/master/README.md#compiling)
 for details on compiling and [the FAQ](https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files)
 on where to put the game data.
 
