@@ -20,6 +20,48 @@ more information.
 
 # News
 
+#### 2021-12-20: _Miscellaneous News_
+
+Some things of interest (that I should've written about much earlier) happened since the 1.5.1 release:
+
+**idDevNet**
+
+dhewm3.org now hosts a mirror of the (defunct) **iddevnet.com**:  
+[https://iddevnet.dhewm3.org](https://iddevnet.dhewm3.org)
+
+It's still a very valuable resource for modding Doom3 or Quake4.
+
+It was reconstructed from archive.org and private backups that several people
+luckily made while the original page was still up and is almost complete.  
+To make sure it doesn't get lost again (and for offline viewing), the whole page source is
+[available on Github](https://github.com/dhewm/iddevnet).
+
+**Hard Corps**
+
+<a href="mods/hc1.jpg" title="Screenshot of Hard Corps"><img src="mods/small-hc1.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
+
+The **Doom 3: Hard Corps** mod, which supports dhewm3 exclusively, has been released.
+It's an updated/remastered version of the well-known *HardQore2* mod and turns
+Doom3 into a side-scroller.
+
+You can get it at [ModDB](https://www.moddb.com/mods/hardcorps) and our
+[Mods page](./mods.html#hard-corps) also has some information and screenshots.
+
+**dhewm3 progress**
+
+There have been many improvements to dhewm3 since 1.5.1.  
+Several concern the (sadly still Windows-only) tools, like full 64bit support,
+High-DPI support and a Script Debugger(!).  
+Furthermore, dhewm3 now applies brightness and gamma in shaders, which means that
+those settings work better on all platforms (no more changing gamma of the whole screen)
+and are visible in screenshots (so those now look the same as the game itself).
+Other improvements include multiple Quicksave slots (that are cycled through),
+improved keyboard support, fewer external dependencies and of course bugfixes.  
+See the [Changelog](https://github.com/dhewm/dhewm3/blob/master/Changelog.md)
+for details.
+
+I hope I'll get around to releasing a fresh build soon-ish.
+
 #### 2021-03-14: _dhewm3 1.5.1_
 
 <a href="./dhewm3-1.5.1-demo.jpg" title="Doom3 Demo in dhewm3 1.5.1"><img src="./medium-dhewm3-1.5.1-demo.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>

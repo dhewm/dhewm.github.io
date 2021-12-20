@@ -46,8 +46,15 @@
       <li><a href="#how-to-install">How to Install</a></li>
       <li>|</li>
       <li><a href="https://github.com/dhewm/dhewm3">Github Project <img src="github-mark-64.png" height=16></a></li>
-      <li>|</li>
+      <!-- li>|</li>
+      <li><a href="https://modwiki.dhewm3.org">idTech4 ModWiki</a></li -->
+    </ul>
+  </nav>
+  <nav class="nav">
+    <ul class="nav-links">
       <li><a href="https://modwiki.dhewm3.org">idTech4 ModWiki</a></li>
+      <li>|</li>
+      <li><a href="https://iddevnet.dhewm3.org/">idDevNet Mirror</a></li>
     </ul>
   </nav>
 </header>

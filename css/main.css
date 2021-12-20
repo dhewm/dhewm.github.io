@@ -44,6 +44,10 @@ h1 /*, h2, h3 */ {
   text-align: center;
 }
 
+h5 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 a {
   outline: none;
@@ -113,11 +117,16 @@ code {
   width: 800px;
   max-width: 92%;
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.6;
   color: #999;
   margin-left:auto;
   margin-right:auto;
   hyphens: auto;
+}
+
+.content p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .screenshots {
