@@ -29,12 +29,14 @@ Some things of interest (that I should've written about much earlier) happened s
 dhewm3.org now hosts a mirror of the (defunct) **iddevnet.com**:  
 [https://iddevnet.dhewm3.org](https://iddevnet.dhewm3.org)
 
-It's still a very valuable resource for modding Doom3 or Quake4.
+It's still a very valuable resource for modding Doom3/Quake4/idTech4.
 
 It was reconstructed from archive.org and private backups that several people
-luckily made while the original page was still up and is almost complete.  
-To make sure it doesn't get lost again (and for offline viewing), the whole page source is
-[available on Github](https://github.com/dhewm/iddevnet).
+luckily made while the original page was still up. This mirror is
+([as good as](https://github.com/dhewm/iddevnet#missing-files-not-available-on-archiveorg-either))
+complete, *even including downloads!*  
+To make sure it doesn't get lost again (and for offline viewing),
+the whole page source is [available on Github](https://github.com/dhewm/iddevnet).
 
 **Hard Corps**
 
@@ -44,21 +46,21 @@ The **Doom 3: Hard Corps** mod, which supports dhewm3 exclusively, has been rele
 It's an updated/remastered version of the well-known *HardQore2* mod and turns
 Doom3 into a side-scroller.
 
-You can get it at [ModDB](https://www.moddb.com/mods/hardcorps) and our
+You can get it at [ModDB](https://www.moddb.com/mods/hardcorps); our
 [Mods page](./mods.html#hard-corps) also has some information and screenshots.
 
 **dhewm3 progress**
 
-There have been many improvements to dhewm3 since 1.5.1.  
+There have been a lot of improvements to dhewm3 since 1.5.1.  
 Several concern the (sadly still Windows-only) tools, like full 64bit support,
-High-DPI support and a Script Debugger(!).  
+High-DPI support and the Script Debugger you might remember from Quake4!  
 Furthermore, dhewm3 now applies brightness and gamma in shaders, which means that
 those settings work better on all platforms (no more changing gamma of the whole screen)
 and are visible in screenshots (so those now look the same as the game itself).
 Other improvements include multiple Quicksave slots (that are cycled through),
 improved keyboard support, fewer external dependencies and of course bugfixes.  
-See the [Changelog](https://github.com/dhewm/dhewm3/blob/master/Changelog.md)
-for details.
+The [Changelog](https://github.com/dhewm/dhewm3/blob/master/Changelog.md)
+has more details.
 
 I hope I'll get around to releasing a fresh build soon-ish.
 
