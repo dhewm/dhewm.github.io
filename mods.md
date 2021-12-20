@@ -68,28 +68,26 @@ Pack what you must. Pray you won't need it."*
 * Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game fitz`
 
-## HardQore2
+## Hard Corps
 
-<a href="mods/hq1.jpg" title="Screenshot 1 of HardQore2"><img src="mods/small-hq1.jpg" height=200></a>
-<a href="mods/hq2.jpg" title="Screenshot 2 of HardQore2"><img src="mods/small-hq2.jpg" height=200></a>
+<a href="mods/hc1.jpg" title="Screenshot of Hard Corps"><img src="mods/small-hc1.jpg" height=200></a>
+<a href="mods/hq2.jpg" title="Screenshot of HardQore2"><img src="mods/small-hq2.jpg" height=200></a>
 
-The *DOOM 3: HardQore* modification brings classic, fast paced, thumb blistering **side scrolling action** to Hell.  
-If you're a fan of classic action games such as Contra & Metal Slug; then HardQore is what you have been waiting for.
+The *DOOM 3: Hard Corps* is an enhanced/remastered version of the classic *HardQore2* mod for Doom3.  
+It brings classic, fast paced, thumb blistering **side scrolling action** to Hell.  
+If you're a fan of classic action games such as Contra & Metal Slug; then Hard Corps is what you have been waiting for.
 
-Thanks a lot to Revility (and the rest of the HardQore2 team) for releasing
-the source under GPL, so I could port it to dhewm3! :-)
+Thanks a lot to Revility and Ivan_the_B (and the rest of the HardQore2 / Hard Corps team) 
+for developing this Mod for dhewm3! :-)
 
-* You can get the game data at:  
-  [https://www.moddb.com/mods/hardqore/downloads/hardqore-2-demo](https://www.moddb.com/mods/hardqore/downloads/hardqore-2-demo)  
-  and [https://www.moddb.com/mods/hardqore/downloads/hardqore-2-11-patch](https://www.moddb.com/mods/hardqore/downloads/hardqore-2-11-patch)  
-  (yes, you need both!)
-* You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/hardqore2)
-* A **.dll** that works with the official dhewm3 **Windows** executableand a **.so** for Linux
-  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
-  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
+* You can get the game data at: [https://www.moddb.com/mods/hardcorps/downloads](https://www.moddb.com/mods/hardcorps/downloads)
+* You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/hardcorps)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-hardcorps_1.5.1_win32.zip` resp. `dhewm3-hardcorps_1.5.1_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.1)
     - for other platforms you'll have to compile it yourself
-* Once the game data and hardqore2.dll/hardqore2.so/hardqore2.dylib are in place, you can start the mod with: 
-  `./dhewm3 +set fs_game hardqore2`
+* Once the game data and hardcorps.dll/hardcorps.so/hardcorps.dylib are in place, you can start the mod with: 
+  `./dhewm3 +set fs_game hardcorps`
 
 ## LibreCoop
 
