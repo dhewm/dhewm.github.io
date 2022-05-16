@@ -20,6 +20,80 @@ more information.
 
 # News
 
+#### 2022-05-16: _dhewm3 1.5.2 Release Candidate 1_
+
+A first Release Candidate of the upcoming 1.5.2 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC1)** (incl. builds for Windows and 64bit Linux)
+
+**Changes since 1.5.1:**
+
+* Gamma and Brightness are now applied in the shaders instead of by setting hardware gamma.  
+  Can be disabled (so hardware gamma is used again) with `r_gammaInShaders 0`
+* Improvements for (Windows-only) MFC-based tools:
+    - Added the script debugger! (thanks *HarrievG*!)  
+      Original Doom3 didn't have it (Quake4 did), but the Doom3 GPL source contained
+      most of it. *HarrievG* implemented the missing parts and we added some new
+      features. It can even be used over the network and while the client part
+      (the debugger GUI) is Windows-only, the server can run on all supported
+      platforms, so you can debug a game running on Linux or macOS, for example.  
+      Relevant CVars for network debugging are:
+      `com_enableDebuggerServer` and `com_dbgClientAdr` and `com_dbgServerAdr`.  
+      To debug the running game on the same PC, just enter `debugger` in the console.
+    - All tools can now be built in 64bit (thanks *raynorpat*!)
+    - HighDPI support (thanks *HarrievG*!)
+    - PDAEditor works now
+    - Additional bugfixes
+* Cycle through multiple Quicksave slots instead of immediately overwriting the last
+  Quicksave. The `com_numQuicksaves` CVar allows setting the number of QuickSaves ([#392](https://github.com/dhewm/dhewm3/issues/392))
+* Make r_locksurfaces work ([#357](https://github.com/dhewm/dhewm3/issues/357))  
+  It doesn't do exactly what its description and name suggests: it renders
+  everything that is *currently* visible from the position/view the player had
+  when setting `r_locksurfaces 1`. Originally it was supposed to render exactly
+  the surfaces that *were* visible then, but I couldn't get that to work.  
+  This is pretty similar, but there may be differences with opened doors and such.
+* Keyboard input improvements (mostly SDL2-only):
+    - Support (hopefully) all keyboard keys on all kinds of keyboard layouts
+      by using scancodes for otherwise unknown keys
+    - Support typing in non-ASCII characters, if supported by Doom3 (it supports ISO-8859-1)
+    - Support the clipboard also on non-Windows platforms  
+      You can paste code from the clipboard into the console or other edit fields
+      with `Shift+Insert`
+    - Explicit support for Right Ctrl, Alt and Shift keys  
+      (can be bound to different actions than their left counterparts)
+    - Added `in_grabKeyboard` CVar to make sure dhewm3 gets *all* keyboard input  
+      Prevents the Windows-key or Alt-Tab or whatever from taking focus from the game
+    - Added `in_ignoreConsoleKey` - if set to `1`, the console is only opened with
+      Shift+Esc, and the "console key" (that key between Esc, 1 and Tab) can be freely
+      bound to an action (and its char can be typed in the console without closing it).
+    - Added (SDL2-only) "auto" option for `in_kbd`: When not disabling the console key,
+      dhewm3 will try to automatically detect it if `in_kbd` is set to "auto" (now default)
+* `s_alReverbGain` CVar to reduce EFX reverb effect intensity ([#365](https://github.com/dhewm/dhewm3/issues/365))
+* Pause (looped) sounds when entering menu ([#330](https://github.com/dhewm/dhewm3/issues/330))
+* Fixes for looped sounds ([#390](https://github.com/dhewm/dhewm3/issues/390))
+* Replace libjpeg with stb_image and libogg/libvorbis(file) with stb_vorbis
+    - Now the only required external dependencies should be OpenAL, SDL, zlib
+      and optionally libCURL (and of course the C and C++ runtimes)
+* (Optionally) use libbacktrace on non-Windows platforms for more useful
+  backtraces in case of crashes (usually linked statically)
+* Fixed a deadlock (freeze) on Windows when printing messages from another thread
+* Fixed endless loop (game locking up at startup) if graphics settings couldn't be applied ([#386](https://github.com/dhewm/dhewm3/issues/386))
+* Fixed some warnings and uninitialized variables (thanks *turol*!)
+* Work around dmap bug caused by GCC using FMA "optimizations" ([#147](https://github.com/dhewm/dhewm3/issues/147))
+* Prevent dhewm3 from being run as root on Unix-like systems to improve security
+* Replaced most usages of `strncpy()` with something safer to prevent buffer overflows
+  (remaining cases should be safe).
+    - Just a precaution, I don't know if any of them could actually be exploited,
+      but there were some compiler warnings in newer GCC versions.
+* Console output is now logged to `dhewm3log.txt` (last log is renamed to `dhewm3log-old.txt`)
+    - On Windows it's in `My Documents/My Games/dhewm3/`
+    - On Mac it's in `$HOME/Library/Application Support/dhewm3/`
+    - On other Unix-like systems like Linux it's in `$XDG_DATA_HOME/dhewm3/`
+      (usually `$HOME/.local/share/dhewm3/`)
+* Improved compatibility with Wayland ([#426](https://github.com/dhewm/dhewm3/issues/426))
+* Work around assertion in AlphaLabs4 due to "ride_of_death" yeeting
+  the dead "monster_zsec_shotgun_12" into the void ([#409](https://github.com/dhewm/dhewm3/issues/409))
+
 #### 2021-12-20: _Miscellaneous News_
 
 Some things of interest (that I should've written about much earlier) happened since the 1.5.1 release:
@@ -469,7 +543,12 @@ a nonsense string instead.
 On **Windows** you can just download the Win32 binaries from the [Download page](https://github.com/dhewm/dhewm3/releases/latest).  
 You can either extract them into your Doom3 installation directory, or into a fresh
 directory and copy the needed game data ([see above](#getting-the-doom3-game-data)) in there.  
-Similarly, you can find x86_64 (amd64) **Linux** binaries there.
+The official Windows binaries are built with Visual Studio 2017, so if it doesn't
+start on your system make sure you have
+[the Visual C++ 2017 Redistributable **for X86**](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+installed.
+
+Similarly, you can find x86_64 (amd64) **Linux** binaries on the [Download page](https://github.com/dhewm/dhewm3/releases/latest).
 
 If you're using **macOS**, [MacSourcePorts.com](https://macsourceports.com)
 provides signed and notarized [dhewm3 binaries](https://macsourceports.com/game/doom3)
