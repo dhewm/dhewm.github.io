@@ -20,6 +20,26 @@ more information.
 
 # News
 
+#### 2022-05-29: _dhewm3 1.5.2 Release Candidate 2_
+
+The second Release Candidate of the upcoming 1.5.2 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC2)**
+(incl. builds for Windows and 64bit Linux for both dhewm3 **and the supported mods**)
+
+**Changes since 1.5.2 Release Candidate 1:**
+
+* Updated the code of all mods hosted in [dhewm3-sdk repository](https://github.com/dhewm/dhewm3-sdk)
+  with relevant changes from dhewm3.
+* Support loading some mods known to need `fs_game_base d3xp` via Mods menu
+  (currently, *The Lost Mission* and *LibreCoop d3xp* are supported)
+* Disable assertion in idSampleDecoderLocal::DecodeOGG() that triggered
+  when starting a new Classic Doom3 game ([#461](https://github.com/dhewm/dhewm3/issues/461))
+* Fix assertion when loading a mod via menu ([#458](https://github.com/dhewm/dhewm3/issues/458))  
+  (this was a regression introduced with the keyboard improvements after 1.5.1)
+* Fix mouse remaining ungrabbed when running map from Radiant
+  (this was a regression introduced with the reworked mouse grabbing code after 1.5.1)
+
 #### 2022-05-16: _dhewm3 1.5.2 Release Candidate 1_
 
 A first Release Candidate of the upcoming 1.5.2 release is available!
@@ -57,7 +77,7 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
       by using scancodes for otherwise unknown keys
     - Support typing in non-ASCII characters, if supported by Doom3 (it supports ISO-8859-1)
     - Support the clipboard also on non-Windows platforms  
-      You can paste code from the clipboard into the console or other edit fields
+      You can paste text from the clipboard into the console or other edit fields
       with `Shift+Insert`
     - Explicit support for Right Ctrl, Alt and Shift keys  
       (can be bound to different actions than their left counterparts)
@@ -68,6 +88,10 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
       bound to an action (and its char can be typed in the console without closing it).
     - Added (SDL2-only) "auto" option for `in_kbd`: When not disabling the console key,
       dhewm3 will try to automatically detect it if `in_kbd` is set to "auto" (now default)
+* Reworked mouse-input and -grabbing code, using absolute mouse mode in fullscreen GUIs
+  (except for the PDA, because it's implemented weirdly).  
+  This made releasing the mouse in the main menu possible, as now the ingame cursor
+  is at the same position as the system cursor.
 * `s_alReverbGain` CVar to reduce EFX reverb effect intensity ([#365](https://github.com/dhewm/dhewm3/issues/365))
 * Pause (looped) sounds when entering menu ([#330](https://github.com/dhewm/dhewm3/issues/330))
 * Fixes for looped sounds ([#390](https://github.com/dhewm/dhewm3/issues/390))
