@@ -31,6 +31,8 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 
 * Updated the code of all mods hosted in [dhewm3-sdk repository](https://github.com/dhewm/dhewm3-sdk)
   with relevant changes from dhewm3.
+* The SDL2.dll in the Windows download has been downgraded to 2.0.20 to avoid a regression in
+  SDL 2.0.22 ([#460](https://github.com/dhewm/dhewm3/issues/460))
 * Support loading some mods known to need `fs_game_base d3xp` via Mods menu
   (currently, *The Lost Mission* and *LibreCoop d3xp* are supported)
 * Disable assertion in idSampleDecoderLocal::DecodeOGG() that triggered
@@ -481,7 +483,25 @@ Specifically, you'll need the following .pk4 files for the main game:
  d3xp/pak001.pk4    98KB  `06fc9be965e345587064056bf22236d2`
 --------------------------------------------------------------
 
-(You can also use the Demo version of Doom3, [see below](#using-the-doom3-demo-gamedata))
+.. or alternatively you can use the `demo00.pk4` from the free Demo version, [see below](#using-the-doom3-demo-gamedata)
+for more information.
+
+If you're using an official binary release of dhewm3 (for Win32 or Linux amd64), you just
+put the .pk4 files into the corresponding directories (`base/` and `d3xp/`) in `dhewm3/`.
+
+There are also platform-specific places where dhewm3 looks for the game data, see
+[the FAQ](https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files) for more details.
+
+Alternatively you can just tell dhewm3 where to find the directory that contains base/ and d3xp/ with the .pk4s,
+with the following commandline argument:
+
+> `dhewm3 +set fs_basepath /path/to/Doom3/`
+
+(On Windows it might look like `dhewm3.exe +set fs_basepath C:\Games\Doom3\`)
+
+<br>
+The following sections explain how to obtain the .pk4 files.
+
 
 ### ... from CD/DVD + Patch
 
@@ -572,7 +592,10 @@ start on your system make sure you have
 [the Visual C++ 2017 Redistributable **for X86**](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
 installed.
 
-Similarly, you can find x86_64 (amd64) **Linux** binaries on the [Download page](https://github.com/dhewm/dhewm3/releases/latest).
+Similarly, you can find x86_64 (amd64) **Linux** binaries on the
+[Download page](https://github.com/dhewm/dhewm3/releases/latest) - these expect that your system
+has `libSDL2-2.0.so.0`,`libopenal.so.1`, `libz.so.1` and `libcurl.so.4` installed (on debian, Ubuntu and
+similar distros the corresponding packages are called `libsdl2-2.0-0`, `libopenal1`, `zlib1g` and `libcurl4`).
 
 If you're using **macOS**, [MacSourcePorts.com](https://macsourceports.com)
 provides signed and notarized [dhewm3 binaries](https://macsourceports.com/game/doom3)
