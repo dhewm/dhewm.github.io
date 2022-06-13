@@ -78,8 +78,81 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don’t require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
 <p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.2">2022-06-13: <em>dhewm3 1.5.2</em></h4>
+<p><a href="./dhewm3-1.5.2.jpg" title="dhewm3 1.5.2 with ridiculously high gamma and brightness"><img src="./small-dhewm3-1.5.2.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>dhewm3 1.5.2 is done.</p>
+<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the supported mods</strong>)</p>
+<p>Since dhewm3 1.5.1, there have been a lot of enhancements, like better compatibility with Wayland, or applying gamma and brightness in shaders shaders, which means that those settings work better on all platforms and are visible in screenshots (to demonstrate this, the screenshot above has been taken with <code>r_gamma 2.0</code> and <code>r_brightness 1.9</code>).<br />
+Furthermore, both keyboard- and mouse-input have been improved and now there are multiple Quicksave slots (that are cycled through), so if you accidentally saved in a bad situation, you can still load the previous Quicksave.<br />
+Last but not least, there were lots of bugfixes and the (sadly still Windows-only) tools have been improved again with nice new features like High-DPI support, 64bit-compatibility and <strong>the Script Debugger you might remember from Quake4</strong>!</p>
+<p><a href="./dhewm3-script_debugger.jpg" title="dhewm3 Script Debugger"><img src="./small-dhewm3-script-debugger.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>See the following list for more details.</p>
+<p><strong>Changes since 1.5.1:</strong></p>
+<ul>
+<li>Gamma and Brightness are now applied in the shaders instead of by setting hardware gamma.<br />
+Can be disabled (so hardware gamma is used again) with <code>r_gammaInShaders 0</code></li>
+<li>Improvements for (Windows-only) MFC-based tools:
+<ul>
+<li>Added the script debugger! (thanks <em>HarrievG</em>!)<br />
+Original Doom3 didn’t have it (Quake4 did), but the Doom3 GPL source contained most of it. <em>HarrievG</em> implemented the missing parts and we added some new features. It can even be used over the network and while the client part (the debugger GUI) is Windows-only, the server can run on all supported platforms, so you can debug a game running on Linux or macOS, for example.<br />
+Relevant CVars for network debugging are: <code>com_enableDebuggerServer</code> and <code>com_dbgClientAdr</code> and <code>com_dbgServerAdr</code>.<br />
+To debug the running game on the same PC, just enter <code>debugger</code> in the console.</li>
+<li>All tools can now be built in 64bit (thanks <em>raynorpat</em>!)</li>
+<li>HighDPI support (thanks <em>HarrievG</em>!)</li>
+<li>PDAEditor works now</li>
+<li>Additional bugfixes</li>
+</ul></li>
+<li>Cycle through multiple Quicksave slots instead of immediately overwriting the last Quicksave. The <code>com_numQuicksaves</code> CVar allows setting the number of QuickSaves (<a href="https://github.com/dhewm/dhewm3/issues/392">#392</a>)</li>
+<li>Make r_locksurfaces work (<a href="https://github.com/dhewm/dhewm3/issues/357">#357</a>)<br />
+It doesn’t do exactly what its description and name suggests: it renders everything that is <em>currently</em> visible from the position/view the player had when setting <code>r_locksurfaces 1</code>. Originally it was supposed to render exactly the surfaces that <em>were</em> visible then, but I couldn’t get that to work.<br />
+This is pretty similar, but there may be differences with opened doors and such.</li>
+<li>Keyboard input improvements (mostly SDL2-only):
+<ul>
+<li>Support (hopefully) all keyboard keys on all kinds of keyboard layouts by using scancodes for otherwise unknown keys</li>
+<li>Support typing in non-ASCII characters, if supported by Doom3 (it supports ISO-8859-1)</li>
+<li>Support the clipboard also on non-Windows platforms<br />
+You can paste text from the clipboard into the console or other edit fields with <code>Shift+Insert</code></li>
+<li>Explicit support for Right Ctrl, Alt and Shift keys<br />
+(can be bound to different actions than their left counterparts)</li>
+<li>Added <code>in_grabKeyboard</code> CVar to make sure dhewm3 gets <em>all</em> keyboard input<br />
+Prevents the Windows-key or Alt-Tab or whatever from taking focus from the game</li>
+<li>Added <code>in_ignoreConsoleKey</code> - if set to <code>1</code>, the console is only opened with Shift+Esc, and the “console key” (that key between Esc, 1 and Tab) can be freely bound to an action (and its char can be typed in the console without closing it).</li>
+<li>Added (SDL2-only) “auto” option for <code>in_kbd</code>: When not disabling the console key, dhewm3 will try to automatically detect it if <code>in_kbd</code> is set to “auto” (now default)</li>
+</ul></li>
+<li>Reworked mouse-input and -grabbing code, using absolute mouse mode in fullscreen GUIs (except for the PDA, because it’s implemented weirdly).<br />
+This made releasing the mouse in the main menu possible, as now the ingame cursor is at the same position as the system cursor.</li>
+<li><code>s_alReverbGain</code> CVar to reduce EFX reverb effect intensity (<a href="https://github.com/dhewm/dhewm3/issues/365">#365</a>)</li>
+<li>Pause (looped) sounds when entering menu (<a href="https://github.com/dhewm/dhewm3/issues/330">#330</a>)</li>
+<li>Fixes for looped sounds (<a href="https://github.com/dhewm/dhewm3/issues/390">#390</a>)</li>
+<li>Replace libjpeg with stb_image and libogg/libvorbis(file) with stb_vorbis
+<ul>
+<li>Now the only required external dependencies should be OpenAL, SDL, zlib and optionally libCURL (and of course the C and C++ runtimes)</li>
+</ul></li>
+<li>(Optionally) use libbacktrace on non-Windows platforms for more useful backtraces in case of crashes (usually linked statically)</li>
+<li>Fixed a deadlock (freeze) on Windows when printing messages from another thread</li>
+<li>Fixed endless loop (game locking up at startup) if graphics settings couldn’t be applied (<a href="https://github.com/dhewm/dhewm3/issues/386">#386</a>)</li>
+<li>Fixed some warnings and uninitialized variables (thanks <em>turol</em>!)</li>
+<li>Work around dmap bug caused by GCC using FMA “optimizations” (<a href="https://github.com/dhewm/dhewm3/issues/147">#147</a>)</li>
+<li>Prevent dhewm3 from being run as root on Unix-like systems to improve security</li>
+<li>Replaced most usages of <code>strncpy()</code> with something safer to prevent buffer overflows (remaining cases should be safe).
+<ul>
+<li>Just a precaution, I don’t know if any of them could actually be exploited, but there were some compiler warnings in newer GCC versions.</li>
+</ul></li>
+<li>Console output is now logged to <code>dhewm3log.txt</code> (last log is renamed to <code>dhewm3log-old.txt</code>)
+<ul>
+<li>On Windows it’s in <code>My Documents/My Games/dhewm3/</code></li>
+<li>On Mac it’s in <code>$HOME/Library/Application Support/dhewm3/</code></li>
+<li>On other Unix-like systems like Linux it’s in <code>$XDG_DATA_HOME/dhewm3/</code> (usually <code>$HOME/.local/share/dhewm3/</code>)</li>
+</ul></li>
+<li>Improved compatibility with Wayland (<a href="https://github.com/dhewm/dhewm3/issues/426">#426</a>)</li>
+<li>Work around assertion in AlphaLabs4 due to “ride_of_death” yeeting the dead “monster_zsec_shotgun_12” into the void (<a href="https://github.com/dhewm/dhewm3/issues/409">#409</a>)</li>
+<li>Support loading some mods known to need <code>fs_game_base d3xp</code> via Mods menu (currently, <em>The Lost Mission</em> and <em>LibreCoop d3xp</em> are supported)</li>
+<li>Disable assertion in idSampleDecoderLocal::DecodeOGG() that triggered when starting a new Classic Doom3 game (<a href="https://github.com/dhewm/dhewm3/issues/461">#461</a>)</li>
+</ul>
 <h4 id="dhewm3-1.5.2-release-candidate-2">2022-05-29: <em>dhewm3 1.5.2 Release Candidate 2</em></h4>
 <p>The second Release Candidate of the upcoming 1.5.2 release is available!</p>
+<details>
+<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the supported mods</strong>)</p>
 <p><strong>Changes since 1.5.2 Release Candidate 1:</strong></p>
 <ul>
@@ -91,8 +164,11 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 (this was a regression introduced with the keyboard improvements after 1.5.1)</li>
 <li>Fix mouse remaining ungrabbed when running map from Radiant (this was a regression introduced with the reworked mouse grabbing code after 1.5.1)</li>
 </ul>
+</details>
 <h4 id="dhewm3-1.5.2-release-candidate-1">2022-05-16: <em>dhewm3 1.5.2 Release Candidate 1</em></h4>
 <p>A first Release Candidate of the upcoming 1.5.2 release is available!</p>
+<details>
+<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><strong>Changes since 1.5.1:</strong></p>
 <ul>
@@ -154,6 +230,7 @@ This made releasing the mouse in the main menu possible, as now the ingame curso
 <li>Improved compatibility with Wayland (<a href="https://github.com/dhewm/dhewm3/issues/426">#426</a>)</li>
 <li>Work around assertion in AlphaLabs4 due to “ride_of_death” yeeting the dead “monster_zsec_shotgun_12” into the void (<a href="https://github.com/dhewm/dhewm3/issues/409">#409</a>)</li>
 </ul>
+</details>
 <h4 id="miscellaneous-news">2021-12-20: <em>Miscellaneous News</em></h4>
 <p>Some things of interest (that I should’ve written about much earlier) happened since the 1.5.1 release:</p>
 <p><strong>idDevNet</strong></p>

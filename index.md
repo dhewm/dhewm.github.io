@@ -20,9 +20,111 @@ more information.
 
 # News
 
+#### 2022-06-13: _dhewm3 1.5.2_
+
+<a href="./dhewm3-1.5.2.jpg" title="dhewm3 1.5.2 with ridiculously high gamma and brightness"><img src="./small-dhewm3-1.5.2.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
+
+dhewm3 1.5.2 is done.
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.2)**
+(incl. builds for Windows and 64bit Linux for both dhewm3 **and the supported mods**)
+
+Since dhewm3 1.5.1, there have been a lot of enhancements, like better compatibility with Wayland, or
+applying gamma and brightness in shaders shaders, which means that those settings work better on all
+platforms and are visible in screenshots (to demonstrate this, the screenshot above has been taken
+with `r_gamma 2.0` and `r_brightness 1.9`).  
+Furthermore, both keyboard- and mouse-input have been improved and now there are multiple Quicksave
+slots (that are cycled through), so if you accidentally saved in a bad situation, you can still load
+the previous Quicksave.  
+Last but not least, there were lots of bugfixes and the (sadly still Windows-only) tools have been
+improved again with nice new features like High-DPI support, 64bit-compatibility and
+**the Script Debugger you might remember from Quake4**!
+
+<a href="./dhewm3-script_debugger.jpg" title="dhewm3 Script Debugger"><img src="./small-dhewm3-script-debugger.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
+
+See the following list for more details.
+
+**Changes since 1.5.1:**
+
+* Gamma and Brightness are now applied in the shaders instead of by setting hardware gamma.  
+  Can be disabled (so hardware gamma is used again) with `r_gammaInShaders 0`
+* Improvements for (Windows-only) MFC-based tools:
+    - Added the script debugger! (thanks *HarrievG*!)  
+      Original Doom3 didn't have it (Quake4 did), but the Doom3 GPL source contained
+      most of it. *HarrievG* implemented the missing parts and we added some new
+      features. It can even be used over the network and while the client part
+      (the debugger GUI) is Windows-only, the server can run on all supported
+      platforms, so you can debug a game running on Linux or macOS, for example.  
+      Relevant CVars for network debugging are:
+      `com_enableDebuggerServer` and `com_dbgClientAdr` and `com_dbgServerAdr`.  
+      To debug the running game on the same PC, just enter `debugger` in the console.
+    - All tools can now be built in 64bit (thanks *raynorpat*!)
+    - HighDPI support (thanks *HarrievG*!)
+    - PDAEditor works now
+    - Additional bugfixes
+* Cycle through multiple Quicksave slots instead of immediately overwriting the last
+  Quicksave. The `com_numQuicksaves` CVar allows setting the number of QuickSaves ([#392](https://github.com/dhewm/dhewm3/issues/392))
+* Make r_locksurfaces work ([#357](https://github.com/dhewm/dhewm3/issues/357))  
+  It doesn't do exactly what its description and name suggests: it renders
+  everything that is *currently* visible from the position/view the player had
+  when setting `r_locksurfaces 1`. Originally it was supposed to render exactly
+  the surfaces that *were* visible then, but I couldn't get that to work.  
+  This is pretty similar, but there may be differences with opened doors and such.
+* Keyboard input improvements (mostly SDL2-only):
+    - Support (hopefully) all keyboard keys on all kinds of keyboard layouts
+      by using scancodes for otherwise unknown keys
+    - Support typing in non-ASCII characters, if supported by Doom3 (it supports ISO-8859-1)
+    - Support the clipboard also on non-Windows platforms  
+      You can paste text from the clipboard into the console or other edit fields
+      with `Shift+Insert`
+    - Explicit support for Right Ctrl, Alt and Shift keys  
+      (can be bound to different actions than their left counterparts)
+    - Added `in_grabKeyboard` CVar to make sure dhewm3 gets *all* keyboard input  
+      Prevents the Windows-key or Alt-Tab or whatever from taking focus from the game
+    - Added `in_ignoreConsoleKey` - if set to `1`, the console is only opened with
+      Shift+Esc, and the "console key" (that key between Esc, 1 and Tab) can be freely
+      bound to an action (and its char can be typed in the console without closing it).
+    - Added (SDL2-only) "auto" option for `in_kbd`: When not disabling the console key,
+      dhewm3 will try to automatically detect it if `in_kbd` is set to "auto" (now default)
+* Reworked mouse-input and -grabbing code, using absolute mouse mode in fullscreen GUIs
+  (except for the PDA, because it's implemented weirdly).  
+  This made releasing the mouse in the main menu possible, as now the ingame cursor
+  is at the same position as the system cursor.
+* `s_alReverbGain` CVar to reduce EFX reverb effect intensity ([#365](https://github.com/dhewm/dhewm3/issues/365))
+* Pause (looped) sounds when entering menu ([#330](https://github.com/dhewm/dhewm3/issues/330))
+* Fixes for looped sounds ([#390](https://github.com/dhewm/dhewm3/issues/390))
+* Replace libjpeg with stb_image and libogg/libvorbis(file) with stb_vorbis
+    - Now the only required external dependencies should be OpenAL, SDL, zlib
+      and optionally libCURL (and of course the C and C++ runtimes)
+* (Optionally) use libbacktrace on non-Windows platforms for more useful
+  backtraces in case of crashes (usually linked statically)
+* Fixed a deadlock (freeze) on Windows when printing messages from another thread
+* Fixed endless loop (game locking up at startup) if graphics settings couldn't be applied ([#386](https://github.com/dhewm/dhewm3/issues/386))
+* Fixed some warnings and uninitialized variables (thanks *turol*!)
+* Work around dmap bug caused by GCC using FMA "optimizations" ([#147](https://github.com/dhewm/dhewm3/issues/147))
+* Prevent dhewm3 from being run as root on Unix-like systems to improve security
+* Replaced most usages of `strncpy()` with something safer to prevent buffer overflows
+  (remaining cases should be safe).
+    - Just a precaution, I don't know if any of them could actually be exploited,
+      but there were some compiler warnings in newer GCC versions.
+* Console output is now logged to `dhewm3log.txt` (last log is renamed to `dhewm3log-old.txt`)
+    - On Windows it's in `My Documents/My Games/dhewm3/`
+    - On Mac it's in `$HOME/Library/Application Support/dhewm3/`
+    - On other Unix-like systems like Linux it's in `$XDG_DATA_HOME/dhewm3/`
+      (usually `$HOME/.local/share/dhewm3/`)
+* Improved compatibility with Wayland ([#426](https://github.com/dhewm/dhewm3/issues/426))
+* Work around assertion in AlphaLabs4 due to "ride_of_death" yeeting
+  the dead "monster_zsec_shotgun_12" into the void ([#409](https://github.com/dhewm/dhewm3/issues/409))
+* Support loading some mods known to need `fs_game_base d3xp` via Mods menu
+  (currently, *The Lost Mission* and *LibreCoop d3xp* are supported)
+* Disable assertion in idSampleDecoderLocal::DecodeOGG() that triggered
+  when starting a new Classic Doom3 game ([#461](https://github.com/dhewm/dhewm3/issues/461))
+
 #### 2022-05-29: _dhewm3 1.5.2 Release Candidate 2_
 
 The second Release Candidate of the upcoming 1.5.2 release is available!
+
+<details><summary>Click to see the rest of this (outdated) newspost</summary>
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC2)**
 (incl. builds for Windows and 64bit Linux for both dhewm3 **and the supported mods**)
@@ -42,9 +144,13 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 * Fix mouse remaining ungrabbed when running map from Radiant
   (this was a regression introduced with the reworked mouse grabbing code after 1.5.1)
 
+</details>
+
 #### 2022-05-16: _dhewm3 1.5.2 Release Candidate 1_
 
 A first Release Candidate of the upcoming 1.5.2 release is available!
+
+<details><summary>Click to see the rest of this (outdated) newspost</summary>
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC1)** (incl. builds for Windows and 64bit Linux)
 
@@ -119,6 +225,8 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 * Improved compatibility with Wayland ([#426](https://github.com/dhewm/dhewm3/issues/426))
 * Work around assertion in AlphaLabs4 due to "ride_of_death" yeeting
   the dead "monster_zsec_shotgun_12" into the void ([#409](https://github.com/dhewm/dhewm3/issues/409))
+
+</details>
 
 #### 2021-12-20: _Miscellaneous News_
 
