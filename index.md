@@ -627,9 +627,10 @@ and then get the files from the installation directory (or copy dhewm3 in there)
 
 ### ... from Steam
 
-First you need to buy [Doom3](http://store.steampowered.com/app/9050/) of course
-(and the [Resurrection of Evil Addon](https://store.steampowered.com/app/9070/),
-if you want that too; Note that the Addon is not available in Germany).
+First you need to buy [Doom3](https://store.steampowered.com/app/208200/DOOM_3/) of course -
+it also includes the Resurrection of Evil Addon (and the BFG Edition re-release of the game,
+*which is **not** supported by dhewm3*).
+
 
 Thankfully the game from Steam is already fully patched to 1.3.1.
 
@@ -661,6 +662,20 @@ by replacing `9050` with `9070`; the files should be in `./doom3/d3xp/` then.
 
 By the way, that number is the "AppID" of Doom3/RoE; if you wanna use this to
 get the data of other games you own, you can look up the AppID at [SteamDB](https://steamdb.info/).
+
+### ... from GOG
+
+GOG.com offers the same bundle as Steam (Doom3 + Resurrection of Evil + BFG Edition):
+<https://www.gog.com/game/doom_3>
+
+I haven't tried the GOG version yet, but you should be able to download it without installing any
+launcher. 
+At GOG you usually get Windows Installers that use [Inno Setup](https://jrsoftware.org/isinfo.php)
+and can be extracted with [innoextract](https://constexpr.org/innoextract/) on all relevant
+operating systems.  
+See also <https://constexpr.org/innoextract/#gog>
+
+I assume that the GOG version of the game is also fully patched to 1.3.1.
 
 ### Using the Doom3 Demo gamedata
 
