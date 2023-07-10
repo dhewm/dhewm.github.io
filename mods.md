@@ -9,6 +9,9 @@ The [dhewm3 SDK project page](https://github.com/dhewm/dhewm3-sdk#how-to-port-a-
 General information about idTech4 (Doom3, Quake4, Prey, ET:QW, ...) modding can be found at
 the **[idTech4 ModWiki](https://modwiki.dhewm3.org)**.
 
+**NOTE** that all mods *(except for Fitz Packerton, which is a standalon game)* **require the full version
+of Doom3** (some also need the Resurrection of Evil addon, see the mod descriptions below for details).
+
 # List of supported Mods
 
 ## Classic Doom 3
