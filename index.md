@@ -738,8 +738,8 @@ Note that you **don't need the patches** of the full version, adding their pk4s 
 
 `demo00.pk4` has a size of 462MB but there are minimal differences between the one
 for Linux and Windows, so they have different md5sums:  
-<pre><code>Windows : md5sum bd410abbb649b9512d65b794869df9fe size 483534533 Bytes</code>
-<code>Linux   : md5sum 70c2c63ef1190158f1ebd6c255b22d8e size 483535485 Bytes</code></pre>
+**Windows:** md5sum `bd410abbb649b9512d65b794869df9fe` size 483534533 Bytes  
+**Linux:** md5sum `70c2c63ef1190158f1ebd6c255b22d8e` size 483535485 Bytes
 
 Both work on all platforms though, but the Linux demo had been released two months after
 the Demo for Windows and contains at least one tiny bugfix: A missing string for `" or "`
