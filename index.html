@@ -78,6 +78,35 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don’t require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
 <p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.3-release-candidate-1">2024-02-04: <em>dhewm3 1.5.3 Release Candidate 1</em></h4>
+<p>A first Release Candidate of the upcoming 1.5.3 release is available!</p>
+<p>This brings support for <strong>gamepads</strong>, as long as they’re supported by SDL2. This includes XBox Controllers (and compatible ones), Playstation 3-5 controllers, Nintendo Switch Pro Controllers, many thirdparty controllers for those consoles, and lots of other gamepads for PC.<br />
+Furthermore, dhewm3 now supports taking <strong>screenshots in different formats</strong>: TGA (like before), BMP, JPEG and PNG.<br />
+Last but not least, there were several <strong>bugfixes</strong> and other small improvements, see the list below for details.</p>
+<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
+<p><strong>Changes since 1.5.2:</strong></p>
+<ul>
+<li>Support for gamepads (based on code from <a href="https://github.com/blendogames/quadrilateralcowboy">Quadrilateral Cowboy</a>, but heavily expanded). See <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration.md</a> for more information.</li>
+<li>Support different file formats for screenshots by setting the <code>r_screenshotFormat</code> CVar (0 = TGA, still the default, 1 = BMP, 2 = PNG, 3 = JPG). <code>r_screenshotJpgQuality</code> and <code>r_screenshotPngCompression</code> allow configuring how JPG/PNG are compressed. Thanks <em>eezstreet (Nick Whitlock)</em>!</li>
+<li>Fixed problems with lights after loading a savegame (<a href="https://github.com/dhewm/dhewm3/issues/495">#495</a>)</li>
+<li>Fix volume of some weapon sounds, like chaingun being too quit (<a href="https://github.com/dhewm/dhewm3/issues/326">#326</a>)</li>
+<li>Increase stack size on Windows to 8MB (instead default of 1MB) to make loading huge models work</li>
+<li>Fixed crash in Radiant Model Preview Dialog (<a href="https://github.com/dhewm/dhewm3/issues/496">#496</a>)</li>
+<li>Fix MD3 model support</li>
+<li>Several new CMake options:
+<ul>
+<li>To enable Clang/GCC Address Sanitizer and Undefined Behavior Sanitizer</li>
+<li>Hardlink the game code into the executable (instead of using game DLLs, only supports base <em>or</em> d3xp then; needed for Undefined Behavior Sanitizer)</li>
+<li>Force colored diagnostic output from GCC or Clang (esp. useful when building with ninja)</li>
+</ul></li>
+<li>Fix several compiler warnings</li>
+<li>Probably more bugfixes I forgot to list here..</li>
+<li>Added build instructions for Linux (and similar systems) to <a href="https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu">README.md</a></li>
+<li>Updated stb_image and stb_vorbis</li>
+<li>Updated bundled libs in build for Windows: OpenAL Soft 1.23.1, SDL 2.30.0, cURL 8.6.0, zlib 1.3.1</li>
+<li>Linux binary build now requires SDL 2.0.12 or newer (I provide an updated <code>libSDL2-2.0.so.0</code> though).<br />
+If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are still supported (however, SDL1.2 doesn’t support gamepads)</li>
+</ul>
 <h4 id="dhewm3-1.5.2">2022-06-13: <em>dhewm3 1.5.2</em></h4>
 <p><a href="./dhewm3-1.5.2.jpg" title="dhewm3 1.5.2 with ridiculously high gamma and brightness"><img src="./small-dhewm3-1.5.2.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>dhewm3 1.5.2 is done.</p>
