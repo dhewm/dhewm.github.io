@@ -78,6 +78,10 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don’t require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
 <p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.3-release-candidate-2">2024-03-19: <em>dhewm3 1.5.3 Release Candidate 2</em></h4>
+<p>The second release candidate for 1.5.3 fixes a bug with gamepad support (sometimes the gamepad buttons were mixed up after using ingame UI panels) and updates the integrated minizip library.</p>
+<p>Furthermore, all the mods have been updated for gamepad support and the bugfixes since 1.5.2.</p>
+<p>Download <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3_RC2">dhewm3 1.5.3 RC2 at Github</a></strong> (incl. builds for Windows and 64bit Linux)!</p>
 <h4 id="dhewm3-1.5.3-release-candidate-1">2024-02-04: <em>dhewm3 1.5.3 Release Candidate 1</em></h4>
 <p>A first Release Candidate of the upcoming 1.5.3 release is available!</p>
 <p>This brings support for <strong>gamepads</strong>, as long as they’re supported by SDL2. This includes XBox Controllers (and compatible ones), Playstation 3-5 controllers, Nintendo Switch Pro Controllers, many thirdparty controllers for those consoles, and lots of other gamepads for PC.<br />
@@ -111,7 +115,7 @@ If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are still suppo
 <p><a href="./dhewm3-1.5.2.jpg" title="dhewm3 1.5.2 with ridiculously high gamma and brightness"><img src="./small-dhewm3-1.5.2.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>dhewm3 1.5.2 is done.</p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the supported mods</strong>)</p>
-<p>Since dhewm3 1.5.1, there have been a lot of enhancements, like better compatibility with Wayland, or applying gamma and brightness in shaders shaders, which means that those settings work better on all platforms and are visible in screenshots (to demonstrate this, the screenshot above has been taken with <code>r_gamma 2.0</code> and <code>r_brightness 1.9</code>).<br />
+<p>Since dhewm3 1.5.1, there have been a lot of enhancements, like better compatibility with Wayland, or applying gamma and brightness in shaders, which means that those settings work better on all platforms and are visible in screenshots (to demonstrate this, the screenshot above has been taken with <code>r_gamma 2.0</code> and <code>r_brightness 1.9</code>).<br />
 Furthermore, both keyboard- and mouse-input have been improved and now there are multiple Quicksave slots (that are cycled through), so if you accidentally saved in a bad situation, you can still load the previous Quicksave.<br />
 Last but not least, there were lots of bugfixes and the (sadly still Windows-only) tools have been improved again with nice new features like High-DPI support, 64bit-compatibility and <strong>the Script Debugger you might remember from Quake4</strong>!</p>
 <p><a href="./dhewm3-script_debugger.jpg" title="dhewm3 Script Debugger"><img src="./small-dhewm3-script-debugger.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>

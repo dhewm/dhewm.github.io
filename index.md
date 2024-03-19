@@ -20,6 +20,15 @@ more information.
 
 # News
 
+#### 2024-03-19: _dhewm3 1.5.3 Release Candidate 2_
+
+The second release candidate for 1.5.3 fixes a bug with gamepad support (sometimes the gamepad buttons were mixed up after using ingame UI panels) and updates the integrated minizip library.
+
+Furthermore, all the mods have been updated for gamepad support and the bugfixes since 1.5.2.
+
+Download **[dhewm3 1.5.3 RC2 at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.3_RC2)**
+(incl. builds for Windows and 64bit Linux)!
+
 #### 2024-02-04: _dhewm3 1.5.3 Release Candidate 1_
 
 A first Release Candidate of the upcoming 1.5.3 release is available!
@@ -71,7 +80,7 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 (incl. builds for Windows and 64bit Linux for both dhewm3 **and the supported mods**)
 
 Since dhewm3 1.5.1, there have been a lot of enhancements, like better compatibility with Wayland, or
-applying gamma and brightness in shaders shaders, which means that those settings work better on all
+applying gamma and brightness in shaders, which means that those settings work better on all
 platforms and are visible in screenshots (to demonstrate this, the screenshot above has been taken
 with `r_gamma 2.0` and `r_brightness 1.9`).  
 Furthermore, both keyboard- and mouse-input have been improved and now there are multiple Quicksave
