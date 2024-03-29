@@ -81,10 +81,11 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <h4 id="dhewm3-1.5.3">2024-03-29: <em>dhewm3 1.5.3</em></h4>
 <p><a href="./dhewm3-1.5.3.jpg" title="dhewm3 1.5.3"><img src="./small-dhewm3-1.5.3.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>Just in time for the Easter weekend, dhewm3 1.5.3 is done!</p>
-<p>The biggest change since 1.5.2 is (the often-requested) <strong>gamepad support</strong>!<br />
+<p>This brings (the often-requested) support for <strong>gamepads</strong>, as long as they’re supported by SDL2. This includes XBox Controllers (and compatible ones), Playstation 3-5 controllers, Nintendo Switch Pro Controllers, many thirdparty controllers for those consoles, and lots of other gamepads for PC.<br />
 See the <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration documentation</a> for how to make make it work (well, basically you can just plug in your gamepad and configure bindings in the Controls menu, but I also provide configs with default bindings that you could use).<br />
-There were also other improvements (like screenshots in BMP, PNG and JPG instead of just TGA), see the list below.</p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the <a href="./mods.html">supported mods</a></strong>).</p>
+Furthermore, dhewm3 now supports taking <strong>screenshots in different formats</strong>: TGA (like before), BMP, JPEG and PNG.<br />
+Last but not least, there were several <strong>bugfixes</strong> and other small improvements, see the list below for details.</p>
+<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3">download dhewm3 1.5.3 at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the <a href="./mods.html">supported mods</a></strong>).</p>
 <p><strong>Changes since 1.5.2:</strong></p>
 <ul>
 <li>Support for gamepads (based on code from <a href="https://github.com/blendogames/quadrilateralcowboy">Quadrilateral Cowboy</a>, but heavily expanded). See <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration.md</a> for more information.</li>
@@ -102,7 +103,7 @@ There were also other improvements (like screenshots in BMP, PNG and JPG instead
 </ul></li>
 <li>Fix several compiler warnings</li>
 <li>Added build instructions for Linux (and similar systems) to <a href="https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu">README.md</a></li>
-<li>Added documentation for dhewm3-specific settings (mostly CVars): <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md">Configuration</a></li>
+<li>Added documentation for dhewm3-specific settings (mostly CVars): <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md">Configuration.md</a></li>
 <li>Updated stb_image and stb_vorbis</li>
 <li>Updated minizip (from zlib/contrib) to latest upstream code</li>
 <li>Added <code>in_namePressed</code> CVar to print currently pressed key/button (useful for binding keys in the console or configs). Thanks <em>Biel Bestué de Luna</em>!</li>

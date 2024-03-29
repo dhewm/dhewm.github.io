@@ -26,15 +26,17 @@ more information.
 
 Just in time for the Easter weekend, dhewm3 1.5.3 is done!
 
-The biggest change since 1.5.2 is (the often-requested) **gamepad support**!  
+This brings (the often-requested) support for **gamepads**, as long as they're supported by SDL2.
+This includes XBox Controllers (and compatible ones), Playstation 3-5 controllers, Nintendo Switch Pro
+Controllers, many thirdparty controllers for those consoles, and lots of other gamepads for PC.  
 See the [Configuration documentation](https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads)
 for how to make make it work (well, basically you can just plug in your gamepad and configure bindings
 in the Controls menu, but I also provide configs with default bindings that you could use).  
-There were also other improvements (like screenshots in BMP, PNG and JPG instead of just TGA),
-see the list below.
+Furthermore, dhewm3 now supports taking **screenshots in different formats**: TGA (like before), BMP, JPEG and PNG.  
+Last but not least, there were several **bugfixes** and other small improvements, see the list below for details.
 
-You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.3)** 
-(incl. builds for Windows and 64bit Linux for both dhewm3  **and the [supported mods](./mods.html)**).
+You can **[download dhewm3 1.5.3 at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.3)** 
+(incl. builds for Windows and 64bit Linux for both dhewm3 **and the [supported mods](./mods.html)**).
 
 **Changes since 1.5.2:**
 
@@ -57,7 +59,7 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
     - Force colored diagnostic output from GCC or Clang (esp. useful when building with ninja)
 * Fix several compiler warnings
 * Added build instructions for Linux (and similar systems) to [README.md](https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu)
-* Added documentation for dhewm3-specific settings (mostly CVars): [Configuration](https://github.com/dhewm/dhewm3/blob/master/Configuration.md)
+* Added documentation for dhewm3-specific settings (mostly CVars): [Configuration.md](https://github.com/dhewm/dhewm3/blob/master/Configuration.md)
 * Updated stb_image and stb_vorbis
 * Updated minizip (from zlib/contrib) to latest upstream code
 * Added `in_namePressed` CVar to print currently pressed key/button (useful for binding keys
