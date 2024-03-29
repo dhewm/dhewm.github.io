@@ -20,6 +20,54 @@ more information.
 
 # News
 
+#### 2024-03-29: _dhewm3 1.5.3_
+
+<a href="./dhewm3-1.5.3.jpg" title="dhewm3 1.5.3"><img src="./small-dhewm3-1.5.3.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
+
+Just in time for the Easter weekend, dhewm3 1.5.3 is done!
+
+The biggest change since 1.5.2 is (the often-requested) **gamepad support**!  
+See the [Configuration documentation](https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads)
+for how to make make it work (well, basically you can just plug in your gamepad and configure bindings
+in the Controls menu, but I also provide configs with default bindings that you could use).  
+There were also other improvements (like screenshots in BMP, PNG and JPG instead of just TGA),
+see the list below.
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.3)** 
+(incl. builds for Windows and 64bit Linux for both dhewm3  **and the [supported mods](./mods.html)**).
+
+**Changes since 1.5.2:**
+
+* Support for gamepads (based on code from [Quadrilateral Cowboy](https://github.com/blendogames/quadrilateralcowboy),
+  but heavily expanded). See [Configuration.md](https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads)
+  for more information.
+* Support different file formats for screenshots by setting the `r_screenshotFormat` CVar
+  (0 = TGA, still the default, 1 = BMP, 2 = PNG, 3 = JPG). `r_screenshotJpgQuality` and
+  `r_screenshotPngCompression` allow configuring how JPG/PNG are compressed.
+  Thanks *eezstreet (Nick Whitlock)*!
+* Fixed problems with lights after loading a savegame ([#495](https://github.com/dhewm/dhewm3/issues/495))
+* Fix volume of some weapon sounds, like chaingun being too quit ([#326](https://github.com/dhewm/dhewm3/issues/326))
+* Increase stack size on Windows to 8MB (instead default of 1MB) to make loading huge models work
+* Fixed crash in Radiant Model Preview Dialog ([#496](https://github.com/dhewm/dhewm3/issues/496))
+* Fix MD3 model support
+* Several new CMake options:
+    - To enable Clang/GCC Address Sanitizer and Undefined Behavior Sanitizer
+    - Hardlink the game code into the executable (instead of using game DLLs,
+      only supports base *or* d3xp then; needed for Undefined Behavior Sanitizer)
+    - Force colored diagnostic output from GCC or Clang (esp. useful when building with ninja)
+* Fix several compiler warnings
+* Added build instructions for Linux (and similar systems) to [README.md](https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu)
+* Added documentation for dhewm3-specific settings (mostly CVars): [Configuration](https://github.com/dhewm/dhewm3/blob/master/Configuration.md)
+* Updated stb_image and stb_vorbis
+* Updated minizip (from zlib/contrib) to latest upstream code
+* Added `in_namePressed` CVar to print currently pressed key/button (useful for binding keys
+  in the console or configs). Thanks *Biel Bestué de Luna*!
+* Probably more bugfixes I forgot to list here..
+* Updated bundled libs in build for Windows: OpenAL Soft 1.23.1, SDL 2.30.0, cURL 8.6.0, zlib 1.3.1
+* Linux binary build now requires SDL 2.0.12 or newer (I provide an updated `libSDL2-2.0.so.0` though).  
+  If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are still supported 
+  (however, SDL1.2 doesn't support gamepads)
+
 #### 2024-03-19: _dhewm3 1.5.3 Release Candidate 2_
 
 The second release candidate for 1.5.3 fixes a bug with gamepad support (sometimes the gamepad buttons were mixed up after using ingame UI panels) and updates the integrated minizip library.
@@ -32,6 +80,8 @@ Download **[dhewm3 1.5.3 RC2 at Github](https://github.com/dhewm/dhewm3/releases
 #### 2024-02-04: _dhewm3 1.5.3 Release Candidate 1_
 
 A first Release Candidate of the upcoming 1.5.3 release is available!
+
+<details><summary>Click to see the rest of this (outdated) newspost</summary>
 
 This brings support for **gamepads**, as long as they're supported by SDL2. This includes XBox Controllers
 (and compatible ones), Playstation 3-5 controllers, Nintendo Switch Pro Controllers, many thirdparty
@@ -69,6 +119,8 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 * Linux binary build now requires SDL 2.0.12 or newer (I provide an updated `libSDL2-2.0.so.0` though).  
   If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are still supported 
   (however, SDL1.2 doesn't support gamepads)
+
+</details>
 
 #### 2022-06-13: _dhewm3 1.5.2_
 

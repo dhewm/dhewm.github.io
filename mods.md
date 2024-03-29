@@ -68,7 +68,7 @@ Pack what you must. Pray you won't need it."*
   (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
   on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
-* Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: 
+* Once the game data and fitz.dll/fitz.so/fitz.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game fitz`
 
 ## Hard Corps
