@@ -56,8 +56,19 @@
 <p>Unfortunately dhewm3 can’t support all old Doom3 modifications, as it’s incompatible with old Game DLLs. This means that old Mods are only supported if they <em>either</em> have been ported to dhewm3 <em>or</em> don’t require their own Game DLL (but are using the one from the main game).<br />
 The essential requirement for porting Mods to dhewm3 is that the original Mod authors must release the source code <strong>under the GPLv3 license</strong> (that id Software chose when open sourcing Doom3). The <a href="https://github.com/dhewm/dhewm3-sdk#how-to-port-a-mod-to-dhewm3">dhewm3 SDK project page</a> has more information.<br />
 General information about idTech4 (Doom3, Quake4, Prey, ET:QW, …) modding can be found at the <strong><a href="https://modwiki.dhewm3.org">idTech4 ModWiki</a></strong>.</p>
-<p><strong>NOTE</strong> that all mods <em>(except for Fitz Packerton, which is a standalon game)</em> <strong>require the full version of Doom3</strong> (some also need the Resurrection of Evil addon, see the mod descriptions below for details).</p>
+<p><strong>NOTE</strong> that all mods <em>(except for Fitz Packerton, which is a standalone game)</em> <strong>require the full version of Doom3</strong> (some also need the Resurrection of Evil addon, see the mod descriptions below for details).</p>
 <h1 id="list-of-supported-mods">List of supported Mods</h1>
+<h2 id="blood-mod">Blood Mod</h2>
+<p><em>Blood Mod</em> adds HD blood, monster giblets and some blood-related Phrozo effects to the game, combining the gore effects of several other mods.</p>
+<p>A big THANK YOU to <em>ALord7</em> for releasing the mod’s source under GPL!</p>
+<ul>
+<li>You can get the game data at <a href="https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit">ModDB</a>
+<ul>
+<li>Just extract that zip to your Doom3/dhewm3 installation</li>
+</ul></li>
+<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/bloodmod">Github</a></li>
+<li>Once the game data and bloodmod.dll/bloodmod.so/bloodmod.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game bloodmod</code></li>
+</ul>
 <h2 id="classic-doom-3">Classic Doom 3</h2>
 <p><a href="mods/cdoom1.jpg" title="Screenshot 1 of Classic Doom3"><img src="mods/small-cdoom1.jpg" height=200></a> <a href="mods/cdoom2.jpg" title="Screenshot 2 of Classic Doom3"><img src="mods/small-cdoom2.jpg" height=200></a></p>
 <p><em>Classic Doom 3</em> is a remake of the first episode of the original Doom in Doom3.</p>
@@ -81,7 +92,7 @@ General information about idTech4 (Doom3, Quake4, Prey, ET:QW, …) modding can 
 <li>You can get the game data at <a href="https://www.moddb.com/mods/dentons-enhanced-doom3-v202/downloads/dentons-enhanced-doom3-v2021">ModDB</a>
 <ul>
 <li>Open that zip and extract the contained <code>Extract this to your doom3 folder.zip</code> to your Doom3/dhewm3 installation.</li>
-<li>Especially if you’re not on Windows, make sure to rename the contained <code>Dentonmod/</code> directory to <code>dentonmod/</code>, as doom3 doesn’t like uppercase characters in paths (while it works on Windows, it doesn’t on Linux, FreeBSD and possibly OSX!)</li>
+<li>Especially if you’re not on Windows, make sure to rename the contained <code>Dentonmod/</code> directory to <code>dentonmod/</code>, as Doom3 doesn’t like uppercase characters in paths (while it works on Windows, it doesn’t on Linux, FreeBSD and possibly OSX!)</li>
 </ul></li>
 <li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/dentonmod">Github</a></li>
 <li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
@@ -136,6 +147,20 @@ If you’re a fan of classic action games such as Contra &amp; Metal Slug; then 
 <li><code>./dhewm3 +set fs_game_base d3xp +set fs_game librecoopd3xp</code> for <em>Resurrection of Evil</em></li>
 </ul></li>
 </ul>
+<h2 id="perfected-doom-3">Perfected Doom 3</h2>
+<p><em>Perfected Doom 3</em> attempts to completely overhaul the entire game with new monsters, rebalanced weapons, rebalanced monster stats, better graphics, new gameplay features and much more. Based on <a href="#sikkmod-and-sikkmod-roe">Sikkmod</a></p>
+<p>Thanks a lot to <em>VGames</em> for releasing the source under GPL!</p>
+<ul>
+<li>You can get the game data at <a href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">ModDB</a>
+<ul>
+<li>Especially if you’re not on Windows, make sure to rename the contained <code>Perfected/</code> directory to <code>perfected/</code>, and <code>Perfected_ROE/</code> to <code>perfected_roe/</code>, because Doom3 doesn’t like uppercase characters in paths (while it works on Windows, it doesn’t on Linux, FreeBSD and possibly OSX!)</li>
+</ul></li>
+<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/perfected">Github</a></li>
+<li>Once the game data and perfected.dll/perfected.so/perfected.dylib (or perfected_roe.dll/.so/.dylib for Sikkmod RoE) are in place, you can start the mod with:<br />
+<code>./dhewm3 +set fs_game perfected</code><br />
+or, for the Resurrection of Evil Addon (with Perfected ROE):<br />
+<code>./dhewm3 +set fs_game_base d3xp +set fs_game perfected_roe</code></li>
+</ul>
 <h2 id="scarlet-rivensin-the-ruiner">Scarlet Rivensin: The Ruiner</h2>
 <p><a href="mods/rivensin1.jpg" title="Screenshot 1 of Rivensin"><img src="mods/small-rivensin1.jpg" height=200></a> <a href="mods/rivensin2.jpg" title="Screenshot 2 of Rivensin"><img src="mods/small-rivensin2.jpg" height=200></a></p>
 <p><em>Scarlet Rivensin: The Ruiner</em> (formerly known as just “Ruiner”) is a dark, nightmarish, third person action modification for Doom3 &amp; dhewm 3. The player assumes the role of a herald of Death &amp; fights hordes of the damned using unique weapons, abilities and spells.</p>
@@ -152,6 +177,21 @@ If you’re a fan of classic action games such as Contra &amp; Metal Slug; then 
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
 <li>Once the game data and rivensin.dll/rivensin.so/rivensin.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game rivensin</code></li>
+</ul>
+<h2 id="sikkmod-and-sikkmod-roe">Sikkmod and Sikkmod RoE</h2>
+<p><em>Sikkmod</em> is a general enhancement mod for Doom 3. Its main purposes are to update visuals of Doom 3 to a more modern level and to allow the user to customize various aspects of the game to suit their preferred styles all while maintaining the core mechanics and aesthetics originally put in by id Software.</p>
+<p>Thanks a lot to <em>Sikkpin</em> for <a href="https://github.com/dhewm/dhewm3/issues/120#issuecomment-1555662168">allowing to use the source under GPL</a>!</p>
+<ul>
+<li><p>You can get the game data at <a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12" class="uri">https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12</a> and <a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe" class="uri">https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe</a></p>
+<ul>
+<li>No, there is no Sikkmod v1.2 for Resurrection of Evil (RoE)</li>
+</ul></li>
+<li><p>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/sikkmod">Github</a></p></li>
+<li><p>Once the game data and sikkmod.dll/sikkmod.so/sikkmod.dylib (or sikkmodd3xp.dll etc for Sikkmod RoE), you can start the mod with:<br />
+<code>./dhewm3 +set fs_game sikkmod</code><br />
+or, for the Resurrection of Evil Addon (with Sikkmod RoE):<br />
+<code>./dhewm3 +set fs_game_base d3xp +set fs_game sikkmodd3xp</code></p></li>
+<li><p><strong>Note</strong> that dhewm3’s gamma in shader feature doesn’t work well with Sikkmod, so you may want to disable it (<code>r_gammaInShader 0</code>)</p></li>
 </ul>
 <h2 id="the-lost-mission">The Lost Mission</h2>
 <p><a href="mods/d3le1.jpg" title="Screenshot 1 of Doom3: The Lost Mission"><img src="mods/small-d3le1.jpg" height=200></a> <a href="mods/d3le2.jpg" title="Screenshot 2 of Doom3: The Lost Mission"><img src="mods/small-d3le2.jpg" height=200></a></p>

@@ -20,6 +20,67 @@ more information.
 
 # News
 
+#### 2024-07-27: _dhewm3 1.5.4 Release Candidate 1_
+
+<a href="./dhewm3-1.5.4rc1.jpg" title="dhewm3 1.5.4 RC1"><img src="./small-dhewm3-1.5.4rc1.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
+
+A first Release Candidate of the upcoming 1.5.3 release is available!
+
+The biggest new features since 1.5.2 are a new mod-independent **Settings Menu** that uses
+[Dear ImGui](https://github.com/ocornut/imgui) and **Soft Particles** (that don't "cut" into geometry
+but fade smoothly).  
+The *Settings Menu* can be opened by pressing the `F10` key (unless some other action is already
+bound to that key) or by entering `dhewm3Settings` in the console and lets you configure many
+basic and advanced options, can be navigated with gamepad, keyboard or mouse and has an improved
+keybindings menu (compared to the original options menu).
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC1)**
+(incl. builds for Windows and 64bit Linux).
+
+<a href="./dhewm3-soft-particles.jpg" title="Classic Particles vs Soft Particles"><img src="./small-dhewm3-soft-particles.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
+
+**Changes since 1.5.3:**
+
+* dhewm3-mods now contains game DLLs/libs for several new mods:
+    - [Blood Mod v1.5](https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit)
+    - [Perfected Doom3 (ROE) v7](https://www.moddb.com/mods/perfected-doom-3-version-500/downloads)
+    - [Sikkmod v1.2](https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12) and [Sikkmod RoE v1.1](https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe)
+    - See the [Mods section](./mods.html) for more details, and the [dhewm3-sdk repository](https://github.com/dhewm/dhewm3-sdk/)
+      for source code
+* A brand new **settings menu** that uses [Dear ImGui](https://github.com/ocornut/imgui).  
+  Can be opened with `F10` (unless that key is bound already) or by entering `dhewm3Settings`
+  in the console. It has lots of settings that the original options menu doesn't have and
+  can be easily navigated with gamepad or keyboard (or the mouse, of course).
+  It can also be opened while in the game, which then is paused (if Single Player) but still visible,
+  so the effect of most graphics settings can be seen immediately.
+  Needs SDL2 and C++11.
+* **"Soft" Particles** (that don't "cut" into geometry but fade smoothly), based on code from 
+  [The Dark Mod](https://www.thedarkmod.com/main/) 2.04. Can be enabled/disabled with `r_useSoftParticles`,
+  is applied automatically for all appropriate particles (view-aligned, using additive or alpha
+  blending and not too small)
+* `r_enableDepthCapture`: Enable capturing depth buffer to texture, needed for the soft particles.
+  Can be used in custom materials by using the `"_currentDepth"` texture
+* Replaced dependency on (external) zlib with integrated [miniz](https://github.com/richgel999/miniz)
+* **HighDPI**/Retina support
+* Allow inverted mouse look (horizontally, vertically or both) with `m_invertLook`
+* CVar to allow always run in single player (still drains stamina though!): `in_allowAlwaysRunInSP`
+* VSync can be enabled/disabled on the fly, without restarting the renderer (still with `r_swapInterval`
+  or in the menu, of course; needs SDL2)
+* Allow enabling/disabling [HRTF](https://en.wikipedia.org/wiki/Head-related_transfer_function) with `s_alHRTF`
+* `s_alOutputLimiter`: Configure OpenAL's output-limiter which temporarily reduces the overall
+  volume when too many too loud sounds play at once, to avoid issues like clipping
+* `s_scaleDownAndClamp`: Clamp and reduce volume of all sounds to prevent clipping or temporary
+  downscaling by OpenAL's output limiter
+* If `r_windowResizable` is set, the dhewm3 window (when in windowed mode..) can be freely resized.
+  Needs SDL2; with 2.0.5 and newer it's applied immediately, otherwise when creating the window.
+* If switching between fullscreen and windowed mode or similar changes causes issues (like [here](https://github.com/dhewm/dhewm3/issues/587#issuecomment-2205807989)), you can set `r_vidRestartAlwaysFull 1`, so (again) a full `vid_restart` is done, instead of the partial one which *usually* suffices for just changing the resolution or fullscreen state. If you run into that issue (probably a driver bug), you'll probably also want to set `r_windowResizable 0`, because resizing the window that way also triggered the bug, and in that case no `vid_restart` is done at all
+* Fixed screenshots when using native Wayland (`SDL_VIDEODRIVER=wayland`)
+* If you enter the `map` command in the console, without any arguments, the current map name is printed
+* Support OpenGL debug contexts and messages (`GL_ARB_debug_output`). Can be enabled with `r_glDebugContext 1`.
+   Changing that CVar requires a `vid_restart` (or set it as startup argument)
+* In the Win32 release, updated the bundled SDL2 to 2.30.5 and cURL to 8.9.0
+* In the dhewm3-mods archive for Linux, the librecoop libs have been rebuild (fix [#589](https://github.com/dhewm/dhewm3/issues/589))
+
 #### 2024-03-29: _dhewm3 1.5.3_
 
 <a href="./dhewm3-1.5.3.jpg" title="dhewm3 1.5.3"><img src="./small-dhewm3-1.5.3.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>

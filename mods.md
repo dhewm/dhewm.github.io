@@ -9,10 +9,23 @@ The [dhewm3 SDK project page](https://github.com/dhewm/dhewm3-sdk#how-to-port-a-
 General information about idTech4 (Doom3, Quake4, Prey, ET:QW, ...) modding can be found at
 the **[idTech4 ModWiki](https://modwiki.dhewm3.org)**.
 
-**NOTE** that all mods *(except for Fitz Packerton, which is a standalon game)* **require the full version
+**NOTE** that all mods *(except for Fitz Packerton, which is a standalone game)* **require the full version
 of Doom3** (some also need the Resurrection of Evil addon, see the mod descriptions below for details).
 
 # List of supported Mods
+
+## Blood Mod
+
+*Blood Mod* adds HD blood, monster giblets and some blood-related Phrozo effects to the game,
+combining the gore effects of several other mods.
+
+A big THANK YOU to *ALord7* for releasing the mod's source under GPL!
+
+* You can get the game data at [ModDB](https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit)
+    - Just extract that zip to your Doom3/dhewm3 installation
+* You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/bloodmod)
+* Once the game data and bloodmod.dll/bloodmod.so/bloodmod.dylib are in place, you can start the mod with:
+  `./dhewm3 +set fs_game bloodmod`
 
 ## Classic Doom 3
 
@@ -42,7 +55,7 @@ A big THANK YOU to "Clone JC Denton" for releasing his mod under GPL!
 * You can get the game data at [ModDB](https://www.moddb.com/mods/dentons-enhanced-doom3-v202/downloads/dentons-enhanced-doom3-v2021)
     - Open that zip and extract the contained `Extract this to your doom3 folder.zip` to your Doom3/dhewm3 installation.
     - Especially if you're not on Windows, make sure to rename the contained `Dentonmod/` directory to `dentonmod/`,
-      as doom3 doesn't like uppercase characters in paths (while it works on Windows,
+      as Doom3 doesn't like uppercase characters in paths (while it works on Windows,
       it doesn't on Linux, FreeBSD and possibly OSX!)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/dentonmod)
 * A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
@@ -114,6 +127,24 @@ Thanks a lot to Stradex for developing this awesome mod that finally allows coop
     -  `./dhewm3 +set fs_game librecoop` for the main game or
     - `./dhewm3 +set fs_game_base d3xp +set fs_game librecoopd3xp` for *Resurrection of Evil*
 
+## Perfected Doom 3
+
+*Perfected Doom 3* attempts to completely overhaul the entire game with new monsters, rebalanced weapons,
+rebalanced monster stats, better graphics, new gameplay features and much more. Based on [Sikkmod](#sikkmod-and-sikkmod-roe)
+
+Thanks a lot to *VGames* for releasing the source under GPL!
+
+* You can get the game data at [ModDB](https://www.moddb.com/mods/perfected-doom-3-version-500/downloads)
+    - Especially if you're not on Windows, make sure to rename the contained `Perfected/` directory to `perfected/`,
+      and `Perfected_ROE/` to `perfected_roe/`, because Doom3 doesn't like uppercase characters in paths
+      (while it works on Windows, it doesn't on Linux, FreeBSD and possibly OSX!)
+* You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/perfected)
+* Once the game data and perfected.dll/perfected.so/perfected.dylib (or perfected_roe.dll/.so/.dylib for Sikkmod RoE)
+  are in place, you can start the mod with:  
+  `./dhewm3 +set fs_game perfected`  
+  or, for the Resurrection of Evil Addon (with Perfected ROE):  
+  `./dhewm3 +set fs_game_base d3xp +set fs_game perfected_roe`
+
 ## Scarlet Rivensin: The Ruiner
 
 <a href="mods/rivensin1.jpg" title="Screenshot 1 of Rivensin"><img src="mods/small-rivensin1.jpg" height=200></a>
@@ -135,6 +166,27 @@ Thanks a lot to Revility (and the rest of the Rivensin/Ruiner team) for releasin
     - for other platforms you'll have to compile it yourself
 * Once the game data and rivensin.dll/rivensin.so/rivensin.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game rivensin`
+
+## Sikkmod and Sikkmod RoE
+
+*Sikkmod* is a general enhancement mod for Doom 3. Its main purposes are to update visuals of Doom 3
+to a more modern level and to allow the user to customize various aspects of the game to suit their
+preferred styles all while maintaining the core mechanics and aesthetics originally put in by id Software.
+
+Thanks a lot to *Sikkpin* for [allowing to use the source under GPL](https://github.com/dhewm/dhewm3/issues/120#issuecomment-1555662168)!
+
+* You can get the game data at <https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12>
+  and <https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe>
+    - No, there is no Sikkmod v1.2 for Resurrection of Evil (RoE)
+* You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/sikkmod)
+* Once the game data and sikkmod.dll/sikkmod.so/sikkmod.dylib (or sikkmodd3xp.dll etc for Sikkmod RoE),
+  you can start the mod with:  
+  `./dhewm3 +set fs_game sikkmod`  
+  or, for the Resurrection of Evil Addon (with Sikkmod RoE):  
+  `./dhewm3 +set fs_game_base d3xp +set fs_game sikkmodd3xp`
+
+* **Note** that dhewm3's gamma in shader feature doesn't work well with Sikkmod,
+  so you may want to disable it (`r_gammaInShader 0`)
 
 ## The Lost Mission
 
