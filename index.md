@@ -28,6 +28,7 @@ You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1
 (incl. builds for Windows and 64bit Linux).
 
 It only has some minor changes:
+
 * Fixed mods menu to support Perfected Doom 3 ROE and Sikkmod RoE (so they automatically get fs_game_base set to d3xp when started from the menu)
 * Make entries for base game and Resurrection of Evil (d3xp) in mods menu clearer
 * Fixed the Perfected Doom 3 ROE mod (so it actually starts)
