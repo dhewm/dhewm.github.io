@@ -20,11 +20,26 @@ more information.
 
 # News
 
+#### 2024-07-28: _dhewm3 1.5.4 Release Candidate 2_
+
+The second Release Candidate for the upcoming 1.5.4 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2)**
+(incl. builds for Windows and 64bit Linux).
+
+It only has some minor changes:
+* Fixed mods menu to support Perfected Doom 3 ROE and Sikkmod RoE (so they automatically get fs_game_base set to d3xp when started from the menu)
+* Make entries for base game and Resurrection of Evil (d3xp) in mods menu clearer
+* Fixed the Perfected Doom 3 ROE mod (so it actually starts)
+* Applied fixes to Perfected Doom 3 and Sikkmod so the crosshair is round in widescreen resolutions
+
+*(see the newspost just below this one for changes since 1.5.3)*
+
 #### 2024-07-27: _dhewm3 1.5.4 Release Candidate 1_
 
 <a href="./dhewm3-1.5.4rc1.jpg" title="dhewm3 1.5.4 RC1"><img src="./small-dhewm3-1.5.4rc1.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
 
-A first Release Candidate of the upcoming 1.5.3 release is available!
+A first Release Candidate of the upcoming 1.5.4 release is available!
 
 The biggest new features since 1.5.2 are a new mod-independent **Settings Menu** that uses
 [Dear ImGui](https://github.com/ocornut/imgui) and **Soft Particles** (that don't "cut" into geometry

@@ -24,6 +24,10 @@ A big THANK YOU to *ALord7* for releasing the mod's source under GPL!
 * You can get the game data at [ModDB](https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit)
     - Just extract that zip to your Doom3/dhewm3 installation
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/bloodmod)
+* A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2)
+    - for other platforms you'll have to compile it yourself
 * Once the game data and bloodmod.dll/bloodmod.so/bloodmod.dylib are in place, you can start the mod with:
   `./dhewm3 +set fs_game bloodmod`
 
@@ -99,8 +103,8 @@ for developing this Mod for dhewm3! :-)
 * You can get the game data at: [https://www.moddb.com/mods/hardcorps/downloads](https://www.moddb.com/mods/hardcorps/downloads)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/hardcorps)
 * A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
-  (on amd64 aka x86_64) is part of `dhewm3-hardcorps_1.5.1_win32.zip` resp. `dhewm3-hardcorps_1.5.1_Linux_amd64.tar.gz`
-  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.1)
+  (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and hardcorps.dll/hardcorps.so/hardcorps.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game hardcorps`
@@ -139,6 +143,10 @@ Thanks a lot to *VGames* for releasing the source under GPL!
       and `Perfected_ROE/` to `perfected_roe/`, because Doom3 doesn't like uppercase characters in paths
       (while it works on Windows, it doesn't on Linux, FreeBSD and possibly OSX!)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/perfected)
+* **.dll**s that work with the official dhewm3 **Windows** executable and **.so** files for Linux
+  (on amd64 aka x86_64) are part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2)
+    - for other platforms you'll have to compile it yourself
 * Once the game data and perfected.dll/perfected.so/perfected.dylib (or perfected_roe.dll/.so/.dylib for Sikkmod RoE)
   are in place, you can start the mod with:  
   `./dhewm3 +set fs_game perfected`  
@@ -179,6 +187,10 @@ Thanks a lot to *Sikkpin* for [allowing to use the source under GPL](https://git
   and <https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe>
     - No, there is no Sikkmod v1.2 for Resurrection of Evil (RoE)
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/sikkmod)
+* **.dll**s that work with the official dhewm3 **Windows** executable and **.so** files for Linux
+  (on amd64 aka x86_64) are part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2)
+    - for other platforms you'll have to compile it yourself
 * Once the game data and sikkmod.dll/sikkmod.so/sikkmod.dylib (or sikkmodd3xp.dll etc for Sikkmod RoE),
   you can start the mod with:  
   `./dhewm3 +set fs_game sikkmod`  
