@@ -20,6 +20,19 @@ more information.
 
 # News
 
+#### 2024-07-29: _dhewm3 1.5.4 Release Candidate 3_
+
+The third Release Candidate for the upcoming 1.5.4 release is available!
+
+It fixes an issue with the Soft Particles first noticed in Dentonmod, but the way I had to fix it was
+kinda intrusive so **testing** would be **very welcome**.
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC3)**
+(incl. builds for Windows and 64bit Linux).
+
+*(Note: The mod DLLs haven't changed, so if you want to test the supported mods just use the
+dhewm3-mods archive from [1.5.4 RC2](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2))*
+
 #### 2024-07-28: _dhewm3 1.5.4 Release Candidate 2_
 
 The second Release Candidate for the upcoming 1.5.4 release is available!
