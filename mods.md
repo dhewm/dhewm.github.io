@@ -26,7 +26,7 @@ A big THANK YOU to *ALord7* for releasing the mod's source under GPL!
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/bloodmod)
 * A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
   (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
-  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2)
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and bloodmod.dll/bloodmod.so/bloodmod.dylib are in place, you can start the mod with:
   `./dhewm3 +set fs_game bloodmod`
@@ -145,7 +145,7 @@ Thanks a lot to *VGames* for releasing the source under GPL!
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/perfected)
 * **.dll**s that work with the official dhewm3 **Windows** executable and **.so** files for Linux
   (on amd64 aka x86_64) are part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
-  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2)
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and perfected.dll/perfected.so/perfected.dylib (or perfected_roe.dll/.so/.dylib for Sikkmod RoE)
   are in place, you can start the mod with:  
@@ -189,7 +189,7 @@ Thanks a lot to *Sikkpin* for [allowing to use the source under GPL](https://git
 * You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/sikkmod)
 * **.dll**s that work with the official dhewm3 **Windows** executable and **.so** files for Linux
   (on amd64 aka x86_64) are part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
-  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2)
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
 * Once the game data and sikkmod.dll/sikkmod.so/sikkmod.dylib (or sikkmodd3xp.dll etc for Sikkmod RoE),
   you can start the mod with:  

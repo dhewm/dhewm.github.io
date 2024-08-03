@@ -78,13 +78,58 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <p>It only supports <strong>old Mods</strong> if they <em>either</em> don’t require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
 <p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.4">2024-08-03: <em>dhewm3 1.5.4</em></h4>
+<p>Twenty years ago to the day, Doom 3 was released!</p>
+<p><a href="./pinky-cake.jpg" title="Happy 20th Birthday, Doom3!"><img src="./small-pinky-cake.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>To celebrate this, dhewm3 1.5.4 is released today!</p>
+<p>The biggest new features since 1.5.3 are a new mod-independent <strong>Settings Menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a> and <strong>Soft Particles</strong> (that don’t “cut” into geometry but fade smoothly).<br />
+The <em>Settings Menu</em> can be opened by pressing the <code>F10</code> key (unless some other action is already bound to that key) or by entering <code>dhewm3Settings</code> in the console and lets you configure many basic and advanced options, can be navigated with gamepad, keyboard or mouse and has an improved keybindings menu (compared to the original options menu).</p>
+<p><a href="./dhewm3-1.5.4.jpg" title="dhewm3 1.5.4"><img src="./small-dhewm3-1.5.4.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
+<p><a href="./dhewm3-soft-particles.jpg" title="Classic Particles vs Soft Particles"><img src="./small-dhewm3-soft-particles.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p><strong>Changes since 1.5.3:</strong></p>
+<ul>
+<li>dhewm3-mods now contains game DLLs/libs for several new mods:
+<ul>
+<li><a href="https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit">Blood Mod v1.5</a></li>
+<li><a href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">Perfected Doom3 (ROE) v7</a></li>
+<li><a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12">Sikkmod v1.2</a> and <a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe">Sikkmod RoE v1.1</a></li>
+<li>See the <a href="./mods.html">Mods section</a> for more details, and the <a href="https://github.com/dhewm/dhewm3-sdk/">dhewm3-sdk repository</a> for source code</li>
+</ul></li>
+<li>A brand new <strong>settings menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a>.<br />
+Can be opened with <code>F10</code> (unless that key is bound already) or by entering <code>dhewm3Settings</code> in the console. It has lots of settings that the original options menu doesn’t have and can be easily navigated with gamepad or keyboard (or the mouse, of course). It can also be opened while in the game, which then is paused (if Single Player) but still visible, so the effect of most graphics settings can be seen immediately. Needs SDL2 and C++11.</li>
+<li><strong>“Soft” Particles</strong> (that don’t “cut” into geometry but fade smoothly), based on code from <a href="https://www.thedarkmod.com/main/">The Dark Mod</a> 2.04. Can be enabled/disabled with <code>r_useSoftParticles</code>, is applied automatically for all appropriate particles (view-aligned, using additive or alpha blending and not too small)</li>
+<li><code>r_enableDepthCapture</code>: Enable capturing depth buffer to texture, needed for the soft particles. Can be used in custom materials by using the <code>"_currentDepth"</code> texture</li>
+<li>Replaced dependency on (external) zlib with integrated <a href="https://github.com/richgel999/miniz">miniz</a></li>
+<li><strong>HighDPI</strong>/Retina support</li>
+<li>Allow inverted mouse look (horizontally, vertically or both) with <code>m_invertLook</code></li>
+<li>CVar to allow always run in single player (still drains stamina though!): <code>in_allowAlwaysRunInSP</code></li>
+<li>VSync can be enabled/disabled on the fly, without restarting the renderer (still with <code>r_swapInterval</code> or in the menu, of course; needs SDL2)</li>
+<li>Allow enabling/disabling <a href="https://en.wikipedia.org/wiki/Head-related_transfer_function">HRTF</a> with <code>s_alHRTF</code></li>
+<li><code>s_alOutputLimiter</code>: Configure OpenAL’s output-limiter which temporarily reduces the overall volume when too many too loud sounds play at once, to avoid issues like clipping</li>
+<li><code>s_scaleDownAndClamp</code>: Clamp and reduce volume of all sounds to prevent clipping or temporary downscaling by OpenAL’s output limiter</li>
+<li>If <code>r_windowResizable</code> is set, the dhewm3 window (when in windowed mode..) can be freely resized. Needs SDL2; with 2.0.5 and newer it’s applied immediately, otherwise when creating the window.</li>
+<li>If switching between fullscreen and windowed mode or similar changes causes issues (like <a href="https://github.com/dhewm/dhewm3/issues/587#issuecomment-2205807989">here</a>), you can set <code>r_vidRestartAlwaysFull 1</code>, so (again) a full <code>vid_restart</code> is done, instead of the partial one which <em>usually</em> suffices for just changing the resolution or fullscreen state. If you run into that issue (probably a driver bug), you’ll probably also want to set <code>r_windowResizable 0</code>, because resizing the window that way also triggered the bug, and in that case no <code>vid_restart</code> is done at all</li>
+<li>Fixed screenshots when using native Wayland (<code>SDL_VIDEODRIVER=wayland</code>)</li>
+<li>If you enter the <code>map</code> command in the console, without any arguments, the current map name is printed</li>
+<li>Support OpenGL debug contexts and messages (<code>GL_ARB_debug_output</code>). Can be enabled with <code>r_glDebugContext 1</code>. Changing that CVar requires a <code>vid_restart</code> (or set it as startup argument)</li>
+<li>In the Win32 release, updated the bundled SDL2 to 2.30.5 and cURL to 8.9.0</li>
+<li>In the dhewm3-mods archive for Linux, the librecoop libs have been rebuild (fix <a href="https://github.com/dhewm/dhewm3/issues/589">#589</a>)</li>
+</ul>
+<p>Thank you very much to everyone who tested this, especially <span class="citation" data-cites="j4reporting">@j4reporting</span>, <span class="citation" data-cites="ALord7">@ALord7</span>, <span class="citation" data-cites="Eonfge">@Eonfge</span> and <span class="citation" data-cites="tomkidd">@tomkidd</span> (who also maintains MacSourcePorts)!</p>
+<p>Special thanks to <strong>Valkyries733</strong> from the <em>idtech 4</em> Discord server for creating the awesome picture with the birthday cake!</p>
 <h4 id="dhewm3-1.5.4-release-candidate-3">2024-07-29: <em>dhewm3 1.5.4 Release Candidate 3</em></h4>
 <p>The third Release Candidate for the upcoming 1.5.4 release is available!</p>
+<details>
+<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
 <p>It fixes an issue with the Soft Particles first noticed in Dentonmod, but the way I had to fix it was kinda intrusive so <strong>testing</strong> would be <strong>very welcome</strong>.</p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC3">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
 <p><em>(Note: The mod DLLs haven’t changed, so if you want to test the supported mods just use the dhewm3-mods archive from <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2">1.5.4 RC2</a>)</em></p>
+</details>
 <h4 id="dhewm3-1.5.4-release-candidate-2">2024-07-28: <em>dhewm3 1.5.4 Release Candidate 2</em></h4>
 <p>The second Release Candidate for the upcoming 1.5.4 release is available!</p>
+<details>
+<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
 <p>It only has some minor changes:</p>
 <ul>
@@ -94,10 +139,13 @@ Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EA
 <li>Applied fixes to Perfected Doom 3 and Sikkmod so the crosshair is round in widescreen resolutions</li>
 </ul>
 <p><em>(see the newspost just below this one for changes since 1.5.3)</em></p>
+</details>
 <h4 id="dhewm3-1.5.4-release-candidate-1">2024-07-27: <em>dhewm3 1.5.4 Release Candidate 1</em></h4>
-<p><a href="./dhewm3-1.5.4rc1.jpg" title="dhewm3 1.5.4 RC1"><img src="./small-dhewm3-1.5.4rc1.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>A first Release Candidate of the upcoming 1.5.4 release is available!</p>
-<p>The biggest new features since 1.5.2 are a new mod-independent <strong>Settings Menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a> and <strong>Soft Particles</strong> (that don’t “cut” into geometry but fade smoothly).<br />
+<details>
+<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
+<p><a href="./dhewm3-1.5.4rc1.jpg" title="dhewm3 1.5.4 RC1"><img src="./small-dhewm3-1.5.4rc1.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>The biggest new features since 1.5.3 are a new mod-independent <strong>Settings Menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a> and <strong>Soft Particles</strong> (that don’t “cut” into geometry but fade smoothly).<br />
 The <em>Settings Menu</em> can be opened by pressing the <code>F10</code> key (unless some other action is already bound to that key) or by entering <code>dhewm3Settings</code> in the console and lets you configure many basic and advanced options, can be navigated with gamepad, keyboard or mouse and has an improved keybindings menu (compared to the original options menu).</p>
 <p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
 <p><a href="./dhewm3-soft-particles.jpg" title="Classic Particles vs Soft Particles"><img src="./small-dhewm3-soft-particles.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
@@ -130,6 +178,7 @@ Can be opened with <code>F10</code> (unless that key is bound already) or by ent
 <li>In the Win32 release, updated the bundled SDL2 to 2.30.5 and cURL to 8.9.0</li>
 <li>In the dhewm3-mods archive for Linux, the librecoop libs have been rebuild (fix <a href="https://github.com/dhewm/dhewm3/issues/589">#589</a>)</li>
 </ul>
+</details>
 <h4 id="dhewm3-1.5.3">2024-03-29: <em>dhewm3 1.5.3</em></h4>
 <p><a href="./dhewm3-1.5.3.jpg" title="dhewm3 1.5.3"><img src="./small-dhewm3-1.5.3.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>Just in time for the Easter weekend, dhewm3 1.5.3 is done!</p>
