@@ -39,7 +39,8 @@ keybindings menu (compared to the original options menu).
 <a href="./dhewm3-1.5.4.jpg" title="dhewm3 1.5.4"><img src="./small-dhewm3-1.5.4.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.4)**
-(incl. builds for Windows and 64bit Linux).
+(incl. builds for **Windows** and 64bit **Linux**).  
+An up-to-date version for **macOS** is available at **[MacSourcePorts.com](http://www.macsourceports.com/sourceport/dhewm3)**.
 
 <a href="./dhewm3-soft-particles.jpg" title="Classic Particles vs Soft Particles"><img src="./small-dhewm3-soft-particles.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
 
