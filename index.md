@@ -44,6 +44,11 @@ An up-to-date version for **macOS** is available at **[MacSourcePorts.com](http:
 
 <a href="./dhewm3-soft-particles.jpg" title="Classic Particles vs Soft Particles"><img src="./small-dhewm3-soft-particles.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
 
+**NOTE:** On some systems, Soft Particles noticeably **slow down rendering**! If the performance of dhewm3 1.5.4
+is worse than you'd expect, try disabling them (`r_useSoftParticles 0` or in the new *Settings Menu*
+under  
+*Video Options* uncheck &#9744; *Use Soft Particles*).
+
 **Changes since 1.5.3:**
 
 * dhewm3-mods now contains game DLLs/libs for several new mods:
