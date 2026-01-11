@@ -73,603 +73,1482 @@
 <main class="content" role="main">
 <!-- part2 is generated from index.md after that index.html_part3 closes it all -->
 <h1 id="about">About</h1>
-<p><strong>dhewm3</strong> is a source port of the original Doom3 (<strong>not</strong> <em>Doom3 BFG</em>, for that you may want to try <a href="https://github.com/RobertBeckebans/RBDOOM-3-BFG/">RBDoom3BFG</a>). It’s known to work on Windows, Linux, macOS, <a href="https://freebsd.org">FreeBSD</a>, <a href="https://openbsd.org">OpenBSD</a> and <a href="http://www.aros.org/">AROS</a>, but it should work on (or be easily portable to) any system that supports OpenGL 1.4 with <a href="https://en.wikipedia.org/wiki/ARB_assembly_language">ARB shaders</a>, <a href="http://libsdl.org">SDL</a> and <a href="http://openal.org">OpenAL</a>.<br />
-Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on all operating systems and hardware (via <a href="http://openal-soft.org/">OpenAL Softs</a> EFX support), has much better support for widescreen resolutions and has 64bit support.</p>
-<p>It only supports <strong>old Mods</strong> if they <em>either</em> don’t require their own game DLL <em>or</em> have been ported to dhewm3 - see the <a href="./mods.html">Mods page</a> for more information.</p>
-<p>Note that while the Doom3 source code has been released under GPL, you still need to legally own the game and provide dhewm3 the game data to play. See the <a href="#how-to-install">How to Install</a> section for more information.</p>
+<p><strong>dhewm3</strong> is a source port of the original Doom3
+(<strong>not</strong> <em>Doom3 BFG</em>, for that you may want to try
+<a
+href="https://github.com/RobertBeckebans/RBDOOM-3-BFG/">RBDoom3BFG</a>).
+It’s known to work on Windows, Linux, macOS, <a
+href="https://freebsd.org">FreeBSD</a>, <a
+href="https://openbsd.org">OpenBSD</a> and <a
+href="http://www.aros.org/">AROS</a>, but it should work on (or be
+easily portable to) any system that supports OpenGL 1.4 with <a
+href="https://en.wikipedia.org/wiki/ARB_assembly_language">ARB
+shaders</a>, <a href="http://libsdl.org">SDL</a> and <a
+href="http://openal.org">OpenAL</a>.<br />
+Compared to the original version of Doom3, dhewm3 has many bugfixes,
+supports EAX-like sound effects on all operating systems and hardware
+(via <a href="http://openal-soft.org/">OpenAL Softs</a> EFX support),
+has much better support for widescreen resolutions and has 64bit
+support.</p>
+<p>It only supports <strong>old Mods</strong> if they <em>either</em>
+don’t require their own game DLL <em>or</em> have been ported to dhewm3
+- see the <a href="./mods.html">Mods page</a> for more information.</p>
+<p>Note that while the Doom3 source code has been released under GPL,
+you still need to legally own the game and provide dhewm3 the game data
+to play. See the <a href="#how-to-install">How to Install</a> section
+for more information.</p>
 <h1 id="news">News</h1>
+<h4 id="dhewm3-1.5.5-release-candidate-1">2026-01-11: <em>dhewm3 1.5.5
+Release Candidate 1</em></h4>
+<p>A first Release Candidate of the upcoming 1.5.5 release is
+available!</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1">download
+it at Github</a></strong> (incl. builds for Windows and 64bit
+Linux).</p>
+<p>There have been lots of changes (see below for details), one
+highlight is that several sources of microstutters have been removed
+(like the old 60 vs 62.5fps problem) so the game should run smoother
+than before, especially when using VSync.</p>
+<p>Another great new feature is the support for widescreen GUIs. It
+requires adjusting the .ui files; <em>Arl</em> created versions for the
+base game, Resurrection of Evil and The Lost Mission, they are provided
+as an optional <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1">Download</a>
+(dhewm3-wide-guis-*.zip).</p>
+<p><strong>dhewm3-mods</strong> contains some new mods:</p>
+<ul>
+<li><a
+href="https://www.moddb.com/mods/eldoom/downloads/eldoom-v10">ELDOOM</a></li>
+<li><a
+href="https://www.moddb.com/mods/grimm-quest-for-the-gatherers-key">Grimm</a></li>
+<li><a
+href="https://www.moddb.com/games/doom-iii/downloads/hexen-edge-of-chaos-dhewm3-edition">HeXen:
+Edge Of Chaos Demo</a></li>
+<li><a
+href="https://www.moddb.com/games/doom-iii/addons/real-gibs-v106-for-dhewm3-32-bit">Real
+Gibs</a>
+<ul>
+<li>Note: The page says it only works with the 32bit version of dhewm3,
+but that refers to the realgibs.dll <strong>they</strong> ship.<br />
+Use their gamedata with the .dll/.so provided here (or build the lib
+yourself)</li>
+</ul></li>
+<li><a
+href="https://www.moddb.com/mods/blood-mod/downloads/blood-mod-v18">Blood
+Mod</a> has been updated to v1.8</li>
+<li>All mods (except for LibreCoop) got updated with gamecode changes
+from dhewm3 1.5.5</li>
+</ul>
+<p><strong>Changes since 1.5.4:</strong></p>
+<ul>
+<li>Enable/disable Soft Particles when <strong>loading</strong> a
+graphics quality preset (only enabled in Ultra preset, though you can
+still configure it independently like before; <a
+href="https://github.com/dhewm/dhewm3/issues/604">#604</a>)</li>
+<li>Greatly improve precision of internal timing, which should eliminate
+micro stutters (that were esp. noticeable when using VSync with 60Hz
+displays).<br />
+Related: <code>com_showFPS</code> is now more precise and
+<code>com_showFPS 2</code> shows additional information</li>
+<li>Support BC7-compressed (BPTC) .dds textures. They offer better
+quality than the older S3TC/DXT/BC1-3 texture compression standard that
+Doom3 always supported. Mostly relevant for high-res retexturing packs,
+because they offer similar quality as uncompressed TGAs while being
+smaller, using only a quarter of the VRAM (TGA: 4 bytes per pixel, BC7:
+1 byte per pixel) and loading <em>significantly</em> faster because
+mipmaps are contained and don’t have to be generated on load.<br />
+If you have such DDS files and want to use them (instead of TGAs), you
+must set <code>image_usePrecompressedTextures 1</code> and
+<code>image_useNormalCompression 2</code>.<br />
+You can also set <code>image_usePrecompressedTextures 2</code>, then
+dhewm3 will only load .dds textures with BC7 data - if it only finds an
+old one (with S3TC/DXT/BC-13 compression) it will use the uncompressed
+TGA textures instead.<br />
+If you want to <em>create</em> .dds files with BC7 texture data, you can
+use any common texture compression tool, <strong>except</strong> for
+<strong>normalmaps</strong>, those must be created with my <a
+href="https://github.com/DanielGibson/bc7enc_rdo"><strong>customized
+bc7enc</strong></a> with the <code>-r2a</code> flag! <em>(Because Doom3
+requires that normalmaps have the red channel moved into the alpha
+channel, id confusingly called that “RXGB”, and AFAIK no other tool
+supports that for BC7.)</em><br />
+Just like the old DXT .dds files, they must be in the <code>dds/</code>
+subdirectory of a mod (either directly in the filesystem or in a
+.pk4).</li>
+<li>Allow creating aspect-ratio-independent GUIs (HUD and menus), based
+on code from <a href="https://www.moddb.com/mods/cstdoom3">CstDoom3</a>,
+but greatly extended (<a
+href="https://github.com/dhewm/dhewm3/issues/324">#324</a>).<br />
+Note that this won’t work out of the box with the original Doom3 game
+data, but requires updated GUIs. See <a
+href="docs/GUIs.md">docs/GUIs.md</a> for how to use these features when
+creating GUIs.</li>
+<li>Support SDL3 (SDL2 and, to some degree, SDL1.2 are also still
+supported)</li>
+<li>Fix bugs on 64bit Big Endian platforms (<a
+href="https://github.com/dhewm/dhewm3/issues/472">#472</a>, <a
+href="https://github.com/dhewm/dhewm3/issues/625">#625</a>)</li>
+<li>Fixes for high-poly models (use heap allocation instead of
+<code>alloca()</code> for big buffers; <a
+href="https://github.com/dhewm/dhewm3/issues/528">#528</a>)</li>
+<li>Fix building dhewm3ded with newer OpenAL Soft headers (<a
+href="https://github.com/dhewm/dhewm3/issues/633">#633</a>)</li>
+<li>Better support for High-DPI mice:
+<ul>
+<li>Don’t ignore mouse input on fast movement (“ridiculous mouse delta”;
+<a href="https://github.com/dhewm/dhewm3/issues/616">#616</a>)</li>
+<li>Allow setting sensitivity to values <code>&lt; 1</code> in the
+dhewm3 settings menu to allow sane speeds for looking around with
+High-DPI mice (otherwise it might be way too fast)</li>
+</ul></li>
+<li>Fix a crash (assertion) on start with ImGui if
+<code>SDL_GetWindowDisplayIndex()</code> or
+<code>SDL_GetDisplayDPI()</code> failed and the <code>imgui_scale</code>
+CVar was set to the default value of <code>-1</code> (setting it to
+<code>1</code> worked around the bug; <a
+href="https://github.com/dhewm/dhewm3/issues/632">#632</a>)</li>
+<li>Updated Dear ImGui to 1.91.7</li>
+<li>Fix scaling of Grabber cursor in Resurrection of Evil in non-4:3
+resolutions (<a
+href="https://github.com/dhewm/dhewm3/issues/637">#637</a>)</li>
+<li>Add <code>com_disableAutoSaves</code> CVar: If set to
+<code>1</code>, Autosaves (when starting a level) are disabled (<a
+href="https://github.com/dhewm/dhewm3/issues/620">#620</a>)</li>
+<li>Add support for “nospecular” parm of lights, enabled by setting
+<code>"allow_nospecular" "1"</code> in a maps worldspawn, or by setting
+the <code>r_allowNoSpecular</code> CVar to <code>1</code>.<br />
+Note that this required changing the format of demos. dhewm3 can still
+play old demos, but ones recorded with current dhewm3 are not compatible
+with older dhewm3 versions, original Doom3 or other source ports (unless
+they do the same change).</li>
+<li>Make sure macOS doesn’t show popups for key-alternatives when
+pressing a key for longer while ingame</li>
+<li>Windows: Show error MessageBox if dhewm3log.txt can’t be created on
+startup (<a
+href="https://github.com/dhewm/dhewm3/issues/544">#544</a>)</li>
+<li>Running a timedemo with sound disabled (<code>s_noSound 1</code>)
+doesn’t crash anymore (<a
+href="https://github.com/dhewm/dhewm3/issues/163">#163</a>)</li>
+<li>Show some OpenGL/GPU information in the <em>Video Options</em> tab
+of the <em>dhewm3 Settings Menu</em></li>
+<li>Fix saving/loading of <code>idSpring</code>
+(<code>func_spring</code>) entity (<a
+href="https://github.com/dhewm/dhewm3/issues/31">#31</a>)</li>
+<li>Fix several issues (incl. crashes and missing shadows) with MD3
+models (<a
+href="https://github.com/dhewm/dhewm3/issues/698">#698</a>)</li>
+<li>Fix the “shrivel” effect of MD5 models
+(<code>SHADERPARM_MD5_SKINSCALE</code>)</li>
+<li>Optionally integrate the <a
+href="https://github.com/wolfpld/tracy">Tracy</a> profiler. Disabled
+unless you enable it in CMake.</li>
+<li>Fixed a crash in AI pathfinding code that could happen in the
+lotsaimps testmap (<a
+href="https://github.com/dhewm/dhewm3/pull/721">#721</a>)</li>
+<li>Disabled assertion in <code>TestHugeTranslation()</code> that led to
+“crashes” in several user-maps (<a
+href="https://github.com/dhewm/dhewm3/issues/720">#720</a>)</li>
+<li>Fixed concatenation of timed GUI commands that sometimes lead to
+glitches in UIs</li>
+<li>Added <code>fs_gameDllPath</code> CVar: If set, game DLLs will be
+searched in that directory before the other standard places (like next
+to the executable). Especially useful for developing/debugging mod DLLs
+(you can just set <code>fs_gameDllPath</code> to the build dir, no need
+to copy the DLL/.so/.dylib)</li>
+<li>Several smaller fixes for all kinds of things incl. build
+issues</li>
+<li>The Windows build now comes with SDL2 2.32.10, cURL 8.18.0 and
+OpenAL-Soft 1.25.0</li>
+</ul>
 <h4 id="dhewm3-1.5.4">2024-08-03: <em>dhewm3 1.5.4</em></h4>
 <p>Twenty years ago to the day, Doom 3 was released!</p>
 <p><a href="./pinky-cake.jpg" title="Happy 20th Birthday, Doom3!"><img src="./small-pinky-cake.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>To celebrate this, dhewm3 1.5.4 is released today!</p>
-<p>The biggest new features since 1.5.3 are a new mod-independent <strong>Settings Menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a> and <strong>Soft Particles</strong> (that don’t “cut” into geometry but fade smoothly).<br />
-The <em>Settings Menu</em> can be opened by pressing the <code>F10</code> key (unless some other action is already bound to that key) or by entering <code>dhewm3Settings</code> in the console and lets you configure many basic and advanced options, can be navigated with gamepad, keyboard or mouse and has an improved keybindings menu (compared to the original options menu).</p>
+<p>The biggest new features since 1.5.3 are a new mod-independent
+<strong>Settings Menu</strong> that uses <a
+href="https://github.com/ocornut/imgui">Dear ImGui</a> and <strong>Soft
+Particles</strong> (that don’t “cut” into geometry but fade
+smoothly).<br />
+The <em>Settings Menu</em> can be opened by pressing the
+<code>F10</code> key (unless some other action is already bound to that
+key) or by entering <code>dhewm3Settings</code> in the console and lets
+you configure many basic and advanced options, can be navigated with
+gamepad, keyboard or mouse and has an improved keybindings menu
+(compared to the original options menu).</p>
 <p><a href="./dhewm3-1.5.4.jpg" title="dhewm3 1.5.4"><img src="./small-dhewm3-1.5.4.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4">download it at Github</a></strong> (incl. builds for <strong>Windows</strong> and 64bit <strong>Linux</strong>).<br />
-An up-to-date version for <strong>macOS</strong> is available at <strong><a href="http://www.macsourceports.com/sourceport/dhewm3">MacSourcePorts.com</a></strong>.</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4">download it at
+Github</a></strong> (incl. builds for <strong>Windows</strong> and 64bit
+<strong>Linux</strong>).<br />
+An up-to-date version for <strong>macOS</strong> is available at
+<strong><a
+href="http://www.macsourceports.com/sourceport/dhewm3">MacSourcePorts.com</a></strong>.</p>
 <p><a href="./dhewm3-soft-particles.jpg" title="Classic Particles vs Soft Particles"><img src="./small-dhewm3-soft-particles.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
-<p><strong>NOTE:</strong> On some systems, Soft Particles noticeably <strong>slow down rendering</strong>! If the performance of dhewm3 1.5.4 is worse than you’d expect, try disabling them (<code>r_useSoftParticles 0</code> or in the new <em>Settings Menu</em> under<br />
+<p><strong>NOTE:</strong> On some systems, Soft Particles noticeably
+<strong>slow down rendering</strong>! If the performance of dhewm3 1.5.4
+is worse than you’d expect, try disabling them
+(<code>r_useSoftParticles 0</code> or in the new <em>Settings Menu</em>
+under<br />
 <em>Video Options</em> uncheck ☐ <em>Use Soft Particles</em>).</p>
 <p><strong>Changes since 1.5.3:</strong></p>
 <ul>
 <li>dhewm3-mods now contains game DLLs/libs for several new mods:
 <ul>
-<li><a href="https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit">Blood Mod v1.5</a></li>
-<li><a href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">Perfected Doom3 (ROE) v7</a></li>
-<li><a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12">Sikkmod v1.2</a> and <a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe">Sikkmod RoE v1.1</a></li>
-<li>See the <a href="./mods.html">Mods section</a> for more details, and the <a href="https://github.com/dhewm/dhewm3-sdk/">dhewm3-sdk repository</a> for source code</li>
+<li><a
+href="https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit">Blood
+Mod v1.5</a></li>
+<li><a
+href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">Perfected
+Doom3 (ROE) v7</a></li>
+<li><a
+href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12">Sikkmod
+v1.2</a> and <a
+href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe">Sikkmod
+RoE v1.1</a></li>
+<li>See the <a href="./mods.html">Mods section</a> for more details, and
+the <a href="https://github.com/dhewm/dhewm3-sdk/">dhewm3-sdk
+repository</a> for source code</li>
 </ul></li>
-<li>A brand new <strong>settings menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a>.<br />
-Can be opened with <code>F10</code> (unless that key is bound already) or by entering <code>dhewm3Settings</code> in the console. It has lots of settings that the original options menu doesn’t have and can be easily navigated with gamepad or keyboard (or the mouse, of course). It can also be opened while in the game, which then is paused (if Single Player) but still visible, so the effect of most graphics settings can be seen immediately. Needs SDL2 and C++11.</li>
-<li><strong>“Soft” Particles</strong> (that don’t “cut” into geometry but fade smoothly), based on code from <a href="https://www.thedarkmod.com/main/">The Dark Mod</a> 2.04. Can be enabled/disabled with <code>r_useSoftParticles</code>, is applied automatically for all appropriate particles (view-aligned, using additive or alpha blending and not too small)</li>
-<li><code>r_enableDepthCapture</code>: Enable capturing depth buffer to texture, needed for the soft particles. Can be used in custom materials by using the <code>"_currentDepth"</code> texture</li>
-<li>Replaced dependency on (external) zlib with integrated <a href="https://github.com/richgel999/miniz">miniz</a></li>
+<li>A brand new <strong>settings menu</strong> that uses <a
+href="https://github.com/ocornut/imgui">Dear ImGui</a>.<br />
+Can be opened with <code>F10</code> (unless that key is bound already)
+or by entering <code>dhewm3Settings</code> in the console. It has lots
+of settings that the original options menu doesn’t have and can be
+easily navigated with gamepad or keyboard (or the mouse, of course). It
+can also be opened while in the game, which then is paused (if Single
+Player) but still visible, so the effect of most graphics settings can
+be seen immediately. Needs SDL2 and C++11.</li>
+<li><strong>“Soft” Particles</strong> (that don’t “cut” into geometry
+but fade smoothly), based on code from <a
+href="https://www.thedarkmod.com/main/">The Dark Mod</a> 2.04. Can be
+enabled/disabled with <code>r_useSoftParticles</code>, is applied
+automatically for all appropriate particles (view-aligned, using
+additive or alpha blending and not too small)</li>
+<li><code>r_enableDepthCapture</code>: Enable capturing depth buffer to
+texture, needed for the soft particles. Can be used in custom materials
+by using the <code>"_currentDepth"</code> texture</li>
+<li>Replaced dependency on (external) zlib with integrated <a
+href="https://github.com/richgel999/miniz">miniz</a></li>
 <li><strong>HighDPI</strong>/Retina support</li>
-<li>Allow inverted mouse look (horizontally, vertically or both) with <code>m_invertLook</code></li>
-<li>CVar to allow always run in single player (still drains stamina though!): <code>in_allowAlwaysRunInSP</code></li>
-<li>VSync can be enabled/disabled on the fly, without restarting the renderer (still with <code>r_swapInterval</code> or in the menu, of course; needs SDL2)</li>
-<li>Allow enabling/disabling <a href="https://en.wikipedia.org/wiki/Head-related_transfer_function">HRTF</a> with <code>s_alHRTF</code></li>
-<li><code>s_alOutputLimiter</code>: Configure OpenAL’s output-limiter which temporarily reduces the overall volume when too many too loud sounds play at once, to avoid issues like clipping</li>
-<li><code>s_scaleDownAndClamp</code>: Clamp and reduce volume of all sounds to prevent clipping or temporary downscaling by OpenAL’s output limiter</li>
-<li>If <code>r_windowResizable</code> is set, the dhewm3 window (when in windowed mode..) can be freely resized. Needs SDL2; with 2.0.5 and newer it’s applied immediately, otherwise when creating the window.</li>
-<li>If switching between fullscreen and windowed mode or similar changes causes issues (like <a href="https://github.com/dhewm/dhewm3/issues/587#issuecomment-2205807989">here</a>), you can set <code>r_vidRestartAlwaysFull 1</code>, so (again) a full <code>vid_restart</code> is done, instead of the partial one which <em>usually</em> suffices for just changing the resolution or fullscreen state. If you run into that issue (probably a driver bug), you’ll probably also want to set <code>r_windowResizable 0</code>, because resizing the window that way also triggered the bug, and in that case no <code>vid_restart</code> is done at all</li>
-<li>Fixed screenshots when using native Wayland (<code>SDL_VIDEODRIVER=wayland</code>)</li>
-<li>If you enter the <code>map</code> command in the console, without any arguments, the current map name is printed</li>
-<li>Support OpenGL debug contexts and messages (<code>GL_ARB_debug_output</code>). Can be enabled with <code>r_glDebugContext 1</code>. Changing that CVar requires a <code>vid_restart</code> (or set it as startup argument)</li>
-<li>In the Win32 release, updated the bundled SDL2 to 2.30.5 and cURL to 8.9.0</li>
-<li>In the dhewm3-mods archive for Linux, the librecoop libs have been rebuild (fix <a href="https://github.com/dhewm/dhewm3/issues/589">#589</a>)</li>
+<li>Allow inverted mouse look (horizontally, vertically or both) with
+<code>m_invertLook</code></li>
+<li>CVar to allow always run in single player (still drains stamina
+though!): <code>in_allowAlwaysRunInSP</code></li>
+<li>VSync can be enabled/disabled on the fly, without restarting the
+renderer (still with <code>r_swapInterval</code> or in the menu, of
+course; needs SDL2)</li>
+<li>Allow enabling/disabling <a
+href="https://en.wikipedia.org/wiki/Head-related_transfer_function">HRTF</a>
+with <code>s_alHRTF</code></li>
+<li><code>s_alOutputLimiter</code>: Configure OpenAL’s output-limiter
+which temporarily reduces the overall volume when too many too loud
+sounds play at once, to avoid issues like clipping</li>
+<li><code>s_scaleDownAndClamp</code>: Clamp and reduce volume of all
+sounds to prevent clipping or temporary downscaling by OpenAL’s output
+limiter</li>
+<li>If <code>r_windowResizable</code> is set, the dhewm3 window (when in
+windowed mode..) can be freely resized. Needs SDL2; with 2.0.5 and newer
+it’s applied immediately, otherwise when creating the window.</li>
+<li>If switching between fullscreen and windowed mode or similar changes
+causes issues (like <a
+href="https://github.com/dhewm/dhewm3/issues/587#issuecomment-2205807989">here</a>),
+you can set <code>r_vidRestartAlwaysFull 1</code>, so (again) a full
+<code>vid_restart</code> is done, instead of the partial one which
+<em>usually</em> suffices for just changing the resolution or fullscreen
+state. If you run into that issue (probably a driver bug), you’ll
+probably also want to set <code>r_windowResizable 0</code>, because
+resizing the window that way also triggered the bug, and in that case no
+<code>vid_restart</code> is done at all</li>
+<li>Fixed screenshots when using native Wayland
+(<code>SDL_VIDEODRIVER=wayland</code>)</li>
+<li>If you enter the <code>map</code> command in the console, without
+any arguments, the current map name is printed</li>
+<li>Support OpenGL debug contexts and messages
+(<code>GL_ARB_debug_output</code>). Can be enabled with
+<code>r_glDebugContext 1</code>. Changing that CVar requires a
+<code>vid_restart</code> (or set it as startup argument)</li>
+<li>In the Win32 release, updated the bundled SDL2 to 2.30.5 and cURL to
+8.9.0</li>
+<li>In the dhewm3-mods archive for Linux, the librecoop libs have been
+rebuild (fix <a
+href="https://github.com/dhewm/dhewm3/issues/589">#589</a>)</li>
 </ul>
-<p>Thank you very much to everyone who tested this, especially <span class="citation" data-cites="j4reporting">@j4reporting</span>, <span class="citation" data-cites="ALord7">@ALord7</span>, <span class="citation" data-cites="Eonfge">@Eonfge</span> and <span class="citation" data-cites="tomkidd">@tomkidd</span> (who also maintains MacSourcePorts)!</p>
-<p>Special thanks to <strong>Valkyries733</strong> from the <em>idtech 4</em> Discord server for creating the awesome picture with the birthday cake!</p>
-<h4 id="dhewm3-1.5.4-release-candidate-3">2024-07-29: <em>dhewm3 1.5.4 Release Candidate 3</em></h4>
-<p>The third Release Candidate for the upcoming 1.5.4 release is available!</p>
+<p>Thank you very much to everyone who tested this, especially <span
+class="citation" data-cites="j4reporting">@j4reporting</span>, <span
+class="citation" data-cites="ALord7">@ALord7</span>, <span
+class="citation" data-cites="Eonfge">@Eonfge</span> and <span
+class="citation" data-cites="tomkidd">@tomkidd</span> (who also
+maintains MacSourcePorts)!</p>
+<p>Special thanks to <strong>Valkyries733</strong> from the <em>idtech
+4</em> Discord server for creating the awesome picture with the birthday
+cake!</p>
+<h4 id="dhewm3-1.5.4-release-candidate-3">2024-07-29: <em>dhewm3 1.5.4
+Release Candidate 3</em></h4>
+<p>The third Release Candidate for the upcoming 1.5.4 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>It fixes an issue with the Soft Particles first noticed in Dentonmod, but the way I had to fix it was kinda intrusive so <strong>testing</strong> would be <strong>very welcome</strong>.</p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC3">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
-<p><em>(Note: The mod DLLs haven’t changed, so if you want to test the supported mods just use the dhewm3-mods archive from <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2">1.5.4 RC2</a>)</em></p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>It fixes an issue with the Soft Particles first noticed in Dentonmod,
+but the way I had to fix it was kinda intrusive so
+<strong>testing</strong> would be <strong>very welcome</strong>.</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC3">download
+it at Github</a></strong> (incl. builds for Windows and 64bit
+Linux).</p>
+<p><em>(Note: The mod DLLs haven’t changed, so if you want to test the
+supported mods just use the dhewm3-mods archive from <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2">1.5.4
+RC2</a>)</em></p>
 </details>
-<h4 id="dhewm3-1.5.4-release-candidate-2">2024-07-28: <em>dhewm3 1.5.4 Release Candidate 2</em></h4>
-<p>The second Release Candidate for the upcoming 1.5.4 release is available!</p>
+<h4 id="dhewm3-1.5.4-release-candidate-2">2024-07-28: <em>dhewm3 1.5.4
+Release Candidate 2</em></h4>
+<p>The second Release Candidate for the upcoming 1.5.4 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC2">download
+it at Github</a></strong> (incl. builds for Windows and 64bit
+Linux).</p>
 <p>It only has some minor changes:</p>
 <ul>
-<li>Fixed mods menu to support Perfected Doom 3 ROE and Sikkmod RoE (so they automatically get fs_game_base set to d3xp when started from the menu)</li>
-<li>Make entries for base game and Resurrection of Evil (d3xp) in mods menu clearer</li>
+<li>Fixed mods menu to support Perfected Doom 3 ROE and Sikkmod RoE (so
+they automatically get fs_game_base set to d3xp when started from the
+menu)</li>
+<li>Make entries for base game and Resurrection of Evil (d3xp) in mods
+menu clearer</li>
 <li>Fixed the Perfected Doom 3 ROE mod (so it actually starts)</li>
-<li>Applied fixes to Perfected Doom 3 and Sikkmod so the crosshair is round in widescreen resolutions</li>
+<li>Applied fixes to Perfected Doom 3 and Sikkmod so the crosshair is
+round in widescreen resolutions</li>
 </ul>
-<p><em>(see the newspost just below this one for changes since 1.5.3)</em></p>
+<p><em>(see the newspost just below this one for changes since
+1.5.3)</em></p>
 </details>
-<h4 id="dhewm3-1.5.4-release-candidate-1">2024-07-27: <em>dhewm3 1.5.4 Release Candidate 1</em></h4>
-<p>A first Release Candidate of the upcoming 1.5.4 release is available!</p>
+<h4 id="dhewm3-1.5.4-release-candidate-1">2024-07-27: <em>dhewm3 1.5.4
+Release Candidate 1</em></h4>
+<p>A first Release Candidate of the upcoming 1.5.4 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
 <p><a href="./dhewm3-1.5.4rc1.jpg" title="dhewm3 1.5.4 RC1"><img src="./small-dhewm3-1.5.4rc1.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
-<p>The biggest new features since 1.5.3 are a new mod-independent <strong>Settings Menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a> and <strong>Soft Particles</strong> (that don’t “cut” into geometry but fade smoothly).<br />
-The <em>Settings Menu</em> can be opened by pressing the <code>F10</code> key (unless some other action is already bound to that key) or by entering <code>dhewm3Settings</code> in the console and lets you configure many basic and advanced options, can be navigated with gamepad, keyboard or mouse and has an improved keybindings menu (compared to the original options menu).</p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
+<p>The biggest new features since 1.5.3 are a new mod-independent
+<strong>Settings Menu</strong> that uses <a
+href="https://github.com/ocornut/imgui">Dear ImGui</a> and <strong>Soft
+Particles</strong> (that don’t “cut” into geometry but fade
+smoothly).<br />
+The <em>Settings Menu</em> can be opened by pressing the
+<code>F10</code> key (unless some other action is already bound to that
+key) or by entering <code>dhewm3Settings</code> in the console and lets
+you configure many basic and advanced options, can be navigated with
+gamepad, keyboard or mouse and has an improved keybindings menu
+(compared to the original options menu).</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.4_RC1">download
+it at Github</a></strong> (incl. builds for Windows and 64bit
+Linux).</p>
 <p><a href="./dhewm3-soft-particles.jpg" title="Classic Particles vs Soft Particles"><img src="./small-dhewm3-soft-particles.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p><strong>Changes since 1.5.3:</strong></p>
 <ul>
 <li>dhewm3-mods now contains game DLLs/libs for several new mods:
 <ul>
-<li><a href="https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit">Blood Mod v1.5</a></li>
-<li><a href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">Perfected Doom3 (ROE) v7</a></li>
-<li><a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12">Sikkmod v1.2</a> and <a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe">Sikkmod RoE v1.1</a></li>
-<li>See the <a href="./mods.html">Mods section</a> for more details, and the <a href="https://github.com/dhewm/dhewm3-sdk/">dhewm3-sdk repository</a> for source code</li>
+<li><a
+href="https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit">Blood
+Mod v1.5</a></li>
+<li><a
+href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">Perfected
+Doom3 (ROE) v7</a></li>
+<li><a
+href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12">Sikkmod
+v1.2</a> and <a
+href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe">Sikkmod
+RoE v1.1</a></li>
+<li>See the <a href="./mods.html">Mods section</a> for more details, and
+the <a href="https://github.com/dhewm/dhewm3-sdk/">dhewm3-sdk
+repository</a> for source code</li>
 </ul></li>
-<li>A brand new <strong>settings menu</strong> that uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a>.<br />
-Can be opened with <code>F10</code> (unless that key is bound already) or by entering <code>dhewm3Settings</code> in the console. It has lots of settings that the original options menu doesn’t have and can be easily navigated with gamepad or keyboard (or the mouse, of course). It can also be opened while in the game, which then is paused (if Single Player) but still visible, so the effect of most graphics settings can be seen immediately. Needs SDL2 and C++11.</li>
-<li><strong>“Soft” Particles</strong> (that don’t “cut” into geometry but fade smoothly), based on code from <a href="https://www.thedarkmod.com/main/">The Dark Mod</a> 2.04. Can be enabled/disabled with <code>r_useSoftParticles</code>, is applied automatically for all appropriate particles (view-aligned, using additive or alpha blending and not too small)</li>
-<li><code>r_enableDepthCapture</code>: Enable capturing depth buffer to texture, needed for the soft particles. Can be used in custom materials by using the <code>"_currentDepth"</code> texture</li>
-<li>Replaced dependency on (external) zlib with integrated <a href="https://github.com/richgel999/miniz">miniz</a></li>
+<li>A brand new <strong>settings menu</strong> that uses <a
+href="https://github.com/ocornut/imgui">Dear ImGui</a>.<br />
+Can be opened with <code>F10</code> (unless that key is bound already)
+or by entering <code>dhewm3Settings</code> in the console. It has lots
+of settings that the original options menu doesn’t have and can be
+easily navigated with gamepad or keyboard (or the mouse, of course). It
+can also be opened while in the game, which then is paused (if Single
+Player) but still visible, so the effect of most graphics settings can
+be seen immediately. Needs SDL2 and C++11.</li>
+<li><strong>“Soft” Particles</strong> (that don’t “cut” into geometry
+but fade smoothly), based on code from <a
+href="https://www.thedarkmod.com/main/">The Dark Mod</a> 2.04. Can be
+enabled/disabled with <code>r_useSoftParticles</code>, is applied
+automatically for all appropriate particles (view-aligned, using
+additive or alpha blending and not too small)</li>
+<li><code>r_enableDepthCapture</code>: Enable capturing depth buffer to
+texture, needed for the soft particles. Can be used in custom materials
+by using the <code>"_currentDepth"</code> texture</li>
+<li>Replaced dependency on (external) zlib with integrated <a
+href="https://github.com/richgel999/miniz">miniz</a></li>
 <li><strong>HighDPI</strong>/Retina support</li>
-<li>Allow inverted mouse look (horizontally, vertically or both) with <code>m_invertLook</code></li>
-<li>CVar to allow always run in single player (still drains stamina though!): <code>in_allowAlwaysRunInSP</code></li>
-<li>VSync can be enabled/disabled on the fly, without restarting the renderer (still with <code>r_swapInterval</code> or in the menu, of course; needs SDL2)</li>
-<li>Allow enabling/disabling <a href="https://en.wikipedia.org/wiki/Head-related_transfer_function">HRTF</a> with <code>s_alHRTF</code></li>
-<li><code>s_alOutputLimiter</code>: Configure OpenAL’s output-limiter which temporarily reduces the overall volume when too many too loud sounds play at once, to avoid issues like clipping</li>
-<li><code>s_scaleDownAndClamp</code>: Clamp and reduce volume of all sounds to prevent clipping or temporary downscaling by OpenAL’s output limiter</li>
-<li>If <code>r_windowResizable</code> is set, the dhewm3 window (when in windowed mode..) can be freely resized. Needs SDL2; with 2.0.5 and newer it’s applied immediately, otherwise when creating the window.</li>
-<li>If switching between fullscreen and windowed mode or similar changes causes issues (like <a href="https://github.com/dhewm/dhewm3/issues/587#issuecomment-2205807989">here</a>), you can set <code>r_vidRestartAlwaysFull 1</code>, so (again) a full <code>vid_restart</code> is done, instead of the partial one which <em>usually</em> suffices for just changing the resolution or fullscreen state. If you run into that issue (probably a driver bug), you’ll probably also want to set <code>r_windowResizable 0</code>, because resizing the window that way also triggered the bug, and in that case no <code>vid_restart</code> is done at all</li>
-<li>Fixed screenshots when using native Wayland (<code>SDL_VIDEODRIVER=wayland</code>)</li>
-<li>If you enter the <code>map</code> command in the console, without any arguments, the current map name is printed</li>
-<li>Support OpenGL debug contexts and messages (<code>GL_ARB_debug_output</code>). Can be enabled with <code>r_glDebugContext 1</code>. Changing that CVar requires a <code>vid_restart</code> (or set it as startup argument)</li>
-<li>In the Win32 release, updated the bundled SDL2 to 2.30.5 and cURL to 8.9.0</li>
-<li>In the dhewm3-mods archive for Linux, the librecoop libs have been rebuild (fix <a href="https://github.com/dhewm/dhewm3/issues/589">#589</a>)</li>
+<li>Allow inverted mouse look (horizontally, vertically or both) with
+<code>m_invertLook</code></li>
+<li>CVar to allow always run in single player (still drains stamina
+though!): <code>in_allowAlwaysRunInSP</code></li>
+<li>VSync can be enabled/disabled on the fly, without restarting the
+renderer (still with <code>r_swapInterval</code> or in the menu, of
+course; needs SDL2)</li>
+<li>Allow enabling/disabling <a
+href="https://en.wikipedia.org/wiki/Head-related_transfer_function">HRTF</a>
+with <code>s_alHRTF</code></li>
+<li><code>s_alOutputLimiter</code>: Configure OpenAL’s output-limiter
+which temporarily reduces the overall volume when too many too loud
+sounds play at once, to avoid issues like clipping</li>
+<li><code>s_scaleDownAndClamp</code>: Clamp and reduce volume of all
+sounds to prevent clipping or temporary downscaling by OpenAL’s output
+limiter</li>
+<li>If <code>r_windowResizable</code> is set, the dhewm3 window (when in
+windowed mode..) can be freely resized. Needs SDL2; with 2.0.5 and newer
+it’s applied immediately, otherwise when creating the window.</li>
+<li>If switching between fullscreen and windowed mode or similar changes
+causes issues (like <a
+href="https://github.com/dhewm/dhewm3/issues/587#issuecomment-2205807989">here</a>),
+you can set <code>r_vidRestartAlwaysFull 1</code>, so (again) a full
+<code>vid_restart</code> is done, instead of the partial one which
+<em>usually</em> suffices for just changing the resolution or fullscreen
+state. If you run into that issue (probably a driver bug), you’ll
+probably also want to set <code>r_windowResizable 0</code>, because
+resizing the window that way also triggered the bug, and in that case no
+<code>vid_restart</code> is done at all</li>
+<li>Fixed screenshots when using native Wayland
+(<code>SDL_VIDEODRIVER=wayland</code>)</li>
+<li>If you enter the <code>map</code> command in the console, without
+any arguments, the current map name is printed</li>
+<li>Support OpenGL debug contexts and messages
+(<code>GL_ARB_debug_output</code>). Can be enabled with
+<code>r_glDebugContext 1</code>. Changing that CVar requires a
+<code>vid_restart</code> (or set it as startup argument)</li>
+<li>In the Win32 release, updated the bundled SDL2 to 2.30.5 and cURL to
+8.9.0</li>
+<li>In the dhewm3-mods archive for Linux, the librecoop libs have been
+rebuild (fix <a
+href="https://github.com/dhewm/dhewm3/issues/589">#589</a>)</li>
 </ul>
 </details>
 <h4 id="dhewm3-1.5.3">2024-03-29: <em>dhewm3 1.5.3</em></h4>
 <p><a href="./dhewm3-1.5.3.jpg" title="dhewm3 1.5.3"><img src="./small-dhewm3-1.5.3.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>Just in time for the Easter weekend, dhewm3 1.5.3 is done!</p>
-<p>This brings (the often-requested) support for <strong>gamepads</strong>, as long as they’re supported by SDL2. This includes XBox Controllers (and compatible ones), Playstation 3-5 controllers, Nintendo Switch Pro Controllers, many thirdparty controllers for those consoles, and lots of other gamepads for PC.<br />
-See the <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration documentation</a> for how to make make it work (well, basically you can just plug in your gamepad and configure bindings in the Controls menu, but I also provide configs with default bindings that you could use).<br />
-Furthermore, dhewm3 now supports taking <strong>screenshots in different formats</strong>: TGA (like before), BMP, JPEG and PNG.<br />
-Last but not least, there were several <strong>bugfixes</strong> and other small improvements, see the list below for details.</p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3">download dhewm3 1.5.3 at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the <a href="./mods.html">supported mods</a></strong>).</p>
+<p>This brings (the often-requested) support for
+<strong>gamepads</strong>, as long as they’re supported by SDL2. This
+includes XBox Controllers (and compatible ones), Playstation 3-5
+controllers, Nintendo Switch Pro Controllers, many thirdparty
+controllers for those consoles, and lots of other gamepads for PC.<br />
+See the <a
+href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration
+documentation</a> for how to make make it work (well, basically you can
+just plug in your gamepad and configure bindings in the Controls menu,
+but I also provide configs with default bindings that you could
+use).<br />
+Furthermore, dhewm3 now supports taking <strong>screenshots in different
+formats</strong>: TGA (like before), BMP, JPEG and PNG.<br />
+Last but not least, there were several <strong>bugfixes</strong> and
+other small improvements, see the list below for details.</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3">download
+dhewm3 1.5.3 at Github</a></strong> (incl. builds for Windows and 64bit
+Linux for both dhewm3 <strong>and the <a href="./mods.html">supported
+mods</a></strong>).</p>
 <p><strong>Changes since 1.5.2:</strong></p>
 <ul>
-<li>Support for gamepads (based on code from <a href="https://github.com/blendogames/quadrilateralcowboy">Quadrilateral Cowboy</a>, but heavily expanded). See <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration.md</a> for more information.</li>
-<li>Support different file formats for screenshots by setting the <code>r_screenshotFormat</code> CVar (0 = TGA, still the default, 1 = BMP, 2 = PNG, 3 = JPG). <code>r_screenshotJpgQuality</code> and <code>r_screenshotPngCompression</code> allow configuring how JPG/PNG are compressed. Thanks <em>eezstreet (Nick Whitlock)</em>!</li>
-<li>Fixed problems with lights after loading a savegame (<a href="https://github.com/dhewm/dhewm3/issues/495">#495</a>)</li>
-<li>Fix volume of some weapon sounds, like chaingun being too quit (<a href="https://github.com/dhewm/dhewm3/issues/326">#326</a>)</li>
-<li>Increase stack size on Windows to 8MB (instead default of 1MB) to make loading huge models work</li>
-<li>Fixed crash in Radiant Model Preview Dialog (<a href="https://github.com/dhewm/dhewm3/issues/496">#496</a>)</li>
+<li>Support for gamepads (based on code from <a
+href="https://github.com/blendogames/quadrilateralcowboy">Quadrilateral
+Cowboy</a>, but heavily expanded). See <a
+href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration.md</a>
+for more information.</li>
+<li>Support different file formats for screenshots by setting the
+<code>r_screenshotFormat</code> CVar (0 = TGA, still the default, 1 =
+BMP, 2 = PNG, 3 = JPG). <code>r_screenshotJpgQuality</code> and
+<code>r_screenshotPngCompression</code> allow configuring how JPG/PNG
+are compressed. Thanks <em>eezstreet (Nick Whitlock)</em>!</li>
+<li>Fixed problems with lights after loading a savegame (<a
+href="https://github.com/dhewm/dhewm3/issues/495">#495</a>)</li>
+<li>Fix volume of some weapon sounds, like chaingun being too quit (<a
+href="https://github.com/dhewm/dhewm3/issues/326">#326</a>)</li>
+<li>Increase stack size on Windows to 8MB (instead default of 1MB) to
+make loading huge models work</li>
+<li>Fixed crash in Radiant Model Preview Dialog (<a
+href="https://github.com/dhewm/dhewm3/issues/496">#496</a>)</li>
 <li>Fix MD3 model support</li>
 <li>Several new CMake options:
 <ul>
-<li>To enable Clang/GCC Address Sanitizer and Undefined Behavior Sanitizer</li>
-<li>Hardlink the game code into the executable (instead of using game DLLs, only supports base <em>or</em> d3xp then; needed for Undefined Behavior Sanitizer)</li>
-<li>Force colored diagnostic output from GCC or Clang (esp. useful when building with ninja)</li>
+<li>To enable Clang/GCC Address Sanitizer and Undefined Behavior
+Sanitizer</li>
+<li>Hardlink the game code into the executable (instead of using game
+DLLs, only supports base <em>or</em> d3xp then; needed for Undefined
+Behavior Sanitizer)</li>
+<li>Force colored diagnostic output from GCC or Clang (esp. useful when
+building with ninja)</li>
 </ul></li>
 <li>Fix several compiler warnings</li>
-<li>Added build instructions for Linux (and similar systems) to <a href="https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu">README.md</a></li>
-<li>Added documentation for dhewm3-specific settings (mostly CVars): <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md">Configuration.md</a></li>
+<li>Added build instructions for Linux (and similar systems) to <a
+href="https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu">README.md</a></li>
+<li>Added documentation for dhewm3-specific settings (mostly CVars): <a
+href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md">Configuration.md</a></li>
 <li>Updated stb_image and stb_vorbis</li>
 <li>Updated minizip (from zlib/contrib) to latest upstream code</li>
-<li>Added <code>in_namePressed</code> CVar to print currently pressed key/button (useful for binding keys in the console or configs). Thanks <em>Biel Bestué de Luna</em>!</li>
+<li>Added <code>in_namePressed</code> CVar to print currently pressed
+key/button (useful for binding keys in the console or configs). Thanks
+<em>Biel Bestué de Luna</em>!</li>
 <li>Probably more bugfixes I forgot to list here..</li>
-<li>Updated bundled libs in build for Windows: OpenAL Soft 1.23.1, SDL 2.30.0, cURL 8.6.0, zlib 1.3.1</li>
-<li>Linux binary build now requires SDL 2.0.12 or newer (I provide an updated <code>libSDL2-2.0.so.0</code> though).<br />
-If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are still supported (however, SDL1.2 doesn’t support gamepads)</li>
+<li>Updated bundled libs in build for Windows: OpenAL Soft 1.23.1, SDL
+2.30.0, cURL 8.6.0, zlib 1.3.1</li>
+<li>Linux binary build now requires SDL 2.0.12 or newer (I provide an
+updated <code>libSDL2-2.0.so.0</code> though).<br />
+If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are
+still supported (however, SDL1.2 doesn’t support gamepads)</li>
 </ul>
-<h4 id="dhewm3-1.5.3-release-candidate-2">2024-03-19: <em>dhewm3 1.5.3 Release Candidate 2</em></h4>
-<p>The second release candidate for 1.5.3 fixes a bug with gamepad support (sometimes the gamepad buttons were mixed up after using ingame UI panels) and updates the integrated minizip library.</p>
-<p>Furthermore, all the mods have been updated for gamepad support and the bugfixes since 1.5.2.</p>
-<p>Download <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3_RC2">dhewm3 1.5.3 RC2 at Github</a></strong> (incl. builds for Windows and 64bit Linux)!</p>
-<h4 id="dhewm3-1.5.3-release-candidate-1">2024-02-04: <em>dhewm3 1.5.3 Release Candidate 1</em></h4>
-<p>A first Release Candidate of the upcoming 1.5.3 release is available!</p>
+<h4 id="dhewm3-1.5.3-release-candidate-2">2024-03-19: <em>dhewm3 1.5.3
+Release Candidate 2</em></h4>
+<p>The second release candidate for 1.5.3 fixes a bug with gamepad
+support (sometimes the gamepad buttons were mixed up after using ingame
+UI panels) and updates the integrated minizip library.</p>
+<p>Furthermore, all the mods have been updated for gamepad support and
+the bugfixes since 1.5.2.</p>
+<p>Download <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3_RC2">dhewm3
+1.5.3 RC2 at Github</a></strong> (incl. builds for Windows and 64bit
+Linux)!</p>
+<h4 id="dhewm3-1.5.3-release-candidate-1">2024-02-04: <em>dhewm3 1.5.3
+Release Candidate 1</em></h4>
+<p>A first Release Candidate of the upcoming 1.5.3 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>This brings support for <strong>gamepads</strong>, as long as they’re supported by SDL2. This includes XBox Controllers (and compatible ones), Playstation 3-5 controllers, Nintendo Switch Pro Controllers, many thirdparty controllers for those consoles, and lots of other gamepads for PC.<br />
-Furthermore, dhewm3 now supports taking <strong>screenshots in different formats</strong>: TGA (like before), BMP, JPEG and PNG.<br />
-Last but not least, there were several <strong>bugfixes</strong> and other small improvements, see the list below for details.</p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>This brings support for <strong>gamepads</strong>, as long as they’re
+supported by SDL2. This includes XBox Controllers (and compatible ones),
+Playstation 3-5 controllers, Nintendo Switch Pro Controllers, many
+thirdparty controllers for those consoles, and lots of other gamepads
+for PC.<br />
+Furthermore, dhewm3 now supports taking <strong>screenshots in different
+formats</strong>: TGA (like before), BMP, JPEG and PNG.<br />
+Last but not least, there were several <strong>bugfixes</strong> and
+other small improvements, see the list below for details.</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.3_RC1">download
+it at Github</a></strong> (incl. builds for Windows and 64bit
+Linux).</p>
 <p><strong>Changes since 1.5.2:</strong></p>
 <ul>
-<li>Support for gamepads (based on code from <a href="https://github.com/blendogames/quadrilateralcowboy">Quadrilateral Cowboy</a>, but heavily expanded). See <a href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration.md</a> for more information.</li>
-<li>Support different file formats for screenshots by setting the <code>r_screenshotFormat</code> CVar (0 = TGA, still the default, 1 = BMP, 2 = PNG, 3 = JPG). <code>r_screenshotJpgQuality</code> and <code>r_screenshotPngCompression</code> allow configuring how JPG/PNG are compressed. Thanks <em>eezstreet (Nick Whitlock)</em>!</li>
-<li>Fixed problems with lights after loading a savegame (<a href="https://github.com/dhewm/dhewm3/issues/495">#495</a>)</li>
-<li>Fix volume of some weapon sounds, like chaingun being too quit (<a href="https://github.com/dhewm/dhewm3/issues/326">#326</a>)</li>
-<li>Increase stack size on Windows to 8MB (instead default of 1MB) to make loading huge models work</li>
-<li>Fixed crash in Radiant Model Preview Dialog (<a href="https://github.com/dhewm/dhewm3/issues/496">#496</a>)</li>
+<li>Support for gamepads (based on code from <a
+href="https://github.com/blendogames/quadrilateralcowboy">Quadrilateral
+Cowboy</a>, but heavily expanded). See <a
+href="https://github.com/dhewm/dhewm3/blob/master/Configuration.md#using-gamepads">Configuration.md</a>
+for more information.</li>
+<li>Support different file formats for screenshots by setting the
+<code>r_screenshotFormat</code> CVar (0 = TGA, still the default, 1 =
+BMP, 2 = PNG, 3 = JPG). <code>r_screenshotJpgQuality</code> and
+<code>r_screenshotPngCompression</code> allow configuring how JPG/PNG
+are compressed. Thanks <em>eezstreet (Nick Whitlock)</em>!</li>
+<li>Fixed problems with lights after loading a savegame (<a
+href="https://github.com/dhewm/dhewm3/issues/495">#495</a>)</li>
+<li>Fix volume of some weapon sounds, like chaingun being too quit (<a
+href="https://github.com/dhewm/dhewm3/issues/326">#326</a>)</li>
+<li>Increase stack size on Windows to 8MB (instead default of 1MB) to
+make loading huge models work</li>
+<li>Fixed crash in Radiant Model Preview Dialog (<a
+href="https://github.com/dhewm/dhewm3/issues/496">#496</a>)</li>
 <li>Fix MD3 model support</li>
 <li>Several new CMake options:
 <ul>
-<li>To enable Clang/GCC Address Sanitizer and Undefined Behavior Sanitizer</li>
-<li>Hardlink the game code into the executable (instead of using game DLLs, only supports base <em>or</em> d3xp then; needed for Undefined Behavior Sanitizer)</li>
-<li>Force colored diagnostic output from GCC or Clang (esp. useful when building with ninja)</li>
+<li>To enable Clang/GCC Address Sanitizer and Undefined Behavior
+Sanitizer</li>
+<li>Hardlink the game code into the executable (instead of using game
+DLLs, only supports base <em>or</em> d3xp then; needed for Undefined
+Behavior Sanitizer)</li>
+<li>Force colored diagnostic output from GCC or Clang (esp. useful when
+building with ninja)</li>
 </ul></li>
 <li>Fix several compiler warnings</li>
 <li>Probably more bugfixes I forgot to list here..</li>
-<li>Added build instructions for Linux (and similar systems) to <a href="https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu">README.md</a></li>
+<li>Added build instructions for Linux (and similar systems) to <a
+href="https://github.com/dhewm/dhewm3?tab=readme-ov-file#compiling-example-using-ubuntu">README.md</a></li>
 <li>Updated stb_image and stb_vorbis</li>
-<li>Updated bundled libs in build for Windows: OpenAL Soft 1.23.1, SDL 2.30.0, cURL 8.6.0, zlib 1.3.1</li>
-<li>Linux binary build now requires SDL 2.0.12 or newer (I provide an updated <code>libSDL2-2.0.so.0</code> though).<br />
-If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are still supported (however, SDL1.2 doesn’t support gamepads)</li>
+<li>Updated bundled libs in build for Windows: OpenAL Soft 1.23.1, SDL
+2.30.0, cURL 8.6.0, zlib 1.3.1</li>
+<li>Linux binary build now requires SDL 2.0.12 or newer (I provide an
+updated <code>libSDL2-2.0.so.0</code> though).<br />
+If you compile dhewm3 yourself, older SDL2 versions (and SDL1.2) are
+still supported (however, SDL1.2 doesn’t support gamepads)</li>
 </ul>
 </details>
 <h4 id="dhewm3-1.5.2">2022-06-13: <em>dhewm3 1.5.2</em></h4>
 <p><a href="./dhewm3-1.5.2.jpg" title="dhewm3 1.5.2 with ridiculously high gamma and brightness"><img src="./small-dhewm3-1.5.2.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>dhewm3 1.5.2 is done.</p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the supported mods</strong>)</p>
-<p>Since dhewm3 1.5.1, there have been a lot of enhancements, like better compatibility with Wayland, or applying gamma and brightness in shaders, which means that those settings work better on all platforms and are visible in screenshots (to demonstrate this, the screenshot above has been taken with <code>r_gamma 2.0</code> and <code>r_brightness 1.9</code>).<br />
-Furthermore, both keyboard- and mouse-input have been improved and now there are multiple Quicksave slots (that are cycled through), so if you accidentally saved in a bad situation, you can still load the previous Quicksave.<br />
-Last but not least, there were lots of bugfixes and the (sadly still Windows-only) tools have been improved again with nice new features like High-DPI support, 64bit-compatibility and <strong>the Script Debugger you might remember from Quake4</strong>!</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2">download it at
+Github</a></strong> (incl. builds for Windows and 64bit Linux for both
+dhewm3 <strong>and the supported mods</strong>)</p>
+<p>Since dhewm3 1.5.1, there have been a lot of enhancements, like
+better compatibility with Wayland, or applying gamma and brightness in
+shaders, which means that those settings work better on all platforms
+and are visible in screenshots (to demonstrate this, the screenshot
+above has been taken with <code>r_gamma 2.0</code> and
+<code>r_brightness 1.9</code>).<br />
+Furthermore, both keyboard- and mouse-input have been improved and now
+there are multiple Quicksave slots (that are cycled through), so if you
+accidentally saved in a bad situation, you can still load the previous
+Quicksave.<br />
+Last but not least, there were lots of bugfixes and the (sadly still
+Windows-only) tools have been improved again with nice new features like
+High-DPI support, 64bit-compatibility and <strong>the Script Debugger
+you might remember from Quake4</strong>!</p>
 <p><a href="./dhewm3-script_debugger.jpg" title="dhewm3 Script Debugger"><img src="./small-dhewm3-script-debugger.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>See the following list for more details.</p>
 <p><strong>Changes since 1.5.1:</strong></p>
 <ul>
-<li>Gamma and Brightness are now applied in the shaders instead of by setting hardware gamma.<br />
-Can be disabled (so hardware gamma is used again) with <code>r_gammaInShaders 0</code></li>
+<li>Gamma and Brightness are now applied in the shaders instead of by
+setting hardware gamma.<br />
+Can be disabled (so hardware gamma is used again) with
+<code>r_gammaInShaders 0</code></li>
 <li>Improvements for (Windows-only) MFC-based tools:
 <ul>
 <li>Added the script debugger! (thanks <em>HarrievG</em>!)<br />
-Original Doom3 didn’t have it (Quake4 did), but the Doom3 GPL source contained most of it. <em>HarrievG</em> implemented the missing parts and we added some new features. It can even be used over the network and while the client part (the debugger GUI) is Windows-only, the server can run on all supported platforms, so you can debug a game running on Linux or macOS, for example.<br />
-Relevant CVars for network debugging are: <code>com_enableDebuggerServer</code> and <code>com_dbgClientAdr</code> and <code>com_dbgServerAdr</code>.<br />
-To debug the running game on the same PC, just enter <code>debugger</code> in the console.</li>
-<li>All tools can now be built in 64bit (thanks <em>raynorpat</em>!)</li>
+Original Doom3 didn’t have it (Quake4 did), but the Doom3 GPL source
+contained most of it. <em>HarrievG</em> implemented the missing parts
+and we added some new features. It can even be used over the network and
+while the client part (the debugger GUI) is Windows-only, the server can
+run on all supported platforms, so you can debug a game running on Linux
+or macOS, for example.<br />
+Relevant CVars for network debugging are:
+<code>com_enableDebuggerServer</code> and <code>com_dbgClientAdr</code>
+and <code>com_dbgServerAdr</code>.<br />
+To debug the running game on the same PC, just enter
+<code>debugger</code> in the console.</li>
+<li>All tools can now be built in 64bit (thanks
+<em>raynorpat</em>!)</li>
 <li>HighDPI support (thanks <em>HarrievG</em>!)</li>
 <li>PDAEditor works now</li>
 <li>Additional bugfixes</li>
 </ul></li>
-<li>Cycle through multiple Quicksave slots instead of immediately overwriting the last Quicksave. The <code>com_numQuicksaves</code> CVar allows setting the number of QuickSaves (<a href="https://github.com/dhewm/dhewm3/issues/392">#392</a>)</li>
-<li>Make r_locksurfaces work (<a href="https://github.com/dhewm/dhewm3/issues/357">#357</a>)<br />
-It doesn’t do exactly what its description and name suggests: it renders everything that is <em>currently</em> visible from the position/view the player had when setting <code>r_locksurfaces 1</code>. Originally it was supposed to render exactly the surfaces that <em>were</em> visible then, but I couldn’t get that to work.<br />
-This is pretty similar, but there may be differences with opened doors and such.</li>
+<li>Cycle through multiple Quicksave slots instead of immediately
+overwriting the last Quicksave. The <code>com_numQuicksaves</code> CVar
+allows setting the number of QuickSaves (<a
+href="https://github.com/dhewm/dhewm3/issues/392">#392</a>)</li>
+<li>Make r_locksurfaces work (<a
+href="https://github.com/dhewm/dhewm3/issues/357">#357</a>)<br />
+It doesn’t do exactly what its description and name suggests: it renders
+everything that is <em>currently</em> visible from the position/view the
+player had when setting <code>r_locksurfaces 1</code>. Originally it was
+supposed to render exactly the surfaces that <em>were</em> visible then,
+but I couldn’t get that to work.<br />
+This is pretty similar, but there may be differences with opened doors
+and such.</li>
 <li>Keyboard input improvements (mostly SDL2-only):
 <ul>
-<li>Support (hopefully) all keyboard keys on all kinds of keyboard layouts by using scancodes for otherwise unknown keys</li>
-<li>Support typing in non-ASCII characters, if supported by Doom3 (it supports ISO-8859-1)</li>
+<li>Support (hopefully) all keyboard keys on all kinds of keyboard
+layouts by using scancodes for otherwise unknown keys</li>
+<li>Support typing in non-ASCII characters, if supported by Doom3 (it
+supports ISO-8859-1)</li>
 <li>Support the clipboard also on non-Windows platforms<br />
-You can paste text from the clipboard into the console or other edit fields with <code>Shift+Insert</code></li>
+You can paste text from the clipboard into the console or other edit
+fields with <code>Shift+Insert</code></li>
 <li>Explicit support for Right Ctrl, Alt and Shift keys<br />
 (can be bound to different actions than their left counterparts)</li>
-<li>Added <code>in_grabKeyboard</code> CVar to make sure dhewm3 gets <em>all</em> keyboard input<br />
-Prevents the Windows-key or Alt-Tab or whatever from taking focus from the game</li>
-<li>Added <code>in_ignoreConsoleKey</code> - if set to <code>1</code>, the console is only opened with Shift+Esc, and the “console key” (that key between Esc, 1 and Tab) can be freely bound to an action (and its char can be typed in the console without closing it).</li>
-<li>Added (SDL2-only) “auto” option for <code>in_kbd</code>: When not disabling the console key, dhewm3 will try to automatically detect it if <code>in_kbd</code> is set to “auto” (now default)</li>
+<li>Added <code>in_grabKeyboard</code> CVar to make sure dhewm3 gets
+<em>all</em> keyboard input<br />
+Prevents the Windows-key or Alt-Tab or whatever from taking focus from
+the game</li>
+<li>Added <code>in_ignoreConsoleKey</code> - if set to <code>1</code>,
+the console is only opened with Shift+Esc, and the “console key” (that
+key between Esc, 1 and Tab) can be freely bound to an action (and its
+char can be typed in the console without closing it).</li>
+<li>Added (SDL2-only) “auto” option for <code>in_kbd</code>: When not
+disabling the console key, dhewm3 will try to automatically detect it if
+<code>in_kbd</code> is set to “auto” (now default)</li>
 </ul></li>
-<li>Reworked mouse-input and -grabbing code, using absolute mouse mode in fullscreen GUIs (except for the PDA, because it’s implemented weirdly).<br />
-This made releasing the mouse in the main menu possible, as now the ingame cursor is at the same position as the system cursor.</li>
-<li><code>s_alReverbGain</code> CVar to reduce EFX reverb effect intensity (<a href="https://github.com/dhewm/dhewm3/issues/365">#365</a>)</li>
-<li>Pause (looped) sounds when entering menu (<a href="https://github.com/dhewm/dhewm3/issues/330">#330</a>)</li>
-<li>Fixes for looped sounds (<a href="https://github.com/dhewm/dhewm3/issues/390">#390</a>)</li>
-<li>Replace libjpeg with stb_image and libogg/libvorbis(file) with stb_vorbis
+<li>Reworked mouse-input and -grabbing code, using absolute mouse mode
+in fullscreen GUIs (except for the PDA, because it’s implemented
+weirdly).<br />
+This made releasing the mouse in the main menu possible, as now the
+ingame cursor is at the same position as the system cursor.</li>
+<li><code>s_alReverbGain</code> CVar to reduce EFX reverb effect
+intensity (<a
+href="https://github.com/dhewm/dhewm3/issues/365">#365</a>)</li>
+<li>Pause (looped) sounds when entering menu (<a
+href="https://github.com/dhewm/dhewm3/issues/330">#330</a>)</li>
+<li>Fixes for looped sounds (<a
+href="https://github.com/dhewm/dhewm3/issues/390">#390</a>)</li>
+<li>Replace libjpeg with stb_image and libogg/libvorbis(file) with
+stb_vorbis
 <ul>
-<li>Now the only required external dependencies should be OpenAL, SDL, zlib and optionally libCURL (and of course the C and C++ runtimes)</li>
+<li>Now the only required external dependencies should be OpenAL, SDL,
+zlib and optionally libCURL (and of course the C and C++ runtimes)</li>
 </ul></li>
-<li>(Optionally) use libbacktrace on non-Windows platforms for more useful backtraces in case of crashes (usually linked statically)</li>
-<li>Fixed a deadlock (freeze) on Windows when printing messages from another thread</li>
-<li>Fixed endless loop (game locking up at startup) if graphics settings couldn’t be applied (<a href="https://github.com/dhewm/dhewm3/issues/386">#386</a>)</li>
-<li>Fixed some warnings and uninitialized variables (thanks <em>turol</em>!)</li>
-<li>Work around dmap bug caused by GCC using FMA “optimizations” (<a href="https://github.com/dhewm/dhewm3/issues/147">#147</a>)</li>
-<li>Prevent dhewm3 from being run as root on Unix-like systems to improve security</li>
-<li>Replaced most usages of <code>strncpy()</code> with something safer to prevent buffer overflows (remaining cases should be safe).
+<li>(Optionally) use libbacktrace on non-Windows platforms for more
+useful backtraces in case of crashes (usually linked statically)</li>
+<li>Fixed a deadlock (freeze) on Windows when printing messages from
+another thread</li>
+<li>Fixed endless loop (game locking up at startup) if graphics settings
+couldn’t be applied (<a
+href="https://github.com/dhewm/dhewm3/issues/386">#386</a>)</li>
+<li>Fixed some warnings and uninitialized variables (thanks
+<em>turol</em>!)</li>
+<li>Work around dmap bug caused by GCC using FMA “optimizations” (<a
+href="https://github.com/dhewm/dhewm3/issues/147">#147</a>)</li>
+<li>Prevent dhewm3 from being run as root on Unix-like systems to
+improve security</li>
+<li>Replaced most usages of <code>strncpy()</code> with something safer
+to prevent buffer overflows (remaining cases should be safe).
 <ul>
-<li>Just a precaution, I don’t know if any of them could actually be exploited, but there were some compiler warnings in newer GCC versions.</li>
+<li>Just a precaution, I don’t know if any of them could actually be
+exploited, but there were some compiler warnings in newer GCC
+versions.</li>
 </ul></li>
-<li>Console output is now logged to <code>dhewm3log.txt</code> (last log is renamed to <code>dhewm3log-old.txt</code>)
+<li>Console output is now logged to <code>dhewm3log.txt</code> (last log
+is renamed to <code>dhewm3log-old.txt</code>)
 <ul>
 <li>On Windows it’s in <code>My Documents/My Games/dhewm3/</code></li>
-<li>On Mac it’s in <code>$HOME/Library/Application Support/dhewm3/</code></li>
-<li>On other Unix-like systems like Linux it’s in <code>$XDG_DATA_HOME/dhewm3/</code> (usually <code>$HOME/.local/share/dhewm3/</code>)</li>
+<li>On Mac it’s in
+<code>$HOME/Library/Application Support/dhewm3/</code></li>
+<li>On other Unix-like systems like Linux it’s in
+<code>$XDG_DATA_HOME/dhewm3/</code> (usually
+<code>$HOME/.local/share/dhewm3/</code>)</li>
 </ul></li>
-<li>Improved compatibility with Wayland (<a href="https://github.com/dhewm/dhewm3/issues/426">#426</a>)</li>
-<li>Work around assertion in AlphaLabs4 due to “ride_of_death” yeeting the dead “monster_zsec_shotgun_12” into the void (<a href="https://github.com/dhewm/dhewm3/issues/409">#409</a>)</li>
-<li>Support loading some mods known to need <code>fs_game_base d3xp</code> via Mods menu (currently, <em>The Lost Mission</em> and <em>LibreCoop d3xp</em> are supported)</li>
-<li>Disable assertion in idSampleDecoderLocal::DecodeOGG() that triggered when starting a new Classic Doom3 game (<a href="https://github.com/dhewm/dhewm3/issues/461">#461</a>)</li>
+<li>Improved compatibility with Wayland (<a
+href="https://github.com/dhewm/dhewm3/issues/426">#426</a>)</li>
+<li>Work around assertion in AlphaLabs4 due to “ride_of_death” yeeting
+the dead “monster_zsec_shotgun_12” into the void (<a
+href="https://github.com/dhewm/dhewm3/issues/409">#409</a>)</li>
+<li>Support loading some mods known to need
+<code>fs_game_base d3xp</code> via Mods menu (currently, <em>The Lost
+Mission</em> and <em>LibreCoop d3xp</em> are supported)</li>
+<li>Disable assertion in idSampleDecoderLocal::DecodeOGG() that
+triggered when starting a new Classic Doom3 game (<a
+href="https://github.com/dhewm/dhewm3/issues/461">#461</a>)</li>
 </ul>
-<h4 id="dhewm3-1.5.2-release-candidate-2">2022-05-29: <em>dhewm3 1.5.2 Release Candidate 2</em></h4>
-<p>The second Release Candidate of the upcoming 1.5.2 release is available!</p>
+<h4 id="dhewm3-1.5.2-release-candidate-2">2022-05-29: <em>dhewm3 1.5.2
+Release Candidate 2</em></h4>
+<p>The second Release Candidate of the upcoming 1.5.2 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux for both dhewm3 <strong>and the supported mods</strong>)</p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC2">download
+it at Github</a></strong> (incl. builds for Windows and 64bit Linux for
+both dhewm3 <strong>and the supported mods</strong>)</p>
 <p><strong>Changes since 1.5.2 Release Candidate 1:</strong></p>
 <ul>
-<li>Updated the code of all mods hosted in <a href="https://github.com/dhewm/dhewm3-sdk">dhewm3-sdk repository</a> with relevant changes from dhewm3.</li>
-<li>The SDL2.dll in the Windows download has been downgraded to 2.0.20 to avoid a regression in SDL 2.0.22 (<a href="https://github.com/dhewm/dhewm3/issues/460">#460</a>)</li>
-<li>Support loading some mods known to need <code>fs_game_base d3xp</code> via Mods menu (currently, <em>The Lost Mission</em> and <em>LibreCoop d3xp</em> are supported)</li>
-<li>Disable assertion in idSampleDecoderLocal::DecodeOGG() that triggered when starting a new Classic Doom3 game (<a href="https://github.com/dhewm/dhewm3/issues/461">#461</a>)</li>
-<li>Fix assertion when loading a mod via menu (<a href="https://github.com/dhewm/dhewm3/issues/458">#458</a>)<br />
-(this was a regression introduced with the keyboard improvements after 1.5.1)</li>
-<li>Fix mouse remaining ungrabbed when running map from Radiant (this was a regression introduced with the reworked mouse grabbing code after 1.5.1)</li>
+<li>Updated the code of all mods hosted in <a
+href="https://github.com/dhewm/dhewm3-sdk">dhewm3-sdk repository</a>
+with relevant changes from dhewm3.</li>
+<li>The SDL2.dll in the Windows download has been downgraded to 2.0.20
+to avoid a regression in SDL 2.0.22 (<a
+href="https://github.com/dhewm/dhewm3/issues/460">#460</a>)</li>
+<li>Support loading some mods known to need
+<code>fs_game_base d3xp</code> via Mods menu (currently, <em>The Lost
+Mission</em> and <em>LibreCoop d3xp</em> are supported)</li>
+<li>Disable assertion in idSampleDecoderLocal::DecodeOGG() that
+triggered when starting a new Classic Doom3 game (<a
+href="https://github.com/dhewm/dhewm3/issues/461">#461</a>)</li>
+<li>Fix assertion when loading a mod via menu (<a
+href="https://github.com/dhewm/dhewm3/issues/458">#458</a>)<br />
+(this was a regression introduced with the keyboard improvements after
+1.5.1)</li>
+<li>Fix mouse remaining ungrabbed when running map from Radiant (this
+was a regression introduced with the reworked mouse grabbing code after
+1.5.1)</li>
 </ul>
 </details>
-<h4 id="dhewm3-1.5.2-release-candidate-1">2022-05-16: <em>dhewm3 1.5.2 Release Candidate 1</em></h4>
-<p>A first Release Candidate of the upcoming 1.5.2 release is available!</p>
+<h4 id="dhewm3-1.5.2-release-candidate-1">2022-05-16: <em>dhewm3 1.5.2
+Release Candidate 1</em></h4>
+<p>A first Release Candidate of the upcoming 1.5.2 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.2_RC1">download
+it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><strong>Changes since 1.5.1:</strong></p>
 <ul>
-<li>Gamma and Brightness are now applied in the shaders instead of by setting hardware gamma.<br />
-Can be disabled (so hardware gamma is used again) with <code>r_gammaInShaders 0</code></li>
+<li>Gamma and Brightness are now applied in the shaders instead of by
+setting hardware gamma.<br />
+Can be disabled (so hardware gamma is used again) with
+<code>r_gammaInShaders 0</code></li>
 <li>Improvements for (Windows-only) MFC-based tools:
 <ul>
 <li>Added the script debugger! (thanks <em>HarrievG</em>!)<br />
-Original Doom3 didn’t have it (Quake4 did), but the Doom3 GPL source contained most of it. <em>HarrievG</em> implemented the missing parts and we added some new features. It can even be used over the network and while the client part (the debugger GUI) is Windows-only, the server can run on all supported platforms, so you can debug a game running on Linux or macOS, for example.<br />
-Relevant CVars for network debugging are: <code>com_enableDebuggerServer</code> and <code>com_dbgClientAdr</code> and <code>com_dbgServerAdr</code>.<br />
-To debug the running game on the same PC, just enter <code>debugger</code> in the console.</li>
-<li>All tools can now be built in 64bit (thanks <em>raynorpat</em>!)</li>
+Original Doom3 didn’t have it (Quake4 did), but the Doom3 GPL source
+contained most of it. <em>HarrievG</em> implemented the missing parts
+and we added some new features. It can even be used over the network and
+while the client part (the debugger GUI) is Windows-only, the server can
+run on all supported platforms, so you can debug a game running on Linux
+or macOS, for example.<br />
+Relevant CVars for network debugging are:
+<code>com_enableDebuggerServer</code> and <code>com_dbgClientAdr</code>
+and <code>com_dbgServerAdr</code>.<br />
+To debug the running game on the same PC, just enter
+<code>debugger</code> in the console.</li>
+<li>All tools can now be built in 64bit (thanks
+<em>raynorpat</em>!)</li>
 <li>HighDPI support (thanks <em>HarrievG</em>!)</li>
 <li>PDAEditor works now</li>
 <li>Additional bugfixes</li>
 </ul></li>
-<li>Cycle through multiple Quicksave slots instead of immediately overwriting the last Quicksave. The <code>com_numQuicksaves</code> CVar allows setting the number of QuickSaves (<a href="https://github.com/dhewm/dhewm3/issues/392">#392</a>)</li>
-<li>Make r_locksurfaces work (<a href="https://github.com/dhewm/dhewm3/issues/357">#357</a>)<br />
-It doesn’t do exactly what its description and name suggests: it renders everything that is <em>currently</em> visible from the position/view the player had when setting <code>r_locksurfaces 1</code>. Originally it was supposed to render exactly the surfaces that <em>were</em> visible then, but I couldn’t get that to work.<br />
-This is pretty similar, but there may be differences with opened doors and such.</li>
+<li>Cycle through multiple Quicksave slots instead of immediately
+overwriting the last Quicksave. The <code>com_numQuicksaves</code> CVar
+allows setting the number of QuickSaves (<a
+href="https://github.com/dhewm/dhewm3/issues/392">#392</a>)</li>
+<li>Make r_locksurfaces work (<a
+href="https://github.com/dhewm/dhewm3/issues/357">#357</a>)<br />
+It doesn’t do exactly what its description and name suggests: it renders
+everything that is <em>currently</em> visible from the position/view the
+player had when setting <code>r_locksurfaces 1</code>. Originally it was
+supposed to render exactly the surfaces that <em>were</em> visible then,
+but I couldn’t get that to work.<br />
+This is pretty similar, but there may be differences with opened doors
+and such.</li>
 <li>Keyboard input improvements (mostly SDL2-only):
 <ul>
-<li>Support (hopefully) all keyboard keys on all kinds of keyboard layouts by using scancodes for otherwise unknown keys</li>
-<li>Support typing in non-ASCII characters, if supported by Doom3 (it supports ISO-8859-1)</li>
+<li>Support (hopefully) all keyboard keys on all kinds of keyboard
+layouts by using scancodes for otherwise unknown keys</li>
+<li>Support typing in non-ASCII characters, if supported by Doom3 (it
+supports ISO-8859-1)</li>
 <li>Support the clipboard also on non-Windows platforms<br />
-You can paste text from the clipboard into the console or other edit fields with <code>Shift+Insert</code></li>
+You can paste text from the clipboard into the console or other edit
+fields with <code>Shift+Insert</code></li>
 <li>Explicit support for Right Ctrl, Alt and Shift keys<br />
 (can be bound to different actions than their left counterparts)</li>
-<li>Added <code>in_grabKeyboard</code> CVar to make sure dhewm3 gets <em>all</em> keyboard input<br />
-Prevents the Windows-key or Alt-Tab or whatever from taking focus from the game</li>
-<li>Added <code>in_ignoreConsoleKey</code> - if set to <code>1</code>, the console is only opened with Shift+Esc, and the “console key” (that key between Esc, 1 and Tab) can be freely bound to an action (and its char can be typed in the console without closing it).</li>
-<li>Added (SDL2-only) “auto” option for <code>in_kbd</code>: When not disabling the console key, dhewm3 will try to automatically detect it if <code>in_kbd</code> is set to “auto” (now default)</li>
+<li>Added <code>in_grabKeyboard</code> CVar to make sure dhewm3 gets
+<em>all</em> keyboard input<br />
+Prevents the Windows-key or Alt-Tab or whatever from taking focus from
+the game</li>
+<li>Added <code>in_ignoreConsoleKey</code> - if set to <code>1</code>,
+the console is only opened with Shift+Esc, and the “console key” (that
+key between Esc, 1 and Tab) can be freely bound to an action (and its
+char can be typed in the console without closing it).</li>
+<li>Added (SDL2-only) “auto” option for <code>in_kbd</code>: When not
+disabling the console key, dhewm3 will try to automatically detect it if
+<code>in_kbd</code> is set to “auto” (now default)</li>
 </ul></li>
-<li>Reworked mouse-input and -grabbing code, using absolute mouse mode in fullscreen GUIs (except for the PDA, because it’s implemented weirdly).<br />
-This made releasing the mouse in the main menu possible, as now the ingame cursor is at the same position as the system cursor.</li>
-<li><code>s_alReverbGain</code> CVar to reduce EFX reverb effect intensity (<a href="https://github.com/dhewm/dhewm3/issues/365">#365</a>)</li>
-<li>Pause (looped) sounds when entering menu (<a href="https://github.com/dhewm/dhewm3/issues/330">#330</a>)</li>
-<li>Fixes for looped sounds (<a href="https://github.com/dhewm/dhewm3/issues/390">#390</a>)</li>
-<li>Replace libjpeg with stb_image and libogg/libvorbis(file) with stb_vorbis
+<li>Reworked mouse-input and -grabbing code, using absolute mouse mode
+in fullscreen GUIs (except for the PDA, because it’s implemented
+weirdly).<br />
+This made releasing the mouse in the main menu possible, as now the
+ingame cursor is at the same position as the system cursor.</li>
+<li><code>s_alReverbGain</code> CVar to reduce EFX reverb effect
+intensity (<a
+href="https://github.com/dhewm/dhewm3/issues/365">#365</a>)</li>
+<li>Pause (looped) sounds when entering menu (<a
+href="https://github.com/dhewm/dhewm3/issues/330">#330</a>)</li>
+<li>Fixes for looped sounds (<a
+href="https://github.com/dhewm/dhewm3/issues/390">#390</a>)</li>
+<li>Replace libjpeg with stb_image and libogg/libvorbis(file) with
+stb_vorbis
 <ul>
-<li>Now the only required external dependencies should be OpenAL, SDL, zlib and optionally libCURL (and of course the C and C++ runtimes)</li>
+<li>Now the only required external dependencies should be OpenAL, SDL,
+zlib and optionally libCURL (and of course the C and C++ runtimes)</li>
 </ul></li>
-<li>(Optionally) use libbacktrace on non-Windows platforms for more useful backtraces in case of crashes (usually linked statically)</li>
-<li>Fixed a deadlock (freeze) on Windows when printing messages from another thread</li>
-<li>Fixed endless loop (game locking up at startup) if graphics settings couldn’t be applied (<a href="https://github.com/dhewm/dhewm3/issues/386">#386</a>)</li>
-<li>Fixed some warnings and uninitialized variables (thanks <em>turol</em>!)</li>
-<li>Work around dmap bug caused by GCC using FMA “optimizations” (<a href="https://github.com/dhewm/dhewm3/issues/147">#147</a>)</li>
-<li>Prevent dhewm3 from being run as root on Unix-like systems to improve security</li>
-<li>Replaced most usages of <code>strncpy()</code> with something safer to prevent buffer overflows (remaining cases should be safe).
+<li>(Optionally) use libbacktrace on non-Windows platforms for more
+useful backtraces in case of crashes (usually linked statically)</li>
+<li>Fixed a deadlock (freeze) on Windows when printing messages from
+another thread</li>
+<li>Fixed endless loop (game locking up at startup) if graphics settings
+couldn’t be applied (<a
+href="https://github.com/dhewm/dhewm3/issues/386">#386</a>)</li>
+<li>Fixed some warnings and uninitialized variables (thanks
+<em>turol</em>!)</li>
+<li>Work around dmap bug caused by GCC using FMA “optimizations” (<a
+href="https://github.com/dhewm/dhewm3/issues/147">#147</a>)</li>
+<li>Prevent dhewm3 from being run as root on Unix-like systems to
+improve security</li>
+<li>Replaced most usages of <code>strncpy()</code> with something safer
+to prevent buffer overflows (remaining cases should be safe).
 <ul>
-<li>Just a precaution, I don’t know if any of them could actually be exploited, but there were some compiler warnings in newer GCC versions.</li>
+<li>Just a precaution, I don’t know if any of them could actually be
+exploited, but there were some compiler warnings in newer GCC
+versions.</li>
 </ul></li>
-<li>Console output is now logged to <code>dhewm3log.txt</code> (last log is renamed to <code>dhewm3log-old.txt</code>)
+<li>Console output is now logged to <code>dhewm3log.txt</code> (last log
+is renamed to <code>dhewm3log-old.txt</code>)
 <ul>
 <li>On Windows it’s in <code>My Documents/My Games/dhewm3/</code></li>
-<li>On Mac it’s in <code>$HOME/Library/Application Support/dhewm3/</code></li>
-<li>On other Unix-like systems like Linux it’s in <code>$XDG_DATA_HOME/dhewm3/</code> (usually <code>$HOME/.local/share/dhewm3/</code>)</li>
+<li>On Mac it’s in
+<code>$HOME/Library/Application Support/dhewm3/</code></li>
+<li>On other Unix-like systems like Linux it’s in
+<code>$XDG_DATA_HOME/dhewm3/</code> (usually
+<code>$HOME/.local/share/dhewm3/</code>)</li>
 </ul></li>
-<li>Improved compatibility with Wayland (<a href="https://github.com/dhewm/dhewm3/issues/426">#426</a>)</li>
-<li>Work around assertion in AlphaLabs4 due to “ride_of_death” yeeting the dead “monster_zsec_shotgun_12” into the void (<a href="https://github.com/dhewm/dhewm3/issues/409">#409</a>)</li>
+<li>Improved compatibility with Wayland (<a
+href="https://github.com/dhewm/dhewm3/issues/426">#426</a>)</li>
+<li>Work around assertion in AlphaLabs4 due to “ride_of_death” yeeting
+the dead “monster_zsec_shotgun_12” into the void (<a
+href="https://github.com/dhewm/dhewm3/issues/409">#409</a>)</li>
 </ul>
 </details>
 <h4 id="miscellaneous-news">2021-12-20: <em>Miscellaneous News</em></h4>
-<p>Some things of interest (that I should’ve written about much earlier) happened since the 1.5.1 release:</p>
+<p>Some things of interest (that I should’ve written about much earlier)
+happened since the 1.5.1 release:</p>
 <p><strong>idDevNet</strong></p>
-<p>dhewm3.org now hosts a mirror of the (defunct) <strong>iddevnet.com</strong>:<br />
-<a href="https://iddevnet.dhewm3.org">https://iddevnet.dhewm3.org</a></p>
-<p>It’s still a very valuable resource for modding Doom3/Quake4/idTech4.</p>
-<p>It was reconstructed from archive.org and private backups that several people luckily made while the original page was still up. This mirror is (<a href="https://github.com/dhewm/iddevnet#missing-files-not-available-on-archiveorg-either">as good as</a>) complete, <em>even including downloads!</em><br />
-To make sure it doesn’t get lost again (and for offline viewing), the whole page source is <a href="https://github.com/dhewm/iddevnet">available on Github</a>.</p>
+<p>dhewm3.org now hosts a mirror of the (defunct)
+<strong>iddevnet.com</strong>:<br />
+<a
+href="https://iddevnet.dhewm3.org">https://iddevnet.dhewm3.org</a></p>
+<p>It’s still a very valuable resource for modding
+Doom3/Quake4/idTech4.</p>
+<p>It was reconstructed from archive.org and private backups that
+several people luckily made while the original page was still up. This
+mirror is (<a
+href="https://github.com/dhewm/iddevnet#missing-files-not-available-on-archiveorg-either">as
+good as</a>) complete, <em>even including downloads!</em><br />
+To make sure it doesn’t get lost again (and for offline viewing), the
+whole page source is <a
+href="https://github.com/dhewm/iddevnet">available on Github</a>.</p>
 <p><strong>Hard Corps</strong></p>
 <p><a href="mods/hc1.jpg" title="Screenshot of Hard Corps"><img src="mods/small-hc1.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
-<p>The <strong>Doom 3: Hard Corps</strong> mod, which supports dhewm3 exclusively, has been released. It’s an updated/remastered version of the well-known <em>HardQore2</em> mod and turns Doom3 into a side-scroller.</p>
-<p>You can get it at <a href="https://www.moddb.com/mods/hardcorps">ModDB</a>; our <a href="./mods.html#hard-corps">Mods page</a> also has some information and screenshots.</p>
+<p>The <strong>Doom 3: Hard Corps</strong> mod, which supports dhewm3
+exclusively, has been released. It’s an updated/remastered version of
+the well-known <em>HardQore2</em> mod and turns Doom3 into a
+side-scroller.</p>
+<p>You can get it at <a
+href="https://www.moddb.com/mods/hardcorps">ModDB</a>; our <a
+href="./mods.html#hard-corps">Mods page</a> also has some information
+and screenshots.</p>
 <p><strong>dhewm3 progress</strong></p>
 <p>There have been a lot of improvements to dhewm3 since 1.5.1.<br />
-Several concern the (sadly still Windows-only) tools, like full 64bit support, High-DPI support and the Script Debugger you might remember from Quake4!<br />
-Furthermore, dhewm3 now applies brightness and gamma in shaders, which means that those settings work better on all platforms (no more changing gamma of the whole screen) and are visible in screenshots (so those now look the same as the game itself). Other improvements include multiple Quicksave slots (that are cycled through), improved keyboard support, fewer external dependencies and of course bugfixes.<br />
-The <a href="https://github.com/dhewm/dhewm3/blob/master/Changelog.md">Changelog</a> has more details.</p>
+Several concern the (sadly still Windows-only) tools, like full 64bit
+support, High-DPI support and the Script Debugger you might remember
+from Quake4!<br />
+Furthermore, dhewm3 now applies brightness and gamma in shaders, which
+means that those settings work better on all platforms (no more changing
+gamma of the whole screen) and are visible in screenshots (so those now
+look the same as the game itself). Other improvements include multiple
+Quicksave slots (that are cycled through), improved keyboard support,
+fewer external dependencies and of course bugfixes.<br />
+The <a
+href="https://github.com/dhewm/dhewm3/blob/master/Changelog.md">Changelog</a>
+has more details.</p>
 <p>I hope I’ll get around to releasing a fresh build soon-ish.</p>
 <h4 id="dhewm3-1.5.1">2021-03-14: <em>dhewm3 1.5.1</em></h4>
 <p><a href="./dhewm3-1.5.1-demo.jpg" title="Doom3 Demo in dhewm3 1.5.1"><img src="./medium-dhewm3-1.5.1-demo.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>dhewm3 1.5.1 is done.</p>
-<p>Apart from lots of bugfixes, the biggest changes since 1.5.0 are support for the (Windows-only) editing tools and for the <a href="#using-the-doom3-demo-gamedata">Doom3 Demo gamedata</a>.<br />
+<p>Apart from lots of bugfixes, the biggest changes since 1.5.0 are
+support for the (Windows-only) editing tools and for the <a
+href="#using-the-doom3-demo-gamedata">Doom3 Demo gamedata</a>.<br />
 See below for a more detailed changelog.</p>
-<p>Furthermore, there now is a coop mode for dhewm3: <a href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a>, see the <a href="./mods.html#librecoop">dhewm3 mods page</a> for more details. Thanks a lot to <em>Stradex</em> for creating it!<br />
-Another Mod that is now supported is <a href="https://www.moddb.com/mods/the-lost-mission">The Lost Mission</a>, see also <a href="./mods.html#the-lost-mission">here</a> - thanks to <em>Arl90</em> for making this possible!</p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1">download dhewm3 1.5.1 at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<p>Furthermore, there now is a coop mode for dhewm3: <a
+href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a>,
+see the <a href="./mods.html#librecoop">dhewm3 mods page</a> for more
+details. Thanks a lot to <em>Stradex</em> for creating it!<br />
+Another Mod that is now supported is <a
+href="https://www.moddb.com/mods/the-lost-mission">The Lost Mission</a>,
+see also <a href="./mods.html#the-lost-mission">here</a> - thanks to
+<em>Arl90</em> for making this possible!</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1">download
+dhewm3 1.5.1 at Github</a></strong> (incl. builds for Windows and 64bit
+Linux)</p>
 <p><a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a ></p>
 <p><strong>Changes since 1.5.0:</strong></p>
 <ul>
-<li>The (Windows-only) integrated <strong>editing tools</strong> of Doom3 are back!
+<li>The (Windows-only) integrated <strong>editing tools</strong> of
+Doom3 are back!
 <ul>
-<li>They can only be built with non-Express versions of Visual Studio (tested Community Editions of VS2013 and VS2017) and can be disabled via CMake</li>
-<li>Official dhewm3 Windows binaries are built with tools enabled, of course.</li>
-<li>Only supports 32bit builds, because in contrast to the rest of dhewm3’s code, the tool code is not 64bit compatible at all.</li>
-<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to <em>Motorsep</em> for donating that code!</li>
-<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor doesn’t break the viewport of the game any more.</li>
-<li>Thanks to <em>Tommy Hanusa</em> for testing and reporting some issues (that were subsequently fixed)!</li>
+<li>They can only be built with non-Express versions of Visual Studio
+(tested Community Editions of VS2013 and VS2017) and can be disabled via
+CMake</li>
+<li>Official dhewm3 Windows binaries are built with tools enabled, of
+course.</li>
+<li>Only supports 32bit builds, because in contrast to the rest of
+dhewm3’s code, the tool code is not 64bit compatible at all.</li>
+<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to
+<em>Motorsep</em> for donating that code!</li>
+<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a
+material in the Particle Editor doesn’t break the viewport of the game
+any more.</li>
+<li>Thanks to <em>Tommy Hanusa</em> for testing and reporting some
+issues (that were subsequently fixed)!</li>
 </ul></li>
-<li>While prior dhewm3 releases for Windows have been built with Visual Studio 2010, this is built with Visual Studio 2017, so if it doesn’t start on your system make sure you have <a href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">the Visual C++ 2017 Redistributable</a> installed - but chances are good you already have it.
+<li>While prior dhewm3 releases for Windows have been built with Visual
+Studio 2010, this is built with Visual Studio 2017, so if it doesn’t
+start on your system make sure you have <a
+href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">the
+Visual C++ 2017 Redistributable</a> installed - but chances are good you
+already have it.
 <ul>
-<li>Also updated some DLLs that are bundled with the Windows release:<br />
-<a href="https://libsdl.org">SDL2 2.0.14</a>, <a href="https://openal-soft.org/">OpenAL-soft 1.21.1</a> and <a href="https://curl.haxx.se">curl 7.70.0</a></li>
+<li>Also updated some DLLs that are bundled with the Windows
+release:<br />
+<a href="https://libsdl.org">SDL2 2.0.14</a>, <a
+href="https://openal-soft.org/">OpenAL-soft 1.21.1</a> and <a
+href="https://curl.haxx.se">curl 7.70.0</a></li>
 </ul></li>
-<li>Update savegame format (see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a> and <a href="https://github.com/dhewm/dhewm3/issues/344">#344</a>)
+<li>Update savegame format (see <a
+href="https://github.com/dhewm/dhewm3/issues/303">#303</a> and <a
+href="https://github.com/dhewm/dhewm3/issues/344">#344</a>)
 <ul>
-<li>old savegames still work, but new savegames can’t be loaded with older versions of dhewm3!</li>
+<li>old savegames still work, but new savegames can’t be loaded with
+older versions of dhewm3!</li>
 </ul></li>
-<li>Uploaded updated builds of Mod DLLs (esp. Dentonmod should run a lot more stable now).<br />
-Added Mod DLLs of <a href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a> and <a href="https://www.moddb.com/mods/the-lost-mission">The Lost Mission</a>.<br />
+<li>Uploaded updated builds of Mod DLLs (esp. Dentonmod should run a lot
+more stable now).<br />
+Added Mod DLLs of <a
+href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a>
+and <a href="https://www.moddb.com/mods/the-lost-mission">The Lost
+Mission</a>.<br />
 See <a href="./mods.html">the Mods page</a> for more details.</li>
 <li>dhewm3 now supports the <strong>Doom3 Demo</strong> gamedata
 <ul>
-<li>See <a href="#using-the-doom3-demo-gamedata">below</a> for installation instructions</li>
-<li>This is based on <em>Gabriel Cuvillier’s</em> code for <a href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>, which ports dhewm3 to web browsers, thanks!</li>
+<li>See <a href="#using-the-doom3-demo-gamedata">below</a> for
+installation instructions</li>
+<li>This is based on <em>Gabriel Cuvillier’s</em> code for <a
+href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>,
+which ports dhewm3 to web browsers, thanks!</li>
 </ul></li>
-<li>Create the game window on the display the cursor is currently on (when using more than one display)</li>
-<li>Added <code>r_fullscreenDesktop</code> CVar to set if fullscreen mode should be “classic” or “Desktop” which means a borderless window at desktop resolution</li>
-<li>Fullscreen modes that are not at the current desktop resolution should work better now
+<li>Create the game window on the display the cursor is currently on
+(when using more than one display)</li>
+<li>Added <code>r_fullscreenDesktop</code> CVar to set if fullscreen
+mode should be “classic” or “Desktop” which means a borderless window at
+desktop resolution</li>
+<li>Fullscreen modes that are not at the current desktop resolution
+should work better now
 <ul>
-<li>including nvidia DSR / AMD VSR; for that you might have to use the supplied <code>dhewm3_notools.exe</code>, as DSR/VSR seem to be incompatible with applications that use MFC (the GUI framework used for the Doom3 tools like the D3Radiant)</li>
+<li>including nvidia DSR / AMD VSR; for that you might have to use the
+supplied <code>dhewm3_notools.exe</code>, as DSR/VSR seem to be
+incompatible with applications that use MFC (the GUI framework used for
+the Doom3 tools like the D3Radiant)</li>
 </ul></li>
 <li>Several sound-related bugfixes:
 <ul>
-<li>Lags in starting to play a sound which for example caused the machinegun or plasmagun sounds to stutter have been eliminated (<a href="https://github.com/dhewm/dhewm3/issues/141">#141</a>)</li>
-<li>Trying to reset disconnected OpenAL devices, this esp. helps with display audio on Intel GPUs on Windows, when switching to fullscreen (<a href="https://github.com/dhewm/dhewm3/issues/209">#209</a>)</li>
-<li>Looping .wav sounds with leadin now work (<a href="https://github.com/dhewm/dhewm3/issues/291">#291</a>)</li>
-<li>The game still works if no sound devices are available at all (<a href="https://github.com/dhewm/dhewm3/issues/292">#292</a>)</li>
-<li>Make “idSoundCache: error unloading data from OpenAL hardware buffer” a Warning instead of an Error so it doesn’t terminate game (by <em>Corey O’Connor</em>, <a href="https://github.com/dhewm/dhewm3/pull/235">#235</a>)</li>
+<li>Lags in starting to play a sound which for example caused the
+machinegun or plasmagun sounds to stutter have been eliminated (<a
+href="https://github.com/dhewm/dhewm3/issues/141">#141</a>)</li>
+<li>Trying to reset disconnected OpenAL devices, this esp. helps with
+display audio on Intel GPUs on Windows, when switching to fullscreen (<a
+href="https://github.com/dhewm/dhewm3/issues/209">#209</a>)</li>
+<li>Looping .wav sounds with leadin now work (<a
+href="https://github.com/dhewm/dhewm3/issues/291">#291</a>)</li>
+<li>The game still works if no sound devices are available at all (<a
+href="https://github.com/dhewm/dhewm3/issues/292">#292</a>)</li>
+<li>Make “idSoundCache: error unloading data from OpenAL hardware
+buffer” a Warning instead of an Error so it doesn’t terminate game (by
+<em>Corey O’Connor</em>, <a
+href="https://github.com/dhewm/dhewm3/pull/235">#235</a>)</li>
 </ul></li>
-<li>Restore “Carmack’s Reverse” Z-Fail stencil shadows; use <code>glStencilOpSeparate()</code> if available
+<li>Restore “Carmack’s Reverse” Z-Fail stencil shadows; use
+<code>glStencilOpSeparate()</code> if available
 <ul>
-<li>That bloody patent finally expired last October: <a href="https://patents.google.com/patent/US6384822B1/en">https://patents.google.com/patent/US6384822B1/en</a></li>
-<li>This neither seems to make a visual nor performance difference on any hardware I tried (including Raspberry Pi 4), so this is mostly out of principle</li>
-<li>Based on Code by <a href="https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605"><em>Leith Bade</em></a> and <a href="https://github.com/raynorpat/Doom3/blob/2933cb554587aea546c2df1fdf086204d4ca363d/neo/renderer/draw_stencilshadow.cpp#L147-L182"><em>Pat Raynor</em></a>.</li>
-<li>The <code>r_useCarmacksReverse</code> and <code>r_useStencilOpSeparate</code> CVars allow switching both things on/off for comparison</li>
+<li>That bloody patent finally expired last October: <a
+href="https://patents.google.com/patent/US6384822B1/en">https://patents.google.com/patent/US6384822B1/en</a></li>
+<li>This neither seems to make a visual nor performance difference on
+any hardware I tried (including Raspberry Pi 4), so this is mostly out
+of principle</li>
+<li>Based on Code by <a
+href="https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605"><em>Leith
+Bade</em></a> and <a
+href="https://github.com/raynorpat/Doom3/blob/2933cb554587aea546c2df1fdf086204d4ca363d/neo/renderer/draw_stencilshadow.cpp#L147-L182"><em>Pat
+Raynor</em></a>.</li>
+<li>The <code>r_useCarmacksReverse</code> and
+<code>r_useStencilOpSeparate</code> CVars allow switching both things
+on/off for comparison</li>
 </ul></li>
-<li>New CVar <code>g_hitEffect</code>: If set to <code>0</code>, the player camera damage effects (like double-vision and extreme tilt) when being hit are disabled (by <em>dobosken</em>, <a href="https://github.com/dhewm/dhewm3/pull/279">#279</a>).</li>
-<li>(On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like save games, because the binary dir might not be writable and dhewm3 wouldn’t start properly then</li>
+<li>New CVar <code>g_hitEffect</code>: If set to <code>0</code>, the
+player camera damage effects (like double-vision and extreme tilt) when
+being hit are disabled (by <em>dobosken</em>, <a
+href="https://github.com/dhewm/dhewm3/pull/279">#279</a>).</li>
+<li>(On Windows) stdout.txt and stderr.txt are not saved next to the
+binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like
+save games, because the binary dir might not be writable and dhewm3
+wouldn’t start properly then</li>
 <li>Fix lingering messages in HUD after loading savegame
 <ul>
-<li>Sometimes the “Game saved…” message didn’t go away after loading a savegame (when having saved while it still was showing from last save)</li>
+<li>Sometimes the “Game saved…” message didn’t go away after loading a
+savegame (when having saved while it still was showing from last
+save)</li>
 </ul></li>
-<li>Fixed clipping bug in delta1 which sometimes occured and made climbing some ladders impossible (see <a href="https://github.com/dhewm/dhewm3/issues/328">#328</a>)</li>
-<li>Improve compatibility with some custom scripts (“t-&gt;c-&gt;value.argSize == func-&gt;parmTotal” Assertion; see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a>)</li>
-<li>Registering multiplayer servers at id’s master-server fixed, so they can be found in the multiplayer menu (by <em>Stradex</em>, <a href="https://github.com/dhewm/dhewm3/pull/293">#293</a>)</li>
-<li>Support for <a href="https://en.wikipedia.org/wiki/Reproducible_builds">reproducible builds</a> by setting the CMake option <code>REPRODUCIBLE_BUILD</code>.</li>
-<li>Should build on recent versions of macOS, also on Apple Silicon (thanks <em>Dave Nicolson</em> and <em>Petter Uvesten</em>).</li>
-<li>Proper handling of paths with dots in directory names (<a href="https://github.com/dhewm/dhewm3/issues/299">#299</a>, <a href="https://github.com/dhewm/dhewm3/issues/301">#301</a>)
+<li>Fixed clipping bug in delta1 which sometimes occured and made
+climbing some ladders impossible (see <a
+href="https://github.com/dhewm/dhewm3/issues/328">#328</a>)</li>
+<li>Improve compatibility with some custom scripts
+(“t-&gt;c-&gt;value.argSize == func-&gt;parmTotal” Assertion; see <a
+href="https://github.com/dhewm/dhewm3/issues/303">#303</a>)</li>
+<li>Registering multiplayer servers at id’s master-server fixed, so they
+can be found in the multiplayer menu (by <em>Stradex</em>, <a
+href="https://github.com/dhewm/dhewm3/pull/293">#293</a>)</li>
+<li>Support for <a
+href="https://en.wikipedia.org/wiki/Reproducible_builds">reproducible
+builds</a> by setting the CMake option
+<code>REPRODUCIBLE_BUILD</code>.</li>
+<li>Should build on recent versions of macOS, also on Apple Silicon
+(thanks <em>Dave Nicolson</em> and <em>Petter Uvesten</em>).</li>
+<li>Proper handling of paths with dots in directory names (<a
+href="https://github.com/dhewm/dhewm3/issues/299">#299</a>, <a
+href="https://github.com/dhewm/dhewm3/issues/301">#301</a>)
 <ul>
-<li>Some string functions that are intended to find/cut off/replace/… file extensions did cut off the whole path at dots..</li>
-<li>Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor</li>
+<li>Some string functions that are intended to find/cut off/replace/…
+file extensions did cut off the whole path at dots..</li>
+<li>Especially fixes loading and saving maps from such paths in the
+builtin D3Radiant level editor</li>
 </ul></li>
-<li><code>idFileSystemLocal::ListMods()</code> doesn’t search <code>/</code> or <code>C:\</code> anymore (it did so if one of the paths, like <code>fs_cdpath</code>, was empty)</li>
-<li>Don’t use translation in Autosave filenames (see <a href="https://github.com/dhewm/dhewm3/issues/305">#305</a>)
+<li><code>idFileSystemLocal::ListMods()</code> doesn’t search
+<code>/</code> or <code>C:\</code> anymore (it did so if one of the
+paths, like <code>fs_cdpath</code>, was empty)</li>
+<li>Don’t use translation in Autosave filenames (see <a
+href="https://github.com/dhewm/dhewm3/issues/305">#305</a>)
 <ul>
-<li>In the Spanish translation all the Alpha Lab autosaves got the same name, now the autosave name is based on the mapename instead which is distinct</li>
+<li>In the Spanish translation all the Alpha Lab autosaves got the same
+name, now the autosave name is based on the mapename instead which is
+distinct</li>
 </ul></li>
 </ul>
-<h4 id="dhewm3-1.5.1-release-candidate-3">2021-02-23: <em>dhewm3 1.5.1 Release Candidate 3</em></h4>
-<p>Finally, the third (and hopefully last) Release Candidate of the upcoming 1.5.1 release is available!</p>
+<h4 id="dhewm3-1.5.1-release-candidate-3">2021-02-23: <em>dhewm3 1.5.1
+Release Candidate 3</em></h4>
+<p>Finally, the third (and hopefully last) Release Candidate of the
+upcoming 1.5.1 release is available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC3">download
+it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><strong>Changes since Release Candidate 2:</strong></p>
 <ul>
 <li>Fix lingering messages in HUD after loading savegame
 <ul>
-<li>Sometimes the “Game saved…” message didn’t go away after loading a savegame (when having saved while it still was showing from last save)</li>
+<li>Sometimes the “Game saved…” message didn’t go away after loading a
+savegame (when having saved while it still was showing from last
+save)</li>
 </ul></li>
-<li>Uploaded updated builds of Mod DLLs, now also supporting <a href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a> and <a href="https://www.moddb.com/mods/the-lost-mission">The Lost Mission</a></li>
-<li>Don’t use translation in Autosave filenames (see <a href="https://github.com/dhewm/dhewm3/issues/305">#305</a>)
+<li>Uploaded updated builds of Mod DLLs, now also supporting <a
+href="https://www.moddb.com/mods/librecoop-dhewm3-coop">LibreCoop</a>
+and <a href="https://www.moddb.com/mods/the-lost-mission">The Lost
+Mission</a></li>
+<li>Don’t use translation in Autosave filenames (see <a
+href="https://github.com/dhewm/dhewm3/issues/305">#305</a>)
 <ul>
-<li>In the Spanish translation all the Alpha Lab autosaves got the same name, now the autosave name is based on the mapename instead which is distinct</li>
+<li>In the Spanish translation all the Alpha Lab autosaves got the same
+name, now the autosave name is based on the mapename instead which is
+distinct</li>
 </ul></li>
-<li>Create the game window on the display the cursor is currently on (when using more than one display)</li>
-<li>Added <code>r_fullscreenDesktop</code> CVar to set if fullscreen mode should be “classic” or “Desktop” which means a borderless window at desktop resolution</li>
-<li>Fullscreen modes that are not at the current desktop resolution should work better now
+<li>Create the game window on the display the cursor is currently on
+(when using more than one display)</li>
+<li>Added <code>r_fullscreenDesktop</code> CVar to set if fullscreen
+mode should be “classic” or “Desktop” which means a borderless window at
+desktop resolution</li>
+<li>Fullscreen modes that are not at the current desktop resolution
+should work better now
 <ul>
-<li>including nvidia DSR / AMD VSR; for that you might have to use the supplied <code>dhewm3_notools.exe</code>, as DSR/VSR seem to be incompatible with applications that use MFC (the GUI framework used for the Doom3 tools like the D3Radiant)</li>
+<li>including nvidia DSR / AMD VSR; for that you might have to use the
+supplied <code>dhewm3_notools.exe</code>, as DSR/VSR seem to be
+incompatible with applications that use MFC (the GUI framework used for
+the Doom3 tools like the D3Radiant)</li>
 </ul></li>
-<li>Fixed clipping bug in delta1 (see <a href="https://github.com/dhewm/dhewm3/issues/328">#328</a>)</li>
-<li>Improve compatibility with some custom scripts (“t-&gt;c-&gt;value.argSize == func-&gt;parmTotal” Assertion; see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a>)</li>
-<li>Update savegame format (see <a href="https://github.com/dhewm/dhewm3/issues/303">#303</a> and <a href="https://github.com/dhewm/dhewm3/issues/344">#344</a>)
+<li>Fixed clipping bug in delta1 (see <a
+href="https://github.com/dhewm/dhewm3/issues/328">#328</a>)</li>
+<li>Improve compatibility with some custom scripts
+(“t-&gt;c-&gt;value.argSize == func-&gt;parmTotal” Assertion; see <a
+href="https://github.com/dhewm/dhewm3/issues/303">#303</a>)</li>
+<li>Update savegame format (see <a
+href="https://github.com/dhewm/dhewm3/issues/303">#303</a> and <a
+href="https://github.com/dhewm/dhewm3/issues/344">#344</a>)
 <ul>
-<li>old savegames still work, but new savegames can’t be loaded with older versions of dhewm3</li>
+<li>old savegames still work, but new savegames can’t be loaded with
+older versions of dhewm3</li>
 </ul></li>
 </ul>
 </details>
-<h4 id="dhewm3-1.5.1-release-candidate-2">2020-07-21: <em>dhewm3 1.5.1 Release Candidate 2</em></h4>
-<p>The second Release Candidate of the upcoming 1.5.1 release is available!</p>
+<h4 id="dhewm3-1.5.1-release-candidate-2">2020-07-21: <em>dhewm3 1.5.1
+Release Candidate 2</em></h4>
+<p>The second Release Candidate of the upcoming 1.5.1 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC2">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC2">download
+it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><strong>Changes since Release Candidate 1:</strong></p>
 <ul>
-<li>Several fixes for Editor-related bugs (thanks to <em>Tommy Hanusa</em> for reporting!)
+<li>Several fixes for Editor-related bugs (thanks to <em>Tommy
+Hanusa</em> for reporting!)
 <ul>
-<li>When switching from an editor to the game, the game shouldn’t get rendered in a tiny rectangle in the lower left corner anymore (<a href="https://github.com/dhewm/dhewm3/issues/300">#300</a>)</li>
-<li>When switching from Radiant into the Engine (e.g. with <code>F2</code>), the game isn’t frozen anymore</li>
+<li>When switching from an editor to the game, the game shouldn’t get
+rendered in a tiny rectangle in the lower left corner anymore (<a
+href="https://github.com/dhewm/dhewm3/issues/300">#300</a>)</li>
+<li>When switching from Radiant into the Engine (e.g. with
+<code>F2</code>), the game isn’t frozen anymore</li>
 </ul></li>
-<li>Proper handling of paths with dots in directory names (<a href="https://github.com/dhewm/dhewm3/issues/299">#299</a>, <a href="https://github.com/dhewm/dhewm3/issues/301">#301</a>)
+<li>Proper handling of paths with dots in directory names (<a
+href="https://github.com/dhewm/dhewm3/issues/299">#299</a>, <a
+href="https://github.com/dhewm/dhewm3/issues/301">#301</a>)
 <ul>
-<li>Some string functions that are intended to find/cut off/replace/… file extensions did cut off the whole path at dots..</li>
-<li>Especially fixes loading and saving maps from such paths in the builtin D3Radiant level editor</li>
+<li>Some string functions that are intended to find/cut off/replace/…
+file extensions did cut off the whole path at dots..</li>
+<li>Especially fixes loading and saving maps from such paths in the
+builtin D3Radiant level editor</li>
 <li>As it’s a quite invasive change this needs testing!</li>
 </ul></li>
-<li>Should build on macOS again (thanks <em>Dave Nicolson</em>, <a href="https://github.com/dhewm/dhewm3/pull/302">#302</a>)</li>
-<li><code>idFileSystemLocal::ListMods()</code> doesn’t search <code>/</code> or <code>C:\</code> anymore (it did so when one of the paths, like <code>fs_cdpath</code>, was empty)</li>
+<li>Should build on macOS again (thanks <em>Dave Nicolson</em>, <a
+href="https://github.com/dhewm/dhewm3/pull/302">#302</a>)</li>
+<li><code>idFileSystemLocal::ListMods()</code> doesn’t search
+<code>/</code> or <code>C:\</code> anymore (it did so when one of the
+paths, like <code>fs_cdpath</code>, was empty)</li>
 </ul>
 </details>
-<h4 id="dhewm3-1.5.1-release-candidate-1">2020-07-13: <em>dhewm3 1.5.1 Release Candidate 1</em></h4>
-<p>A first Release Candidate of the upcoming 1.5.1 release is available!</p>
+<h4 id="dhewm3-1.5.1-release-candidate-1">2020-07-13: <em>dhewm3 1.5.1
+Release Candidate 1</em></h4>
+<p>A first Release Candidate of the upcoming 1.5.1 release is
+available!</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary></p>
-<p>You can <strong><a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC1">download it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_RC1">download
+it at Github</a></strong> (incl. builds for Windows and 64bit Linux)</p>
 <p><a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p><strong>Changes since 1.5.0:</strong></p>
 <ul>
-<li>The (Windows-only) integrated <strong>editing tools</strong> of Doom3 are back!
+<li>The (Windows-only) integrated <strong>editing tools</strong> of
+Doom3 are back!
 <ul>
-<li>They can only be built with non-Express versions of Visual Studio (tested Community Editions of VS2013 and VS2017) and can be disabled via CMake</li>
-<li>Official dhewm3 Windows binaries are built with tools enabled, of course.</li>
-<li>Only supports 32bit builds, because in contrast to the rest of dhewm3’s code, the tool code is not 64bit compatible at all.</li>
-<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to <em>Motorsep</em> for donating that code!</li>
-<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor doesn’t break the viewport of the game any more.</li>
+<li>They can only be built with non-Express versions of Visual Studio
+(tested Community Editions of VS2013 and VS2017) and can be disabled via
+CMake</li>
+<li>Official dhewm3 Windows binaries are built with tools enabled, of
+course.</li>
+<li>Only supports 32bit builds, because in contrast to the rest of
+dhewm3’s code, the tool code is not 64bit compatible at all.</li>
+<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to
+<em>Motorsep</em> for donating that code!</li>
+<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a
+material in the Particle Editor doesn’t break the viewport of the game
+any more.</li>
 </ul></li>
-<li>While prior dhewm3 releases for Windows have been built with Visual Studio 2010, this is built with Visual Studio 2017, so if it doesn’t start on your system make sure you have <a href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">the Visual C++ 2017 Redistributable</a> installed - but chances are good you already have it.
+<li>While prior dhewm3 releases for Windows have been built with Visual
+Studio 2010, this is built with Visual Studio 2017, so if it doesn’t
+start on your system make sure you have <a
+href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">the
+Visual C++ 2017 Redistributable</a> installed - but chances are good you
+already have it.
 <ul>
-<li>Also updated some DLLs that are bundled with the Windows release:<br />
-<a href="https://libsdl.org">SDL2 2.0.12</a>, <a href="https://openal-soft.org/">OpenAL-soft 1.20.1</a> and <a href="https://curl.haxx.se">curl 7.70.0</a></li>
+<li>Also updated some DLLs that are bundled with the Windows
+release:<br />
+<a href="https://libsdl.org">SDL2 2.0.12</a>, <a
+href="https://openal-soft.org/">OpenAL-soft 1.20.1</a> and <a
+href="https://curl.haxx.se">curl 7.70.0</a></li>
 </ul></li>
 <li>dhewm3 now supports the <strong>Doom3 Demo</strong> gamedata
 <ul>
-<li>See <a href="#using-the-doom3-demo-gamedata">below</a> for installation instructions</li>
-<li>This is based on <em>Gabriel Cuvillier’s</em> code for <a href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>, which ports dhewm3 to web browsers, thanks!</li>
+<li>See <a href="#using-the-doom3-demo-gamedata">below</a> for
+installation instructions</li>
+<li>This is based on <em>Gabriel Cuvillier’s</em> code for <a
+href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>,
+which ports dhewm3 to web browsers, thanks!</li>
 </ul></li>
 <li>Several sound-related bugfixes:
 <ul>
-<li>Lags in starting to play a sound which for example caused the machinegun or plasmagun sounds to stutter have been eliminated (<a href="https://github.com/dhewm/dhewm3/issues/141">#141</a>)</li>
-<li>Trying to reset disconnected OpenAL devices, this esp. helps with display audio on Intel GPUs on Windows, when switching to fullscreen (<a href="https://github.com/dhewm/dhewm3/issues/209">#209</a>)</li>
-<li>Looping .wav sounds with leadin now work (<a href="https://github.com/dhewm/dhewm3/issues/291">#291</a>)</li>
-<li>The game still works if no sound devices are available at all (<a href="https://github.com/dhewm/dhewm3/issues/292">#292</a>)</li>
-<li>Make “idSoundCache: error unloading data from OpenAL hardware buffer” a Warning instead of an Error so it doesn’t terminate game (by <em>Corey O’Connor</em>, <a href="https://github.com/dhewm/dhewm3/pull/235">#235</a>)</li>
+<li>Lags in starting to play a sound which for example caused the
+machinegun or plasmagun sounds to stutter have been eliminated (<a
+href="https://github.com/dhewm/dhewm3/issues/141">#141</a>)</li>
+<li>Trying to reset disconnected OpenAL devices, this esp. helps with
+display audio on Intel GPUs on Windows, when switching to fullscreen (<a
+href="https://github.com/dhewm/dhewm3/issues/209">#209</a>)</li>
+<li>Looping .wav sounds with leadin now work (<a
+href="https://github.com/dhewm/dhewm3/issues/291">#291</a>)</li>
+<li>The game still works if no sound devices are available at all (<a
+href="https://github.com/dhewm/dhewm3/issues/292">#292</a>)</li>
+<li>Make “idSoundCache: error unloading data from OpenAL hardware
+buffer” a Warning instead of an Error so it doesn’t terminate game (by
+<em>Corey O’Connor</em>, <a
+href="https://github.com/dhewm/dhewm3/pull/235">#235</a>)</li>
 </ul></li>
-<li>Restore “Carmack’s Reverse” Z-Fail stencil shadows; use <code>glStencilOpSeparate()</code> if available
+<li>Restore “Carmack’s Reverse” Z-Fail stencil shadows; use
+<code>glStencilOpSeparate()</code> if available
 <ul>
-<li>That bloody patent finally expired last October: <a href="https://patents.google.com/patent/US6384822B1/en">https://patents.google.com/patent/US6384822B1/en</a></li>
-<li>This neither seems to make a visual nor performance difference on any hardware I tried (including Raspberry Pi 4), so this is mostly out of principle</li>
-<li>Based on Code by <a href="https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605"><em>Leith Bade</em></a> and <a href="https://github.com/raynorpat/Doom3/blob/2933cb554587aea546c2df1fdf086204d4ca363d/neo/renderer/draw_stencilshadow.cpp#L147-L182"><em>Pat Raynor</em></a>.</li>
-<li>The <code>r_useCarmacksReverse</code> and <code>r_useStencilOpSeparate</code> CVars allow switching both things on/off for comparison</li>
+<li>That bloody patent finally expired last October: <a
+href="https://patents.google.com/patent/US6384822B1/en">https://patents.google.com/patent/US6384822B1/en</a></li>
+<li>This neither seems to make a visual nor performance difference on
+any hardware I tried (including Raspberry Pi 4), so this is mostly out
+of principle</li>
+<li>Based on Code by <a
+href="https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605"><em>Leith
+Bade</em></a> and <a
+href="https://github.com/raynorpat/Doom3/blob/2933cb554587aea546c2df1fdf086204d4ca363d/neo/renderer/draw_stencilshadow.cpp#L147-L182"><em>Pat
+Raynor</em></a>.</li>
+<li>The <code>r_useCarmacksReverse</code> and
+<code>r_useStencilOpSeparate</code> CVars allow switching both things
+on/off for comparison</li>
 </ul></li>
-<li>New CVar <code>g_hitEffect</code>: If set to <code>0</code>, the player camera damage effects (like double-vision and extreme tilt) when being hit are disabled (by <em>dobosken</em>, <a href="https://github.com/dhewm/dhewm3/pull/279">#279</a>).</li>
-<li>(On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like save games, because the binary dir might not be writable and dhewm3 wouldn’t start properly then</li>
-<li>Registering multiplayer servers at id’s master-server fixed, so they can be found in the multiplayer menu (by <em>Stradex</em>, <a href="https://github.com/dhewm/dhewm3/pull/293">#293</a>)</li>
-<li>Support for <a href="https://en.wikipedia.org/wiki/Reproducible_builds">reproducible builds</a> by setting the CMake option <code>REPRODUCIBLE_BUILD</code>.</li>
+<li>New CVar <code>g_hitEffect</code>: If set to <code>0</code>, the
+player camera damage effects (like double-vision and extreme tilt) when
+being hit are disabled (by <em>dobosken</em>, <a
+href="https://github.com/dhewm/dhewm3/pull/279">#279</a>).</li>
+<li>(On Windows) stdout.txt and stderr.txt are not saved next to the
+binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like
+save games, because the binary dir might not be writable and dhewm3
+wouldn’t start properly then</li>
+<li>Registering multiplayer servers at id’s master-server fixed, so they
+can be found in the multiplayer menu (by <em>Stradex</em>, <a
+href="https://github.com/dhewm/dhewm3/pull/293">#293</a>)</li>
+<li>Support for <a
+href="https://en.wikipedia.org/wiki/Reproducible_builds">reproducible
+builds</a> by setting the CMake option
+<code>REPRODUCIBLE_BUILD</code>.</li>
 </ul>
 </details>
-<h4 id="a-first-prerelease-of-dhewm3-1.5.1">2019-03-11: <em>A first prerelease of dhewm3 1.5.1</em></h4>
-<p>There are no immediate plans for the final 1.5.1 release, but the current status might be interesting :-)</p>
+<h4 id="a-first-prerelease-of-dhewm3-1.5.1">2019-03-11: <em>A first
+prerelease of dhewm3 1.5.1</em></h4>
+<p>There are no immediate plans for the final 1.5.1 release, but the
+current status might be interesting :-)</p>
 <details>
-<p><summary>Click to see the rest of this (outdated) newspost</summary> <a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
+<p><a href="./dhewm3-edit.jpg" title="DOOMEdit running in dhewm3"><img src="./medium-dhewm3-edit.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p><strong>Changes since 1.5.0:</strong></p>
 <ul>
-<li>The (Windows-only) integrated <strong>editing tools</strong> of Doom3 are back!
+<li>The (Windows-only) integrated <strong>editing tools</strong> of
+Doom3 are back!
 <ul>
-<li>They can only be built with non-Express versions of Visual Studio (tested Community Editions of VS2013 and VS2017) and can be disabled via CMake</li>
-<li>The <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_PRE1">dhewm3_1.5.1pre1_win32.zip available on Github</a> has them enabled, of course
+<li>They can only be built with non-Express versions of Visual Studio
+(tested Community Editions of VS2013 and VS2017) and can be disabled via
+CMake</li>
+<li>The <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.1_PRE1">dhewm3_1.5.1pre1_win32.zip
+available on Github</a> has them enabled, of course
 <ul>
-<li>While prior dhewm3 releases have been built with Visual Studio 2010, this is built with Visual Studio 2013, so if it doesn’t start on your system make sure you have <a href="https://www.microsoft.com/en-us/download/details.aspx?id=40784">the Visual C++ 2013 Redistributable</a> installed - but chances are good you already have it.</li>
+<li>While prior dhewm3 releases have been built with Visual Studio 2010,
+this is built with Visual Studio 2013, so if it doesn’t start on your
+system make sure you have <a
+href="https://www.microsoft.com/en-us/download/details.aspx?id=40784">the
+Visual C++ 2013 Redistributable</a> installed - but chances are good you
+already have it.</li>
 </ul></li>
-<li>Only tested in 32bit builds, in contrast to the rest of dhewm3’s code, the tool code might not be 64bit-clean</li>
-<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to Motorsep for donating that code!</li>
-<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a material in the Particle Editor doesn’t break the viewport of the game any more.</li>
+<li>Only tested in 32bit builds, in contrast to the rest of dhewm3’s
+code, the tool code might not be 64bit-clean</li>
+<li>Based on Code from the dhewm3 branch of SteelStorm2, thanks to
+Motorsep for donating that code!</li>
+<li>Has some bugfixes over the state in Doom3 1.3.1, like selecting a
+material in the Particle Editor doesn’t break the viewport of the game
+any more.</li>
 </ul></li>
-<li>dhewm3 now supports the <strong>Doom3 Demo</strong> gamedata (<a href="https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo">D3Demo.exe</a> or <a href="http://files.holarse-linuxgaming.de/native/Spiele/Doom%203/Demo/doom3-linux-1.1.1286-demo.x86.run">doom3-linux-1.1.1286-demo.x86.run</a>)
+<li>dhewm3 now supports the <strong>Doom3 Demo</strong> gamedata (<a
+href="https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo">D3Demo.exe</a>
+or <a
+href="http://files.holarse-linuxgaming.de/native/Spiele/Doom%203/Demo/doom3-linux-1.1.1286-demo.x86.run">doom3-linux-1.1.1286-demo.x86.run</a>)
 <ul>
-<li>On Windows, just run D3Demo.exe to install the demo, on Linux (and probably others) you can extract the relevant file from the .run installer with <code>sh doom3-linux-1.1.1286-demo.x86.run --tar xf demo/</code></li>
-<li>This is based on Gabriel Cuvillier’s code for <a href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>, which ports dhewm3 to web browsers, thanks!</li>
+<li>On Windows, just run D3Demo.exe to install the demo, on Linux (and
+probably others) you can extract the relevant file from the .run
+installer with
+<code>sh doom3-linux-1.1.1286-demo.x86.run --tar xf demo/</code></li>
+<li>This is based on Gabriel Cuvillier’s code for <a
+href="http://www.continuation-labs.com/projects/d3wasm/">D3Wasm</a>,
+which ports dhewm3 to web browsers, thanks!</li>
 </ul></li>
-<li>(On Windows) stdout.txt and stderr.txt are not saved next to the binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like save games, because the binary dir might not be writable and dhewm3 wouldn’t start properly then</li>
+<li>(On Windows) stdout.txt and stderr.txt are not saved next to the
+binary anymore, but in <code>My Documents/My Games/dhewm3/</code>, like
+save games, because the binary dir might not be writable and dhewm3
+wouldn’t start properly then</li>
 </ul>
 </details>
-<h4 id="dhewm3-1.5.0-released">2018-12-16: <em>dhewm3 1.5.0 released</em></h4>
+<h4 id="dhewm3-1.5.0-released">2018-12-16: <em>dhewm3 1.5.0
+released</em></h4>
 <p><a href="./dhewm3-150.jpg" title="Classic Doom 3 in dhewm3 1.5.0"><img src="./medium-dhewm3-150.jpg" style="max-width:90%;margin-left:auto;margin-right:auto;display:block"></a></p>
 <p>The final version of 1.5.0 release is now available!<br />
-You can download it (incl. builds for Windows and 64bit Linux) <a href="https://github.com/dhewm/dhewm3/releases/tag/1.5.0">at Github</a></p>
+You can download it (incl. builds for Windows and 64bit Linux) <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.0">at
+Github</a></p>
 <p>Changes since 1.4.1:</p>
 <ul>
-<li>Support for <a href="./mods.html">some Mods</a> via <a href="https://github.com/dhewm/dhewm3-sdk">custom SDK</a>: Classic Doom3, Fitz Packerton, HardQore2, Denton’s Enhanced Doom3 and Rivensin (formerly known as Ruiner).
+<li>Support for <a href="./mods.html">some Mods</a> via <a
+href="https://github.com/dhewm/dhewm3-sdk">custom SDK</a>: Classic
+Doom3, Fitz Packerton, HardQore2, Denton’s Enhanced Doom3 and Rivensin
+(formerly known as Ruiner).
 <ul>
-<li><a href="https://github.com/dhewm/dhewm3/releases/download/1.5.0/dhewm3_1.5.0_win32.zip">dhewm3-mods_1.5.0_win32.zip</a> contains prebuild Windows game DLLs for those Mods (except Rivensin) and a README that tells you where to get the game data</li>
-<li>See <a href="./mods.html">the Mods page</a> for more information.</li>
-<li>This has also broken backwards compatibility with 1.4.x game DLLs, that’s why this version will be 1.5.0 and not 1.4.2.</li>
+<li><a
+href="https://github.com/dhewm/dhewm3/releases/download/1.5.0/dhewm3_1.5.0_win32.zip">dhewm3-mods_1.5.0_win32.zip</a>
+contains prebuild Windows game DLLs for those Mods (except Rivensin) and
+a README that tells you where to get the game data</li>
+<li>See <a href="./mods.html">the Mods page</a> for more
+information.</li>
+<li>This has also broken backwards compatibility with 1.4.x game DLLs,
+that’s why this version will be 1.5.0 and not 1.4.2.</li>
 </ul></li>
 <li>Supports High DPI displays on Windows now</li>
-<li>Scale menus, fullscreen videos and the PDA to 4:3 (with black bars left/right) on widescreen displays so they don’t look stretched/distorted. Can be disabled with <code>r_scaleMenusTo43 0</code>.<br />
-No, this unfortunately can’t be done for the HUD (except for the crosshair), because it also handles fullscreen effects (for example when receiving damage), and those would look bad with black/empty bars on left/right.</li>
-<li>Commandline option to display some help on supported commandline arguments: <code>-h</code> or <code>--help</code> or <code>-help</code> or <code>/?</code></li>
-<li><del>(Experimental) uncapped framerate, enable by entering <code>com_fixedTic -1</code> in the console (can be set back with <code>com_fixedTic 0</code>).</del> (<a href="https://github.com/dhewm/dhewm3/issues/261">this turned out to be broken</a>)</li>
+<li>Scale menus, fullscreen videos and the PDA to 4:3 (with black bars
+left/right) on widescreen displays so they don’t look
+stretched/distorted. Can be disabled with
+<code>r_scaleMenusTo43 0</code>.<br />
+No, this unfortunately can’t be done for the HUD (except for the
+crosshair), because it also handles fullscreen effects (for example when
+receiving damage), and those would look bad with black/empty bars on
+left/right.</li>
+<li>Commandline option to display some help on supported commandline
+arguments: <code>-h</code> or <code>--help</code> or <code>-help</code>
+or <code>/?</code></li>
+<li><del>(Experimental) uncapped framerate, enable by entering
+<code>com_fixedTic -1</code> in the console (can be set back with
+<code>com_fixedTic 0</code>).</del> (<a
+href="https://github.com/dhewm/dhewm3/issues/261">this turned out to be
+broken</a>)</li>
 <li>Providing binaries for Linux amd64 (x86_64) now
 <ul>
-<li>Should work on any halfway-recent distro, needs <code>libSDL2-2.0.so.0</code>, <code>libopenal.so.1</code> and <code>libcurl.so.4</code> installed</li>
+<li>Should work on any halfway-recent distro, needs
+<code>libSDL2-2.0.so.0</code>, <code>libopenal.so.1</code> and
+<code>libcurl.so.4</code> installed</li>
 </ul></li>
-<li>Updated some libraries bundled in the Win32 build: <a href="https://libsdl.org">SDL2 2.0.9</a>, <a href="https://openal-soft.org/">OpenAL-soft 1.19.1</a> and <a href="https://curl.haxx.se">curl 7.62.0</a></li>
+<li>Updated some libraries bundled in the Win32 build: <a
+href="https://libsdl.org">SDL2 2.0.9</a>, <a
+href="https://openal-soft.org/">OpenAL-soft 1.19.1</a> and <a
+href="https://curl.haxx.se">curl 7.62.0</a></li>
 <li>Support for the AROS and OpenBSD operating systems</li>
 <li>Several bugfixes</li>
 </ul>
-<h4 id="dhewm3.org-launched">2018-07-11: <em>dhewm3.org launched</em></h4>
+<h4 id="dhewm3.org-launched">2018-07-11: <em>dhewm3.org
+launched</em></h4>
 <p>dhewm3 now has an official homepage!</p>
-<p>I guess it makes sense to be a bit less dependent on Github (especially as it has been bought by Microsoft, but also in general), so I decided to create this homepage with a domain I control.<br />
-Another advantage is that it has some screenshots and more user-centric documentation than the <a href="https://github.com/dhewm/dhewm3/blob/master/README.md">README.md</a>.<br />
-We’ll continue to use Github for hosting the code and issues (and indeed this page via github pages), but if we need to migrate to another hoster some day, <a href="http://dhewm3.org">dhewm3.org</a> will still be reachable and will link to the new code repo and issue tracker instead.</p>
-<h4 id="dhewm3-1.4.1-released">2016-06-18: <em>dhewm3 1.4.1 released</em></h4>
+<p>I guess it makes sense to be a bit less dependent on Github
+(especially as it has been bought by Microsoft, but also in general), so
+I decided to create this homepage with a domain I control.<br />
+Another advantage is that it has some screenshots and more user-centric
+documentation than the <a
+href="https://github.com/dhewm/dhewm3/blob/master/README.md">README.md</a>.<br />
+We’ll continue to use Github for hosting the code and issues (and indeed
+this page via github pages), but if we need to migrate to another hoster
+some day, <a href="http://dhewm3.org">dhewm3.org</a> will still be
+reachable and will link to the new code repo and issue tracker
+instead.</p>
+<h4 id="dhewm3-1.4.1-released">2016-06-18: <em>dhewm3 1.4.1
+released</em></h4>
 <p>Fixes/improvements since 1.4.0:</p>
 <ul>
-<li>Fixed some (kinda rare) crashes due to assertion errors, especially observed in the last boss fights of both doom3 and the Resurrection of Evil Addon.</li>
-<li>Improved compatibility with AZERTY keyboards (the row of keys with 1…9, 0 is now usable)</li>
-<li>Fixed a crash (at least on FreeBSD) when loading Resurrection of Evil’s last level</li>
+<li>Fixed some (kinda rare) crashes due to assertion errors, especially
+observed in the last boss fights of both doom3 and the Resurrection of
+Evil Addon.</li>
+<li>Improved compatibility with AZERTY keyboards (the row of keys with
+1…9, 0 is now usable)</li>
+<li>Fixed a crash (at least on FreeBSD) when loading Resurrection of
+Evil’s last level</li>
 <li>Compatibility with Microsoft Visual Studio 2015</li>
 <li>Video resolutions in menu now sorted, added 2880x1800</li>
-<li>Support for up to 8 mouse buttons (on Linux this needs SDL2 2.0.4 or newer to work)</li>
+<li>Support for up to 8 mouse buttons (on Linux this needs SDL2 2.0.4 or
+newer to work)</li>
 </ul>
 <h1 id="how-to-install">How to Install</h1>
 <h2 id="getting-the-doom3-game-data">Getting the Doom3 Game Data</h2>
-<p>You’ll need the game data from a Doom3 installation patched to 1.3.1. Specifically, you’ll need the following .pk4 files for the main game:</p>
+<p>You’ll need the game data from a Doom3 installation patched to 1.3.1.
+Specifically, you’ll need the following .pk4 files for the main
+game:</p>
 <table style="width:88%;">
 <colgroup>
 <col style="width: 25%" />
@@ -687,51 +1566,61 @@ We’ll continue to use Github for hosting the code and issues (and indeed this 
 <tr class="odd">
 <td style="text-align: center;">base/pak000.pk4</td>
 <td style="text-align: right;">337MB</td>
-<td style="text-align: center;"><code>71b8d37b2444d3d86a36fd61783844fe</code></td>
+<td
+style="text-align: center;"><code>71b8d37b2444d3d86a36fd61783844fe</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">base/pak001.pk4</td>
 <td style="text-align: right;">220MB</td>
-<td style="text-align: center;"><code>4bc4f3ba04ec2b4f4837be40e840a3c1</code></td>
+<td
+style="text-align: center;"><code>4bc4f3ba04ec2b4f4837be40e840a3c1</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">base/pak002.pk4</td>
 <td style="text-align: right;">398MB</td>
-<td style="text-align: center;"><code>fa84069e9642ad9aa4b49624150cc345</code></td>
+<td
+style="text-align: center;"><code>fa84069e9642ad9aa4b49624150cc345</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">base/pak003.pk4</td>
 <td style="text-align: right;">303MB</td>
-<td style="text-align: center;"><code>f22d8464997924e4913e467e7d62d5fe</code></td>
+<td
+style="text-align: center;"><code>f22d8464997924e4913e467e7d62d5fe</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">base/pak004.pk4</td>
 <td style="text-align: right;">227MB</td>
-<td style="text-align: center;"><code>38561a3c73f93f2e6fd31abf1d4e9102</code></td>
+<td
+style="text-align: center;"><code>38561a3c73f93f2e6fd31abf1d4e9102</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">base/pak005.pk4</td>
 <td style="text-align: right;">540KB</td>
-<td style="text-align: center;"><code>2afd4ece27d36393b7538d55a345b90d</code></td>
+<td
+style="text-align: center;"><code>2afd4ece27d36393b7538d55a345b90d</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">base/pak006.pk4</td>
 <td style="text-align: right;">214KB</td>
-<td style="text-align: center;"><code>a6e7003fa9dcc75073dc02b56399b370</code></td>
+<td
+style="text-align: center;"><code>a6e7003fa9dcc75073dc02b56399b370</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">base/pak007.pk4</td>
 <td style="text-align: right;">118KB</td>
-<td style="text-align: center;"><code>6319f086f930ec1618ab09b4c20c268c</code></td>
+<td
+style="text-align: center;"><code>6319f086f930ec1618ab09b4c20c268c</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">base/pak008.pk4</td>
 <td style="text-align: right;">12KB</td>
-<td style="text-align: center;"><code>28750b7841de9453eb335bad6841a2a5</code></td>
+<td
+style="text-align: center;"><code>28750b7841de9453eb335bad6841a2a5</code></td>
 </tr>
 </tbody>
 </table>
-<p>… and (optionally) these .pk4 files for the <em>Resurrection of Evil</em> addon:</p>
+<p>… and (optionally) these .pk4 files for the <em>Resurrection of
+Evil</em> addon:</p>
 <table style="width:88%;">
 <colgroup>
 <col style="width: 25%" />
@@ -749,84 +1638,184 @@ We’ll continue to use Github for hosting the code and issues (and indeed this 
 <tr class="odd">
 <td style="text-align: center;">d3xp/pak000.pk4</td>
 <td style="text-align: right;">514MB</td>
-<td style="text-align: center;"><code>a883fef0fd10aadeb73d34c462ff865d</code></td>
+<td
+style="text-align: center;"><code>a883fef0fd10aadeb73d34c462ff865d</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">d3xp/pak001.pk4</td>
 <td style="text-align: right;">98KB</td>
-<td style="text-align: center;"><code>06fc9be965e345587064056bf22236d2</code></td>
+<td
+style="text-align: center;"><code>06fc9be965e345587064056bf22236d2</code></td>
 </tr>
 </tbody>
 </table>
-<p>.. or alternatively you can use the <code>demo00.pk4</code> from the free Demo version, <a href="#using-the-doom3-demo-gamedata">see below</a> for more information.</p>
-<p>If you’re using an official binary release of dhewm3 (for Win32 or Linux amd64), you just put the .pk4 files into the corresponding directories (<code>base/</code> and <code>d3xp/</code>) in <code>dhewm3/</code>.</p>
-<p>There are also platform-specific places where dhewm3 looks for the game data, see <a href="https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files">the FAQ</a> for more details.</p>
-<p>Alternatively you can just tell dhewm3 where to find the directory that contains base/ and d3xp/ with the .pk4s, with the following commandline argument:</p>
+<p>.. or alternatively you can use the <code>demo00.pk4</code> from the
+free Demo version, <a href="#using-the-doom3-demo-gamedata">see
+below</a> for more information.</p>
+<p>If you’re using an official binary release of dhewm3 (for Win32 or
+Linux amd64), you just put the .pk4 files into the corresponding
+directories (<code>base/</code> and <code>d3xp/</code>) in
+<code>dhewm3/</code>.</p>
+<p>There are also platform-specific places where dhewm3 looks for the
+game data, see <a
+href="https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files">the
+FAQ</a> for more details.</p>
+<p>Alternatively you can just tell dhewm3 where to find the directory
+that contains base/ and d3xp/ with the .pk4s, with the following
+commandline argument:</p>
 <blockquote>
 <p><code>dhewm3 +set fs_basepath /path/to/Doom3/</code></p>
 </blockquote>
-<p>(On Windows it might look like <code>dhewm3.exe +set fs_basepath C:\Games\Doom3\</code>)</p>
+<p>(On Windows it might look like
+<code>dhewm3.exe +set fs_basepath C:\Games\Doom3\</code>)</p>
 <p><br> The following sections explain how to obtain the .pk4 files.</p>
 <h3 id="from-cddvd-patch">… from CD/DVD + Patch</h3>
-<p>If you bought the game on CDs/DVD, base/pak000.pk4 - pak004.pk4 and d3xp/pak000.pk4 can be copied from the disks, the other files are from the patch.</p>
-<p>On <strong>Linux</strong> (and probably other <strong>Unix-like</strong> systems and maybe even Windows with a mingw shell) you can extract the needed files from <a href="https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/doom3-linux-1.3.1.1304.x86.run">the official 1.3.1 patch for Linux</a> with:</p>
+<p>If you bought the game on CDs/DVD, base/pak000.pk4 - pak004.pk4 and
+d3xp/pak000.pk4 can be copied from the disks, the other files are from
+the patch.</p>
+<p>On <strong>Linux</strong> (and probably other
+<strong>Unix-like</strong> systems and maybe even Windows with a mingw
+shell) you can extract the needed files from <a
+href="https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/doom3-linux-1.3.1.1304.x86.run">the
+official 1.3.1 patch for Linux</a> with:</p>
 <blockquote>
 <p><code>sh /path/to/doom3-linux-1.3.1.1304.x86.run --tar xvf --wildcards base/pak* d3xp/pak*</code></p>
 </blockquote>
-<p>On <strong>Windows</strong> you can just install the game and <a href="https://archive.org/details/Doom_3_1.3.1">the official 1.3.1 patch for Windows</a> and then get the files from the installation directory (or copy dhewm3 in there).</p>
+<p>On <strong>Windows</strong> you can just install the game and <a
+href="https://archive.org/details/Doom_3_1.3.1">the official 1.3.1 patch
+for Windows</a> and then get the files from the installation directory
+(or copy dhewm3 in there).</p>
 <h3 id="from-steam">… from Steam</h3>
-<p>First you need to buy <a href="https://store.steampowered.com/app/208200/DOOM_3/">Doom3</a> of course - it also includes the Resurrection of Evil Addon (and the BFG Edition re-release of the game, <em>which is <strong>not</strong> supported by dhewm3</em>).</p>
+<p>First you need to buy <a
+href="https://store.steampowered.com/app/208200/DOOM_3/">Doom3</a> of
+course - it also includes the Resurrection of Evil Addon (and the BFG
+Edition re-release of the game, <em>which is <strong>not</strong>
+supported by dhewm3</em>).</p>
 <p>Thankfully the game from Steam is already fully patched to 1.3.1.</p>
-<p>On <strong>Windows</strong>, <em>just install</em> it and copy the game data from there (see above for what files are needed).</p>
-<p>Same on <strong>Linux</strong>, thanks to Steam Play / Proton, though you might have to enable it:<br />
-In Steam in the <code>Steam</code> ➔ <code>Settings</code> menu, under <code>Steam Play</code>, check both:</p>
+<p>On <strong>Windows</strong>, <em>just install</em> it and copy the
+game data from there (see above for what files are needed).</p>
+<p>Same on <strong>Linux</strong>, thanks to Steam Play / Proton, though
+you might have to enable it:<br />
+In Steam in the <code>Steam</code> ➔ <code>Settings</code> menu, under
+<code>Steam Play</code>, check both:</p>
 <blockquote>
 <p>☑ Enable Steam Play for supported titles<br />
 ☑ Enable Steam Play for all other titles</p>
 </blockquote>
-<p>On <strong>macOS</strong> unfortunately you can’t just install the game (unless you run Windows Steam in Wine), because it’s Windows-only on Steam and Steam (currently?) doesn’t use Proton on Mac.</p>
-<p>However, you can still download it with <strong><a href="https://developer.valvesoftware.com/wiki/SteamCMD">SteamCMD</a></strong>.<br />
-See <a href="https://developer.valvesoftware.com/wiki/SteamCMD#macOS">this description for macOS</a> or <a href="https://developer.valvesoftware.com/wiki/SteamCMD#Linux">here for Linux</a> on how to install SteamCMD on your system. You won’t have to create a new user.</p>
+<p>On <strong>macOS</strong> unfortunately you can’t just install the
+game (unless you run Windows Steam in Wine), because it’s Windows-only
+on Steam and Steam (currently?) doesn’t use Proton on Mac.</p>
+<p>However, you can still download it with <strong><a
+href="https://developer.valvesoftware.com/wiki/SteamCMD">SteamCMD</a></strong>.<br />
+See <a
+href="https://developer.valvesoftware.com/wiki/SteamCMD#macOS">this
+description for macOS</a> or <a
+href="https://developer.valvesoftware.com/wiki/SteamCMD#Linux">here for
+Linux</a> on how to install SteamCMD on your system. You won’t have to
+create a new user.</p>
 <p>Then you can download Doom3 with</p>
 <blockquote>
 <p><code>./steamcmd.sh +@sSteamCmdForcePlatformType windows +login &lt;YOUR_STEAM_LOGIN_NAME&gt; +force_install_dir ./doom3/ +app_update 9050 validate +quit</code></p>
 </blockquote>
-<p>(replace <code>&lt;YOUR_STEAM_LOGIN_NAME&gt;</code> with your steam login name)<br />
-When it’s done you should have the normal windows installation of doom3 in <code>./doom3/</code> and the needed files in <code>./doom3/base/</code><br />
-It should be possible to get the <em>Resurection of Evil</em> data in the same way, by replacing <code>9050</code> with <code>9070</code>; the files should be in <code>./doom3/d3xp/</code> then.</p>
-<p>By the way, that number is the “AppID” of Doom3/RoE; if you wanna use this to get the data of other games you own, you can look up the AppID at <a href="https://steamdb.info/">SteamDB</a>.</p>
+<p>(replace <code>&lt;YOUR_STEAM_LOGIN_NAME&gt;</code> with your steam
+login name)<br />
+When it’s done you should have the normal windows installation of doom3
+in <code>./doom3/</code> and the needed files in
+<code>./doom3/base/</code><br />
+It should be possible to get the <em>Resurection of Evil</em> data in
+the same way, by replacing <code>9050</code> with <code>9070</code>; the
+files should be in <code>./doom3/d3xp/</code> then.</p>
+<p>By the way, that number is the “AppID” of Doom3/RoE; if you wanna use
+this to get the data of other games you own, you can look up the AppID
+at <a href="https://steamdb.info/">SteamDB</a>.</p>
 <h3 id="from-gog">… from GOG</h3>
-<p>GOG.com offers the same bundle as Steam (Doom3 + Resurrection of Evil + BFG Edition): <a href="https://www.gog.com/game/doom_3" class="uri">https://www.gog.com/game/doom_3</a></p>
-<p>I haven’t tried the GOG version yet, but you should be able to download it without installing any launcher. At GOG you usually get Windows Installers that use <a href="https://jrsoftware.org/isinfo.php">Inno Setup</a> and can be extracted with <a href="https://constexpr.org/innoextract/">innoextract</a> on all relevant operating systems.<br />
-See also <a href="https://constexpr.org/innoextract/#gog" class="uri">https://constexpr.org/innoextract/#gog</a></p>
-<p>I assume that the GOG version of the game is also fully patched to 1.3.1.</p>
-<h3 id="using-the-doom3-demo-gamedata">Using the Doom3 Demo gamedata</h3>
+<p>GOG.com offers the same bundle as Steam (Doom3 + Resurrection of Evil
++ BFG Edition): <a href="https://www.gog.com/game/doom_3"
+class="uri">https://www.gog.com/game/doom_3</a></p>
+<p>I haven’t tried the GOG version yet, but you should be able to
+download it without installing any launcher. At GOG you usually get
+Windows Installers that use <a
+href="https://jrsoftware.org/isinfo.php">Inno Setup</a> and can be
+extracted with <a
+href="https://constexpr.org/innoextract/">innoextract</a> on all
+relevant operating systems.<br />
+See also <a href="https://constexpr.org/innoextract/#gog"
+class="uri">https://constexpr.org/innoextract/#gog</a></p>
+<p>I assume that the GOG version of the game is also fully patched to
+1.3.1.</p>
+<h3 id="using-the-doom3-demo-gamedata">Using the Doom3 Demo
+gamedata</h3>
 <p>First you need to download the Doom3 Demo, of course.</p>
-<p>For <strong>Windows</strong>, you can get <a href="https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo">D3Demo.exe at Fileplanet</a> and just run the installer.</p>
-<p>For <strong>Linux</strong> (and <strong>other operating systems</strong> that have a POSIX-compatible shell and <code>tar</code>) you can download <a href="https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/Demo/doom3-linux-1.1.1286-demo.x86.run">doom3-linux-1.1.1286-demo.x86.run from Holarse</a> or some other page that has that file.<br />
+<p>For <strong>Windows</strong>, you can get <a
+href="https://www.fileplanet.com/archive/p-15998/DOOM-3-Demo">D3Demo.exe
+at Fileplanet</a> and just run the installer.</p>
+<p>For <strong>Linux</strong> (and <strong>other operating
+systems</strong> that have a POSIX-compatible shell and
+<code>tar</code>) you can download <a
+href="https://files.holarse-linuxgaming.de/native/Spiele/Doom%203/Demo/doom3-linux-1.1.1286-demo.x86.run">doom3-linux-1.1.1286-demo.x86.run
+from Holarse</a> or some other page that has that file.<br />
 Then you can extract the relevant file from the .run installer with</p>
 <blockquote>
 <p><code>sh doom3-linux-1.1.1286-demo.x86.run --tar xf demo/</code></p>
 </blockquote>
-<p>You’ll need <code>demo/demo00.pk4</code> for playing, either in exactly that directory, or you can copy it into <code>base/</code>.<br />
-Note that you <strong>don’t need the patches</strong> of the full version, adding their pk4s when using Demo gamedata breaks the game.</p>
-<p><code>demo00.pk4</code> has a size of 462MB but there are minimal differences between the one for Linux and Windows, so they have different md5sums:<br />
-<strong>Windows:</strong> md5sum <code>bd410abbb649b9512d65b794869df9fe</code> size 483534533 Bytes<br />
-<strong>Linux:</strong> md5sum <code>70c2c63ef1190158f1ebd6c255b22d8e</code> size 483535485 Bytes</p>
-<p>Both work on all platforms though, but the Linux demo had been released two months after the Demo for Windows and contains at least one tiny bugfix: A missing string for <code>" or "</code> which is used when binding multiple keys to the same action - the Windows Demo shows a nonsense string instead.</p>
+<p>You’ll need <code>demo/demo00.pk4</code> for playing, either in
+exactly that directory, or you can copy it into
+<code>base/</code>.<br />
+Note that you <strong>don’t need the patches</strong> of the full
+version, adding their pk4s when using Demo gamedata breaks the game.</p>
+<p><code>demo00.pk4</code> has a size of 462MB but there are minimal
+differences between the one for Linux and Windows, so they have
+different md5sums:<br />
+<strong>Windows:</strong> md5sum
+<code>bd410abbb649b9512d65b794869df9fe</code> size 483534533 Bytes<br />
+<strong>Linux:</strong> md5sum
+<code>70c2c63ef1190158f1ebd6c255b22d8e</code> size 483535485 Bytes</p>
+<p>Both work on all platforms though, but the Linux demo had been
+released two months after the Demo for Windows and contains at least one
+tiny bugfix: A missing string for <code>" or "</code> which is used when
+binding multiple keys to the same action - the Windows Demo shows a
+nonsense string instead.</p>
 <h2 id="getting-dhewm3-executables">Getting dhewm3 executables</h2>
-<p>On <strong>Windows</strong> you can just download the Win32 binaries from the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download page</a>.<br />
-You can either extract them into your Doom3 installation directory, or into a fresh directory and copy the needed game data (<a href="#getting-the-doom3-game-data">see above</a>) in there.<br />
-The official Windows binaries are built with Visual Studio 2017, so if it doesn’t start on your system make sure you have <a href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">the Visual C++ 2017 Redistributable <strong>for X86</strong></a> installed.</p>
-<p>Similarly, you can find x86_64 (amd64) <strong>Linux</strong> binaries on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download page</a> - these expect that your system has <code>libSDL2-2.0.so.0</code>,<code>libopenal.so.1</code>, <code>libz.so.1</code> and <code>libcurl.so.4</code> installed (on debian, Ubuntu and similar distros the corresponding packages are called <code>libsdl2-2.0-0</code>, <code>libopenal1</code>, <code>zlib1g</code> and <code>libcurl4</code>).</p>
-<p>If you’re using <strong>macOS</strong>, <a href="https://macsourceports.com">MacSourcePorts.com</a> provides signed and notarized <a href="https://macsourceports.com/game/doom3">dhewm3 binaries</a> for 64bit Intel and Apple Silicon.</p>
-<p>On Linux and *BSD it might be that your package manager provides a dhewm3 package/port that you can install; please refer to that packages documentation on where to put the game data.<br />
+<p>On <strong>Windows</strong> you can just download the Win32 binaries
+from the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download
+page</a>.<br />
+You can either extract them into your Doom3 installation directory, or
+into a fresh directory and copy the needed game data (<a
+href="#getting-the-doom3-game-data">see above</a>) in there.<br />
+The official Windows binaries are built with Visual Studio 2017, so if
+it doesn’t start on your system make sure you have <a
+href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">the
+Visual C++ 2017 Redistributable <strong>for X86</strong></a>
+installed.</p>
+<p>Similarly, you can find x86_64 (amd64) <strong>Linux</strong>
+binaries on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download page</a>
+- these expect that your system has
+<code>libSDL2-2.0.so.0</code>,<code>libopenal.so.1</code>,
+<code>libz.so.1</code> and <code>libcurl.so.4</code> installed (on
+debian, Ubuntu and similar distros the corresponding packages are called
+<code>libsdl2-2.0-0</code>, <code>libopenal1</code>, <code>zlib1g</code>
+and <code>libcurl4</code>).</p>
+<p>If you’re using <strong>macOS</strong>, <a
+href="https://macsourceports.com">MacSourcePorts.com</a> provides signed
+and notarized <a href="https://macsourceports.com/game/doom3">dhewm3
+binaries</a> for 64bit Intel and Apple Silicon.</p>
+<p>On Linux and *BSD it might be that your package manager provides a
+dhewm3 package/port that you can install; please refer to that packages
+documentation on where to put the game data.<br />
 You could also try telling dhewm3 where to find the game data with:</p>
 <blockquote>
 <p><code>dhewm3 +set fs_basepath /home/HansWerner/Games/doom3</code></p>
 </blockquote>
 <p>(adjust the path to your needs)</p>
-<p>If your package manager does not provide dhewm3, or you want to use the very latest code, you’ll have to compile it yourself. It’s not super hard, see <a href="https://github.com/dhewm/dhewm3/blob/master/README.md#compiling">the README</a> for details on compiling and <a href="https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files">the FAQ</a> on where to put the game data.</p>
+<p>If your package manager does not provide dhewm3, or you want to use
+the very latest code, you’ll have to compile it yourself. It’s not super
+hard, see <a
+href="https://github.com/dhewm/dhewm3/blob/master/README.md#compiling">the
+README</a> for details on compiling and <a
+href="https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files">the
+FAQ</a> on where to put the game data.</p>
 </main>
   <br><br>
   <script>

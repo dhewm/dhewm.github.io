@@ -52,172 +52,497 @@
 
 <main class="content" role="main">
 <!-- part2 is generated from mods.md after that index.html_part3 closes it all -->
-<h1 id="modifications-for-dhewm3">Modifications for <strong>dhewm3</strong></h1>
-<p>Unfortunately dhewm3 can’t support all old Doom3 modifications, as it’s incompatible with old Game DLLs. This means that old Mods are only supported if they <em>either</em> have been ported to dhewm3 <em>or</em> don’t require their own Game DLL (but are using the one from the main game).<br />
-The essential requirement for porting Mods to dhewm3 is that the original Mod authors must release the source code <strong>under the GPLv3 license</strong> (that id Software chose when open sourcing Doom3). The <a href="https://github.com/dhewm/dhewm3-sdk#how-to-port-a-mod-to-dhewm3">dhewm3 SDK project page</a> has more information.<br />
-General information about idTech4 (Doom3, Quake4, Prey, ET:QW, …) modding can be found at the <strong><a href="https://modwiki.dhewm3.org">idTech4 ModWiki</a></strong>.</p>
-<p><strong>NOTE</strong> that all mods <em>(except for Fitz Packerton, which is a standalone game)</em> <strong>require the full version of Doom3</strong> (some also need the Resurrection of Evil addon, see the mod descriptions below for details).</p>
+<h1 id="modifications-for-dhewm3">Modifications for
+<strong>dhewm3</strong></h1>
+<p>Unfortunately dhewm3 can’t support all old Doom3 modifications, as
+it’s incompatible with old Game DLLs. This means that old Mods are only
+supported if they <em>either</em> have been ported to dhewm3 <em>or</em>
+don’t require their own Game DLL (but are using the one from the main
+game).<br />
+The essential requirement for porting Mods to dhewm3 is that the
+original Mod authors must release the source code <strong>under the
+GPLv3 license</strong> (that id Software chose when open sourcing
+Doom3). The <a
+href="https://github.com/dhewm/dhewm3-sdk#how-to-port-a-mod-to-dhewm3">dhewm3
+SDK project page</a> has more information.<br />
+General information about idTech4 (Doom3, Quake4, Prey, ET:QW, …)
+modding can be found at the <strong><a
+href="https://modwiki.dhewm3.org">idTech4 ModWiki</a></strong>.</p>
+<p><strong>NOTE</strong> that all mods <em>(except for Fitz Packerton,
+which is a standalone game)</em> <strong>require the full version of
+Doom3</strong> (some also need the Resurrection of Evil addon, see the
+mod descriptions below for details).</p>
+<h1 id="general-mod-installation-instructions">General Mod Installation
+instructions</h1>
+<p>Mods generally consist of two parts:</p>
+<ol type="1">
+<li>Their <strong>game data</strong>, which is generally in a directory
+named after the mod, like <code>dentonmod/</code>.<br />
+That data usually is mostly .pk4 files, but other “loose” files in the
+mod directory may also be used.
+<ul>
+<li>It must be put in <a
+href="https://github.com/dhewm/dhewm3/wiki/FAQ#where-do-i-need-to-put-the-game-data-files">an
+appropriate location</a>, just like the game data from the base game.
+There the <strong>mod directory</strong> (e.g. <code>dentonmod/</code>)
+must be <strong>next to the base/</strong> directory (that contains the
+game data of the main game).</li>
+<li>See the <a href="#list-of-supported-mods">list of Mods</a> below for
+where to get the game data.</li>
+</ul></li>
+<li>Their mod <strong>.dll</strong>, built from their gamecode, which
+must’ve been be adjusted for dhewm3 and must have the same name as the
+mod directory, but with .dll (or .so or .dylib, depending on your
+operating system) at the end, like <code>dentonmod.dll</code>.
+<ul>
+<li>Not all mods need their own .dll though, some use the base game’s
+gamecode and just have their own game data.<br />
+If a Mod is <a href="#list-of-supported-mods">listed below</a> and
+mentions a <strong>.dll</strong>, it needs one.<br />
+That list also mentions where to download the prebuilt DLL for <em>x86
+Windows</em> (or .so libs for <em>x86_64 Linux</em>), usually they’re
+provided with the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">latest dhewm3
+release</a>, in the <em>dhewm3-mods-*</em> archives, and where to get
+the sourcecode to build it yourself.</li>
+<li>The Mod .dll (e.g. <code>dentonmod.dll</code>) must be <strong>next
+to base.dll</strong>, generally <strong>next to dhewm3.exe</strong> -
+<strong>NOT</strong> in the mod directory!</li>
+</ul></li>
+</ol>
+<h3 id="things-to-keep-in-mind-if-youre-not-using-windows">Things to
+keep in mind if you’re not using Windows</h3>
+<ul>
+<li>In the instructions above, mentally replace <code>.dll</code> with
+<code>.so</code> or <code>.dylib</code> or whatever dynamic libraries
+are called on your operating system, and replace <code>dhewm3.exe</code>
+with <code>dhewm3</code> or however the dhewm3 executable is called on
+your system</li>
+<li>Note that <strong>Doom3 requires mod names to be lowercase</strong>,
+so both the mod directory and the dll must only have lowercase
+characters (like <code>dentonmod/</code> instead of
+<code>Dentonmod/</code>). On Windows it happens to work even if this
+rule is not followed, because its file system is case-insensitive. On
+other operating systems it might not, so you <strong>may have to rename
+the mod directory</strong> accordingly. This is also mentioned in the
+mod-specific instructions below where needed</li>
+<li>Currently dhewm3 only provides prebuilt mod libraries (.dll/.so) for
+<em>x86 Windows</em> and <em>x86_64/amd64 Linux</em>. If you’re using
+<strong>a different operating system</strong> (or CPU architecture)
+you’ll have to <strong>build the “Mod .dll” yourself</strong>. The list
+of mods below links the mods source code and you can find generic build
+instructions at <a
+href="https://github.com/dhewm/dhewm3-sdk#how-to-build">the dhewm3-sdk
+project page</a></li>
+</ul>
 <h1 id="list-of-supported-mods">List of supported Mods</h1>
 <h2 id="blood-mod">Blood Mod</h2>
-<p><em>Blood Mod</em> adds HD blood, monster giblets and some blood-related Phrozo effects to the game, combining the gore effects of several other mods.</p>
-<p>A big THANK YOU to <em>ALord7</em> for releasing the mod’s source under GPL!</p>
+<p><em>Blood Mod</em> adds HD blood, monster giblets and some
+blood-related Phrozo effects to the game, combining the gore effects of
+several other mods.</p>
+<p>A big THANK YOU to <em>ALord7</em> for releasing the mod’s source
+under GPL!</p>
 <ul>
-<li>You can get the game data at <a href="https://www.moddb.com/games/doom-iii/addons/blood-mod-v15-for-dhewm3-32-bit">ModDB</a>
+<li>You can get the game data at <a
+href="https://www.moddb.com/mods/blood-mod/downloads/blood-mod-v18">ModDB</a>
 <ul>
 <li>Just extract that zip to your Doom3/dhewm3 installation</li>
 </ul></li>
-<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/bloodmod">Github</a></li>
-<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/bloodmod">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li>Once the game data and bloodmod.dll/bloodmod.so/bloodmod.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game bloodmod</code></li>
+<li>Once the game data and bloodmod.dll/bloodmod.so/bloodmod.dylib (and
+bloodmod_roe.dll/…) are in place, you can start the mod with:
+<code>./dhewm3 +set fs_game bloodmod</code><br />
+The version for Resurrection of Evil can be started with:
+<code>./dhewm3 +set fs_game_base d3xp +set fs_game bloodmod_roe</code></li>
 </ul>
 <h2 id="classic-doom-3">Classic Doom 3</h2>
-<p><a href="mods/cdoom1.jpg" title="Screenshot 1 of Classic Doom3"><img src="mods/small-cdoom1.jpg" height=200></a> <a href="mods/cdoom2.jpg" title="Screenshot 2 of Classic Doom3"><img src="mods/small-cdoom2.jpg" height=200></a></p>
-<p><em>Classic Doom 3</em> is a remake of the first episode of the original Doom in Doom3.</p>
-<p>A big THANK YOU to “SnoopJeDi” (and the rest of the Classic Doom 3 Team) for releasing this mod under GPL!</p>
+<p><a href="mods/cdoom1.jpg" title="Screenshot 1 of Classic Doom3"><img src="mods/small-cdoom1.jpg" height=200></a>
+<a href="mods/cdoom2.jpg" title="Screenshot 2 of Classic Doom3"><img src="mods/small-cdoom2.jpg" height=200></a></p>
+<p><em>Classic Doom 3</em> is a remake of the first episode of the
+original Doom in Doom3.</p>
+<p>A big THANK YOU to “SnoopJeDi” (and the rest of the Classic Doom 3
+Team) for releasing this mod under GPL!</p>
 <ul>
-<li>You can get the game data at <a href="https://www.moddb.com/downloads/classic-doom-3-131">ModDB</a>
+<li>You can get the game data at <a
+href="https://www.moddb.com/downloads/classic-doom-3-131">ModDB</a>
 <ul>
 <li>Just extract that zip to your Doom3/dhewm3 installation.</li>
 </ul></li>
-<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/cdoom">Github</a></li>
-<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/cdoom">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li>Once the game data and cdoom.dll/cdoom.so/cdoom.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game cdoom</code></li>
+<li>Once the game data and cdoom.dll/cdoom.so/cdoom.dylib are in place,
+you can start the mod with:
+<code>./dhewm3 +set fs_game cdoom</code></li>
 </ul>
 <h2 id="dentons-enhanced-doom3">Denton’s Enhanced Doom3</h2>
-<p>This mod enhances the looks and sound of Doom3 and provides several new features for custom maps.</p>
-<p>A big THANK YOU to “Clone JC Denton” for releasing his mod under GPL!</p>
+<p>This mod enhances the looks and sound of Doom3 and provides several
+new features for custom maps.</p>
+<p>A big THANK YOU to “Clone JC Denton” for releasing his mod under
+GPL!</p>
 <ul>
-<li>You can get the game data at <a href="https://www.moddb.com/mods/dentons-enhanced-doom3-v202/downloads/dentons-enhanced-doom3-v2021">ModDB</a>
+<li>You can get the game data at <a
+href="https://www.moddb.com/mods/dentons-enhanced-doom3-v202/downloads/dentons-enhanced-doom3-v2021">ModDB</a>
 <ul>
-<li>Open that zip and extract the contained <code>Extract this to your doom3 folder.zip</code> to your Doom3/dhewm3 installation.</li>
-<li>Especially if you’re not on Windows, make sure to rename the contained <code>Dentonmod/</code> directory to <code>dentonmod/</code>, as Doom3 doesn’t like uppercase characters in paths (while it works on Windows, it doesn’t on Linux, FreeBSD and possibly OSX!)</li>
+<li>Open that zip and extract the contained
+<code>Extract this to your doom3 folder.zip</code> to your Doom3/dhewm3
+installation.</li>
+<li>Especially if you’re not on Windows, make sure to rename the
+contained <code>Dentonmod/</code> directory to <code>dentonmod/</code>,
+as Doom3 doesn’t like uppercase characters in paths (while it works on
+Windows, it doesn’t on Linux, FreeBSD and possibly OSX!)</li>
 </ul></li>
-<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/dentonmod">Github</a></li>
-<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/dentonmod">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li>Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game dentonmod</code></li>
+<li>Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib
+are in place, you can start the mod with:
+<code>./dhewm3 +set fs_game dentonmod</code></li>
+</ul>
+<h2 id="eldoom">ELDOOM</h2>
+<p>A singleplayer campaign for Doom3 with lots of action. A full story
+from beginning to end. High quality portal skies. Large custom quality
+maps.</p>
+<p>A big THANK YOU to <em>Ez0n3</em> for releasing this mod under
+GPL!</p>
+<ul>
+<li>You can get the gamedata at <a
+href="https://www.moddb.com/mods/eldoom/downloads/eldoom-v10">ModDB</a></li>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/eldoom">Github</a></li>
+<li><strong>.dll</strong>s that work with the official dhewm3
+<strong>Windows</strong> executable and <strong>.so</strong> files for
+Linux (on amd64 aka x86_64) are part of
+<code>dhewm3-mods_*_win32.zip</code> resp.
+<code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1">Download
+Page</a>
+<ul>
+<li>for other platforms you’ll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and eldoom.dll/eldoom.so/eldoom.dylib are in
+place, you can start the mod with:
+<code>./dhewm3 +set fs_game eldoom</code></li>
+</ul>
+<h2 id="hexen-edge-of-chaos">HeXen: Edge Of Chaos</h2>
+<p>This was supposed to become a big total conversion based on the HeXen
+games, with three episodes and character classes.<br />
+Unfortunately the project died, but they released this impressive demo
+in 2010 which can now be played with dhewm3.</p>
+<p>A monumental thank you to <em>Zeroth</em> for releasing this mod
+under GPL and to <em>LegendGuard</em> for contacting <em>Zeroth</em> and
+getting permission for this and doing the initial dhewm3 port!</p>
+<ul>
+<li>You can get the gamedata at <a
+href="https://www.moddb.com/games/doom-iii/downloads/hexen-edge-of-chaos-dhewm3-edition">ModDB</a><br />
+Make sure to download the dhewm3 edition, the regular one doesn’t work
+with the dhewm3 port!</li>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/eoc">Github</a></li>
+<li><strong>.dll</strong>s that work with the official dhewm3
+<strong>Windows</strong> executable and <strong>.so</strong> files for
+Linux (on amd64 aka x86_64) are part of
+<code>dhewm3-mods_*_win32.zip</code> resp.
+<code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1">Download
+Page</a>
+<ul>
+<li>for other platforms you’ll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and eoc.dll/eoc.so/eoc.dylib are in place, you
+can start the mod with: <code>./dhewm3 +set fs_game eoc</code></li>
 </ul>
 <h2 id="fitz-packerton">Fitz Packerton</h2>
-<p><a href="mods/fitz1.jpg" title="Screenshot 1 of Fitz Packerton"><img src="mods/small-fitz1.jpg" height=200></a> <a href="mods/fitz2.jpg" title="Screenshot 2 of Fitz Packerton"><img src="mods/small-fitz2.jpg" height=200></a></p>
-<p>Actually a small standalone game based on Doom3 GPL, so you don’t even need the Doom3 game data to run this!</p>
-<p>Fitz Packerton is <em>“A theatrical game about a man and the things he carries. Pack what you must. Pray you won’t need it.”</em></p>
+<p><a href="mods/fitz1.jpg" title="Screenshot 1 of Fitz Packerton"><img src="mods/small-fitz1.jpg" height=200></a>
+<a href="mods/fitz2.jpg" title="Screenshot 2 of Fitz Packerton"><img src="mods/small-fitz2.jpg" height=200></a></p>
+<p>Actually a small standalone game based on Doom3 GPL, so you don’t
+even need the Doom3 game data to run this!</p>
+<p>Fitz Packerton is <em>“A theatrical game about a man and the things
+he carries. Pack what you must. Pray you won’t need it.”</em></p>
 <ul>
-<li>You can get the game data at <a href="https://teddydief.itch.io/fitz">https://teddydief.itch.io/fitz</a></li>
-<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/fitz">Github</a></li>
-<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<li>You can get the game data at <a
+href="https://teddydief.itch.io/fitz">https://teddydief.itch.io/fitz</a></li>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/fitz">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li>Once the game data and fitz.dll/fitz.so/fitz.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game fitz</code></li>
+<li>Once the game data and fitz.dll/fitz.so/fitz.dylib are in place, you
+can start the mod with: <code>./dhewm3 +set fs_game fitz</code></li>
+</ul>
+<h2 id="grimm-quest-for-the-gatherers-key">Grimm: Quest for the
+Gatherer’s Key</h2>
+<p>Grimm Quest for the Gatherer’s Key is a Hack and Slash Fantasy game
+with some platforming elements that leans heavily on extremely bloody
+and satisfying gameplay.</p>
+<p>A big THANK YOU to <em>grimmquest</em> for releasing the mods source
+under GPL!</p>
+<ul>
+<li>You can get the game data at <a
+href="https://www.moddb.com/mods/grimm-quest-for-the-gatherers-key">ModDB</a></li>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/grimm">Github</a></li>
+<li><strong>.dll</strong>s that work with the official dhewm3
+<strong>Windows</strong> executable and <strong>.so</strong> files for
+Linux (on amd64 aka x86_64) are part of
+<code>dhewm3-mods_*_win32.zip</code> resp.
+<code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1">Download
+Page</a>
+<ul>
+<li>for other platforms you’ll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and grimm.dll/grimm.so/grimm.dylib are in place,
+you can start the mod with:
+<code>./dhewm3 +set fs_game grimm</code></li>
 </ul>
 <h2 id="hard-corps">Hard Corps</h2>
-<p><a href="mods/hc1.jpg" title="Screenshot of Hard Corps"><img src="mods/small-hc1.jpg" height=200></a> <a href="mods/hq2.jpg" title="Screenshot of HardQore2"><img src="mods/small-hq2.jpg" height=200></a></p>
-<p>The <em>DOOM 3: Hard Corps</em> is an enhanced/remastered version of the classic <em>HardQore2</em> mod for Doom3.<br />
-It brings classic, fast paced, thumb blistering <strong>side scrolling action</strong> to Hell.<br />
-If you’re a fan of classic action games such as Contra &amp; Metal Slug; then Hard Corps is what you have been waiting for.</p>
-<p>Thanks a lot to Revility and Ivan_the_B (and the rest of the HardQore2 / Hard Corps team) for developing this Mod for dhewm3! :-)</p>
+<p><a href="mods/hc1.jpg" title="Screenshot of Hard Corps"><img src="mods/small-hc1.jpg" height=200></a>
+<a href="mods/hq2.jpg" title="Screenshot of HardQore2"><img src="mods/small-hq2.jpg" height=200></a></p>
+<p>The <em>DOOM 3: Hard Corps</em> is an enhanced/remastered version of
+the classic <em>HardQore2</em> mod for Doom3.<br />
+It brings classic, fast paced, thumb blistering <strong>side scrolling
+action</strong> to Hell.<br />
+If you’re a fan of classic action games such as Contra &amp; Metal Slug;
+then Hard Corps is what you have been waiting for.</p>
+<p>Thanks a lot to Revility and Ivan_the_B (and the rest of the
+HardQore2 / Hard Corps team) for developing this Mod for dhewm3! :-)</p>
 <ul>
-<li>You can get the game data at: <a href="https://www.moddb.com/mods/hardcorps/downloads">https://www.moddb.com/mods/hardcorps/downloads</a></li>
-<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/hardcorps">Github</a></li>
-<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<li>You can get the game data at: <a
+href="https://www.moddb.com/mods/hardcorps/downloads">https://www.moddb.com/mods/hardcorps/downloads</a></li>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/hardcorps">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li>Once the game data and hardcorps.dll/hardcorps.so/hardcorps.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game hardcorps</code></li>
+<li>Once the game data and hardcorps.dll/hardcorps.so/hardcorps.dylib
+are in place, you can start the mod with:
+<code>./dhewm3 +set fs_game hardcorps</code></li>
 </ul>
 <h2 id="librecoop">LibreCoop</h2>
-<p><a href="mods/librecoop1.jpg" title="Screenshot 1 of LibreCoop"><img src="mods/small-librecoop1.jpg" height=200></a> <a href="mods/librecoop2.jpg" title="Screenshot 2 of LibreCoop"><img src="mods/small-librecoop2.jpg" height=200></a></p>
-<p>LibreCoop is an open source coop mod for dhewm 3 supporting both the base game and the <em>Resurrection of Evil</em> Addon.</p>
-<p>Thanks a lot to Stradex for developing this awesome mod that finally allows cooperative multiplayer in dhewm3!</p>
+<p><a href="mods/librecoop1.jpg" title="Screenshot 1 of LibreCoop"><img src="mods/small-librecoop1.jpg" height=200></a>
+<a href="mods/librecoop2.jpg" title="Screenshot 2 of LibreCoop"><img src="mods/small-librecoop2.jpg" height=200></a></p>
+<p>LibreCoop is an open source coop mod for dhewm 3 supporting both the
+base game and the <em>Resurrection of Evil</em> Addon.</p>
+<p>Thanks a lot to Stradex for developing this awesome mod that finally
+allows cooperative multiplayer in dhewm3!</p>
 <ul>
-<li>You can download the needed game data at <a href="https://www.moddb.com/mods/librecoop-dhewm3-coop">ModDB</a></li>
-<li>You can find the source at <a href="https://github.com/Stradex/librecoop/">the LibreCoop Github repo</a></li>
-<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<li>You can download the needed game data at <a
+href="https://www.moddb.com/mods/librecoop-dhewm3-coop">ModDB</a></li>
+<li>You can find the source at <a
+href="https://github.com/Stradex/librecoop/">the LibreCoop Github
+repo</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
-<li>there’s actually official downloads for Win32 and Linux on amd64, but dhewm3 provides DLLs/.so’s anyway in case the official ones don’t work on your system</li>
+<li>there’s actually official downloads for Win32 and Linux on amd64,
+but dhewm3 provides DLLs/.so’s anyway in case the official ones don’t
+work on your system</li>
 </ul></li>
-<li>Once the game data and librecoop.dll/.so/.dylib and librecoopd3xp.dll/.so/dylib are in place, you can start the mod with:
+<li>Once the game data and librecoop.dll/.so/.dylib and
+librecoopd3xp.dll/.so/dylib are in place, you can start the mod with:
 <ul>
-<li><code>./dhewm3 +set fs_game librecoop</code> for the main game or</li>
-<li><code>./dhewm3 +set fs_game_base d3xp +set fs_game librecoopd3xp</code> for <em>Resurrection of Evil</em></li>
+<li><code>./dhewm3 +set fs_game librecoop</code> for the main game
+or</li>
+<li><code>./dhewm3 +set fs_game_base d3xp +set fs_game librecoopd3xp</code>
+for <em>Resurrection of Evil</em></li>
 </ul></li>
 </ul>
 <h2 id="perfected-doom-3">Perfected Doom 3</h2>
-<p><em>Perfected Doom 3</em> attempts to completely overhaul the entire game with new monsters, rebalanced weapons, rebalanced monster stats, better graphics, new gameplay features and much more. Based on <a href="#sikkmod-and-sikkmod-roe">Sikkmod</a></p>
-<p>Thanks a lot to <em>VGames</em> for releasing the source under GPL!</p>
+<p><em>Perfected Doom 3</em> attempts to completely overhaul the entire
+game with new monsters, rebalanced weapons, rebalanced monster stats,
+better graphics, new gameplay features and much more. Based on <a
+href="#sikkmod-and-sikkmod-roe">Sikkmod</a></p>
+<p>Thanks a lot to <em>VGames</em> for releasing the source under
+GPL!</p>
 <ul>
-<li>You can get the game data at <a href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">ModDB</a>
+<li>You can get the game data at <a
+href="https://www.moddb.com/mods/perfected-doom-3-version-500/downloads">ModDB</a>
 <ul>
-<li>Especially if you’re not on Windows, make sure to rename the contained <code>Perfected/</code> directory to <code>perfected/</code>, and <code>Perfected_ROE/</code> to <code>perfected_roe/</code>, because Doom3 doesn’t like uppercase characters in paths (while it works on Windows, it doesn’t on Linux, FreeBSD and possibly OSX!)</li>
+<li>Especially if you’re not on Windows, make sure to rename the
+contained <code>Perfected/</code> directory to <code>perfected/</code>,
+and <code>Perfected_ROE/</code> to <code>perfected_roe/</code>, because
+Doom3 doesn’t like uppercase characters in paths (while it works on
+Windows, it doesn’t on Linux, FreeBSD and possibly OSX!)</li>
 </ul></li>
-<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/perfected">Github</a></li>
-<li><strong>.dll</strong>s that work with the official dhewm3 <strong>Windows</strong> executable and <strong>.so</strong> files for Linux (on amd64 aka x86_64) are part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/perfected">Github</a></li>
+<li><strong>.dll</strong>s that work with the official dhewm3
+<strong>Windows</strong> executable and <strong>.so</strong> files for
+Linux (on amd64 aka x86_64) are part of
+<code>dhewm3-mods_*_win32.zip</code> resp.
+<code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li>Once the game data and perfected.dll/perfected.so/perfected.dylib (or perfected_roe.dll/.so/.dylib for Sikkmod RoE) are in place, you can start the mod with:<br />
+<li>Once the game data and perfected.dll/perfected.so/perfected.dylib
+(or perfected_roe.dll/.so/.dylib for Perfected ROE) are in place, you
+can start the mod with:<br />
 <code>./dhewm3 +set fs_game perfected</code><br />
 or, for the Resurrection of Evil Addon (with Perfected ROE):<br />
 <code>./dhewm3 +set fs_game_base d3xp +set fs_game perfected_roe</code></li>
 </ul>
-<h2 id="scarlet-rivensin-the-ruiner">Scarlet Rivensin: The Ruiner</h2>
-<p><a href="mods/rivensin1.jpg" title="Screenshot 1 of Rivensin"><img src="mods/small-rivensin1.jpg" height=200></a> <a href="mods/rivensin2.jpg" title="Screenshot 2 of Rivensin"><img src="mods/small-rivensin2.jpg" height=200></a></p>
-<p><em>Scarlet Rivensin: The Ruiner</em> (formerly known as just “Ruiner”) is a dark, nightmarish, third person action modification for Doom3 &amp; dhewm 3. The player assumes the role of a herald of Death &amp; fights hordes of the damned using unique weapons, abilities and spells.</p>
-<p>Thanks a lot to Revility (and the rest of the Rivensin/Ruiner team) for releasing the source under GPL!</p>
+<h2 id="real-gibs">Real Gibs</h2>
+<p>This mod adds a gibbing effect to most monsters in the game.</p>
+<p>Big thanks to <em>darknar</em> for releasing the mods source code,
+and to <em>ALord7</em> for porting it to dhewm3!</p>
 <ul>
-<li>You can get the game data at <a href="https://www.moddb.com/mods/ruiner">ModDB</a>
+<li>You can download the mods game data at <a
+href="https://www.moddb.com/games/doom-iii/addons/real-gibs-v106-for-dhewm3-32-bit">ModDB</a><br />
+<em>Note:</em> The page says “for 32bit”, but that only refers to the
+included realgibs.dll. The game data works on all platforms, you just
+need the appropriate realgibs.dll/.so/.dylib</li>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/realgibs">Github</a></li>
+<li><strong>.dll</strong>s that work with the official dhewm3
+<strong>Windows</strong> executable and <strong>.so</strong> files for
+Linux (on amd64 aka x86_64) are part of
+<code>dhewm3-mods_*_win32.zip</code> resp.
+<code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1">Download
+Page</a>
 <ul>
-<li>Just extract the dhewm3/rivensin subfolder of the .zip to your Doom3/dhewm3 installation.</li>
-</ul></li>
-<li>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/rivensin">Github</a></li>
-<li>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
-<ul>
-<li>Alternatively, the Rivensin downloads contain Windows binaries for dhewm3 and the Mod itself</li>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li>Once the game data and rivensin.dll/rivensin.so/rivensin.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game rivensin</code></li>
+<li>Once the game data and realgibs.dll/realgibs.so/realgibs.dylib are
+in place, you can start the mod with:
+<code>./dhewm3 +set fs_game realgibs</code></li>
+</ul>
+<h2 id="scarlet-rivensin-the-ruiner">Scarlet Rivensin: The Ruiner</h2>
+<p><a href="mods/rivensin1.jpg" title="Screenshot 1 of Rivensin"><img src="mods/small-rivensin1.jpg" height=200></a>
+<a href="mods/rivensin2.jpg" title="Screenshot 2 of Rivensin"><img src="mods/small-rivensin2.jpg" height=200></a></p>
+<p><em>Scarlet Rivensin: The Ruiner</em> (formerly known as just
+“Ruiner”) is a dark, nightmarish, third person action modification for
+Doom3 &amp; dhewm 3. The player assumes the role of a herald of Death
+&amp; fights hordes of the damned using unique weapons, abilities and
+spells.</p>
+<p>Thanks a lot to Revility (and the rest of the Rivensin/Ruiner team)
+for releasing the source under GPL!</p>
+<ul>
+<li>You can get the game data at <a
+href="https://www.moddb.com/mods/ruiner">ModDB</a>
+<ul>
+<li>Just extract the dhewm3/rivensin subfolder of the .zip to your
+Doom3/dhewm3 installation.</li>
+</ul></li>
+<li>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/rivensin">Github</a></li>
+<li>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a>
+<ul>
+<li>Alternatively, the Rivensin downloads contain Windows binaries for
+dhewm3 and the Mod itself</li>
+<li>for other platforms you’ll have to compile it yourself</li>
+</ul></li>
+<li>Once the game data and rivensin.dll/rivensin.so/rivensin.dylib are
+in place, you can start the mod with:
+<code>./dhewm3 +set fs_game rivensin</code></li>
 </ul>
 <h2 id="sikkmod-and-sikkmod-roe">Sikkmod and Sikkmod RoE</h2>
-<p><em>Sikkmod</em> is a general enhancement mod for Doom 3. Its main purposes are to update visuals of Doom 3 to a more modern level and to allow the user to customize various aspects of the game to suit their preferred styles all while maintaining the core mechanics and aesthetics originally put in by id Software.</p>
-<p>Thanks a lot to <em>Sikkpin</em> for <a href="https://github.com/dhewm/dhewm3/issues/120#issuecomment-1555662168">allowing to use the source under GPL</a>!</p>
+<p><em>Sikkmod</em> is a general enhancement mod for Doom 3. Its main
+purposes are to update visuals of Doom 3 to a more modern level and to
+allow the user to customize various aspects of the game to suit their
+preferred styles all while maintaining the core mechanics and aesthetics
+originally put in by id Software.</p>
+<p>Thanks a lot to <em>Sikkpin</em> for <a
+href="https://github.com/dhewm/dhewm3/issues/120#issuecomment-1555662168">allowing
+to use the source under GPL</a>!</p>
 <ul>
-<li><p>You can get the game data at <a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12" class="uri">https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12</a> and <a href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe" class="uri">https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe</a></p>
+<li><p>You can get the game data at <a
+href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12"
+class="uri">https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v12</a>
+and <a
+href="https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe"
+class="uri">https://www.moddb.com/mods/sikkmod/downloads/sikkmod-v11-roe</a></p>
 <ul>
 <li>No, there is no Sikkmod v1.2 for Resurrection of Evil (RoE)</li>
 </ul></li>
-<li><p>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/sikkmod">Github</a></p></li>
-<li><p><strong>.dll</strong>s that work with the official dhewm3 <strong>Windows</strong> executable and <strong>.so</strong> files for Linux (on amd64 aka x86_64) are part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a></p>
+<li><p>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/sikkmod">Github</a></p></li>
+<li><p><strong>.dll</strong>s that work with the official dhewm3
+<strong>Windows</strong> executable and <strong>.so</strong> files for
+Linux (on amd64 aka x86_64) are part of
+<code>dhewm3-mods_*_win32.zip</code> resp.
+<code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download
+Page</a></p>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li><p>Once the game data and sikkmod.dll/sikkmod.so/sikkmod.dylib (or sikkmodd3xp.dll etc for Sikkmod RoE), you can start the mod with:<br />
+<li><p>Once the game data and sikkmod.dll/sikkmod.so/sikkmod.dylib (or
+sikkmodd3xp.dll etc for Sikkmod RoE), you can start the mod with:<br />
 <code>./dhewm3 +set fs_game sikkmod</code><br />
 or, for the Resurrection of Evil Addon (with Sikkmod RoE):<br />
 <code>./dhewm3 +set fs_game_base d3xp +set fs_game sikkmodd3xp</code></p></li>
-<li><p><strong>Note</strong> that dhewm3’s gamma in shader feature doesn’t work well with Sikkmod, so you may want to disable it (<code>r_gammaInShader 0</code>)</p></li>
+<li><p><strong>Note</strong> that dhewm3’s gamma in shader feature
+doesn’t work well with Sikkmod, so you may want to disable it
+(<code>r_gammaInShader 0</code>)</p></li>
 </ul>
 <h2 id="the-lost-mission">The Lost Mission</h2>
-<p><a href="mods/d3le1.jpg" title="Screenshot 1 of Doom3: The Lost Mission"><img src="mods/small-d3le1.jpg" height=200></a> <a href="mods/d3le2.jpg" title="Screenshot 2 of Doom3: The Lost Mission"><img src="mods/small-d3le2.jpg" height=200></a></p>
+<p><a href="mods/d3le1.jpg" title="Screenshot 1 of Doom3: The Lost Mission"><img src="mods/small-d3le1.jpg" height=200></a>
+<a href="mods/d3le2.jpg" title="Screenshot 2 of Doom3: The Lost Mission"><img src="mods/small-d3le2.jpg" height=200></a></p>
 <p>An entire new episode for Doom3!</p>
 <p>Thanks a lot to Arl90 for releasing the source under GPL!</p>
 <ul>
-<li><p>You can get the gamedata at <a href="https://www.moddb.com/mods/the-lost-mission">ModDB</a></p></li>
-<li><p>You can find the source code at <a href="https://github.com/dhewm/dhewm3-sdk/tree/d3le">Github</a></p></li>
-<li><p>A <strong>.dll</strong> that works with the official dhewm3 <strong>Windows</strong> executable and a <strong>.so</strong> for Linux (on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code> resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a href="https://github.com/dhewm/dhewm3/releases/latest">Download Page</a></p>
+<li><p>You can get the gamedata at <a
+href="https://www.moddb.com/mods/the-lost-mission">ModDB</a></p></li>
+<li><p>You can find the source code at <a
+href="https://github.com/dhewm/dhewm3-sdk/tree/d3le">Github</a></p></li>
+<li><p>A <strong>.dll</strong> that works with the official dhewm3
+<strong>Windows</strong> executable and a <strong>.so</strong> for Linux
+(on amd64 aka x86_64) is part of <code>dhewm3-mods_*_win32.zip</code>
+resp. <code>dhewm3-mods_*_Linux_amd64.tar.gz</code> on the <a
+href="https://github.com/dhewm/dhewm3/releases/latest">Download
+Page</a></p>
 <ul>
 <li>for other platforms you’ll have to compile it yourself</li>
 </ul></li>
-<li><p><strong>Note</strong> that THIS MOD NEEDS the official “Resurrection of Evil” Addon (d3xp/) installed!</p></li>
-<li><p>Once the game data and d3le.dll/d3le.so/d3le.dylib are in place, you can start the mod with: <code>./dhewm3 +set fs_game_base d3xp +set fs_game d3le</code></p></li>
+<li><p><strong>Note</strong> that THIS MOD NEEDS the official
+“Resurrection of Evil” Addon (d3xp/) installed!</p></li>
+<li><p>Once the game data and d3le.dll/d3le.so/d3le.dylib are in place,
+you can start the mod with:
+<code>./dhewm3 +set fs_game_base d3xp +set fs_game d3le</code></p></li>
 </ul>
 </main>
   <br><br>
