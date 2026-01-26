@@ -109,6 +109,27 @@ A big THANK YOU to "Clone JC Denton" for releasing his mod under GPL!
 * Once the game data and dentonmod.dll/dentonmod.so/dentonmod.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game dentonmod`
 
+## Desolated - The Crying Fate
+
+A Total Conversion based on Doom 3. It comes with a complete new storyline about the shade between
+good and evil plus two other gamemodes. A quest-, rpg- and moneysystem are just a few of the many
+new game mechanics that will await you. If you want to see everything you'll need at least 7-8 hours...
+
+A big THANK YOU to *DaveTheFreak* and his team for giving me the source code! Further thanks
+to *walikor* for getting in touch with him and convincing him to release the source!
+
+* You can get the game data at [ModDB](https://www.moddb.com/mods/desolated-the-crying-fate/downloads/desolated-the-crying-fate-v10)
+    - Extract that zip to your Doom3/dhewm3 installation  
+      **and rename the directory** from `Desolated/` to `desolated/` (all-lowercase), especially
+      if you're not using Windows.
+* You can find the source code at [Github](https://github.com/dhewm/dhewm3-sdk/tree/desolated)
+* A **.dll** that work with the official dhewm3 **Windows** executable and a **.so** file for Linux
+  (on amd64 aka x86_64) are part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
+  on the [Download Page](https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1)
+    - for other platforms you'll have to compile it yourself
+* Once desolated.dll/desolated.so/desolated.dylib are in place, you can start the mod with:
+  `./dhewm3 +set fs_game desolated`
+
 ## ELDOOM
 
 A singleplayer campaign for Doom3 with lots of action. A full story from beginning to end.

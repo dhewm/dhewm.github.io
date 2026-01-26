@@ -20,6 +20,23 @@ more information.
 
 # News
 
+#### 2026-01-26: _dhewm3 1.5.5 Release Candidate 2_
+
+The second Release Candidate of the upcoming 1.5.5 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC2)**
+(incl. builds for Windows and 64bit Linux).
+
+**Changes since 1.5.5 RC1:**
+
+* New Mod: [Desolated - The Crying Fate](https://www.moddb.com/mods/desolated-the-crying-fate/)
+* Widescreen GUIs have been updated
+* Fixed a crash when using an incomplete cubemap texture (missing one side).  
+  Will now print a warning about the missing side.
+* Loading Blood Mod for d3xp (Resurrection of Evil) via Mods menu works now
+* The `timescale` CVar works again (broke with the "smoother timing" changes)
+* Fixed some timing issues, esp. when trying to sleep for one frame in scripts, introduced with the "smoother timing" changes ([#727](https://github.com/dhewm/dhewm3/issues/727))
+
 #### 2026-01-11: _dhewm3 1.5.5 Release Candidate 1_
 
 A first Release Candidate of the upcoming 1.5.5 release is available!
@@ -43,7 +60,7 @@ as an optional [Download](https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1
 * [Real Gibs](https://www.moddb.com/games/doom-iii/addons/real-gibs-v106-for-dhewm3-32-bit)
     - Note: The page says it only works with the 32bit version of dhewm3, but that refers to the realgibs.dll **they** ship.  
       Use their gamedata with the .dll/.so provided here (or build the lib yourself)
-* [Blood Mod](https://www.moddb.com/mods/blood-mod/downloads/blood-mod-v18) has been updated to v1.8
+* [Blood Mod](https://www.moddb.com/mods/blood-mod) has been updated to v1.8 and now also supports Resurrection Of Evil
 * All mods (except for LibreCoop) got updated with gamecode changes from dhewm3 1.5.5
 
 **Changes since 1.5.4:**
