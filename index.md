@@ -9,7 +9,8 @@ but it should work on (or be easily portable to) any system that supports OpenGL
 [SDL](http://libsdl.org) and [OpenAL](http://openal.org).  
 Compared to the original version of Doom3, dhewm3 has many bugfixes, supports EAX-like sound effects on
 all operating systems and hardware (via [OpenAL Softs](http://openal-soft.org/) EFX support), has much
-better support for widescreen resolutions and has 64bit support.
+better support for widescreen resolutions and has 64bit support.  
+It also has a great new mod-independent [Settings Menu](#dhewm3settingsmenu).
 
 It only supports **old Mods** if they *either* don't require their own game DLL *or* have been ported to
 dhewm3 - see the [Mods page](./mods.html) for more information.  
@@ -20,12 +21,31 @@ more information.
 
 # News
 
+#### 2026-03-16: _dhewm3 1.5.5 Release Candidate 3_
+
+The third (hopefully last) Release Candidate of the upcoming 1.5.5 release is available!
+
+You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC3)**
+(incl. builds for Windows and 64bit Linux).
+
+**Changes since 1.5.5 RC2:**
+
+* Fix wrong (flipped) labels of Prev./Next Weapon in dhewm3 settings menu ([#731](https://github.com/dhewm/dhewm3/issues/731))
+* Gamepad trigger axes can now also be used for ducking and jumping ([#733](https://github.com/dhewm/dhewm3/issues/733))
+* Updated to Dear ImGui v1.92.5
+* Fix bug in map compiling (`dmap`) that could lead to errors when loading the map,
+  due to "dangling edges" in collision models ([#742](https://github.com/dhewm/dhewm3/issues/742))
+* Fix stutters/hangs in Radiant (Level Editor) 2D/3D views ([#738](https://github.com/dhewm/dhewm3/issues/738))
+* Tell SDL2/3 to hide onscreen keyboards (relevant on Steamdeck; [#739](https://github.com/dhewm/dhewm3/issues/739))
+* Fix some signed int overflows (mostly relevant on PowerPC64 CPUs [#744](https://github.com/dhewm/dhewm3/issues/744), [#745](https://github.com/dhewm/dhewm3/issues/745))
+
+
 #### 2026-01-26: _dhewm3 1.5.5 Release Candidate 2_
 
 The second Release Candidate of the upcoming 1.5.5 release is available!
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC2)**
-(incl. builds for Windows and 64bit Linux).
+(incl. builds for Windows, macOS and 64bit Linux).
 
 **Changes since 1.5.5 RC1:**
 
@@ -138,15 +158,19 @@ To celebrate this, dhewm3 1.5.4 is released today!
 
 The biggest new features since 1.5.3 are a new mod-independent **Settings Menu** that uses
 [Dear ImGui](https://github.com/ocornut/imgui) and **Soft Particles** (that don't "cut" into geometry
-but fade smoothly).  
+but fade smoothly).
+
+<p id="dhewm3settingsmenu">
+
 The *Settings Menu* can be opened by pressing the `F10` key (unless some other action is already
-bound to that key) or by entering `dhewm3Settings` in the console and lets you configure many
-basic and advanced options, can be navigated with gamepad, keyboard or mouse and has an improved
-keybindings menu (compared to the original options menu).
+bound to that key) or by entering `dhewm3Settings` in the console (which can be opened with `Shift+Esc`).
+It lets you configure many basic and advanced options, can be navigated with gamepad, keyboard or mouse
+and has an improved keybindings menu (compared to the original options menu).
+</p>
 
 <a href="./dhewm3-1.5.4.jpg" title="dhewm3 1.5.4"><img src="./small-dhewm3-1.5.4.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
 
-You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.4)**
+You can **[download dhewm3 1.5.4 at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.4)**
 (incl. builds for **Windows** and 64bit **Linux**).  
 An up-to-date version for **macOS** is available at **[MacSourcePorts.com](http://www.macsourceports.com/sourceport/dhewm3)**.
 
@@ -1107,8 +1131,8 @@ installed.
 
 Similarly, you can find x86_64 (amd64) **Linux** binaries on the
 [Download page](https://github.com/dhewm/dhewm3/releases/latest) - these expect that your system
-has `libSDL2-2.0.so.0`,`libopenal.so.1`, `libz.so.1` and `libcurl.so.4` installed (on debian, Ubuntu and
-similar distros the corresponding packages are called `libsdl2-2.0-0`, `libopenal1`, `zlib1g` and `libcurl4`).
+has `libSDL2-2.0.so.0`,`libopenal.so.1` and `libcurl.so.4` installed (on debian, Ubuntu and
+similar distros the corresponding packages are called `libsdl2-2.0-0`, `libopenal1` and `libcurl4`).
 
 If you're using **macOS**, [MacSourcePorts.com](https://macsourceports.com)
 provides signed and notarized [dhewm3 binaries](https://macsourceports.com/game/doom3)
