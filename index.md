@@ -26,7 +26,7 @@ more information.
 The third (hopefully last) Release Candidate of the upcoming 1.5.5 release is available!
 
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC3)**
-(incl. builds for Windows and 64bit Linux).
+(incl. builds for Windows, macOS and 64bit Linux).
 
 **Changes since 1.5.5 RC2:**
 
