@@ -111,6 +111,9 @@ A big THANK YOU to "Clone JC Denton" for releasing his mod under GPL!
 
 ## Desolated - The Crying Fate
 
+<a href="mods/desolated1.jpg" title="Screenshot 1 of Desolated"><img src="mods/small-desolated1.jpg" height=200></a>
+<a href="mods/desolated2.jpg" title="Screenshot 2 of Desolated"><img src="mods/small-desolated2.jpg" height=200></a>
+
 A Total Conversion based on Doom 3. It comes with a complete new storyline about the shade between
 good and evil plus two other gamemodes. A quest-, rpg- and moneysystem are just a few of the many
 new game mechanics that will await you. If you want to see everything you'll need at least 7-8 hours...
@@ -132,6 +135,9 @@ to *walikor* for getting in touch with him and convincing him to release the sou
 
 ## ELDOOM
 
+<a href="mods/eldoom1.jpg" title="Screenshot 1 of ELDOOM"><img src="mods/small-eldoom1.jpg" height=200></a>
+<a href="mods/eldoom2.jpg" title="Screenshot 2 of ELDOOM"><img src="mods/small-eldoom2.jpg" height=200></a>
+
 A singleplayer campaign for Doom3 with lots of action. A full story from beginning to end.
 High quality portal skies. Large custom quality maps.
 
@@ -147,6 +153,9 @@ A big THANK YOU to *Ez0n3* for releasing this mod under GPL!
   `./dhewm3 +set fs_game eldoom`
 
 ## HeXen: Edge Of Chaos
+
+<a href="mods/eoc1.jpg" title="Screenshot 1 of Edge Of Chaos"><img src="mods/small-eoc1.jpg" height=200></a>
+<a href="mods/eoc2.jpg" title="Screenshot 2 of Edge Of Chaos"><img src="mods/small-eoc2.jpg" height=200></a>
 
 This was supposed to become a big total conversion based on the HeXen games, with three episodes and
 character classes.  
@@ -185,6 +194,9 @@ Pack what you must. Pray you won't need it."*
   `./dhewm3 +set fs_game fitz`
 
 ## Grimm: Quest for the Gatherer's Key
+
+<a href="mods/grimm1.jpg" title="Screenshot 1 of Grimm"><img src="mods/small-grimm1.jpg" height=200></a>
+<a href="mods/grimm2.jpg" title="Screenshot 2 of Grimm"><img src="mods/small-grimm2.jpg" height=200></a>
 
 Grimm Quest for the Gatherer's Key is a Hack and Slash Fantasy game with some platforming elements
 that leans heavily on extremely bloody and satisfying gameplay.
@@ -230,8 +242,8 @@ LibreCoop is an open source coop mod for dhewm 3 supporting both the base game a
 
 Thanks a lot to Stradex for developing this awesome mod that finally allows cooperative multiplayer in dhewm3!
 
-* You can download the needed game data at [ModDB](https://www.moddb.com/mods/librecoop-dhewm3-coop)
-* You can find the source at [the LibreCoop Github repo](https://github.com/Stradex/librecoop/)
+* You can download the needed game data at [ModDB](https://www.moddb.com/mods/librecoop-dhewm3-coop/downloads)
+* You can find the source at [Github](https://github.com/dhewm/dhewm3-sdk/tree/librecoop/)
 * A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
   (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
   on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
@@ -240,7 +252,7 @@ Thanks a lot to Stradex for developing this awesome mod that finally allows coop
       DLLs/.so's anyway in case the official ones don't work on your system
 * Once the game data and librecoop.dll/.so/.dylib and librecoopd3xp.dll/.so/dylib are in place,
   you can start the mod with:
-    -  `./dhewm3 +set fs_game librecoop` for the main game or
+    - `./dhewm3 +set fs_game librecoop` for the main game or
     - `./dhewm3 +set fs_game_base d3xp +set fs_game librecoopd3xp` for *Resurrection of Evil*
 
 ## Perfected Doom 3

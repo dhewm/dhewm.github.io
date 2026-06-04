@@ -98,7 +98,7 @@ as an optional [Download](https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1
   If you have such DDS files and want to use them (instead of TGAs), you must set
   `image_usePrecompressedTextures 1` and `image_useNormalCompression 2`.  
   You can also set `image_usePrecompressedTextures 2`, then dhewm3 will only load .dds textures
-  with BC7 data - if it only finds an old one (with S3TC/DXT/BC-13 compression) it will use the 
+  with BC7 data - if it only finds an old one (with S3TC/DXT/BC1-3 compression) it will use the 
   uncompressed TGA textures instead.  
   If you want to *create* .dds files with BC7 texture data, you can use any common texture compression
   tool, **except** for **normalmaps**, those must be created with my
