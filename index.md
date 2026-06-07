@@ -1,7 +1,7 @@
 # About
 
 **dhewm3** is a source port of the original Doom3 (**not** *Doom3 BFG*, for that you may want to
-try [RBDoom3BFG](https://github.com/RobertBeckebans/RBDOOM-3-BFG/)).
+try [Chocolate DOOM-3-BFG](https://github.com/klaussilveira/chocolate-doom3-bfg)).
 It's known to work on Windows, Linux, macOS, [FreeBSD](https://freebsd.org),
 [OpenBSD](https://openbsd.org) and [AROS](http://www.aros.org/),
 but it should work on (or be easily portable to) any system that supports OpenGL 1.4 with

@@ -243,6 +243,8 @@ LibreCoop is an open source coop mod for dhewm 3 supporting both the base game a
 Thanks a lot to Stradex for developing this awesome mod that finally allows cooperative multiplayer in dhewm3!
 
 * You can download the needed game data at [ModDB](https://www.moddb.com/mods/librecoop-dhewm3-coop/downloads)
+    - Additionally, you can add [this librecoop2.pk4](./mods/librecoop2.pk4) to your `librecoop/` and
+      `librecoopd3xp/` folders to fix some missing strings
 * You can find the source at [Github](https://github.com/dhewm/dhewm3-sdk/tree/librecoop/)
 * A **.dll** that works with the official dhewm3 **Windows** executable and a **.so** for Linux
   (on amd64 aka x86_64) is part of `dhewm3-mods_*_win32.zip` resp. `dhewm3-mods_*_Linux_amd64.tar.gz`
