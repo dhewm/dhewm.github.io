@@ -99,10 +99,215 @@ you still need to legally own the game and provide dhewm3 the game data
 to play. See the <a href="#how-to-install">How to Install</a> section
 for more information.</p>
 <h1 id="news">News</h1>
+<p><a href="https://blog.gibson.sh/job/" title="Daniel is currently available for hire (and knows a lot more than just old games) - click for details!">
+<img align="right" width="90" height="100" alt="hire me!" src="./hireme-180-shadow2.png" />
+</a></p>
+<h4 id="dhewm3-1.5.5">2026-06-08: <em>dhewm3 1.5.5</em></h4>
+<p><a href="./dhewm3-1.5.5.jpg" title="dhewm3 1.5.5 with Arl's widescreen GUIs"><img src="./small-dhewm3-1.5.5.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
+<p>Rejoice, dhewm3 1.5.5 is here!</p>
+<p>You can <strong><a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5">download it at
+Github</a></strong> (incl. builds for Windows and 64bit Linux).</p>
+<p>There have been lots of changes (see below for details), one
+highlight is that several sources of microstutters have been removed
+(like the old 60 vs 62.5fps problem) so the game should run smoother
+than before, especially when using VSync.</p>
+<p>Another great new feature is the support for widescreen GUIs. It
+requires adjusting the .ui files; <em>Arl</em> created versions for the
+base game, Resurrection of Evil and The Lost Mission, they are provided
+as an optional <a
+href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5">Download</a>
+(dhewm3-wide-guis-*.zip).</p>
+<p>Furthermore, dhewm3 now supports BC7-compressed (BPTC) .dds textures.
+They offer better quality than the older S3TC/DXT/BC1-3 texture
+compression standard that Doom3 always supported, at the same size as
+DXT3-5. Useful for high-res retexturing packs. See the full changelog
+below for more details.</p>
+<p>The first texture pack to use this feature is <a
+href="https://www.moddb.com/mods/dhewm3-hidef2k">hidef2k</a> by
+<em>y2keeth</em>.</p>
+<p><a href="mods/hidef2k1.jpg" title="Screenshot of hidef2k">
+<img src="mods/small-hidef2k1.jpg" height=200 style="max-width:50%;margin-left:auto;margin-right:auto;display:block">
+</a></p>
+<p><strong>dhewm3-mods</strong> has DLLs for some new mods:</p>
+<ul>
+<li><a
+href="https://www.moddb.com/mods/eldoom/downloads/eldoom-v10">ELDOOM</a></li>
+<li><a
+href="https://www.moddb.com/mods/grimm-quest-for-the-gatherers-key">Grimm</a></li>
+<li><a
+href="https://www.moddb.com/games/doom-iii/downloads/hexen-edge-of-chaos-dhewm3-edition">HeXen:
+Edge Of Chaos Demo</a></li>
+<li><a
+href="https://www.moddb.com/games/doom-iii/addons/real-gibs-v106-for-dhewm3-32-bit">Real
+Gibs</a>
+<ul>
+<li>Note: The page says it only works with the 32bit version of dhewm3,
+but that refers to the realgibs.dll <strong>they</strong> ship.<br />
+Use their gamedata with the .dll/.so provided here (or build the lib
+yourself)</li>
+</ul></li>
+<li><a href="https://www.moddb.com/mods/blood-mod">Blood Mod</a> has
+been updated to v1.8 and now also supports Resurrection Of Evil</li>
+<li><a
+href="https://www.moddb.com/mods/librecoop-dhewm3-coop/downloads">LibreCoop</a>
+is now maintained as part of <a
+href="https://github.com/dhewm/dhewm3-sdk">dhewm3-sdk</a>, until <a
+href="https://github.com/Stradex/librecoop">upstream</a> becomes active
+again. This means that you should use the librecoop.dll/.so/.dylib
+provided with the dhewm3 download</li>
+<li>All mods got updated with gamecode changes from dhewm3 1.5.5</li>
+</ul>
+<p><strong>Changes since 1.5.4:</strong></p>
+<ul>
+<li>Enable/disable Soft Particles when <strong>loading</strong> a
+graphics quality preset (only enabled in Ultra preset, though you can
+still configure it independently like before; <a
+href="https://github.com/dhewm/dhewm3/issues/604">#604</a>)</li>
+<li>Greatly improve precision of internal timing, which should eliminate
+micro stutters (that were esp. noticeable when using VSync with 60Hz
+displays).<br />
+Related: <code>com_showFPS</code> is now more precise and
+<code>com_showFPS 2</code> shows additional information</li>
+<li>Support BC7-compressed (BPTC) .dds textures. They offer better
+quality than the older S3TC/DXT/BC1-3 texture compression standard that
+Doom3 always supported. Mostly relevant for high-res retexturing packs,
+because they offer similar quality as uncompressed TGAs while being
+smaller, using only a quarter of the VRAM (TGA: 4 bytes per pixel, BC7:
+1 byte per pixel) and loading <em>significantly</em> faster because
+mipmaps are contained and don’t have to be generated on load.<br />
+If you have such DDS files and want to use them (instead of TGAs), you
+must set <code>image_usePrecompressedTextures 1</code> and
+<code>image_useNormalCompression 2</code>.<br />
+You can also set <code>image_usePrecompressedTextures 2</code>, then
+dhewm3 will only load .dds textures with BC7 data - if it only finds an
+old one (with S3TC/DXT/BC-13 compression) it will use the uncompressed
+TGA textures instead.<br />
+If you want to <em>create</em> .dds files with BC7 texture data, you can
+use any common texture compression tool, <strong>except</strong> for
+<strong>normalmaps</strong>, those must be created with my <a
+href="https://github.com/DanielGibson/bc7enc_rdo"><strong>customized
+bc7enc</strong></a> with the <code>-r2a</code> flag! <em>(Because Doom3
+requires that normalmaps have the red channel moved into the alpha
+channel, id confusingly called that “RXGB”, and AFAIK no other tool
+supports that for BC7.)</em><br />
+Just like the old DXT .dds files, they must be in the <code>dds/</code>
+subdirectory of a mod (either directly in the filesystem or in a
+.pk4).</li>
+<li>Allow creating aspect-ratio-independent GUIs (HUD and menus), based
+on code from <a href="https://www.moddb.com/mods/cstdoom3">CstDoom3</a>,
+but greatly extended (<a
+href="https://github.com/dhewm/dhewm3/issues/324">#324</a>).<br />
+Note that this won’t work out of the box with the original Doom3 game
+data, but requires updated GUIs. See <a
+href="docs/GUIs.md">docs/GUIs.md</a> for how to use these features when
+creating GUIs.</li>
+<li>Support SDL3 (SDL2 and, to some degree, SDL1.2 are also still
+supported)</li>
+<li>Fix bugs on 64bit Big Endian platforms (<a
+href="https://github.com/dhewm/dhewm3/issues/472">#472</a>, <a
+href="https://github.com/dhewm/dhewm3/issues/625">#625</a>)</li>
+<li>Fixes for high-poly models (use heap allocation instead of
+<code>alloca()</code> for big buffers; <a
+href="https://github.com/dhewm/dhewm3/issues/528">#528</a>)</li>
+<li>Fix building dhewm3ded with newer OpenAL Soft headers (<a
+href="https://github.com/dhewm/dhewm3/issues/633">#633</a>)</li>
+<li>Better support for High-DPI mice:
+<ul>
+<li>Don’t ignore mouse input on fast movement (“ridiculous mouse delta”;
+<a href="https://github.com/dhewm/dhewm3/issues/616">#616</a>)</li>
+<li>Allow setting sensitivity to values <code>&lt; 1</code> in the
+dhewm3 settings menu to allow sane speeds for looking around with
+High-DPI mice (otherwise it might be way too fast)</li>
+</ul></li>
+<li>Fix a crash (assertion) on start with ImGui if
+<code>SDL_GetWindowDisplayIndex()</code> or
+<code>SDL_GetDisplayDPI()</code> failed and the <code>imgui_scale</code>
+CVar was set to the default value of <code>-1</code> (setting it to
+<code>1</code> worked around the bug; <a
+href="https://github.com/dhewm/dhewm3/issues/632">#632</a>)</li>
+<li>Fix scaling of Grabber cursor in Resurrection of Evil in non-4:3
+resolutions (<a
+href="https://github.com/dhewm/dhewm3/issues/637">#637</a>)</li>
+<li>Add <code>com_disableAutoSaves</code> CVar: If set to
+<code>1</code>, Autosaves (when starting a level) are disabled (<a
+href="https://github.com/dhewm/dhewm3/issues/620">#620</a>)</li>
+<li>Add support for “nospecular” parm of lights, enabled by setting
+<code>"allow_nospecular" "1"</code> in a maps worldspawn, or by setting
+the <code>r_allowNoSpecular</code> CVar to <code>1</code>.<br />
+Note that this required changing the format of demos. dhewm3 can still
+play old demos, but ones recorded with current dhewm3 are not compatible
+with older dhewm3 versions, original Doom3 or other source ports (unless
+they do the same change).</li>
+<li>Make sure macOS doesn’t show popups for key-alternatives when
+pressing a key for longer while ingame</li>
+<li>Windows: Show error MessageBox if dhewm3log.txt can’t be created on
+startup (<a
+href="https://github.com/dhewm/dhewm3/issues/544">#544</a>)</li>
+<li>Running a timedemo with sound disabled (<code>s_noSound 1</code>)
+doesn’t crash anymore (<a
+href="https://github.com/dhewm/dhewm3/issues/163">#163</a>)</li>
+<li>Show some OpenGL/GPU information in the <em>Video Options</em> tab
+of the <em>dhewm3 Settings Menu</em></li>
+<li>Fix saving/loading of <code>idSpring</code>
+(<code>func_spring</code>) entity (<a
+href="https://github.com/dhewm/dhewm3/issues/31">#31</a>)</li>
+<li>Fix several issues (incl. crashes and missing shadows) with MD3
+models (<a
+href="https://github.com/dhewm/dhewm3/issues/698">#698</a>)</li>
+<li>Fix the “shrivel” effect of MD5 models
+(<code>SHADERPARM_MD5_SKINSCALE</code>)</li>
+<li>Optionally integrate the <a
+href="https://github.com/wolfpld/tracy">Tracy</a> profiler. Disabled
+unless you enable it in CMake.</li>
+<li>Fixed a crash in AI pathfinding code that could happen in the
+lotsaimps testmap (<a
+href="https://github.com/dhewm/dhewm3/issues/721">#721</a>)</li>
+<li>Disabled assertion in <code>TestHugeTranslation()</code> that led to
+“crashes” in several user-maps (<a
+href="https://github.com/dhewm/dhewm3/issues/720">#720</a>)</li>
+<li>Fixed concatenation of timed GUI commands that sometimes lead to
+glitches in UIs</li>
+<li>Added <code>fs_gameDllPath</code> CVar: If set, game DLLs will be
+searched in that directory before the other standard places (like next
+to the executable). Especially useful for developing/debugging mod DLLs
+(you can just set <code>fs_gameDllPath</code> to the build dir, no need
+to copy the DLL/.so/.dylib)</li>
+<li>Fixed a crash when using an incomplete cubemap texture (missing one
+side).<br />
+Will now print a warning about the missing side.</li>
+<li>Fix bug in map compiling (<code>dmap</code>) that could lead to
+errors when loading the map, due to “dangling edges” in collision models
+(<a href="https://github.com/dhewm/dhewm3/issues/742">#742</a>)</li>
+<li>Fix wrong (flipped) labels of Prev./Next Weapon in dhewm3 settings
+menu (<a
+href="https://github.com/dhewm/dhewm3/issues/731">#731</a>)</li>
+<li>Gamepad trigger axes can now also be used for ducking and jumping
+(<a href="https://github.com/dhewm/dhewm3/issues/733">#733</a>)</li>
+<li>Updated Dear ImGui to v1.92.5 (thanks <em>Klaus Silveira</em>!)</li>
+<li>Fix that after dying the wrong autosave might be loaded (<a
+href="https://github.com/dhewm/dhewm3/issues/762">#762</a>)</li>
+<li>Increase <code>MAX_EYEBALL_TRIS</code> to 20, so mods can have
+eyeballs with more triangles in their models (<a
+href="https://github.com/dhewm/dhewm3/issues/758">#758</a>)</li>
+<li>Work around a problem with compiler math optimizations leading to
+assertion errors on Raspberry Pi 5 (<a
+href="https://github.com/dhewm/dhewm3/issues/749">#749</a>)</li>
+<li>Default to building as C++98 if ImGui is disabled - with ImGui it
+still defaults to C++11. The dhewm3-sdk does the same to avoid issues
+with compilers defaulting to C++20 that are unhappy about variables
+named “requires” (which is a keyword in C++20).</li>
+<li>Several smaller fixes for all kinds of things incl. build
+issues</li>
+</ul>
 <h4 id="dhewm3-1.5.5-release-candidate-3">2026-03-16: <em>dhewm3 1.5.5
 Release Candidate 3</em></h4>
 <p>The third (hopefully last) Release Candidate of the upcoming 1.5.5
 release is available!</p>
+<details>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
 <p>You can <strong><a
 href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC3">download
 it at Github</a></strong> (incl. builds for Windows, macOS and 64bit
@@ -126,10 +331,15 @@ href="https://github.com/dhewm/dhewm3/issues/739">#739</a>)</li>
 href="https://github.com/dhewm/dhewm3/issues/744">#744</a>, <a
 href="https://github.com/dhewm/dhewm3/issues/745">#745</a>)</li>
 </ul>
+</details>
 <h4 id="dhewm3-1.5.5-release-candidate-2">2026-01-26: <em>dhewm3 1.5.5
 Release Candidate 2</em></h4>
 <p>The second Release Candidate of the upcoming 1.5.5 release is
 available!</p>
+<details>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
 <p>You can <strong><a
 href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC2">download
 it at Github</a></strong> (incl. builds for Windows, macOS and 64bit
@@ -151,10 +361,15 @@ works now</li>
 scripts, introduced with the “smoother timing” changes (<a
 href="https://github.com/dhewm/dhewm3/issues/727">#727</a>)</li>
 </ul>
+</details>
 <h4 id="dhewm3-1.5.5-release-candidate-1">2026-01-11: <em>dhewm3 1.5.5
 Release Candidate 1</em></h4>
 <p>A first Release Candidate of the upcoming 1.5.5 release is
 available!</p>
+<details>
+<summary>
+Click to see the rest of this (outdated) newspost
+</summary>
 <p>You can <strong><a
 href="https://github.com/dhewm/dhewm3/releases/tag/1.5.5_RC1">download
 it at Github</a></strong> (incl. builds for Windows and 64bit
@@ -313,6 +528,7 @@ issues</li>
 <li>The Windows build now comes with SDL2 2.32.10, cURL 8.18.0 and
 OpenAL-Soft 1.25.0</li>
 </ul>
+</details>
 <h4 id="dhewm3-1.5.4">2024-08-03: <em>dhewm3 1.5.4</em></h4>
 <p>Twenty years ago to the day, Doom 3 was released!</p>
 <p><a href="./pinky-cake.jpg" title="Happy 20th Birthday, Doom3!"><img src="./small-pinky-cake.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a></p>
