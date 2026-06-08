@@ -34,6 +34,8 @@ Rejoice, dhewm3 1.5.5 is here!
 You can **[download it at Github](https://github.com/dhewm/dhewm3/releases/tag/1.5.5)**
 (incl. builds for Windows and 64bit Linux).
 
+As usual, a signed and notarized build for **macOS** can be found at **[Mac Source Ports](https://www.macsourceports.com/game/doom3)**.
+
 There have been lots of changes (see below for details), one highlight is that several sources of
 microstutters have been removed (like the old 60 vs 62.5fps problem) so the game should run
 smoother than before, especially when using VSync.
