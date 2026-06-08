@@ -34,7 +34,9 @@ Mods generally consist of two parts:
       [latest dhewm3 release](https://github.com/dhewm/dhewm3/releases/latest),
       in the *dhewm3-mods-\** archives, and where to get the sourcecode to build it yourself.
     - The Mod .dll (e.g. `dentonmod.dll`) must be **next to base.dll**, generally
-      **next to dhewm3.exe** - **NOT** in the mod directory!
+      **next to dhewm3.exe** - **NOT** in the mod directory!  
+        - dhewm3 1.5.5 introduces the `fs_gameDllPath` CVar to specify an additional directory
+          that will be searched for game .dll files first
 
 ### Things to keep in mind if you're not using Windows
 
@@ -174,6 +176,24 @@ contacting *Zeroth* and getting permission for this and doing the initial dhewm3
 * Once the game data and eoc.dll/eoc.so/eoc.dylib are in place, you can start the mod with: 
   `./dhewm3 +set fs_game eoc`
 
+## hidef2k for dhewm3
+
+<a href="mods/hidef2k2.jpg" title="Screenshot 1 of hidef2k"><img src="mods/small-hidef2k2.jpg" height=200></a>
+<a href="mods/hidef2k1.jpg" title="Screenshot 2 of hidef2k"><img src="mods/small-hidef2k1.jpg" height=200></a>
+
+High-Resolution texture pack for the base game and the Resurrection of Evil addon and optionally Sikkmod.
+
+Uses BC7 textures, so it requires dhewm3 1.5.5 or newer.
+
+For if you want higher res textures and don't mind spending >30GB of disk space for that ;)
+
+* You can get the gamedata at [ModDB](https://www.moddb.com/mods/dhewm3-hidef2k)
+* This mod has no source changes and thus **_no_ .dll** or similar.
+* Once the game data is in place, you can start the mod with:  
+    - Base game: `./dhewm3 +set fs_game hidef2k`
+    - Resurrection of Evil: `./dhewm3 +set fs_game d3xp +set fs_game_base hidef2k +seta image_usePrecompressedTextures "2" +seta image_useNormalCompression "2"`
+
+
 ## Fitz Packerton
 
 <a href="mods/fitz1.jpg" title="Screenshot 1 of Fitz Packerton"><img src="mods/small-fitz1.jpg" height=200></a>
@@ -251,7 +271,7 @@ Thanks a lot to Stradex for developing this awesome mod that finally allows coop
   on the [Download Page](https://github.com/dhewm/dhewm3/releases/latest)
     - for other platforms you'll have to compile it yourself
     - there's actually official downloads for Win32 and Linux on amd64, but dhewm3 provides
-      DLLs/.so's anyway in case the official ones don't work on your system
+      newer DLLs/.so's updated with the latest changes from dhewm3
 * Once the game data and librecoop.dll/.so/.dylib and librecoopd3xp.dll/.so/dylib are in place,
   you can start the mod with:
     - `./dhewm3 +set fs_game librecoop` for the main game or
