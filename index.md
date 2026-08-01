@@ -21,10 +21,6 @@ more information.
 
 # News
 
-<a href="https://blog.gibson.sh/job/" title="Daniel is currently available for hire (and knows a lot more than just old games) - click for details!">
-<img align="right" width="90" height="100" alt="hire me!" src="./hireme-180-shadow2.png" />
-</a>
-
 #### 2026-06-08: _dhewm3 1.5.5_
 
 <a href="./dhewm3-1.5.5.jpg" title="dhewm3 1.5.5 with Arl's widescreen GUIs"><img src="./small-dhewm3-1.5.5.jpg" style="max-width:50%;margin-left:auto;margin-right:auto;display:block"></a>
