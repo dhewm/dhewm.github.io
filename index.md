@@ -12,9 +12,9 @@ connecting to your server may infect your system.
 Singleplayer is fine (as long as you're not using non-trustworthy mods),
 multiplayer in LAN (or VPN) with only trusted participants should also be fine.
 
-I'm not sure about *Doom3 BFG*, its netcode is quite different and I had no time to check.
+I've been told that *Doom3 BFG* is also affected by at least some of the issues.
 
-Also no idea about *Quake 4 or other idtech4 games*, hard to tell with them being closed source,
+No idea about *Quake 4 or other idtech4 games*, hard to tell with them being closed source,
 *you should probably assume that they're not safe either*.
 
 For dhewm3 I will try to fix those issues in the next update, if that's even possible.
